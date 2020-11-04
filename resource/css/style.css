@@ -1,0 +1,126 @@
+:root {
+    --form-color: #cfc3d8;
+    --button-color: #b689d8;
+    --passive-hyperlink-color: #5c009d;
+    --active-hyperlink-color: #db21e4;
+}
+
+.center_block {
+    width: 20em;
+
+    padding: 1em;
+    border-radius: 25px;
+    background: var(--form-color);
+    
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+input{
+    border-radius: 10px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#spoiler_body{
+    display: none;
+}
+
+fieldset{
+    border:0 none;
+}
+
+button{
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+}
+
+body{
+    zoom: 0.7;
+    display: none;
+}
+
+.absolute_center{
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    -o-transform: translate(-50%, 0%);
+    transform: translate(-50%,0);
+}
+
+.center_text{
+    text-align: center;
+}
+
+html *{
+    font-family: 'Balsamiq Sans', serif  !important;
+}
+
+.delimiter {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.delimiter_text {
+    position: absolute;
+
+    top: 19px;
+    background: var(--form-color);
+    padding: 0 10px;
+}
+
+A:hover {
+    color: var(--active-hyperlink-color);
+}
+
+A {
+    color: var(--passive-hyperlink-color);
+    text-decoration: none;
+}
+
+.btn{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+	box-shadow: none;
+	appearance: none;
+	border: 0;
+	outline: 0;
+	background-color: var(--button-color);
+	height: 40px;
+	line-height: 42px;
+	padding: 0 30px;
+	font-size: 20px;
+	border-radius: 30px;
+	color: rgb(40, 45, 50);
+	cursor: pointer;
+	transition: all .5s;
+	transition-timing-function: cubic-bezier(.2, 3, .4, 1);
+	user-select: none;   
+}
+
+.btn:hover{
+    transform: scale(1.1, 1.1);
+}
+	
+.btn:active{
+    transform: scale(1.05, 1.05);
+}

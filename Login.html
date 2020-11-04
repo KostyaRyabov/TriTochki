@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+
+<html lang='ru'>
+	<head>
+        <title>TriTochki</title>
+
+        <meta charset="UTF-8">
+        <meta name="description" content="описание сайта для отображения в поисковике">
+        
+        <!-- метаданные (минимум) для Open Graph -->
+        <meta name="og:title" content="TriTochki">
+        <meta name="og:image" content="">
+        <meta name="og:type" content="website">
+
+        <link rel="stylesheet" type="text/css" href="resource/css/style.css"/>
+        <link rel="shortcut icon" href="resource/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Balsamiq Sans">
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+        <script type="text/javascript" src="resource/javascript/custom_spoiler.js"></script>
+    </head>
+    
+	<body id="main">
+        <div class="center_block">
+            <h1 class="center_text">TriTochki...</h1>
+        
+            <form action="">
+                <fieldset>
+                    <label for="username"><b>username</b></label>
+                    <input required type="text" placeholder="username" name="username"/>
+
+                    <label for="password"><b>password</b></label>
+                    <input required type="password" placeholder="password" name="password"/>
+                </fieldset>
+
+                <div id="spoiler_body">
+                    <fieldset id="register_form" disabled="true">
+                        <label for="repeat_password"><b>repeat password</b></label>
+                        <input required type="password" placeholder="repeat password" name="repeat_password"/>
+                        
+                        <label for="email"><b>email</b></label>
+                        <input required type="email" placeholder="email" name="email"/>
+                    </fieldset>
+                </div>
+
+                <div class="delimiter">
+                    <hr/>
+                    <div class="delimiter_text absolute_center"> ИЛИ </div>
+                </div>
+
+                <button id="spoiler_links" class="btn"><span>создать аккаунт</span></button>
+
+                <button type="submit" class="btn"><span>submit</span></button>
+
+                <div class="center_text">
+                    <a href="#">забыли пароль?</a>
+                </div>
+            </form>
+        </div>
+        
+        <footer class="absolute_center">
+            <a href="https://github.com/Kinapak/TriTochki/"><img src="https://img.icons8.com/nolan/64/github.png"/></a>
+        </footer>
+	</body>
+</html>
