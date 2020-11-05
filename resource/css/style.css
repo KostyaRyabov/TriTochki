@@ -2,8 +2,16 @@
     --form-color: #ffffff4a;
     --button-color: #ffffff3e;
     --passive-hyperlink-color: #000000;
-    --active-hyperlink-color: #000000b3;
+    --active-hyperlink-color: #000000b1;
     --line-color: #0000003f;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                    not supported by any browser */
 }
 
 .center_block {
@@ -15,7 +23,7 @@
     
     position: fixed;
     left: 50%;
-    top: 50%;
+    top: 45%;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -23,6 +31,20 @@
     transform: translate(-50%, -50%);
 
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+}
+
+body{
+    zoom: 0.8;
+    display: none;
+
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 10s ease infinite;
 }
 
 input{
@@ -47,20 +69,6 @@ button{
     margin-left:auto;
     margin-right:auto;
     display:block;
-}
-
-footer{
-    position: absolute;
-    bottom: 0;
-}
-
-body{
-    zoom: 0.7;
-    display: none;
-
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 10s ease infinite;
 }
 
 .absolute_center{
