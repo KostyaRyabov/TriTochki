@@ -11,6 +11,9 @@
 	// Устранение возможных уязвимостей
 	$_POST = defender($_POST);
 	
+	// Приведение логина к строчным буквам, чтобы не было повторов с разным типом букв
+	$_POST["username"] = strtolower($_POST["username"]);
+	
 	if($_POST["password"] != $_POST["repeat_password"]) exit("Passwords are not same!"); // Проверка совпадения двух паролей
 	if(strlen($_POST["password"]) < 8) exit("Too short password's length!"); // Не даем ввести меньше 8 символов
 	
