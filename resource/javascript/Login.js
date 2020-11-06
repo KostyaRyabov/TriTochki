@@ -21,7 +21,7 @@ $(document).ready(function(){
         let action, data = $(this).serialize();
         
         // Установка нужного действия
-        if(("#register_form").disabled) action = "login";
+        if($("#register_form").attr("disabled")) action = "login";
         else action = "register";
         
         $.ajax({
