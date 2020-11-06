@@ -21,7 +21,7 @@
     border-radius: 25px;
     background: var(--form-color);
     
-    position: fixed;
+    position: absolute;
     left: 50%;
     top: 45%;
     -webkit-transform: translate(-50%, -50%);
@@ -42,9 +42,9 @@ body{
     zoom: 0.8;
     
     display: none;
-    background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 500% 500%;
-	animation: gradient 30s ease infinite;
+    background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #66f0d0);
+    background-size: 300% 300%;
+	animation: gradient 10s ease infinite;
 }
 
 input{
