@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+
+<html lang='ru'>
+	<head>
+        <title>TriTochki</title>
+
+        <meta charset="UTF-8">
+        <meta name="description" content="описание сайта для отображения в поисковике">
+        
+        <meta name="og:title" content="TriTochki">
+        <meta name="og:image" content="resource/images/favicon/mstile-144x144.png">
+        <meta name="og:image:type" content="image/png">
+        <meta name="og:image:width" content="144">
+        <meta name="og:image:height" content="144">
+        <meta name="og:image:alt" content="TriTochki">
+        <meta name="og:type" content="website">
+        <meta name="og:description" content="description">
+
+        <meta name="viewport" content="height=device-height, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="resource/css/Messanger.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Balsamiq Sans">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="resource/images/favicon/apple-touch-icon.png?v=eEYRKOGLlK">
+        <link rel="icon" type="image/png" sizes="32x32" href="resource/images/favicon/favicon-32x32.png?v=eEYRKOGLlK">
+        <link rel="icon" type="image/png" sizes="16x16" href="resource/images/favicon/favicon-16x16.png?v=eEYRKOGLlK">
+        <link rel="manifest" href="resource/images/favicon/site.webmanifest?v=eEYRKOGLlK">
+        <link rel="mask-icon" href="resource/images/favicon/safari-pinned-tab.svg?v=eEYRKOGLlK" color="#38879e">
+        <link rel="shortcut icon" href="resource/images/favicon/favicon.ico?v=eEYRKOGLlK">
+        <meta name="apple-mobile-web-app-title" content="TriTochki...">
+        <meta name="application-name" content="TriTochki...">
+        <meta name="msapplication-TileColor" content="#b91d47">
+        <meta name="msapplication-config" content="resource/images/favicon/browserconfig.xml?v=eEYRKOGLlK">
+        <meta name="theme-color" content="#ffffff">
+
+        <script type="text/javascript" src="resource/javascript/jquery.min.js"></script>
+        <script type="text/javascript" src="resource/javascript/MainPage.js"></script>
+    </head>
+    
+	<body>
+        <table>
+            <tr>
+                <td rowspan="3">
+                    <div class="menu">
+                        <img class="logo" src="resource/images/favicon/mstile-70x70.png"/>
+
+                        <button>user_info</button>
+                        <button>contact_list</button>
+                        <button>chat_list</button>
+
+                        <a class="github" href="https://github.com/Kinapak/TriTochki/" target="_blank">
+                            <img src="https://img.icons8.com/ios-filled/50/000000/github.png"/>
+                        </a>
+                    </div>
+                </td>
+                <td class="header">
+                    <div class="tab">
+                        <span id="tab-name">tab_name</span>
+                        <button id="btn-chat-about">?</button>
+                    </div>
+                    <div id="chat-info">
+                        <span class="chat-info-header">дата основания</span>
+                        <hr/>
+                        <span id="chat-create-date">дд.мм.гггг</span>
+                        <hr/>
+                        <br/>
+                        <span class="chat-info-header">участники</span>
+                        <hr/>
+                        <ol id="chat-contact-list">
+                            <li>Microsoft</li>
+                            <li>Google</li>
+                            <li>Apple</li>
+                            <li>IBM</li>
+                            <li>Microsoft</li>
+                            <li>Google</li>
+                            <li>Apple</li>
+                            <li>IBM</li>
+                            <li>Microsoft</li>
+                            <li>Google</li>
+                        </ol>
+                        <hr/>
+                    </div>
+                </td>
+                <td rowspan="3">
+                    <div class="additional">
+                        <div>
+                            additional
+                        </div>
+                    </div>
+                </td>
+            </tr>
+                <td id="main">
+                    content
+                </td>
+            </tr>
+            </tr id="footer">
+                <td class="input_area">
+                    <textarea id="textbox" onkeyup="autoGrow(this)"></textarea>
+                    <button class="commit-button">></button>
+                </td>
+            </tr>
+          </table>
+	</body>
+</html>

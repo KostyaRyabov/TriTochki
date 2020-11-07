@@ -1,0 +1,201 @@
+:root {
+    --scroll-bar-width: 8px;
+}
+
+body,html,table{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    margin:0px;
+    padding: 0px;
+
+    background: #baafad;
+}
+
+table{ border-collapse: collapse; }
+
+.menu, .additional{
+    width: 10em;
+
+    display: flex;
+    flex-flow: column wrap;
+
+    padding: 3px;
+
+    height: 100%;
+}
+
+.menu{ 
+    margin-left: auto;
+    padding-right: min(50px, 15%);
+}
+.additional{
+    margin-right: auto;
+    justify-content: center;
+}
+
+html *{
+    font-size: 12px !important;
+    font-family: 'Balsamiq Sans', serif !important;
+}
+
+.header, #footer, #main{
+    width: 30em;
+    position: relative
+}
+
+#textbox{
+    border-radius: 8px;
+    width: 100%;
+    padding: 4px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 0;
+    min-height: 2.2em;
+    max-height: 12em;
+    resize: vertical;
+    overflow: auto;
+}
+
+.logo, .github{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.github{
+    margin-top: auto;
+}
+
+.github > img{
+    width:32px;
+    height:32px;
+}
+
+.logo{
+    width: 70px;
+    height: 70px;
+
+    margin-bottom: auto;
+}
+
+.input_area{
+    display: flex;
+    flex-flow: row;
+    align-items: flex-start;
+}
+
+.tab{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgb(255, 255, 255);
+
+    border-radius: 8px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 100%;
+    z-index: 200;
+}
+
+#main{
+    background: #ffffff;
+    border-radius: 4px 4px 0px 0px;
+
+    height: 100%;
+    width: 50em;
+}
+
+button{
+    margin: 0.25em;
+	box-shadow: none;
+	appearance: none;
+	border: 0;
+	outline: 0;
+	background-color: #767676;
+    height: 30px;
+	line-height: 32px;
+	padding: 0 10px;
+	font-size: 14px;
+	border-radius: 30px;
+	cursor: pointer;
+	transition: all .5s;
+	transition-timing-function: cubic-bezier(.2, 3, .4, 1);
+	user-select: none;
+}
+
+.commit-button{
+    flex: 1 1 auto;
+}
+
+button:hover{
+    transform: scale(1.1, 1.1);
+}
+	
+button:active{
+    transform: scale(1.05, 1.05);
+}
+
+#chat-info{
+    display: none;
+    position: absolute;
+    background: #dcdcdc;
+    box-shadow: 0 0 20px #000000;
+    border-top: 2px solid #00000090;
+
+    left: 50%;
+    -webkit-transform: translate(-50%, -5px);
+    -moz-transform: translate(-50%, -5px);
+    -ms-transform: translate(-50%, -5px);
+    -o-transform: translate(-50%, -5px);
+    transform: translate(-50%, -5px);
+
+    border-radius: 0px 0px 8px 8px;
+    padding: 20px;
+
+    max-height: 18em;
+    width: 18em;
+    z-index: 100;
+}
+
+.chat-info-header{
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+hr{
+    background: black;
+    border: none;
+    height: 2px;
+}
+
+ol {
+    margin: 0;
+    overflow-y: auto;
+    max-height: 7.5em;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: var(--scroll-bar-width);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 var(--scroll-bar-width) #000000;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(132, 64, 64);
+    border: 0;
+    border-radius: 5px;
+}

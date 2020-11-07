@@ -41,7 +41,6 @@ footer{
 body{
     zoom: 0.8;
     
-    display: none;
     background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #66f0d0);
     background-size: 300% 300%;
 	animation: gradient 10s ease infinite;
@@ -63,12 +62,6 @@ input{
 
 fieldset{
     border:0 none;
-}
-
-button{
-    margin-left:auto;
-    margin-right:auto;
-    display:block;
 }
 
 .absolute_center{
@@ -128,7 +121,11 @@ A {
     text-decoration: none;
 }
 
-.btn{
+button{
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 	box-shadow: none;
@@ -147,11 +144,11 @@ A {
 	user-select: none;   
 }
 
-.btn:hover{
+button:hover{
     transform: scale(1.1, 1.1);
 }
 	
-.btn:active{
+button:active{
     transform: scale(1.05, 1.05);
 }
 
