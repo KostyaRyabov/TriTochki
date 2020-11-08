@@ -12,6 +12,8 @@ body{
     padding: 0px;
 
     background: #baafad;
+
+    overflow-y: hidden;
 }
 
 table{ border-collapse: collapse; }
@@ -31,6 +33,7 @@ table{ border-collapse: collapse; }
     margin-left: auto;
     padding-right: min(50px, 15%);
 }
+
 .additional{
     margin-right: auto;
     justify-content: center;
@@ -43,7 +46,11 @@ html *{
 
 .header, #footer, #main{
     width: 30em;
-    position: relative
+    min-width: 24em;
+}
+
+.header{
+    position: relative;
 }
 
 #textbox{
@@ -55,8 +62,9 @@ html *{
     border: 0;
     min-height: 2.2em;
     max-height: 12em;
-    resize: vertical;
-    overflow: auto;
+    resize: none;
+    height: auto;
+    overflow-y: auto;
 }
 
 .logo, .github{
@@ -80,7 +88,7 @@ html *{
     margin-bottom: auto;
 }
 
-.input_area{
+#input-area{
     display: flex;
     flex-flow: row;
     align-items: flex-start;
@@ -105,15 +113,7 @@ html *{
     z-index: 200;
 }
 
-#main{
-    background: #ffffff;
-    border-radius: 4px 4px 0px 0px;
-
-    height: 100%;
-    width: 50em;
-}
-
-button{
+.btn{
     margin: 0.25em;
 	box-shadow: none;
 	appearance: none;
@@ -131,16 +131,79 @@ button{
 	user-select: none;
 }
 
-.commit-button{
-    flex: 1 1 auto;
-}
-
-button:hover{
+.btn:hover, .Idle:hover{
     transform: scale(1.1, 1.1);
 }
 	
-button:active{
+.btn:active, .Idle:hover:active{
     transform: scale(1.05, 1.05);
+}
+
+#send-message{
+    display: none;
+    flex: none;
+
+    outline:none;
+    text-align: center;
+    border-radius: 50%;
+    text-shadow:0;
+    font-weight:bold;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    margin: 4px;
+    height: 30px;
+    width: 30px;
+}
+
+.Idle{
+    border: 0;
+    background: rgb(99, 81, 81);
+}
+
+.Idle:after{
+    content:">";
+    font-size: 12px;
+}
+
+.Verification {
+    background: #ffffff00;
+    font-size:0;
+    border: 2px solid #101a822b;
+    border-left: 2px solid #172aff;
+    
+    font-size:0;
+    animation: rotating 2s 0.25s linear infinite;
+    pointer-events: none;
+}
+
+.Verification:after{
+    content:"";
+}
+
+.Valid{
+    border: 0;
+
+    background: rgb(28, 172, 21);
+    pointer-events: none;
+}
+
+.Valid:after {
+    content:"✔";
+    font-size: 12px;
+}
+
+.Invalid{
+    border: 0;
+    
+    background: rgb(172, 21, 21);
+    pointer-events: none;
+}
+
+.Invalid:after {
+    content:"X";
+    font-size: 12px;
 }
 
 #chat-info{
@@ -182,20 +245,90 @@ ol {
     max-height: 7.5em;
 }
 
-/* width */
+.main-cell{
+    background: #ffffff;
+    border-radius: 4px 4px 0px 0px;
+
+    height: 100%;
+    width: 50em;
+}
+
+#main{
+    height: 100%;
+    width: 100%;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.msg-area{
+    display: inline-block;
+    width: auto;
+    height:auto;
+    padding: 0.5em;
+}
+
+.msg-container{
+    width: auto;
+    height:auto;
+    background: #8c8c8c;
+    border-radius: 5px;
+    border: 0;
+    margin: 4px;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mine{
+    float: right;
+}
+
+.not-mine{
+    float: left;
+}
+
+.msg-author-name{
+    margin-right: auto;
+}
+
+.msg-date{
+    margin-left: auto;
+}
+
+.msg-text{
+    display:block; 
+    width: 20em;
+    resize: none;
+
+    background: #c1c1c1;
+
+    border-radius: 4px;
+    border: 0;
+}
+
 ::-webkit-scrollbar {
     width: var(--scroll-bar-width);
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 var(--scroll-bar-width) #000000;
     border-radius: 5px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: rgb(132, 64, 64);
     border: 0;
     border-radius: 5px;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

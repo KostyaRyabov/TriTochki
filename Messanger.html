@@ -35,6 +35,7 @@
 
         <script type="text/javascript" src="resource/javascript/jquery.min.js"></script>
         <script type="text/javascript" src="resource/javascript/MainPage.js"></script>
+        <script type="text/javascript" src="resource/javascript/custom_textarea.js"></script>
     </head>
     
 	<body>
@@ -44,10 +45,10 @@
                     <div class="menu">
                         <img class="logo" src="resource/images/favicon/mstile-70x70.png"/>
 
-                        <button>user_info</button>
-                        <button>contact_list</button>
-                        <button>chat_list</button>
-
+                        <button class='btn'>user_info</button>
+                        <button class='btn'>contact_list</button>
+                        <button class='btn'>chat_list</button>
+                        
                         <a class="github" href="https://github.com/Kinapak/TriTochki/" target="_blank">
                             <img src="https://img.icons8.com/ios-filled/50/000000/github.png"/>
                         </a>
@@ -56,7 +57,7 @@
                 <td class="header">
                     <div class="tab">
                         <span id="tab-name">tab_name</span>
-                        <button id="btn-chat-about">?</button>
+                        <button id="btn-chat-about" class='btn'>?</button>
                     </div>
                     <div id="chat-info">
                         <span class="chat-info-header">дата основания</span>
@@ -89,14 +90,14 @@
                     </div>
                 </td>
             </tr>
-                <td id="main">
-                    content
+                <td class="main-cell">
+                    <div id="main"/>
                 </td>
             </tr>
             </tr id="footer">
-                <td class="input_area">
-                    <textarea id="textbox" onkeyup="autoGrow(this)"></textarea>
-                    <button class="commit-button">></button>
+                <td id="input-area">
+                    <textarea id="textbox" onkeyup="hideSendButton(this)"></textarea>
+                    <button id="send-message" class="Idle" onclick="sendMessage()"/>
                 </td>
             </tr>
           </table>
