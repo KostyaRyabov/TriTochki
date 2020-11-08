@@ -1,0 +1,6 @@
+AddHandler server-parsed .html
+Options +Includes
+DirectoryIndex Messanger.html
+AddDefaultCharset utf-8
+
+php_flag display_errors off
