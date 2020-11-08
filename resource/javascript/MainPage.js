@@ -13,7 +13,7 @@ $(document).ready(function() {
 // скрытие открытого подменю
 jQuery(function($){
   $(document).mouseup(function (e){
-    if (!$("button#btn-chat-about").is(e.target)) {
+    if (!$("button#btn-chat-about").is(e.target) && !$('#chat-info').is(e.target) && $('#chat-info').has(e.target).length === 0) {
       if ($('#chat-info').is(":visible")) $('#chat-info').slideToggle(200);
     }
   });
