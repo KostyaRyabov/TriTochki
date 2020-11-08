@@ -260,11 +260,12 @@ ol {
     overflow-y: auto;
 
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .msg-area{
-    display: inline-block;
+    display: inline;
     width: auto;
     height:auto;
     padding: 0.5em;
