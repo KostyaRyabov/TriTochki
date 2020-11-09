@@ -78,11 +78,7 @@
                 };
             
             // Bind namespaced handlers to appropriate events:
-            textarea
-                .unbind('.dynSiz')
-                .bind('keyup.dynSiz', updateSize)
-                .bind('keydown.dynSiz', updateSize)
-                .bind('change.dynSiz', updateSize);
+            textarea.bind('input', updateSize);
             
         });
         

@@ -6,8 +6,6 @@ $(document).ready(function() {
   });
 
   $('textarea#textbox').autoResize();
-
-  
 });
 
 // скрытие открытого подменю
