@@ -59,22 +59,34 @@ function sendMessage() {
       success: function(result){ // result возвращает ошибку или пустое значение, если все ок
         $("button#send-message").removeClass("Verification");
 
-        if (false){
+        if (true){
           $("button#send-message").addClass("Valid");
           setTimeout(function() {
             $("button#send-message").removeClass("Valid").addClass("Idle");
-            $("button#send-message").hide(100);
-            $('textarea#textbox').val('').prop("disabled", false).css("height", "auto");
+
+            if ($.trim($('textarea#textbox').val())){
+              if ($("button#send-message").is(":hidden")){
+                $("button#send-message").show(50);
+              }
+            }else{
+              if (!$("button#send-message").is(":hidden")){
+                $("button#send-message").hide(100);
+              }
+            }
           },500)
           
           // добавление сообщения в html
-          $('#main').append(genMessage("message-id-in-bd","author", $('textarea#textbox').val(),"date"));
 
-          var obj = $('#main:last').children().last().children().last().children().last();      
-          obj.scrollTop(obj.get(0).scrollHeight);
-          var scrollHeight = obj.scrollTop() + obj.height();
-          obj.scrollTop(0);
-          obj.css("height", scrollHeight);
+          var msg = $(genMessage("message-id-in-bd","", $('textarea#textbox').val(),"date")).hide();
+          $('#main').append(msg);
+          msg.slideDown(100);
+          var textBox = msg.children().last().children().last();
+          textBox.scrollTop(textBox.get(0).scrollHeight);
+          var scrollHeight = textBox.scrollTop() + textBox.height();
+          textBox.scrollTop(0);
+          textBox.animate({height:scrollHeight},500);
+
+          $('textarea#textbox').val('').prop("disabled", false).animate({height:0},200);
         }else{
           $("button#send-message").addClass("Invalid");
           setTimeout(function() {
@@ -112,15 +124,17 @@ function sendMessage() {
       },500)
       
       // добавление сообщения в html
-      $('#main').append(genMessage("message-id-in-bd","", $('textarea#textbox').val(),"date"));
 
-      var obj = $('#main:last').children().last().children().last().children().last();      
-      obj.scrollTop(obj.get(0).scrollHeight);
-      var scrollHeight = obj.scrollTop() + obj.height();
-      obj.scrollTop(0);
-      obj.css("height", scrollHeight);
+      var msg = $(genMessage("message-id-in-bd","", $('textarea#textbox').val(),"date")).hide();
+      $('#main').append(msg);
+      msg.slideDown(100);
+      var textBox = msg.children().last().children().last();
+      textBox.scrollTop(textBox.get(0).scrollHeight);
+      var scrollHeight = textBox.scrollTop() + textBox.height();
+      textBox.scrollTop(0);
+      textBox.animate({height:scrollHeight},500);
 
-      $('textarea#textbox').val('').prop("disabled", false).css("height", "auto");
+      $('textarea#textbox').val('').prop("disabled", false).animate({height:0},200);
     }else{
       $("button#send-message").addClass("Invalid");
       setTimeout(function() {

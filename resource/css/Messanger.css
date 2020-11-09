@@ -63,7 +63,7 @@ html *{
     min-height: 2.2em;
     max-height: 12em;
     resize: none;
-    height: auto;
+    height: 0;
     overflow-y: auto;
 }
 
@@ -174,7 +174,7 @@ html *{
     border-left: 2px solid #172aff;
     
     font-size:0;
-    animation: rotating 2s 0.25s linear infinite;
+    animation: rotating 0.25s linear infinite;
     pointer-events: none;
 }
 
