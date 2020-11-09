@@ -78,7 +78,9 @@
                 };
             
             // Bind namespaced handlers to appropriate events:
-            textarea.bind('input', updateSize);
+            textarea
+                .unbind('.dynSiz')
+                .bind('input.dynSiz', updateSize);
             
         });
         
