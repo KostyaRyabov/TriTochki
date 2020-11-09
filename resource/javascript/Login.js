@@ -29,7 +29,9 @@ $(document).ready(function(){
             url: "/resource/action/" + action + ".php",
             data: data,
             success: function(result){ // result возвращает ошибку или пустое значение, если все ок
-                console.log(result); //todo здесь вместо лога вывод пришедшей ошибки. если result пустой, то все ок, идем дальше
+                if(result.length > 1) return false; //todo вывод ошибок в форму логина
+                
+                location.href = "/";
             }
         });
     });
