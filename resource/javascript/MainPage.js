@@ -6,6 +6,15 @@ $(document).ready(function() {
   });
 
   $('textarea#textbox').autoResize();
+  
+  // Проверка на авторизацию
+  $.ajax({
+    method: "POST",
+    url: "/resource/action/check.php",
+    success: function(result){ // result возвращает 1 или 0 соответственно
+      if(result == 0) location.href = "/Login.html";
+    }
+  });
 });
 
 // скрытие открытого подменю
