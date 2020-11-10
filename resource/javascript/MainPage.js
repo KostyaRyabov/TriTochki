@@ -29,6 +29,25 @@ $(document).ready(function() {
       if(result == 0) location.href = "/Login.html";
     }
   });
+  
+  // Получение информации по чату
+  $.ajax({
+    method: "GET",
+    url: "/resource/action/chat_info.php",
+    data: {
+      "id": params["id"]
+    },
+    success: function(result){ // возвращает объект json
+      result = JSON.parse(result);
+      
+      $("#tab-name").text(result.name);
+      $("#chat-create-date").text(result.date);
+      $("#chat-contact-list").html(""); // Сперва очищаем от значений по умолчанию
+      $.each(result.users, function(index, value){
+        $("#chat-contact-list").append("<li>" + value + "</li>");
+      });
+    }
+  });
 });
 
 // скрытие открытого подменю
@@ -55,7 +74,7 @@ function hideSendButton(oField) {
 function genMessage(id_message, author, text, date){
   var itsMine = (author == myName);
 
-  var result = 
+  var result =
   `<div class='msg-area' id='message${id_message}'>
     <div class='msg-container ${(itsMine)?"mine":"not-mine"}'>
       ${(itsMine)?"":"<div class='msg-author-name'>"+author+"</div>"}
