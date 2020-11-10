@@ -1,5 +1,19 @@
 var myName = "";
 
+var params = window
+   .location
+   .search
+   .replace('?','')
+   .split('&')
+   .reduce(
+      function(p,e){
+        var a = e.split('=');
+        p[ decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
+        return p;
+      },
+      {}
+   );
+
 $(document).ready(function() {
   $("button#btn-chat-about").click(function() {
     $('#chat-info').slideToggle(200)
