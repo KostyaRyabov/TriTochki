@@ -12,3 +12,9 @@
 		
 		return $method;
 	}
+	
+	// Перевод даты из mysql формата в человекопонятную
+	function humanDate($dt){
+		$dt = explode("-", $dt);
+		return $dt[2].".".$dt[1].".".$dt[0];
+	}
