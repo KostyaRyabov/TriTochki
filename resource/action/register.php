@@ -17,10 +17,11 @@
 	if($_POST["password"] != $_POST["repeat_password"]) exit("Passwords are not same!"); // Проверка совпадения двух паролей
 	if(strlen($_POST["password"]) < 8) exit("Too short password's length!"); // Не даем ввести меньше 8 символов
 	
-	// Проверяем, не занят ли логин
-	$res = query("SELECT id_user FROM user WHERE login='".$_POST["username"]."'");
+	// Проверяем, не занят ли логин или email
+	$res = query("SELECT Login, Email FROM user WHERE Login='".$_POST["username"]."' OR Email='".$_POST["email"]."'");
 	$row = mysqli_fetch_array($res);
-	if($row["id_user"]) exit("This username already exists!");
+	if($row["Login"] == $_POST["username"]) exit("This username already exists!");
+	if($row["Email"] == $_POST["email"]) exit("This email already exists!");
 	
 	DB::insert("user", [
 	 "Login" => $_POST["username"],
