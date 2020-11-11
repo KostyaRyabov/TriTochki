@@ -44,7 +44,7 @@ html *{
     font-family: 'Balsamiq Sans', serif !important;
 }
 
-.header, #footer, #main{
+.header, .footer, #main{
     width: 30em;
     min-width: 24em;
 }
@@ -239,7 +239,7 @@ hr{
     height: 2px;
 }
 
-ol {
+#chat-info-contact-list {
     margin: 0;
     overflow-y: auto;
     max-height: 7.5em;
@@ -247,28 +247,31 @@ ol {
 
 .main-cell{
     background: #ffffff;
-    border-radius: 4px 4px 0px 0px;
+    border-radius: 4px;
 
     height: 100%;
     width: 50em;
 }
 
-#main{
+#wrapper{
     height: 100%;
     width: 100%;
-
+    
     overflow-y: auto;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+}
+
+#main{
+    width: 100%;
+    margin-top: auto;
 }
 
 .msg-area{
-    display: inline;
-    width: auto;
+    display: inline-block;
+    width: 100%;
     height:auto;
-    padding: 0.5em;
 }
 
 .msg-container{

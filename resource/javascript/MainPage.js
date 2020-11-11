@@ -19,7 +19,7 @@ $(document).ready(function() {
     $('#chat-info').slideToggle(200)
   });
 
-  $('textarea#textbox').autoResize();
+  $('textarea#textbox').autoHeight();
   
   // Проверка на авторизацию
   $.ajax({
@@ -42,9 +42,9 @@ $(document).ready(function() {
       
       $("#tab-name").text(result.name);
       $("#chat-create-date").text(result.date);
-      $("#chat-contact-list").html(""); // Сперва очищаем от значений по умолчанию
+      $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
       $.each(result.users, function(index, value){
-        $("#chat-contact-list").append("<li>" + value + "</li>");
+        $("#chat-info-contact-list").append("<li>" + value + "</li>");
       });
     }
   });
@@ -75,6 +75,34 @@ function genMessage(id_message, author, text, date){
   var itsMine = (author == myName);
 
   var result =
+  `<div class='msg-area' id='message${id_message}'>
+    <div class='msg-container ${(itsMine)?"mine":"not-mine"}'>
+      ${(itsMine)?"":"<div class='msg-author-name'>"+author+"</div>"}
+      <div class='msg-date'>${date}</div>  
+      <textarea class='msg-text' readonly>${text}</textarea>
+    </div>
+  </div>`;
+
+  return result;
+}
+
+// отображение списка чатов пользователя (их id и названия)
+function showChatListContext(){
+  $("#main").html('');
+  $("#input-area").slideUp(100);
+
+  var list = [""];  // = ... - загрузка списка (целого ? - у пользователя не может быть много чатов)
+
+  var result = 
+  list.forEach(function(item){
+    result.append(`<li class="chat-label" id="chat-${item}"></li>`);
+  });
+}
+
+function genMessage(id_message, author, text, date){
+  var itsMine = (author == myName);
+
+  var result = 
   `<div class='msg-area' id='message${id_message}'>
     <div class='msg-container ${(itsMine)?"mine":"not-mine"}'>
       ${(itsMine)?"":"<div class='msg-author-name'>"+author+"</div>"}
@@ -174,6 +202,8 @@ function sendMessage() {
       textBox.scrollTop(0);
       textBox.animate({height:scrollHeight},500);
 
+      $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+scrollHeight},500);
+      
       $('textarea#textbox').val('').prop("disabled", false).animate({height:0},200);
     }else{
       $("button#send-message").addClass("Invalid");
