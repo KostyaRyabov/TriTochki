@@ -13,10 +13,23 @@ body{
 
     background: #baafad;
 
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
-table{ border-collapse: collapse; }
+table{
+    border-collapse: collapse;
+    transition: all .1s;
+}
+
+.blured-screen{
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+
+    transform: scale(1.05);
+}
 
 .menu, .additional{
     width: 10em;
@@ -44,12 +57,12 @@ html *{
     font-family: 'Balsamiq Sans', serif !important;
 }
 
-.header, .footer, #main{
+#header, .footer, #main{
     width: 30em;
     min-width: 24em;
 }
 
-.header{
+#header{
     position: relative;
 }
 
@@ -60,10 +73,8 @@ html *{
     margin: 4px 0;
     display: inline-block;
     border: 0;
-    min-height: 2.2em;
     max-height: 12em;
     resize: none;
-    height: 0;
     overflow-y: auto;
 }
 
@@ -110,7 +121,6 @@ html *{
     margin-right: auto;
 
     width: 100%;
-    z-index: 200;
 }
 
 .btn{
@@ -137,6 +147,10 @@ html *{
 	
 .btn:active, .Idle:hover:active{
     transform: scale(1.05, 1.05);
+}
+
+#btn-chat-about{
+    display: none;
 }
 
 #send-message{
@@ -206,26 +220,39 @@ html *{
     font-size: 12px;
 }
 
-#chat-info{
-    display: none;
+#info-box{
     position: absolute;
     background: #dcdcdc;
-    box-shadow: 0 0 20px #000000;
     border-top: 2px solid #00000090;
 
     left: 50%;
-    -webkit-transform: translate(-50%, -5px);
-    -moz-transform: translate(-50%, -5px);
-    -ms-transform: translate(-50%, -5px);
-    -o-transform: translate(-50%, -5px);
-    transform: translate(-50%, -5px);
+    top: 50%;
 
-    border-radius: 0px 0px 8px 8px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    border-radius: 8px;
     padding: 20px;
 
     max-height: 18em;
     width: 18em;
-    z-index: 100;
+
+    box-shadow: 0 0 0 100vw #000000a5;
+}
+
+.block-screen{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#info-box-wrapper{
+    display: none;
 }
 
 .chat-info-header{
@@ -311,6 +338,10 @@ hr{
 
     border-radius: 4px;
     border: 0;
+}
+
+.list-item{
+    
 }
 
 ::-webkit-scrollbar {

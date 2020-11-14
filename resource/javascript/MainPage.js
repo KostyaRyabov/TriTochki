@@ -14,11 +14,14 @@ var params = window
       {}
    );
 
-$(document).ready(function() {
-  $("button#btn-chat-about").click(function() {
-    $('#chat-info').slideToggle(200)
-  });
+function toggleInfoBox(){
+  $('#info-box-wrapper').fadeToggle(150);
+  $("table").toggleClass("blured-screen");
+}
 
+$(document).ready(function() {
+  showInfoBox();
+  
   $('textarea#textbox').autoHeight();
   
   // Проверка на авторизацию
@@ -44,17 +47,10 @@ $(document).ready(function() {
       $("#chat-create-date").text(result.date);
       $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
       $.each(result.users, function(index, value){
-        $("#chat-info-contact-list").append("<li>" + value + "</li>");
-      });
-    }
-  });
-});
+        $("#chat-info-contact-list").append("<button class='list-item'>" + value + "</button>");      // todo:: добавить id контактов для перехода на них (ниже пример)
 
-// скрытие открытого подменю
-jQuery(function($){
-  $(document).mouseup(function (e){
-    if (!$("button#btn-chat-about").is(e.target) && !$('#chat-info').is(e.target) && $('#chat-info').has(e.target).length === 0) {
-      if ($('#chat-info').is(":visible")) $('#chat-info').slideToggle(200);
+        //<button class="list-item" id="${value.id}" onClick=openContact(this.id)>${value.name}</button>`;
+      });
     }
   });
 });
@@ -72,9 +68,9 @@ function hideSendButton(oField) {
 }
 
 function genMessage(id_message, author, text, date){
-  var itsMine = (author == myName);
+  let itsMine = (author == myName);
 
-  var result =
+  let result =
   `<div class='msg-area' id='message${id_message}'>
     <div class='msg-container ${(itsMine)?"mine":"not-mine"}'>
       ${(itsMine)?"":"<div class='msg-author-name'>"+author+"</div>"}
@@ -86,27 +82,141 @@ function genMessage(id_message, author, text, date){
   return result;
 }
 
+function showInfoBox(){
+  if (!$("#btn-chat-about").length){
+    let obj = $(`<button id="btn-chat-about" class='btn' onclick="toggleInfoBox()">?</button>`).hide();
+    $('.tab').append(obj);
+    obj.show(200);
+  }
+
+  if (!$("info-box-wrapper").length){
+    $('body').append(`
+      <div id="info-box-wrapper">
+        <div class="block-screen" onclick="toggleInfoBox()"></div>
+        <div id="info-box">
+            <span class="chat-info-header"></span>
+            <hr/>
+            <span id="chat-create-date"></span>
+            <hr/>
+            <br/>
+            <span class="chat-info-header"></span>
+            <hr/>
+            <ol id="chat-info-contact-list"></ol>
+            <hr/>
+        </div>
+    </div>
+    `);
+  }
+}
+
+function hideInfoBox(){
+  if ($("#btn-chat-about").length){
+    $("#btn-chat-about").hide(200,function(){
+      $(this).remove();
+    });
+  }
+
+  if ($("info-box-wrapper").length){
+    $("info-box-wrapper").hide(200,function(){
+      $(this).remove();
+    });
+  }
+}
+
 // отображение списка чатов пользователя (их id и названия)
 function showChatListContext(){
-  $("#main").html('');
-  $("#input-area").slideUp(100);
+  hideInfoBox();
+  $("#input-area").slideUp(200);
+  $("#tab-name").html('мои чаты');
 
-  var list = [""];  // = ... - загрузка списка (целого ? - у пользователя не может быть много чатов)
+  $('#main').fadeOut(200,function(){
+    //todo: запуск анимации загрузки
+  });
 
-  var result = 
-  list.forEach(function(item){
-    result.append(`<li class="chat-label" id="chat-${item}"></li>`);
+  //запрос списка чатов пользователя из БД
+  $.ajax({
+    method: "GET",
+    url: "/resource/action/user_chat_list.php",   // todo: создать файл
+    data: {
+      "id": params["id"]
+    },
+    success: function(result){ // возвращает объект json
+      result = JSON.parse(result);
+      
+      let context;
+
+      $.each(result, function(index, value){
+        context += `<button class="list-item" id="${value.id}" onClick=openChat(this.id)>${value.name}</button>`;
+      });
+
+      $('#main').html(context);
+
+    // если result = false -> $(this).html('');  
+    //todo: завершение анимации загрузки
+    }
   });
 }
 
-function genMessage(id_message, author, text, date){
-  var itsMine = (author == myName);
+// отображение списка контактов пользователя (их id и названия)
+function showContactListContext(){
+  hideInfoBox();
+  $("#input-area").slideUp(200);
+  $("#tab-name").html('мои контакты');
 
-  var result = 
+  $('#main').fadeOut(200,function(){
+    //todo: запуск анимации загрузки
+  });
+
+  //запрос списка контактов пользователя из БД
+  $.ajax({
+    method: "GET",
+    url: "/resource/action/user_contact_list.php",   // todo: создать файл
+    data: {
+      "id": params["id"]
+    },
+    success: function(result){ // возвращает объект json
+      result = JSON.parse(result);
+
+      let context;
+
+      $.each(result, function(index, value){
+        context += `<button class="list-item" id="${value.id}" onClick=openContact(this.id)>${value.name}</button>`;
+      });
+
+      $('#main').html(context);
+
+      // если result = false -> $(this).html('');
+      //todo: завершение анимации загрузки
+    }
+  });
+}
+
+function openChat(id){
+  $("#input-area").slideDown(200);
+  $("#btn-chat-about").show(200);
+  
+  // todo: загрузка данных чата в блок информации
+  
+  $("#tab-name").html('мои контакты');
+}
+
+function openContact(id){
+  $("#input-area").slideDown(200);
+  $("#btn-chat-about").show(200);
+  
+  // todo: загрузка данных о пользователе
+  
+  $("#tab-name").html('имя контакта');
+}
+
+function genMessage(id_message, author, text, date){
+  let itsMine = (author == myName);
+
+  let result = 
   `<div class='msg-area' id='message${id_message}'>
     <div class='msg-container ${(itsMine)?"mine":"not-mine"}'>
       ${(itsMine)?"":"<div class='msg-author-name'>"+author+"</div>"}
-      <div class='msg-date'>${date}</div>  
+      <div class='msg-date'>${date}</div>
       <textarea class='msg-text' readonly>${text}</textarea>
     </div>
   </div>`;
@@ -115,7 +225,6 @@ function genMessage(id_message, author, text, date){
 }
 
 function sendMessage() {
-  
   $('textarea#textbox').prop("disabled", true );
   $("button#send-message").addClass("Verification").removeClass("Idle");
 
@@ -193,18 +302,18 @@ function sendMessage() {
       
       // добавление сообщения в html
 
-      var msg = $(genMessage("message-id-in-bd","", $('textarea#textbox').val(),"date")).hide();
+      let msg = $(genMessage("message-id-in-bd","", $('textarea#textbox').val(),"date")).hide();
       $('#main').append(msg);
       msg.slideDown(100);
-      var textBox = msg.children().last().children().last();
+      let textBox = msg.children().last().children().last();
       textBox.scrollTop(textBox.get(0).scrollHeight);
-      var scrollHeight = textBox.scrollTop() + textBox.height();
+      let scrollHeight = textBox.scrollTop() + textBox.height();
       textBox.scrollTop(0);
       textBox.animate({height:scrollHeight},500);
 
       $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+scrollHeight},500);
       
-      $('textarea#textbox').val('').prop("disabled", false).animate({height:0},200);
+      $('textarea#textbox').val('').prop("disabled", false).animate({height:'38px'},200);
     }else{
       $("button#send-message").addClass("Invalid");
       setTimeout(function() {
