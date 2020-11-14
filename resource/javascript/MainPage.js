@@ -91,7 +91,7 @@ function showInfoBox(){
             <br/>
             <span class="chat-info-header"></span>
             <hr/>
-            <ol id="chat-info-contact-list"></ol>
+            <div id="chat-info-contact-list"></div>
             <hr/>
         </div>
     </div>
@@ -292,7 +292,7 @@ function sendMessage() {
       $('#main').append(msg);
       msg.slideDown(100);
       let textBox = msg.children().last().children().last();
-      textBox.scrollTop(textBox.get(0).scrollHeight);
+      textBox.scrollTop(textBox.scrollHeight);
       let scrollHeight = textBox.scrollTop() + textBox.height();
       textBox.scrollTop(0);
       textBox.animate({height:scrollHeight},500);
