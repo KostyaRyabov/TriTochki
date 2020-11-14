@@ -14,13 +14,12 @@ var params = window
       {}
    );
 
-function toggleInfoBox(){
-  $('#info-box-wrapper').fadeToggle(150);
-  $("table").toggleClass("blured-screen");
-}
-
 $(document).ready(function() {
   showInfoBox();
+
+  $('.modal-window-trigger').on("click",function(){
+    toggleModalWindow("table")
+  });
   
   $('textarea#textbox').autoHeight();
   
@@ -74,16 +73,16 @@ function hideSendButton(oField) {
 
 function showInfoBox(){
   if (!$("#btn-chat-about").length){
-    let obj = $(`<button id="btn-chat-about" class='btn' onclick="toggleInfoBox()">?</button>`).hide();
+    let obj = $(`<button id="btn-chat-about" class='btn modal-window-trigger'>?</button>`).hide();
     $('.tab').append(obj);
     obj.show(200);
   }
 
-  if (!$("info-box-wrapper").length){
+  if (!$("modal-window-wrapper").length){
     $('body').append(`
-      <div id="info-box-wrapper">
-        <div class="block-screen" onclick="toggleInfoBox()"></div>
-        <div id="info-box">
+      <div class="modal-window-wrapper">
+        <div class="block-screen modal-window-trigger"></div>
+        <div id="info-box" class="modal-window">
             <span class="chat-info-header"></span>
             <hr/>
             <span id="chat-create-date"></span>

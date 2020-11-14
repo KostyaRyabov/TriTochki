@@ -1,0 +1,44 @@
+.block-screen{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-window{
+    position: absolute;
+    background: #dcdcdc;
+    border-top: 2px solid #00000090;
+
+    left: 50%;
+    top: 50%;
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    border-radius: 5px;
+    padding: 20px;
+
+    max-height: 18em;
+    width: 18em;
+
+    box-shadow: 0 0 0 100vw #000000a5;
+}
+
+.modal-window-wrapper{
+    display: none;
+}
+
+.blured-screen{
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+
+    transform: scale(1.05);
+}

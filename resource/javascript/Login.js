@@ -29,7 +29,11 @@ $(document).ready(function(){
             url: "/resource/action/" + action + ".php",
             data: data,
             success: function(result){ // result возвращает ошибку или пустое значение, если все ок
-                if(result.length > 1) return false; //todo вывод ошибок в форму логина
+                if(result.length > 1) {
+                    
+                    
+                    return false;
+                } //todo вывод ошибок в форму логина
                 
                 location.href = "/";
             }
