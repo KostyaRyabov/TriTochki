@@ -28,8 +28,9 @@ $(document).ready(function() {
   $.ajax({
     method: "POST",
     url: "/resource/action/check.php",
-    success: function(result){ // result возвращает 1 или 0 соответственно
+    success: function(result){ // result возвращает имя пользователя или 0 соответственно
       if(result == 0) location.href = "/Login.html";
+      else myName = result;
     }
   });
   
@@ -147,7 +148,7 @@ function showChatListContext(){
 
       $('#main').html(context);
 
-    // если result = false -> $(this).html('');  
+    // если result = false -> $(this).html('');
     //todo: завершение анимации загрузки
     }
   });
@@ -208,7 +209,7 @@ function openContact(id){
 function genMessage(id_message, author, text, date){
   let itsMine = (author == myName);
 
-  let result = 
+  let result =
   `<div class='msg-area' id='message${id_message}'>
     <div class='msg-container ${(itsMine)?"mine":"not-mine"}'>
       ${(itsMine)?"":"<div class='msg-author-name'>"+author+"</div>"}
