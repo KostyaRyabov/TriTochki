@@ -49,19 +49,12 @@ $(document).ready(function() {
       $("#chat-create-date").text(result.date);
       $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
       $.each(result.users, function(id, value){
-        $("#chat-info-contact-list").append("<li>" + value + "</li>");
+        $("#chat-info-contact-list").append("<button class='list-item' onClick='openContact(" + id + ")'>" + value + "</button>");
       });
       
       // Вывод сообщений
       $.each(result.messages, function(id, value){
         genMessage(id, result.users[value["user"]], value["text"], value["date"]);
-      });
-      
-      $.each(result.users, function(index, value){
-        $("#chat-info-contact-list").append("<button class='list-item'>" + value + "</button>");
-        // todo:: добавить id контактов для перехода на них (ниже пример)
-
-        //<button class="list-item" id="${value.id}" onClick=openContact(this.id)>${value.name}</button>`;
       });
     }
   });
