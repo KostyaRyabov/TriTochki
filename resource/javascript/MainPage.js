@@ -30,21 +30,27 @@ $(document).ready(function() {
     }
   });
   
-  // Получение информации по чату
+  // Получение чата и всех сопутствующих данных
   $.ajax({
     method: "GET",
-    url: "/resource/action/chat_info.php",
+    url: "/resource/action/get_chat.php",
     data: {
       "id": params["id"]
     },
     success: function(result){ // возвращает объект json
       result = JSON.parse(result);
       
+      // Вывод информации о чате
       $("#tab-name").text(result.name);
       $("#chat-create-date").text(result.date);
       $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
-      $.each(result.users, function(index, value){
+      $.each(result.users, function(id, value){
         $("#chat-info-contact-list").append("<li>" + value + "</li>");
+      });
+      
+      // Вывод сообщений
+      $.each(result.messages, function(id, value){
+        genMessage(id, result.users[value["user"]], value["text"], value["date"]);
       });
     }
   });
@@ -96,7 +102,7 @@ function genMessage(id_message, author, text, date){
     </div>
   </div>`;
 
-  return result;
+  $("#main").append(result);
 }
 
 function sendMessage() {

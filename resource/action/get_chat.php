@@ -22,10 +22,17 @@
 			$users[$user["id_user"]] = $user["Firstname"]." ".$user["Lastname"];
 		else $users[$user["id_user"]] = $user["login"];
 	
+	$messagesel = query("SELECT id_message, id_user, content, data_create FROM message WHERE id_chat=".$id);
+	while($message = mysqli_fetch_array($messagesel))
+		$messages[$message["id_message"]] = ["user" => $message["id_user"], "text" => $message["content"], "date" => $message["data_create"]];
+	
+	/* Для вложенных массивов ключами являются id этих элементов.
+	 * Если данные id встречаются в других массивах, возможен поиск по ним */
 	$return = [
 	 "name" => $row["Name"],
 	 "date" => humanDate($row["date_create"]),
-	 "users" => $users
+	 "users" => $users,
+	 "messages" => $messages
 	];
 	
 	echo json_encode($return);
