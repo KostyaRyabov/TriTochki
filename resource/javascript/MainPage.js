@@ -71,21 +71,6 @@ function hideSendButton(oField) {
   }
 }
 
-function genMessage(id_message, author, text, date){
-  var itsMine = (author == myName);
-
-  var result =
-  `<div class='msg-area' id='message${id_message}'>
-    <div class='msg-container ${(itsMine)?"mine":"not-mine"}'>
-      ${(itsMine)?"":"<div class='msg-author-name'>"+author+"</div>"}
-      <div class='msg-date'>${date}</div>  
-      <textarea class='msg-text' readonly>${text}</textarea>
-    </div>
-  </div>`;
-
-  return result;
-}
-
 // отображение списка чатов пользователя (их id и названия)
 function showChatListContext(){
   $("#main").html('');
