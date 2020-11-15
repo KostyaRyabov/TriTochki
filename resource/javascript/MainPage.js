@@ -90,7 +90,8 @@ function showInfoBox(){
             <br/>
             <span class="chat-info-header"></span>
             <hr/>
-            <div id="chat-info-contact-list"></div>
+            <div id="chat-info-contact-list">
+            </div>
             <hr/>
         </div>
     </div>

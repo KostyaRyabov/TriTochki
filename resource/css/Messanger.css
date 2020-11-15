@@ -221,12 +221,6 @@ hr{
     height: 2px;
 }
 
-#chat-info-contact-list {
-    margin: 0;
-    overflow-y: auto;
-    max-height: 7.5em;
-}
-
 .main-cell{
     background: #ffffff;
     border-radius: 4px;
@@ -295,8 +289,25 @@ hr{
     border: 0;
 }
 
+.chat-info-contact-list {
+    padding: 0;
+    overflow-y: auto;
+    max-height: 7.5em;
+}
+
 .list-item{
-    
+    display: block;
+    width: 100%;
+    border-radius: 2px;
+    margin: 0.2em 0 0.2em 0;
+    border: 0;
+    box-shadow: 0 0 3px #616161;
+
+    transition: .3s ease-out;
+}
+
+.list-item:hover{
+    background: #bdbdbd;
 }
 
 ::-webkit-scrollbar {
