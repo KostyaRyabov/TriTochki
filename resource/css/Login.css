@@ -54,6 +54,13 @@ input{
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+
+	transition: border .3s;
+}
+
+.invalid{
+    border: 3px solid red;
+    outline: none;
 }
 
 #spoiler_body{
@@ -62,6 +69,7 @@ input{
 
 fieldset{
     border:0 none;
+    padding: 0 1em 0 1em;
 }
 
 .absolute_center{
@@ -153,8 +161,11 @@ button:active{
 }
 
 .error-message{
+    display: inline-block;
     color: red;
-    float: right;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 0.5em;
 }
 
 @keyframes gradient {

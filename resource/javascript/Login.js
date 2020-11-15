@@ -53,10 +53,12 @@ function errorMessage(inputname, text){
     let input = $(`input[name='${inputname}']`);
     let erMsg = input.prev('.error-message');
 
+    input.addClass("invalid");
+
     if (!erMsg.length){
         erMsg = $(`<span class="error-message">${text}</span>`).hide();
-        input.before(erMsg);
-        erMsg.slideDown(200);
+        input.after(erMsg);
+        erMsg.slideDown(100);
     }else{
         erMsg.html(text);
     }
