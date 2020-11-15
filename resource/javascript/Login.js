@@ -36,14 +36,17 @@ $(document).ready(function(){
             method: "POST",
             url: "/resource/action/" + action + ".php",
             data: data,
-            success: function(result){ // result возвращает ошибку или пустое значение, если все ок
-                if(result.length > 1) {
-                    errorMessage("password", "error")
+            success: function(result){ // result возвращает ошибки в JSON формате или пустое значение, если все ок
+                if(result.length > 1){
+                    // Сброс ошибок, чтобы не наслаивались друг на друга
+                    $("input.invalid").removeClass("invalid");
+                    $(".error-message").hide();
                     
-                    return false;
-                } //todo вывод ошибок в форму логина
-                
-                location.href = "/";
+                    result = JSON.parse(result);
+                    $.each(result, function(inputname, text){
+                        errorMessage(inputname, text);
+                    });
+                } else location.href = "/";
             }
         });
     });
