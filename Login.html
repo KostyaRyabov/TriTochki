@@ -19,6 +19,7 @@
         <meta name="viewport" content="height=device-height, initial-scale=1">
 
         <link rel="stylesheet" type="text/css" href="resource/css/Login.css"/>
+        <link rel="stylesheet" type="text/css" href="resource/css/ModalWindow.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Balsamiq Sans">
         
         <link rel="apple-touch-icon" sizes="180x180" href="resource/images/favicon/apple-touch-icon.png?v=eEYRKOGLlK">
@@ -34,36 +35,44 @@
         <meta name="theme-color" content="#ffffff">
 
         <script type="text/javascript" src="resource/javascript/jquery.min.js"></script>
+        <script type="text/javascript" src="resource/javascript/ModalWindow.js"></script>
         <script type="text/javascript" src="resource/javascript/Login.js"></script>
     </head>
     
-	<body id="main">
+	<body>
         <div class="center_block" id="center_block">
             <h1 class="center_text">TriTochki...</h1>
         
             <form id="login-form" method="POST">
                 <fieldset>
-                    <label for="username"><b>username</b></label>
-                    <input required type="text" placeholder="username" name="username"/>
+                    <label>
+                        <b>username</b>
+                        <input type="text" placeholder="username" name="username"/>
+                    </label>
 
-                    <label for="password"><b>password</b></label>
-                    <input required type="password" placeholder="password" name="password"/>
+                    <label>
+                        <b>password</b>
+                        <input type="password" placeholder="password" name="password"></input>
+                    </label>
                 </fieldset>
 
                 <div id="spoiler_body">
                     <fieldset id="register_form" disabled="true">
-                        <label for="repeat_password"><b>repeat password</b></label>
-                        <input required type="password" placeholder="repeat password" name="repeat_password"/>
+                        <label>
+                            <b>repeat password</b>
+                            <input type="password" placeholder="repeat password" name="repeat_password"/>
+                        </label>
                         
-                        <label for="email"><b>email</b></label>
-                        <input required type="email" placeholder="email" name="email"/>
+                        <label>
+                            <b>email</b>
+                            <input type="email" placeholder="email" name="email"/>
+                        </label>
                     </fieldset>
                 </div>
 
                 <div class="line"> ИЛИ </div>
 
                 <button id="spoiler_links"><span>создать аккаунт</span></button>
-
                 <button type="submit"><span>submit</span></button>
 
                 <div class="center_text">

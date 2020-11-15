@@ -1,4 +1,4 @@
-function toggleModalWindow(background){
-    $('.modal-window-wrapper').fadeToggle(150);
+function toggleModalWindow(modal, background){
+    $(modal).fadeToggle(150);
     $(background).toggleClass("blured-screen");
 }

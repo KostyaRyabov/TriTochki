@@ -1,16 +1,24 @@
 $(document).ready(function(){
-    $('body#main').fadeIn(300);
+    $('body').fadeIn(300);
+
+    $('.modal-window-trigger').on("click",function(){
+        toggleModalWindow(this, "table")
+    });
     
     $("button#spoiler_links").click(function(){
         if ($(this).text() == "создать аккаунт"){
             $(this).html('имеется аккаунт');
             document.getElementById("register_form").disabled = false;
+
+            $("DIV#spoiler_body").slideDown();
         } else {
             $(this).html('создать аккаунт');
-            document.getElementById("register_form").disabled = true;
+            
+            $("DIV#spoiler_body").slideUp(function(){
+                document.getElementById("register_form").disabled = true;
+            });
         }
 
-        $("DIV#spoiler_body").toggle('normal');
         return false;
     });
     
@@ -30,7 +38,7 @@ $(document).ready(function(){
             data: data,
             success: function(result){ // result возвращает ошибку или пустое значение, если все ок
                 if(result.length > 1) {
-                    
+                    errorMessage("password", "error")
                     
                     return false;
                 } //todo вывод ошибок в форму логина
@@ -40,3 +48,16 @@ $(document).ready(function(){
         });
     });
 });
+
+function errorMessage(inputname, text){
+    let input = $(`input[name='${inputname}']`);
+    let erMsg = input.prev('.error-message');
+
+    if (!erMsg.length){
+        erMsg = $(`<span class="error-message">${text}</span>`).hide();
+        input.before(erMsg);
+        erMsg.slideDown(200);
+    }else{
+        erMsg.html(text);
+    }
+}

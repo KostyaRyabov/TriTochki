@@ -18,7 +18,7 @@ $(document).ready(function() {
   showInfoBox();
 
   $('.modal-window-trigger').on("click",function(){
-    toggleModalWindow("table")
+    toggleModalWindow('.modal-window-wrapper', "table")
   });
   
   $('textarea#textbox').autoHeight();
