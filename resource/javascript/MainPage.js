@@ -126,19 +126,16 @@ function showChatListContext(){
   //запрос списка чатов пользователя из БД
   $.ajax({
     method: "GET",
-    url: "/resource/action/user_chat_list.php",   // todo: создать файл
-    data: {
-      "id": params["id"]
-    },
+    url: "/resource/action/user_chat_list.php",
     success: function(result){ // возвращает объект json
       result = JSON.parse(result);
       
-      let context;
+      let context = "";
 
-      $.each(result, function(index, value){
-        context += `<button class="list-item" id="${value.id}" onClick=openChat(this.id)>${value.name}</button>`;
+      $.each(result, function(id, name){
+        context += `<button class="list-item" id="${id}" onClick=openChat(${id})>${name}</button>`;
       });
-
+      
       $('#main').html(context);
 
     // если result = false -> $(this).html('');
