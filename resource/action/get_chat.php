@@ -31,9 +31,19 @@
 	if(!$users[$user_id]) exit("You dont have permissions for this room!");
 	
 	// Выборка всех сообщений в чате
-	$messagesel = query("SELECT id_message, id_user, content, data_create FROM message WHERE id_chat=".$id);
+	$messagesel = query("
+		SELECT message.id_message, message.id_user, content, data_create, id_read
+		FROM message
+		INNER JOIN message_status ON message.id_message=message_status.id_message
+		WHERE id_chat=".$id
+	);
 	while($message = mysqli_fetch_array($messagesel))
-		$messages[$message["id_message"]] = ["user" => $message["id_user"], "text" => $message["content"], "date" => humanDate($message["data_create"])];
+		$messages[$message["id_message"]] = [
+		 "user" => $message["id_user"],
+		 "text" => $message["content"],
+		 "date" => humanDate($message["data_create"]),
+		 "is_read" => $message["id_read"]
+		];
 	
 	/* Для вложенных массивов ключами являются id этих элементов.
 	 * Если данные id встречаются в других массивах, возможен поиск по ним */
