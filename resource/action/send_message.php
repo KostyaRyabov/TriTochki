@@ -21,11 +21,11 @@
 	 "id_chat" => $chat,
 	 "id_user" => $user,
 	 "content" => $text,
-	 "data_create" => date("Y-m-d")
+	 "data_create" => date("Y-m-d H:i:s")
 	];
 	
 	DB::insert("message", $new_msg);
 	$id_message = DB::lastInsertId();
 	DB::insert("message_status", ["id_message" => $id_message, "id_user" => $user, "id_read" => 0]);
 	
-	echo json_encode(["message_id" => $id_message, "date" => date("d.m.Y")]);
+	echo json_encode(["message_id" => $id_message, "date" => humanDate(date("Y-m-d H:i:s"))]);
