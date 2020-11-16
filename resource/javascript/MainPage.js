@@ -214,16 +214,21 @@ function genMessage(id_message, author, text, date){
 function sendMessage() {
   $('textarea#textbox').prop("disabled", true );
   $("button#send-message").addClass("Verification").removeClass("Idle");
-
-  /*
+  
   $.ajax({
       method: "POST",
-      url: "/resource/action/" + action + ".php",
-      data: data,
-      success: function(result){ // result возвращает ошибку или пустое значение, если все ок
+      url: "/resource/action/send_message.php",
+      data: {
+        "chat": params["id"],
+        "text": $("#textbox").val()
+      },
+      // result возвращает JSON объект. Если с ошибкой, то присутствует result.error, иначе объект с ид сообщения и датой
+      success: function(result){
+        result = JSON.parse(result);
+        
         $("button#send-message").removeClass("Verification");
 
-        if (true){
+        if (!result.error){
           $("button#send-message").addClass("Valid");
           setTimeout(function() {
             $("button#send-message").removeClass("Valid").addClass("Idle");
@@ -237,11 +242,11 @@ function sendMessage() {
                 $("button#send-message").hide(100);
               }
             }
-          },500)
+          },500);
           
           // добавление сообщения в html
 
-          var msg = $(genMessage("message-id-in-bd","", $('textarea#textbox').val(),"date")).hide();
+          var msg = $(genMessage(result.message_id, myName, $('textarea#textbox').val(), result.date)).hide();
           $('#main').append(msg);
           msg.slideDown(100);
           var textBox = msg.children().last().children().last();
@@ -260,11 +265,10 @@ function sendMessage() {
         }
       }
   });
-  */
   
   // код ниже просто для первичного представления         !!! закоментить при раскоменчивании верхнего !!!
 
-  setTimeout(function() {
+  /*setTimeout(function() {
     $("button#send-message").removeClass("Verification");
 
     if (true){
@@ -304,5 +308,5 @@ function sendMessage() {
         $('textarea#textbox').prop("disabled", false);
       },500)
     }
-  }, 2000);
+  }, 2000);*/
 }
