@@ -255,7 +255,9 @@ function sendMessage() {
           textBox.scrollTop(0);
           textBox.animate({height:scrollHeight},500);
 
-          $('textarea#textbox').val('').prop("disabled", false).animate({height:0},200);
+          $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+scrollHeight},500);
+        
+          $('textarea#textbox').val('').prop("disabled", false).animate({height:'38px'},200);
         }else{
           $("button#send-message").addClass("Invalid");
           setTimeout(function() {
