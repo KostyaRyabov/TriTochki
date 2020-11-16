@@ -3,8 +3,13 @@
 	include($_SERVER["DOCUMENT_ROOT"]."/db.php");
 	include($_SERVER["DOCUMENT_ROOT"]."/functions.php");
 	
+	// Ид текущего чата
 	$id = intval($_GET["id"]);
 	if(!$id) exit("Wrong chat id!");
+	
+	// Получение текущего пользователя
+	$user_id = intval($_COOKIE["id"]);
+	if(!$user_id) exit("Wrong user id!");
 	
 	// Выборка нужного чата
 	$sel = query("SELECT Name, date_create FROM chat WHERE id_chat=".$id);
@@ -21,6 +26,9 @@
 		if(strlen($user["Firstname"]) > 0 and strlen($user["Lastname"]) > 0) // Если есть имя и фамилия, то выводим их
 			$users[$user["id_user"]] = $user["Firstname"]." ".$user["Lastname"];
 		else $users[$user["id_user"]] = $user["login"];
+	
+	// Если пользователя нет в списке участников данного чата, выводим ошибку
+	if(!$users[$user_id]) exit("You dont have permissions for this room!");
 	
 	// Выборка всех сообщений в чате
 	$messagesel = query("SELECT id_message, id_user, content, data_create FROM message WHERE id_chat=".$id);
