@@ -250,7 +250,7 @@ function sendMessage() {
           $('#main').append(msg);
           msg.slideDown(100);
           var textBox = msg.children().last().children().last();
-          textBox.scrollTop(textBox.get(0).scrollHeight);
+          textBox.scrollTop(textBox.scrollHeight);
           var scrollHeight = textBox.scrollTop() + textBox.height();
           textBox.scrollTop(0);
           textBox.animate({height:scrollHeight},500);
