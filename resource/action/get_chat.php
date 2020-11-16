@@ -21,7 +21,8 @@
 		if(strlen($user["Firstname"]) > 0 and strlen($user["Lastname"]) > 0) // Если есть имя и фамилия, то выводим их
 			$users[$user["id_user"]] = $user["Firstname"]." ".$user["Lastname"];
 		else $users[$user["id_user"]] = $user["login"];
-	
+		
+	// Выборка всех сообщений в чате
 	$messagesel = query("SELECT id_message, id_user, content, data_create FROM message WHERE id_chat=".$id);
 	while($message = mysqli_fetch_array($messagesel))
 		$messages[$message["id_message"]] = ["user" => $message["id_user"], "text" => $message["content"], "date" => $message["data_create"]];
