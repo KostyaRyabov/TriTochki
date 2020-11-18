@@ -37,7 +37,6 @@
         <script type="text/javascript" src="resource/javascript/jquery.min.js"></script>
         <script type="text/javascript" src="resource/javascript/MainPage.js"></script>
         <script type="text/javascript" src="resource/javascript/ModalWindow.js"></script>
-        <script type="text/javascript" src="resource/javascript/custom_textarea.js"></script>
     </head>
     
 	<body>
@@ -49,7 +48,7 @@
 
                         <button class='btn'>поиск</button>
                         <br/><br/>
-                        <button class='btn'>мой профиль</button>
+                        <button class='btn' onclick="showProfileContext()">мой профиль</button>
                         <button class='btn' onclick="showContactListContext()">мои контакты</button>
                         <button class='btn' onclick="showChatListContext()">мои чаты</button>
                         
@@ -80,7 +79,7 @@
             </tr class="footer">
                 <td>
                     <div id="input-area">
-                        <textarea id="textbox" oninput="hideSendButton(this)"></textarea>
+                        <span id="textbox" contentEditable="true"></span>
                         <button id="send-message" class="Idle" onclick="sendMessage()"/>
                     </div>
                 </td>

@@ -57,16 +57,25 @@ html *{
 }
 
 #textbox{
-    border-radius: 8px;
+    border-radius: 4px;
     width: 100%;
     padding: 4px;
     margin: 4px 0;
     display: inline-block;
-    border: 0;
     max-height: 12em;
+    min-height: 30px;
     resize: none;
     overflow-y: auto;
+
+    transition: background .3s ease;
 }
+
+#textbox[contenteditable='false'] { background: hsl(0, 0%, 85%); }
+#textbox[contenteditable='true'] { background: hsl(0, 0%, 100%); }
+
+#textbox *{ max-width: 100%; }
+
+#textbox img{ max-height: 12em; }
 
 .logo, .github{
     margin-left: auto;
@@ -102,8 +111,7 @@ html *{
     align-items: center;
 
     background: rgb(255, 255, 255);
-
-    border-radius: 8px;
+    border-radius: 4px;
 
     margin-top: 5px;
     margin-bottom: 5px;
@@ -289,6 +297,10 @@ hr{
     border: 0;
 }
 
+.msg-text *{
+    max-width: 100%;
+}
+
 .chat-info-contact-list {
     padding: 0;
     overflow-y: auto;
@@ -308,6 +320,67 @@ hr{
 
 .list-item:hover{
     background: #bdbdbd;
+}
+
+#info-box{
+    max-height: 18em;
+    width: 18em;
+}
+
+button.input{
+    border: 0;
+    border-radius: 4px;
+
+    background: hsl(0, 0%, 70%);
+}
+
+button.input:hover{
+    background: hsl(0, 0%, 60%);
+}
+
+div.input > span{
+    border-radius: 4px;
+    margin: 4px;
+    padding: 4px 10px 4px 10px;
+    outline: none;
+    display: block;
+    min-width: 1em;
+    width: auto;
+
+    display:inline-block;
+
+    transition: background 0.3s ease;
+}
+
+.input *{
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;  
+}
+
+div.input > span:empty:before{
+    content: attr(placeholder);
+    color: hsl(0, 0%, 50%);
+}
+
+div.input > span[contentEditable=true]{
+    background: hsl(0, 0%, 90%);
+}
+
+div.input > button{
+    border: 0;
+    
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    
+    background: none;
+    outline: none;
+}
+
+div.input > button:hover{
+    border: 0;
+    font-weight: bolder;
+    background: hsl(0, 0%, 85%);
 }
 
 ::-webkit-scrollbar {

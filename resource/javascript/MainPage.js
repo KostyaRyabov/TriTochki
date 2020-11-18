@@ -1,5 +1,7 @@
 var myName = "";
 
+var profile_data = {};
+
 var params = window
    .location
    .search
@@ -17,11 +19,68 @@ var params = window
 $(document).ready(function() {
   showInfoBox();
 
+  $("body").on("click","button.input-edit",function(){
+    $(this).hide(150, function(){
+        let input_div = $(this).parent();
+        
+        let btns = $("<button class='input-cancel'>✘</button><button class='input-submit'>✔</button>").hide();
+        input_div.append(btns);
+        btns.show(150);
+        
+        input_div.find('span').attr('contenteditable','true');
+        $(this).remove()
+    });
+  })
+
+  $("body").on("click","button.input-cancel",function(){
+      let input_div = $(this).parent();
+      let span = input_div.find('span');
+      
+      input_div.find('button').hide(150, function(){$(this).remove()});
+
+      setTimeout(function(){
+          span.attr('contenteditable','false').html(profile_data[span.attr('id')]);
+          
+          let btn = $("<button class='input-edit'>🖉</button>").hide();
+          input_div.append(btn);
+          btn.show(150);
+      },150)
+  })
+
+  $("body").on("click","button.input-submit",function(){
+      let input_div = $(this).parent();
+      let span = input_div.find('span');
+      let id = span.attr('id');
+
+      span.attr('contenteditable','false');
+      input_div.find('button').hide(150, function(){$(this).remove()});
+      
+      setTimeout(function(){
+          let btn = $("<button class='input-edit'>🖉</button>").hide();
+          input_div.append(btn);
+          btn.show(150);
+
+          //todo: отправка запроса на обновление
+          // если все хорошо, переписываем локальную переменную
+          profile_data[id] = span.text();
+      },150);
+  })
+  
   $('.modal-window-trigger').on("click",function(){
     toggleModalWindow('.modal-window-wrapper', "table")
   });
-  
-  $('textarea#textbox').autoHeight();
+
+  $('body').on("input","span#textbox", function(){
+    if ($(this).html()){
+      if ($("button#send-message").is(":hidden")){
+        $("button#send-message").show(50);
+      }
+    }else{
+      if (!$("button#send-message").is(":hidden")){
+        $("button#send-message").hide(100);
+      }
+    }
+  });
   
   // Проверка на авторизацию
   $.ajax({
@@ -53,23 +112,16 @@ $(document).ready(function() {
       
       // Вывод сообщений
       $.each(result.messages, function(id, value){
-        genMessage(id, result.users[value["user"]], value["text"], value["date"]);
+        $("#main").append(genMessage(id, result.users[value["user"]], value["text"], value["date"]));
       });
+
+      //todo: вставить первое непрочитанное сообщение
+      $('#wrapper').animate({
+        scrollTop: $('селектор объекта, которому нужно проскролить').offset().top
+    }, 300);
     }
   });
 });
-
-function hideSendButton(oField) {
-  if ($.trim(oField.value)){
-    if ($("button#send-message").is(":hidden")){
-      $("button#send-message").show(50);
-    }
-  }else{
-    if (!$("button#send-message").is(":hidden")){
-      $("button#send-message").hide(100);
-    }
-  }
-}
 
 function showInfoBox(){
   if (!$("#btn-chat-about").length){
@@ -94,7 +146,7 @@ function showInfoBox(){
             </div>
             <hr/>
         </div>
-    </div>
+      </div>
     `);
   }
 }
@@ -111,6 +163,52 @@ function hideInfoBox(){
       $(this).remove();
     });
   }
+}
+
+function showProfileContext(){
+  // инициализация значений с бд
+
+  profile_data["First_Name"] = "";
+  profile_data["Second_Name"] = "";
+  profile_data["Login"] = "";
+  profile_data["Email"] = "";
+  profile_data["Sex"] = "";
+
+  //todo: какая-то проверка что id пользователя не собственный
+  let itsMe = true;
+
+  let form = `
+  <div>
+      <div class="input">
+          <span contentEditable="false" placeholder="First Name" id="First_Name"></span>`
+  if (itsMe) form += `<button class="input-edit">🖉</button>`
+  form += `</div>
+      <div class="input">
+          <span contentEditable="false" placeholder="Second Name" id="Second_Name"></span>`
+  if (itsMe) form += `<button class="input-edit">🖉</button>`
+  form += `</div>
+  </div>
+  <div class="input">
+      <span contentEditable="false" placeholder="Login" id="Login"></span>`
+  if (itsMe) form += `<button class="input-edit">🖉</button>`
+  form += `</div>
+  <div class="input">
+      <span contentEditable="false" placeholder="Email" id="Email"></span>`
+  if (itsMe) form += `<button class="input-edit">🖉</button>`
+  form += `</div>
+  <div>
+      <textarea id="profile-description" placeholder="Description" id="Description" class="input"></textarea>`
+  if (itsMe) form += `<button class="input-edit">🖉</button>`
+  form += `</div>
+  <button onclick="changePassword()" class="input">change password</button>`
+  if (itsMe) form += `<button class="input-edit">🖉</button>
+  <select id="Sex" class="input">
+    <option value="m">М</option>
+    <option value="w">W</option>
+  </select>`
+  else form += `<snap id="Sex" class="input">${profile_data["Sex"]}</snap>`;
+
+  $('#main').html(form);
 }
 
 // отображение списка чатов пользователя (их id и названия)
@@ -199,20 +297,18 @@ function openContact(id){
 function genMessage(id_message, author, text, date){
   let itsMine = (author == myName);
 
-  let result =
-  `<div class='msg-area' id='message${id_message}'>
+  return `
+  <div class='msg-area' id='message${id_message}'>
     <div class='msg-container ${(itsMine)?"mine":"not-mine"}'>
       ${(itsMine)?"":"<div class='msg-author-name'>"+author+"</div>"}
       <div class='msg-date'>${date}</div>
-      <textarea class='msg-text' readonly>${text}</textarea>
+      <span class='msg-text'>${text}</span>
     </div>
   </div>`;
-
-  $("#main").append(result);
 }
 
 function sendMessage() {
-  $('textarea#textbox').prop("disabled", true );
+  $('#textbox').prop("contentEditable", false );
   $("button#send-message").addClass("Verification").removeClass("Idle");
   
   $.ajax({
@@ -242,27 +338,19 @@ function sendMessage() {
                 $("button#send-message").hide(100);
               }
             }
-          },500);
+          },500)
           
           // добавление сообщения в html
 
-          var msg = $(genMessage(result.message_id, myName, $('textarea#textbox').val(), result.date)).hide();
-          $('#main').append(msg);
-          msg.slideDown(100);
-          var textBox = msg.children().last().children().last();
-          textBox.scrollTop(textBox.scrollHeight);
-          var scrollHeight = textBox.scrollTop() + textBox.height();
-          textBox.scrollTop(0);
-          textBox.animate({height:scrollHeight},500);
-
-          $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+scrollHeight},500);
-        
-          $('textarea#textbox').val('').prop("disabled", false).animate({height:'38px'},200);
+          msg = $('#main').append(genMessage("message-id-in-bd","", $('#textbox').html(),"date")).children(':last').hide().slideDown(500);
+          $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+$("div#wrapper")[0].scrollHeight},500);
+          
+          $('#textbox').prop("contentEditable", true );
         }else{
           $("button#send-message").addClass("Invalid");
           setTimeout(function() {
             $("button#send-message").removeClass("Invalid").addClass("Idle");
-            $('textarea#textbox').prop("disabled", false);
+            $('#textbox').prop("contentEditable", true );
           },500)
         }
       }
@@ -291,23 +379,15 @@ function sendMessage() {
       
       // добавление сообщения в html
 
-      let msg = $(genMessage("message-id-in-bd","", $('textarea#textbox').val(),"date")).hide();
-      $('#main').append(msg);
-      msg.slideDown(100);
-      let textBox = msg.children().last().children().last();
-      textBox.scrollTop(textBox.scrollHeight);
-      let scrollHeight = textBox.scrollTop() + textBox.height();
-      textBox.scrollTop(0);
-      textBox.animate({height:scrollHeight},500);
-
-      $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+scrollHeight},500);
+      msg = $('#main').append(genMessage("message-id-in-bd","", $('#textbox').html(),"date")).children(':last').hide().slideDown(500);
+      $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+$("div#wrapper")[0].scrollHeight},500);
       
-      $('textarea#textbox').val('').prop("disabled", false).animate({height:'38px'},200);
+      $('#textbox').html('').prop("contentEditable", true);
     }else{
       $("button#send-message").addClass("Invalid");
       setTimeout(function() {
         $("button#send-message").removeClass("Invalid").addClass("Idle");
-        $('textarea#textbox').prop("disabled", false);
+        $('#textbox').prop("contentEditable", true );
       },500)
     }
   }, 2000);*/
