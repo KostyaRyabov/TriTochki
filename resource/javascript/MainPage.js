@@ -88,7 +88,17 @@ $(document).ready(function() {
     url: "/resource/action/check.php",
     success: function(result){ // result возвращает имя пользователя или 0 соответственно
       if(result == 0) location.href = "/Login.html";
-      else myName = result;
+      else{
+        result = JSON.parse(result);
+        
+        myName = result.myName;
+        
+        profile_data["First_Name"] = result.firstName;
+        profile_data["Second_Name"] = result.lastName;
+        profile_data["Login"] = result.login;
+        profile_data["Email"] = result.email;
+        profile_data["Sex"] = result.sex;
+      }
     }
   });
   

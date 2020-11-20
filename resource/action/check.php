@@ -6,7 +6,16 @@
 	if(!$_COOKIE["id"] > 0) exit(0);
 	
 	$id = intval($_COOKIE["id"]);
-	$result = query("SELECT Firstname, Lastname, Login FROM user WHERE id_user=".$id);
+	$result = query("SELECT Firstname, Lastname, Login, Email, Sex FROM user WHERE id_user=".$id);
 	$row = mysqli_fetch_array($result);
 	
-	echo strlen($row["Firstname"]) > 0 && strlen($row["Lastname"]) > 0 ? $row["Firstname"]." ".$row["Lastname"] : $row["Login"];
+	$return = [
+	 "firstName" => $row["Firstname"],
+	 "lastName" => $row["Lastname"],
+	 "login" => $row["Login"],
+	 "email" => $row["Email"],
+	 "sex" => $row["Sex"],
+	 "myName" => strlen($row["Firstname"]) > 0 && strlen($row["Lastname"]) > 0 ? $row["Firstname"]." ".$row["Lastname"] : $row["Login"]
+	];
+	
+	echo json_encode($return);
