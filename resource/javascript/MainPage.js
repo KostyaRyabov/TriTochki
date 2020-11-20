@@ -59,10 +59,22 @@ $(document).ready(function() {
           let btn = $("<button class='input-edit'>🖉</button>").hide();
           input_div.append(btn);
           btn.show(150);
-
-          //todo: отправка запроса на обновление
-          // если все хорошо, переписываем локальную переменную
-          profile_data[id] = span.text();
+        
+          // Изменение информации о пользователе
+          $.ajax({
+            method: "POST",
+            url: "/resource/action/change_user_info.php",
+            data: {
+              "field": id,
+              "data": span.text()
+            },
+            success: function(result){ // result возвращает пустое значение в случае успеха или ошибку
+              // На всякий случай редирект на логин, если не тот пользователь или истекла кука
+              if(result.length > 1) location.href = "/Login.html";
+  
+              profile_data[id] = span.text();
+            }
+          });
       },150);
   });
   
