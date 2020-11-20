@@ -86,7 +86,7 @@ $(document).ready(function() {
   $.ajax({
     method: "POST",
     url: "/resource/action/check.php",
-    success: function(result){ // result возвращает имя пользователя или 0 соответственно
+    success: function(result){ // result возвращает данные о текущем пользователе или 0 соответственно
       if(result == 0) location.href = "/Login.html";
       else{
         result = JSON.parse(result);
@@ -98,6 +98,8 @@ $(document).ready(function() {
         profile_data["Login"] = result.login;
         profile_data["Email"] = result.email;
         profile_data["Sex"] = result.sex;
+        
+        $("#show-my-profile").attr("onclick", "showProfileContext(" + result.id + ")");
       }
     }
   });
@@ -175,50 +177,62 @@ function hideInfoBox(){
   }
 }
 
-function showProfileContext(){
-  // инициализация значений с бд
-
-  profile_data["First_Name"] = "";
-  profile_data["Second_Name"] = "";
-  profile_data["Login"] = "";
-  profile_data["Email"] = "";
-  profile_data["Sex"] = "";
-
-  //todo: какая-то проверка что id пользователя не собственный
-  let itsMe = true;
-
-  let form = `
-  <div>
+function showProfileContext(id){
+  $.ajax({ // Берем нужного пользователя
+    method: "POST",
+    url: "/resource/action/get_user.php",
+    data: {
+      "id": id
+    },
+    success: function(result){ // result возвращает данные о пользователе или 0 соответственно
+      if(result == 0) return false;
+      
+      result = JSON.parse(result);
+      
+      let itsMe = false; // Флаг текущего пользователя
+      if(myName == result.thisName) itsMe = true;
+  
+      //todo подумать, безопасна ли такая реализация, если в переменной сначала был текущий пользователь, а теперь там тот, кого получили
+      profile_data["First_Name"] = result.firstName;
+      profile_data["Second_Name"] = result.lastName;
+      profile_data["Login"] = result.login;
+      profile_data["Email"] = result.email;
+      profile_data["Sex"] = result.sex;
+      
+      let form = `
+      <div>
+          <div class="input">
+              <span contentEditable="false" placeholder="First Name" id="First_Name">${profile_data["First_Name"]}</span>`;
+          if (itsMe) form += `<button class="input-edit">🖉</button>`;
+          form += `</div>
+          <div class="input">
+              <span contentEditable="false" placeholder="Second Name" id="Second_Name">${profile_data["Second_Name"]}</span>`;
+          if (itsMe) form += `<button class="input-edit">🖉</button>`;
+          form += `</div>
+      </div>
       <div class="input">
-          <span contentEditable="false" placeholder="First Name" id="First_Name"></span>`;
-  if (itsMe) form += `<button class="input-edit">🖉</button>`
-  form += `</div>
+          <span contentEditable="false" placeholder="Login" id="Login">${profile_data["Login"]}</span>`;
+          if (itsMe) form += `<button class="input-edit">🖉</button>`;
+          form += `</div>
       <div class="input">
-          <span contentEditable="false" placeholder="Second Name" id="Second_Name"></span>`;
-  if (itsMe) form += `<button class="input-edit">🖉</button>`;
-  form += `</div>
-  </div>
-  <div class="input">
-      <span contentEditable="false" placeholder="Login" id="Login"></span>`;
-  if (itsMe) form += `<button class="input-edit">🖉</button>`;
-  form += `</div>
-  <div class="input">
-      <span contentEditable="false" placeholder="Email" id="Email"></span>`;
-  if (itsMe) form += `<button class="input-edit">🖉</button>`;
-  form += `</div>
-  <div>
-      <textarea id="profile-description" placeholder="Description" id="Description" class="input"></textarea>`;
-  if (itsMe) form += `<button class="input-edit">🖉</button>`;
-  form += `</div>
-  <button onclick="changePassword()" class="input">change password</button>`;
-  if (itsMe) form += `<button class="input-edit">🖉</button>
-  <select id="Sex" class="input">
-    <option value="m">М</option>
-    <option value="w">W</option>
-  </select>`;
-  else form += `<snap id="Sex" class="input">${profile_data["Sex"]}</snap>`;
-
-  $('#main').html(form);
+          <span contentEditable="false" placeholder="Email" id="Email">${profile_data["Email"]}</span>`;
+          if (itsMe) form += `<button class="input-edit">🖉</button>`;
+          form += `</div>
+      <div>
+          <textarea id="profile-description" placeholder="Description" id="Description" class="input"></textarea>`;
+          if (itsMe) form += `<button class="input-edit">🖉</button>`;
+          form += `</div>
+      <button onclick="changePassword()" class="input">change password</button>`;
+          if (itsMe) form += `<button class="input-edit">🖉</button>
+      <select id="Sex" class="input">
+        <option value="m">М</option>
+        <option value="w">W</option>
+      </select>`;
+        else form += `<snap id="Sex" class="input">${profile_data["Sex"]}</snap>`;
+    
+        $('#main').html(form);
+      }
+  });
 }
 
 // отображение списка чатов пользователя (их id и названия)
