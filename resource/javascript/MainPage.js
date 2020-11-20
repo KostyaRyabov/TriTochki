@@ -30,7 +30,7 @@ $(document).ready(function() {
         input_div.find('span').attr('contenteditable','true');
         $(this).remove()
     });
-  })
+  });
 
   $("body").on("click","button.input-cancel",function(){
       let input_div = $(this).parent();
@@ -45,7 +45,7 @@ $(document).ready(function() {
           input_div.append(btn);
           btn.show(150);
       },150)
-  })
+  });
 
   $("body").on("click","button.input-submit",function(){
       let input_div = $(this).parent();
@@ -64,7 +64,7 @@ $(document).ready(function() {
           // если все хорошо, переписываем локальную переменную
           profile_data[id] = span.text();
       },150);
-  })
+  });
   
   $('.modal-window-trigger').on("click",function(){
     toggleModalWindow('.modal-window-wrapper', "table")
@@ -180,32 +180,32 @@ function showProfileContext(){
   let form = `
   <div>
       <div class="input">
-          <span contentEditable="false" placeholder="First Name" id="First_Name"></span>`
+          <span contentEditable="false" placeholder="First Name" id="First_Name"></span>`;
   if (itsMe) form += `<button class="input-edit">🖉</button>`
   form += `</div>
       <div class="input">
-          <span contentEditable="false" placeholder="Second Name" id="Second_Name"></span>`
-  if (itsMe) form += `<button class="input-edit">🖉</button>`
+          <span contentEditable="false" placeholder="Second Name" id="Second_Name"></span>`;
+  if (itsMe) form += `<button class="input-edit">🖉</button>`;
   form += `</div>
   </div>
   <div class="input">
-      <span contentEditable="false" placeholder="Login" id="Login"></span>`
-  if (itsMe) form += `<button class="input-edit">🖉</button>`
+      <span contentEditable="false" placeholder="Login" id="Login"></span>`;
+  if (itsMe) form += `<button class="input-edit">🖉</button>`;
   form += `</div>
   <div class="input">
-      <span contentEditable="false" placeholder="Email" id="Email"></span>`
-  if (itsMe) form += `<button class="input-edit">🖉</button>`
+      <span contentEditable="false" placeholder="Email" id="Email"></span>`;
+  if (itsMe) form += `<button class="input-edit">🖉</button>`;
   form += `</div>
   <div>
-      <textarea id="profile-description" placeholder="Description" id="Description" class="input"></textarea>`
-  if (itsMe) form += `<button class="input-edit">🖉</button>`
+      <textarea id="profile-description" placeholder="Description" id="Description" class="input"></textarea>`;
+  if (itsMe) form += `<button class="input-edit">🖉</button>`;
   form += `</div>
-  <button onclick="changePassword()" class="input">change password</button>`
+  <button onclick="changePassword()" class="input">change password</button>`;
   if (itsMe) form += `<button class="input-edit">🖉</button>
   <select id="Sex" class="input">
     <option value="m">М</option>
     <option value="w">W</option>
-  </select>`
+  </select>`;
   else form += `<snap id="Sex" class="input">${profile_data["Sex"]}</snap>`;
 
   $('#main').html(form);
@@ -316,7 +316,7 @@ function sendMessage() {
       url: "/resource/action/send_message.php",
       data: {
         "chat": params["id"],
-        "text": $("#textbox").val()
+        "text": $("#textbox").text()
       },
       // result возвращает JSON объект. Если с ошибкой, то присутствует result.error, иначе объект с ид сообщения и датой
       success: function(result){
@@ -338,11 +338,11 @@ function sendMessage() {
                 $("button#send-message").hide(100);
               }
             }
-          },500)
+          },500);
           
           // добавление сообщения в html
 
-          msg = $('#main').append(genMessage("message-id-in-bd","", $('#textbox').html(),"date")).children(':last').hide().slideDown(500);
+          msg = $('#main').append(genMessage(result.message_id, myName, $('#textbox').text(), result.date)).children(':last').hide().slideDown(500);
           $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+$("div#wrapper")[0].scrollHeight},500);
           
           $('#textbox').prop("contentEditable", true );
