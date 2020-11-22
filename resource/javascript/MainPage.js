@@ -139,7 +139,7 @@ $(document).ready(function() {
       // Вывод сообщений
       $.each(result.messages, function(id, value){
         $("#main").append(genMessage(id, result.users[value["user"]], value["text"], value["date"]));
-        if(!first_unread && !value["is_read"]) first_unread = id;
+        if(first_unread == 0 && value["is_read"] == 0) first_unread = id;
       });
       
       // Если есть непрочитанное сообщение, скроллим до него
