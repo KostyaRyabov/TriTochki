@@ -126,6 +126,8 @@ $(document).ready(function() {
     success: function(result){ // возвращает объект json
       result = JSON.parse(result);
       
+      let first_unread = 0; // id первого попавшегося непрочитанного сообщения
+      
       // Вывод информации о чате
       $("#tab-name").text(result.name);
       $("#chat-create-date").text(result.date);
@@ -137,12 +139,15 @@ $(document).ready(function() {
       // Вывод сообщений
       $.each(result.messages, function(id, value){
         $("#main").append(genMessage(id, result.users[value["user"]], value["text"], value["date"]));
+        if(!first_unread && !value["is_read"]) first_unread = id;
       });
-
-      //todo: вставить первое непрочитанное сообщение
-      $('#wrapper').animate({
-        scrollTop: $('селектор объекта, которому нужно проскролить').offset().top
-    }, 300);
+      
+      // Если есть непрочитанное сообщение, скроллим до него
+      if(first_unread){
+         $('#wrapper').animate({
+            scrollTop: $('#message' + first_unread).offset().top
+         }, 300);
+      }
     }
   });
 });
