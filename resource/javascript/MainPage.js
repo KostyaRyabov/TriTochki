@@ -19,6 +19,8 @@ var params = window
 $(document).ready(function() {
   showInfoBox();
 
+  $('#textbox').autoHeight();
+
   $("body").on("click","button.input-edit",function(){
     $(this).hide(150, function(){
         let input_div = $(this).parent();
@@ -82,8 +84,8 @@ $(document).ready(function() {
     toggleModalWindow('.modal-window-wrapper', "table")
   });
 
-  $('body').on("input","span#textbox", function(){
-    if ($(this).html()){
+  $('#textbox').on("input", function(){
+    if ($(this).val()){
       if ($("button#send-message").is(":hidden")){
         $("button#send-message").show(50);
       }
@@ -349,7 +351,7 @@ function genMessage(id_message, author, text, date){
 }
 
 function sendMessage() {
-  $('#textbox').prop("contentEditable", false );
+  $('textarea#textbox').prop("disabled", true );
   $("button#send-message").addClass("Verification").removeClass("Idle");
   
   $.ajax({
@@ -357,7 +359,7 @@ function sendMessage() {
       url: "/resource/action/send_message.php",
       data: {
         "chat": params["id"],
-        "text": $("#textbox").text()
+        "text": $("#textbox").val()
       },
       // result возвращает JSON объект. Если с ошибкой, то присутствует result.error, иначе объект с ид сообщения и датой
       success: function(result){
@@ -370,7 +372,7 @@ function sendMessage() {
           setTimeout(function() {
             $("button#send-message").removeClass("Valid").addClass("Idle");
 
-            if ($.trim($('textarea#textbox').val())){
+            if ($.trim($('#textbox').val())){
               if ($("button#send-message").is(":hidden")){
                 $("button#send-message").show(50);
               }
@@ -383,15 +385,15 @@ function sendMessage() {
           
           // добавление сообщения в html
 
-          msg = $('#main').append(genMessage(result.message_id, myName, $('#textbox').text(), result.date)).children(':last').hide().slideDown(500);
+          msg = $('#main').append(genMessage(result.message_id, myName, $('#textbox').val(), result.date)).children(':last').hide().slideDown(500);
           $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+$("div#wrapper")[0].scrollHeight},500);
           
-          $('#textbox').html('').prop("contentEditable", true );
+          $('#textbox').val('').prop("disabled", false).animate({height:'38px'},200);
         }else{
           $("button#send-message").addClass("Invalid");
           setTimeout(function() {
             $("button#send-message").removeClass("Invalid").addClass("Idle");
-            $('#textbox').prop("contentEditable", true );
+            $('#textbox').prop("disabled", false);
           },500)
         }
       }
@@ -407,7 +409,7 @@ function sendMessage() {
       setTimeout(function() {
         $("button#send-message").removeClass("Valid").addClass("Idle");
 
-        if ($.trim($('textarea#textbox').val())){
+        if ($.trim($('#textbox').val())){
           if ($("button#send-message").is(":hidden")){
             $("button#send-message").show(50);
           }
@@ -423,12 +425,12 @@ function sendMessage() {
       msg = $('#main').append(genMessage("message-id-in-bd","", $('#textbox').html(),"date")).children(':last').hide().slideDown(500);
       $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+$("div#wrapper")[0].scrollHeight},500);
       
-      $('#textbox').html('').prop("contentEditable", true);
+      $('#textbox').val('').prop("disabled", false).animate({height:'38px'},200);
     }else{
       $("button#send-message").addClass("Invalid");
       setTimeout(function() {
         $("button#send-message").removeClass("Invalid").addClass("Idle");
-        $('#textbox').prop("contentEditable", true );
+        $('#textbox').prop("disabled", false);
       },500)
     }
   }, 2000);*/
