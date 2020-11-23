@@ -386,7 +386,7 @@ function sendMessage() {
           msg = $('#main').append(genMessage(result.message_id, myName, $('#textbox').text(), result.date)).children(':last').hide().slideDown(500);
           $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+$("div#wrapper")[0].scrollHeight},500);
           
-          $('#textbox').prop("contentEditable", true );
+          $('#textbox').html('').prop("contentEditable", true );
         }else{
           $("button#send-message").addClass("Invalid");
           setTimeout(function() {
