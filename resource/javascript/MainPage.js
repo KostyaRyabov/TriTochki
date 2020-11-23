@@ -149,7 +149,7 @@ $(document).ready(function() {
       
         // Вывод сообщений
         $.each(result.messages, function(id, value){
-          $("#main").append(genMessage(id, result.users[value["user"]], value["text"], value["date"]));
+          $("#main").append(genMessage(id, result.users[value["id"]], result.users[value["user"]], value["text"], value["date"]));      // todo: на этом месте нужен id написавшего сообщение
           if(first_unread == 0 && value["is_read"] == 0) first_unread = id;
         });
       
@@ -223,7 +223,7 @@ function showProfileContext(id){
       result = JSON.parse(result);    // todo: убрать из result атрибут thisName (лишний)
       
       let itsMe = false; // Флаг текущего пользователя
-      if(myID == id) itsMe = true;
+      if(myID === id) itsMe = true;
   
       //todo подумать, безопасна ли такая реализация, если в переменной сначала был текущий пользователь, а теперь там тот, кого получили
       profile_data["First_Name"] = result.firstName;
