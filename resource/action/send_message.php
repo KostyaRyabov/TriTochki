@@ -15,7 +15,6 @@
 	
 	// Получение текста
 	$text = strval($_POST["text"]);
-	if(strlen($text) < 10) exit(json_encode(["error" => "Text too short!"]));
 	
 	$new_msg = [
 	 "id_chat" => $chat,
