@@ -86,10 +86,6 @@ $(document).ready(function() {
       $(this).remove();
     });
   });
-  
-  $('.modal-window-trigger').on("click",function(){
-    toggleModalWindow('.modal-window-wrapper', "table")
-  });
 
   $('#textbox').on("input", function(){
     if ($(this).val()){
@@ -148,7 +144,6 @@ $(document).ready(function() {
         });
       
         // Вывод сообщений
-        console.log(result.messages)
 
         $.each(result.messages, function(id, value){
           $("#main").append(genMessage(id, value["user"], result.users[value["user"]], value["text"], value["date"]));
@@ -172,15 +167,15 @@ $(document).ready(function() {
 
 function showInfoBox(){
   if (!$("#btn-chat-about").length){
-    let obj = $(`<button id="btn-chat-about" class='btn modal-window-trigger'>?</button>`).hide();
+    let obj = $(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick="toggleModalWindow('#chat-contacts', 'table')">?</button>`).hide();
     $('.tab').append(obj);
     obj.show(200);
   }
 
   if (!$("modal-window-wrapper").length){
     $('body').append(`
-      <div class="modal-window-wrapper">
-        <div class="block-screen modal-window-trigger"></div>
+      <div id="chat-contacts" class="modal-window-wrapper">
+        <div class="block-screen modal-window-trigger" onclick="toggleModalWindow('#chat-contacts', 'table')"></div>
         <div id="info-box" class="modal-window">
             <span class="chat-info-header"></span>
             <hr/>
@@ -195,6 +190,8 @@ function showInfoBox(){
         </div>
       </div>
     `);
+
+    $('#chat-contacts').hide();
   }
 }
 
@@ -205,11 +202,19 @@ function hideInfoBox(){
     });
   }
 
-  if ($("info-box-wrapper").length){
-    $("info-box-wrapper").hide(200,function(){
+  if ($("#chat-contacts").length){
+    $("#chat-contacts").hide(200,function(){
       $(this).remove();
     });
   }
+}
+
+function closeProfile(){
+  toggleModalWindow('#profile-form', 'table');
+  
+  setTimeout(function(){
+    $('#profile-form').remove();
+  },200);
 }
 
 function showProfileContext(id){
@@ -233,41 +238,46 @@ function showProfileContext(id){
       profile_data["Login"] = result.login;
       profile_data["Email"] = result.email;
       profile_data["Sex"] = result.sex;
-      
+
       let form = `
-      <div class="profile-form">
-        <div>
+      <div id="profile-form" class="modal-window-wrapper">
+        <div class="block-screen modal-window-trigger" onclick="closeProfile()"></div>
+        <div class="modal-window">
+          <div>
+            <div class="input">
+              <span contentEditable="false" placeholder="First Name" id="First_Name">${profile_data["First_Name"]}</span>`
+              if (itsMe) form += `<button class="input-edit">🖉</button>`
+            form += `</div>
+            <div class="input">
+              <span contentEditable="false" placeholder="Second Name" id="Second_Name">${profile_data["Second_Name"]}</span>`
+              if (itsMe) form += `<button class="input-edit">🖉</button>`
+            form += `</div>
+          </div>
           <div class="input">
-            <span contentEditable="false" placeholder="First Name" id="First_Name">${profile_data["First_Name"]}</span>`
+            <span contentEditable="false" placeholder="Login" id="Login">${profile_data["Login"]}</span>`
             if (itsMe) form += `<button class="input-edit">🖉</button>`
           form += `</div>
           <div class="input">
-            <span contentEditable="false" placeholder="Second Name" id="Second_Name">${profile_data["Second_Name"]}</span>`
+            <span contentEditable="false" placeholder="Email" id="Email">${profile_data["Email"]}</span>`
             if (itsMe) form += `<button class="input-edit">🖉</button>`
           form += `</div>
-        </div>
-        <div class="input">
-          <span contentEditable="false" placeholder="Login" id="Login">${profile_data["Login"]}</span>`
-          if (itsMe) form += `<button class="input-edit">🖉</button>`
+          <div class="input">
+            <span contentEditable="false" placeholder="Description" id="Description"></span>`
+            if (itsMe) form += `<button class="input-edit">🖉</button>`
+          form += `</div>`
+          if (itsMe) form += `
+          <button onclick="changePassword()" class="input">change password</button>
+          <select id="Sex" class="input">
+            <option value="m">М</option>
+            <option value="w">W</option>
+          </select>`
+          else form += `<div class="input"><span id="Sex">пол: ${profile_data["Sex"]}</span></div>`;
         form += `</div>
-        <div class="input">
-          <span contentEditable="false" placeholder="Email" id="Email">${profile_data["Email"]}</span>`
-          if (itsMe) form += `<button class="input-edit">🖉</button>`
-        form += `</div>
-        <div class="input">
-          <span contentEditable="false" placeholder="Description" id="Description"></span>`
-          if (itsMe) form += `<button class="input-edit">🖉</button>`
-        form += `</div>`
-        if (itsMe) form += `
-        <button onclick="changePassword()" class="input">change password</button>
-        <select id="Sex" class="input">
-          <option value="m">М</option>
-          <option value="w">W</option>
-        </select>`
-        else form += `<div class="input"><span id="Sex">пол: ${profile_data["Sex"]}</span></div>`;
-      form += `</div>`;
+      </div>`;
     
-      $('#main').html(form);
+      $('body').append(form);
+
+      toggleModalWindow('#profile-form', 'table');
     }
   });
 }
