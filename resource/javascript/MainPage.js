@@ -219,38 +219,40 @@ function showProfileContext(id){
       profile_data["Sex"] = result.sex;
       
       let form = `
-      <div>
+      <div class="profile-form">
+        <div>
           <div class="input">
-              <span contentEditable="false" placeholder="First Name" id="First_Name">${profile_data["First_Name"]}</span>`;
-          if (itsMe) form += `<button class="input-edit">🖉</button>`;
+            <span contentEditable="false" placeholder="First Name" id="First_Name">${profile_data["First_Name"]}</span>`
+            if (itsMe) form += `<button class="input-edit">🖉</button>`
           form += `</div>
           <div class="input">
-              <span contentEditable="false" placeholder="Second Name" id="Second_Name">${profile_data["Second_Name"]}</span>`;
-          if (itsMe) form += `<button class="input-edit">🖉</button>`;
+            <span contentEditable="false" placeholder="Second Name" id="Second_Name">${profile_data["Second_Name"]}</span>`
+            if (itsMe) form += `<button class="input-edit">🖉</button>`
           form += `</div>
-      </div>
-      <div class="input">
-          <span contentEditable="false" placeholder="Login" id="Login">${profile_data["Login"]}</span>`;
-          if (itsMe) form += `<button class="input-edit">🖉</button>`;
-          form += `</div>
-      <div class="input">
-          <span contentEditable="false" placeholder="Email" id="Email">${profile_data["Email"]}</span>`;
-          if (itsMe) form += `<button class="input-edit">🖉</button>`;
-          form += `</div>
-      <div>
-          <textarea id="profile-description" placeholder="Description" id="Description" class="input"></textarea>`;
-          if (itsMe) form += `<button class="input-edit">🖉</button>`;
-          form += `</div>
-      <button onclick="changePassword()" class="input">change password</button>`;
-          if (itsMe) form += `<button class="input-edit">🖉</button>
-      <select id="Sex" class="input">
-        <option value="m">М</option>
-        <option value="w">W</option>
-      </select>`;
-        else form += `<snap id="Sex" class="input">${profile_data["Sex"]}</snap>`;
+        </div>
+        <div class="input">
+          <span contentEditable="false" placeholder="Login" id="Login">${profile_data["Login"]}</span>`
+          if (itsMe) form += `<button class="input-edit">🖉</button>`
+        form += `</div>
+        <div class="input">
+          <span contentEditable="false" placeholder="Email" id="Email">${profile_data["Email"]}</span>`
+          if (itsMe) form += `<button class="input-edit">🖉</button>`
+        form += `</div>
+        <div class="input">
+          <span contentEditable="false" placeholder="Description" id="Description"></span>`
+          if (itsMe) form += `<button class="input-edit">🖉</button>`
+        form += `</div>`
+        if (itsMe) form += `
+        <button onclick="changePassword()" class="input">change password</button>
+        <select id="Sex" class="input">
+          <option value="m">М</option>
+          <option value="w">W</option>
+        </select>`
+        else form += `<div class="input"><span id="Sex">пол: ${profile_data["Sex"]}</span></div>`;
+      form += `</div>`;
     
-        $('#main').html(form);
-      }
+      $('#main').html(form);
+    }
   });
 }
 
