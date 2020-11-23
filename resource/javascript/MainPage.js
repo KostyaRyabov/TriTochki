@@ -148,8 +148,10 @@ $(document).ready(function() {
         });
       
         // Вывод сообщений
+        console.log(result.messages)
+
         $.each(result.messages, function(id, value){
-          $("#main").append(genMessage(id, result.users[value["id"]], result.users[value["user"]], value["text"], value["date"]));      // todo: на этом месте нужен id написавшего сообщение
+          $("#main").append(genMessage(id, value["user"], result.users[value["user"]], value["text"], value["date"]));
           if(first_unread == 0 && value["is_read"] == 0) first_unread = id;
         });
       
@@ -345,12 +347,12 @@ function openChat(id){
 }
 
 function genMessage(id_message, author_id, author_name, text, date){
-  let itsMine = (author_id === myID);
+  let itsMine = (author_id == myID);
 
   return `
   <div class='msg-area' id='message${id_message}'>
-    <div class='msg-container ${(itsMine)?"mine":"not-mine"}'>
-      ${(itsMine)?"":"<div class='msg-author-name'>"+author_name+"</div>"}
+    <div class='msg-container ${((itsMine)?"mine":"not-mine")}'>
+      ${((itsMine)?"":"<div class='msg-author-name'>"+author_name+"</div>")}
       <div class='msg-date'>${date}</div>
       <span class='msg-text'>${text}</span>
     </div>
