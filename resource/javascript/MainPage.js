@@ -79,6 +79,12 @@ $(document).ready(function() {
           });
       },150);
   });
+
+  $("body").on("click","button.error-message",function(){
+    $(this).fadeOut(300, function(){ 
+      $(this).remove();
+    });
+  });
   
   $('.modal-window-trigger').on("click",function(){
     toggleModalWindow('.modal-window-wrapper', "table")
@@ -394,6 +400,13 @@ function sendMessage() {
             $("button#send-message").removeClass("Invalid").addClass("Idle");
             $('#textbox').prop("disabled", false);
           },500)
+
+          $('#wrapper').append(`<button class='btn error-message'>${result.error}</button>`).hide().fadeIn(300);
+          setTimeout(function() {
+            $('#wrapper > .error-message').fadeOut(1000, function(){ 
+              $(this).remove();
+            });
+          },5000)
         }
       }
   });

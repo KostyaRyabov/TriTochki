@@ -242,6 +242,7 @@ hr{
     width: 100%;
     
     overflow-y: auto;
+    position: relative;
 
     display: flex;
     flex-direction: column;
@@ -381,6 +382,19 @@ div.input > button:hover{
     border: 0;
     font-weight: bolder;
     background: hsl(0, 0%, 85%);
+}
+
+.error-message{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+
+    bottom: 5px;
+    
+    left: 0; right: 0;
+    opacity: 0.95;
+    background: hsl(0, 100%, 50%);
+    color: #ffffff;
 }
 
 ::-webkit-scrollbar {
