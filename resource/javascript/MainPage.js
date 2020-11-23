@@ -17,7 +17,7 @@ var params = window
    );
 
 $(document).ready(function() {
-  showInfoBox();
+  if(params["id"] > 0) showInfoBox();
 
   $('#textbox').autoHeight();
 
