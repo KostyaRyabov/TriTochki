@@ -118,40 +118,46 @@ $(document).ready(function() {
     }
   });
   
-  // Получение чата и всех сопутствующих данных
-  $.ajax({
-    method: "GET",
-    url: "/resource/action/get_chat.php",
-    data: {
-      "id": params["id"]
-    },
-    success: function(result){ // возвращает объект json
-      result = JSON.parse(result);
+  // Если указан параметр id в url, то получаем чат и все сопутствующие данные
+  if(params["id"] > 0){
+    $.ajax({
+      method: "GET",
+      url: "/resource/action/get_chat.php",
+      data: {
+        "id": params["id"]
+      },
+      success: function(result){ // возвращает объект json
+        result = JSON.parse(result);
       
-      let first_unread = 0; // id первого попавшегося непрочитанного сообщения
+        let first_unread = 0; // id первого попавшегося непрочитанного сообщения
       
-      // Вывод информации о чате
-      $("#tab-name").text(result.name);
-      $("#chat-create-date").text(result.date);
-      $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
-      $.each(result.users, function(id, value){
-        $("#chat-info-contact-list").append("<button class='list-item' onClick='openContact(" + id + ")'>" + value + "</button>");
-      });
+        // Вывод информации о чате
+        $("#tab-name").text(result.name);
+        $("#chat-create-date").text(result.date);
+        $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
+        $.each(result.users, function(id, value){
+          $("#chat-info-contact-list").append("<button class='list-item' onClick='openContact(" + id + ")'>" + value + "</button>");
+        });
       
-      // Вывод сообщений
-      $.each(result.messages, function(id, value){
-        $("#main").append(genMessage(id, result.users[value["user"]], value["text"], value["date"]));
-        if(first_unread == 0 && value["is_read"] == 0) first_unread = id;
-      });
+        // Вывод сообщений
+        $.each(result.messages, function(id, value){
+          $("#main").append(genMessage(id, result.users[value["user"]], value["text"], value["date"]));
+          if(first_unread == 0 && value["is_read"] == 0) first_unread = id;
+        });
       
-      // Если есть непрочитанное сообщение, скроллим до него
-      if(first_unread){
-         $('#wrapper').animate({
+        // Если есть непрочитанное сообщение, скроллим до него
+        if(first_unread){
+          $('#wrapper').animate({
             scrollTop: $('#message' + first_unread).offset().top
-         }, 300);
+          }, 300);
+        }
       }
-    }
-  });
+    });
+  } else{ // Если нет параметра для чата, выводим "главную" страницу
+    hideInfoBox();
+    $("#tab-name").css("padding", "10px 0").text("Главная страница");
+    $("#textbox").remove();
+  }
 });
 
 function showInfoBox(){
