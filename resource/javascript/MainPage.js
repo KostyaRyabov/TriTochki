@@ -1,3 +1,4 @@
+var myID = 0;
 var myName = "";
 
 var profile_data = {};
@@ -111,6 +112,7 @@ $(document).ready(function() {
       else{
         result = JSON.parse(result);
         
+        myID = result.id
         myName = result.myName;
         
         profile_data["First_Name"] = result.firstName;
@@ -218,10 +220,10 @@ function showProfileContext(id){
     success: function(result){ // result возвращает данные о пользователе или 0 соответственно
       if(result == 0) return false;
       
-      result = JSON.parse(result);
+      result = JSON.parse(result);    // todo: убрать из result атрибут thisName (лишний)
       
       let itsMe = false; // Флаг текущего пользователя
-      if(myName == result.thisName) itsMe = true;
+      if(myID == id) itsMe = true;
   
       //todo подумать, безопасна ли такая реализация, если в переменной сначала был текущий пользователь, а теперь там тот, кого получили
       profile_data["First_Name"] = result.firstName;
@@ -342,13 +344,13 @@ function openChat(id){
   $("#tab-name").html('мои контакты');
 }
 
-function genMessage(id_message, author, text, date){
-  let itsMine = (author == myName);
+function genMessage(id_message, author_id, author_name, text, date){
+  let itsMine = (author_id === myID);
 
   return `
   <div class='msg-area' id='message${id_message}'>
     <div class='msg-container ${(itsMine)?"mine":"not-mine"}'>
-      ${(itsMine)?"":"<div class='msg-author-name'>"+author+"</div>"}
+      ${(itsMine)?"":"<div class='msg-author-name'>"+author_name+"</div>"}
       <div class='msg-date'>${date}</div>
       <span class='msg-text'>${text}</span>
     </div>
@@ -390,7 +392,7 @@ function sendMessage() {
           
           // добавление сообщения в html
 
-          msg = $('#main').append(genMessage(result.message_id, myName, $('#textbox').val(), result.date)).children(':last').hide().slideDown(500);
+          msg = $('#main').append(genMessage(result.message_id, myID, myName, $('#textbox').val(), result.date)).children(':last').hide().slideDown(500);
           $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+$("div#wrapper")[0].scrollHeight},500);
           
           $('#textbox').val('').prop("disabled", false).animate({height:'38px'},200);
