@@ -330,15 +330,6 @@ function openChat(id){
   $("#tab-name").html('мои контакты');
 }
 
-function openContact(id){
-  $("#input-area").slideDown(200);
-  $("#btn-chat-about").show(200);
-  
-  // todo: загрузка данных о пользователе
-  
-  $("#tab-name").html('имя контакта');
-}
-
 function genMessage(id_message, author, text, date){
   let itsMine = (author == myName);
 
