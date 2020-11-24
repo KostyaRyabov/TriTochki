@@ -140,7 +140,7 @@ $(document).ready(function() {
         $("#chat-create-date").text(result.date);
         $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
         $.each(result.users, function(id, value){
-          $("#chat-info-contact-list").append("<button class='list-item' onClick='openContact(" + id + ")'>" + value + "</button>");
+          $("#chat-info-contact-list").append("<button class='list-item' onClick='showProfileContext(" + id + ")'>" + value + "</button>");
         });
       
         // Вывод сообщений
@@ -210,7 +210,7 @@ function hideInfoBox(){
 }
 
 function hideProfileContext(){
-  $.when(hideModalWindow('#profile-form')).done(function() {
+  $.when(hideModalWindow('#profile-form')).done(function(){
     $('#profile-form').remove();
   });
 }
@@ -274,7 +274,7 @@ function showProfileContext(id){
       </div>`;
     
       $('body').append(form);
-
+      $("#profile-form").hide();
       showModalWindow('#profile-form');
     }
   });
