@@ -165,46 +165,45 @@ $(document).ready(function() {
   }
 });
 
-function showInfoBoxContext(){
-  $('body').append(`
-    <div id="chat-contacts" class="modal-window-wrapper">
-      <div class="block-screen modal-window-trigger" onclick="hideInfoBoxContext()"></div>
-      <div id="info-box" class="modal-window">
-          <span class="chat-info-header"></span>
-          <hr/>
-          <span id="chat-create-date"></span>
-          <hr/>
-          <br/>
-          <span class="chat-info-header"></span>
-          <hr/>
-          <div id="chat-info-contact-list">
-          </div>
-          <hr/>
-      </div>
-    </div>
-  `);
-
-  $('#chat-contacts').hide();
-  showModalWindow('#chat-contacts');
-}
-
-function hideInfoBoxContext(){
-  $.when(hideModalWindow('#chat-contacts')).done(function() {
-    $("#chat-contacts").remove();
-  });
-}
-
 function showInfoBox(){
   if (!$("#btn-chat-about").length){
-    let obj = $(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick='showInfoBoxContext()'>?</button>`).hide();
+    let obj = $(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick="showModalWindow('#chat-contacts')">?</button>`).hide();
     $('.tab').append(obj);
     obj.show(200);
+  }
+
+  if (!$("modal-window-wrapper").length){
+    $('body').append(`
+      <div id="chat-contacts" class="modal-window-wrapper">
+        <div class="block-screen modal-window-trigger" onclick="hideModalWindow('#chat-contacts')"></div>
+        <div id="info-box" class="modal-window">
+            <span class="chat-info-header"></span>
+            <hr/>
+            <span id="chat-create-date"></span>
+            <hr/>
+            <br/>
+            <span class="chat-info-header"></span>
+            <hr/>
+            <div id="chat-info-contact-list">
+            </div>
+            <hr/>
+        </div>
+      </div>
+    `);
+
+    $('#chat-contacts').hide();
   }
 }
 
 function hideInfoBox(){
   if ($("#btn-chat-about").length){
     $("#btn-chat-about").hide(200,function(){
+      $(this).remove();
+    });
+  }
+
+  if ($("#chat-contacts").length){
+    $("#chat-contacts").hide(200,function(){
       $(this).remove();
     });
   }
