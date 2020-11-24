@@ -26,9 +26,13 @@
     box-shadow: 0 0 0 100vw #000000a5;
 }
 
-/* .modal-window-wrapper{
-    display: none;
-} */
+.modal-window-wrapper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
 
 .blured-screen{
     -webkit-filter: blur(5px);

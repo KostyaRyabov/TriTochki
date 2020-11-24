@@ -10,7 +10,7 @@ body,html,table{
 body{
     margin:0px;
     padding: 0px;
-
+    position: relative;
     background: #baafad;
 
     overflow: hidden;
@@ -365,7 +365,7 @@ div.input > span:empty:before{
 }
 
 div.input > span[contentEditable=true]{
-    background: hsl(0, 0%, 90%);
+    background: hsl(0, 0%, 65%);
 }
 
 div.input > button{
