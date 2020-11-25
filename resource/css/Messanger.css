@@ -219,14 +219,16 @@ html *{
 }
 
 .chat-info-header{
+    padding: 0 !important;
     font-size: 20px !important;
     font-weight: bold;
 }
 
 hr{
-    background: black;
+    background: hsl(0, 0%, 55%);
     border: none;
     height: 2px;
+    margin-top: -2px;
 }
 
 .main-cell{
@@ -323,11 +325,6 @@ hr{
     background: #bdbdbd;
 }
 
-#info-box{
-    max-height: 18em;
-    width: 18em;
-}
-
 button.input{
     border: 0;
     border-radius: 4px;
@@ -353,6 +350,14 @@ div.input > span{
     transition: background 0.3s ease;
 }
 
+.input{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width:auto;
+    word-break: break-all;
+}
+
 .input *{
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -362,6 +367,11 @@ div.input > span{
 div.input > span:empty:before{
     content: attr(placeholder);
     color: hsl(0, 0%, 50%);
+}
+
+.invalid{
+    border: 3px solid red;
+    outline: none;
 }
 
 div.input > span[contentEditable=true]{

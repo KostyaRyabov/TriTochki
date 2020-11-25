@@ -98,6 +98,12 @@ $(document).ready(function() {
       }
     }
   });
+
+  $('body').on('keydown paste', "span[contentEditable=true][maxlength]", function (event) {
+    if ($(this).text().length >= $(this).attr('maxlength') && event.keyCode != 8) {
+        event.preventDefault();
+    }
+});
   
   // Проверка на авторизацию
   $.ajax({
@@ -136,6 +142,7 @@ $(document).ready(function() {
             
               // Вывод информации о чате
               $("#tab-name").text(result.name);
+              $("#chat-info-name").text(result.name);
               $("#chat-create-date").text(result.date);
               $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
               $.each(result.users, function(id, value){
@@ -180,7 +187,7 @@ function showInfoBox(){
         <div class="block-screen modal-window-trigger" onclick="hideModalWindow('#chat-contacts')"></div>
         <div id="info-box" class="modal-window">
           <div class="input">
-            <span id="chat-info-name" class="chat-info-header" contentEditable="false" placeholder="Chat name"></span>
+            <span id="chat-info-name" class="chat-info-header" contentEditable="false" placeholder="Chat name" maxlength="64"></span>
             <button class="input-edit">🖉</button>
           </div>
           <hr/>
@@ -188,10 +195,8 @@ function showInfoBox(){
           <br/>
           <br/>
           <span class="chat-info-header">контакты:</span>
-          <hr/>
           <div id="chat-info-contact-list">
           </div>
-          <hr/>
         </div>
       </div>
     `);
@@ -247,25 +252,25 @@ function showProfileContext(id){
         <div class="block-screen modal-window-trigger" onclick="hideProfileContext()"></div>
         <div class="modal-window">
           <div>
-            <div class="input">
-              <span contentEditable="false" placeholder="First Name" id="First_Name">${profile_data["First_Name"]}</span>`
+            <div id="profile-box" class="input">
+              <span contentEditable="false" placeholder="First Name" id="First_Name" maxlength="32">${profile_data["First_Name"]}</span>`
               if (itsMe) form += `<button class="input-edit">🖉</button>`
             form += `</div>
             <div class="input">
-              <span contentEditable="false" placeholder="Second Name" id="Second_Name">${profile_data["Second_Name"]}</span>`
+              <span contentEditable="false" placeholder="Second Name" id="Second_Name" maxlength="32">${profile_data["Second_Name"]}</span>`
               if (itsMe) form += `<button class="input-edit">🖉</button>`
             form += `</div>
           </div>
           <div class="input">
-            <span contentEditable="false" placeholder="Login" id="Login">${profile_data["Login"]}</span>`
+            <span contentEditable="false" placeholder="Login" id="Login" maxlength="32">${profile_data["Login"]}</span>`
             if (itsMe) form += `<button class="input-edit">🖉</button>`
           form += `</div>
           <div class="input">
-            <span contentEditable="false" placeholder="Email" id="Email">${profile_data["Email"]}</span>`
+            <span contentEditable="false" placeholder="Email" id="Email" maxlength="32">${profile_data["Email"]}</span>`
             if (itsMe) form += `<button class="input-edit">🖉</button>`
           form += `</div>
           <div class="input">
-            <span contentEditable="false" placeholder="Description" id="Description"></span>`
+            <span contentEditable="false" placeholder="Description" id="Description" maxlength="255"></span>`
             if (itsMe) form += `<button class="input-edit">🖉</button>`
           form += `</div>`
           if (itsMe) form += `

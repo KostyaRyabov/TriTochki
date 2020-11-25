@@ -104,12 +104,20 @@ html *{
 .line:after{
     content: "";
     display: inline-block;
-    vertical-align: middle;
     height: 2px;
     background-color: var(--line-color);
-    position: relative;
+    position: static;
+    margin-bottom: 4px;
+    width: 50%;
 }
 
+.line:before{
+    margin-left: -100%;
+}
+
+.line:after{
+    margin-right: -100%;
+}
 .line:before{
     margin-left: -100%;
     left: -14px;

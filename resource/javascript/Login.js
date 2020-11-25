@@ -40,12 +40,13 @@ $(document).ready(function(){
                 if(result.length > 1){
                     // Сброс ошибок, чтобы не наслаивались друг на друга
                     $("input.invalid").removeClass("invalid");
-                    $(".error-message").hide();
                     
                     result = JSON.parse(result);
                     $.each(result, function(inputname, text){
                         errorMessage(inputname, text);
                     });
+                    
+                    $("input:not(.invalid) + .error-message").slideUp(100, function(){$(this).remove()});
                 } else location.href = "/";
             }
         });
@@ -54,7 +55,7 @@ $(document).ready(function(){
 
 function errorMessage(inputname, text){
     let input = $(`input[name='${inputname}']`);
-    let erMsg = input.prev('.error-message');
+    let erMsg = input.next('.error-message');
 
     input.addClass("invalid");
 
