@@ -179,16 +179,19 @@ function showInfoBox(){
       <div id="chat-contacts" class="modal-window-wrapper">
         <div class="block-screen modal-window-trigger" onclick="hideModalWindow('#chat-contacts')"></div>
         <div id="info-box" class="modal-window">
-            <span class="chat-info-header"></span>
-            <hr/>
-            <span id="chat-create-date"></span>
-            <hr/>
-            <br/>
-            <span class="chat-info-header"></span>
-            <hr/>
-            <div id="chat-info-contact-list">
-            </div>
-            <hr/>
+          <div class="input">
+            <span id="chat-info-name" class="chat-info-header" contentEditable="false" placeholder="Chat name"></span>
+            <button class="input-edit">🖉</button>
+          </div>
+          <hr/>
+          <span id="chat-create-date"></span>
+          <br/>
+          <br/>
+          <span class="chat-info-header">контакты:</span>
+          <hr/>
+          <div id="chat-info-contact-list">
+          </div>
+          <hr/>
         </div>
       </div>
     `);
