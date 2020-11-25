@@ -9,13 +9,19 @@ function showModalWindow(modal){
     });
 }
 
-function hideModalWindow(modal){
-    $(modal).fadeOut(150);
+function hideModalWindow(modal, callback){
+    let D1 = $(modal).fadeOut(150);
     
-    [].reverse.call($('body').children()).each(function(){
+    let D2 = [].reverse.call($('body').children()).each(function(){
         if ($(this).hasClass("blured-screen")){
             $(this).removeClass("blured-screen");
             return false;
         }
     });
+
+    if (typeof callback === 'function') { 
+        $.when(D1,D2).done(function(){
+            callback();
+        })
+    }
 }

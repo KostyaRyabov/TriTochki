@@ -220,7 +220,7 @@ function hideInfoBox(){
 }
 
 function hideProfileContext(){
-  $.when(hideModalWindow('#profile-form')).done(function(){
+  hideModalWindow('#profile-form', function(){
     $('#profile-form').remove();
   });
 }
