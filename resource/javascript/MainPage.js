@@ -145,8 +145,15 @@ $(document).ready(function() {
               $("#chat-info-name").text(result.name);
               $("#chat-create-date").text(result.date);
               $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
+              
               $.each(result.users, function(id, value){
-                $("#chat-info-contact-list").append("<button class='list-item' onClick='showProfileContext(" + id + ")'>" + value + "</button>");
+                let button = `
+                  <button class='list-item' onClick='showProfileContext(${id})'>${value}</button>
+                `;
+
+                //if (myID === idOwner) button += `<button></button>`;
+
+                $("#chat-info-contact-list").append(button);
               });
             
               // Вывод сообщений
@@ -188,7 +195,7 @@ function showInfoBox(){
         <div id="info-box" class="modal-window">
           <div class="input">
             <span id="chat-info-name" class="chat-info-header" contentEditable="false" placeholder="Chat name" maxlength="64"></span>
-            <button class="input-edit">🖉</button>
+            <button class="input-edit icon-pencil-1"></button>
           </div>
           <hr/>
           <span id="chat-create-date"></span>
@@ -237,8 +244,7 @@ function showProfileContext(id){
       
       result = JSON.parse(result);    // todo: убрать из result атрибут thisName (лишний)
       
-      let itsMe = false; // Флаг текущего пользователя
-      if(myID === id) itsMe = true;
+      let itsMe = (myID === id);
   
       //todo подумать, безопасна ли такая реализация, если в переменной сначала был текущий пользователь, а теперь там тот, кого получили
       profile_data["First_Name"] = result.firstName;
@@ -254,24 +260,24 @@ function showProfileContext(id){
           <div>
             <div id="profile-box" class="input">
               <span contentEditable="false" placeholder="First Name" id="First_Name" maxlength="32">${profile_data["First_Name"]}</span>`
-              if (itsMe) form += `<button class="input-edit">🖉</button>`
+              if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`
             form += `</div>
             <div class="input">
               <span contentEditable="false" placeholder="Second Name" id="Second_Name" maxlength="32">${profile_data["Second_Name"]}</span>`
-              if (itsMe) form += `<button class="input-edit">🖉</button>`
+              if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`
             form += `</div>
           </div>
           <div class="input">
             <span contentEditable="false" placeholder="Login" id="Login" maxlength="32">${profile_data["Login"]}</span>`
-            if (itsMe) form += `<button class="input-edit">🖉</button>`
+            if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`
           form += `</div>
           <div class="input">
             <span contentEditable="false" placeholder="Email" id="Email" maxlength="32">${profile_data["Email"]}</span>`
-            if (itsMe) form += `<button class="input-edit">🖉</button>`
+            if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`
           form += `</div>
           <div class="input">
             <span contentEditable="false" placeholder="Description" id="Description" maxlength="255"></span>`
-            if (itsMe) form += `<button class="input-edit">🖉</button>`
+            if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`
           form += `</div>`
           if (itsMe) form += `
           <button onclick="changePassword()" class="input">change password</button>
@@ -395,9 +401,9 @@ function sendMessage() {
         $("button#send-message").removeClass("Verification");
 
         if (!result.error){
-          $("button#send-message").addClass("Valid");
+          $("button#send-message").addClass("Valid icon-check");
           setTimeout(function() {
-            $("button#send-message").removeClass("Valid").addClass("Idle");
+            $("button#send-message").removeClass("Valid icon-check").addClass("Idle");
 
             if ($.trim($('#textbox').val())){
               if ($("button#send-message").is(":hidden")){
@@ -417,9 +423,9 @@ function sendMessage() {
           
           $('#textbox').val('').prop("disabled", false).animate({height:'38px'},200);
         }else{
-          $("button#send-message").addClass("Invalid");
+          $("button#send-message").addClass("Invalid icon-cancel");
           setTimeout(function() {
-            $("button#send-message").removeClass("Invalid").addClass("Idle");
+            $("button#send-message").removeClass("Invalid icon-cancel").addClass("Idle");
             $('#textbox').prop("disabled", false);
           },500)
 

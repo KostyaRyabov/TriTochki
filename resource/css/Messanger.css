@@ -202,7 +202,8 @@ html *{
 }
 
 .Valid:after {
-    content:"✔";
+    /* ✔ */
+    content:"\f00c";
     font-size: 12px;
 }
 
@@ -380,18 +381,19 @@ div.input > span[contentEditable=true]{
 
 div.input > button{
     border: 0;
-    
-    border-radius: 10px;
     transition: all 0.3s ease;
     
-    background: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    background: transparent;
     outline: none;
 }
 
 div.input > button:hover{
     border: 0;
     font-weight: bolder;
-    background: hsl(0, 0%, 85%);
+    background: hsl(0, 0%, 55%);
 }
 
 .error-message{
