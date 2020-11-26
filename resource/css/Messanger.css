@@ -73,6 +73,8 @@ html *{
     position: relative;
 }
 
+#tab-name{ padding: 10px 0 }
+
 #textbox{
     border-radius: 4px;
     width: 100%;
@@ -213,22 +215,11 @@ html *{
     pointer-events: none;
 }
 
-.Valid:after {
-    /* ✔ */
-    content:"\f00c";
-    font-size: 12px;
-}
-
 .Invalid{
     border: 0;
     
     background: rgb(172, 21, 21);
     pointer-events: none;
-}
-
-.Invalid:after {
-    content:"X";
-    font-size: 12px;
 }
 
 .chat-info-header{

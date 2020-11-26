@@ -175,7 +175,7 @@ $(document).ready(function() {
           });
         } else{ // Если нет параметра для чата, выводим "главную" страницу
           hideInfoBox();
-          $("#tab-name").css("padding", "10px 0").text("Главная страница");
+          $("#tab-name").text("Главная страница");
           $("#textbox").remove();
         }
       }
@@ -406,7 +406,7 @@ function sendMessage() {
         if (!result.error){
           $("button#send-message").addClass("Valid icon-check");
           setTimeout(function() {
-            $("button#send-message").removeClass("Valid icon-check").addClass("Idle");
+            $("button#send-message").removeClass("Valid icon-check").addClass("Idle icon-paper-plane");
 
             if ($.trim($('#textbox').val())){
               if ($("button#send-message").is(":hidden")){
