@@ -238,7 +238,7 @@ hr{
     margin-top: -2px;
 }
 
-.main-cell{
+#main-cell{
     background: #ffffff;
     border-radius: 4px;
 
@@ -311,35 +311,25 @@ hr{
     max-width: 100%;
 }
 
-#chat-info-contact-list {
+.list {
     padding: 0;
     overflow-y: auto;
     overflow-x: none;
     max-height: 7.5em;
 }
 
-#chat-info-contact-list > *{
-    border-radius: 2px;
-    margin: 4px 0;
-}
+.list > *{ margin: 4px 0 }
 
-#chat-info-contact-list > div{
+.list *{ border: 0 }
+
+.list > div{
     display: flex;
     flex-direction: row;
 }
 
-#chat-info-contact-list > div > *{
-    border: 0;
-}
+.list > .list-item{ border-radius: 3px }
 
-#chat-info-contact-list > .list-item{
-    border-radius: 3px;
-    border: 0;
-}
-
-div > .list-item{
-    border-radius: 3px 0 0 3px;
-}
+div > .list-item{ border-radius: 3px 0 0 3px }
 
 #chat-add-user{
     border: 0;
@@ -368,7 +358,7 @@ div > .list-item{
     background: hsl(0, 0%, 50%);
 }
 
-.list-item + button{
+.list-item + button.icon-cancel{
     outline: none;
     display: block;
     transition: .3s ease-out;
@@ -378,7 +368,7 @@ div > .list-item{
     border-radius: 0 3px 3px 0;
 }
 
-.list-item + button:hover{
+.list-item + button.icon-cancel:hover{
     background: hsl(0, 55%, 45%);
     color: hsl(0, 100%, 90%);
 }

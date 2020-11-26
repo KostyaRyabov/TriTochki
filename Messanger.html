@@ -48,11 +48,12 @@
                     <div class="menu">
                         <img class="logo" src="resource/images/favicon/mstile-70x70.png"/>
 
-                        <button class='btn'>поиск</button>
-                        <br/><br/>
+                                                                                                    <!-- лучше перенести поиск в контакты и чаты -->
+                        <!-- <button class='btn'>поиск</button>
+                        <br/><br/> -->
                         <button class='btn modal-window-trigger' id="show-my-profile" onclick="showProfileContext()">мой профиль</button>
-                        <button class='btn' onclick="showContactListContext()">мои контакты</button>
-                        <button class='btn' onclick="showChatListContext()">мои чаты</button>
+                        <button class='btn' onclick="showContactListContext()">контакты</button>
+                        <button class='btn' onclick="showChatListContext()">чаты</button>
                         
                         <a class="github" href="https://github.com/Kinapak/TriTochki/" target="_blank">
                             <img src="https://img.icons8.com/ios-filled/50/000000/github.png"/>
@@ -61,7 +62,7 @@
                 </td>
                 <td id="header">
                     <div class="tab">
-                        <span id="tab-name">tab_name</span>
+                        <span id="tab-name"></span>
                     </div>
                 </td>
                 <td rowspan="3">
@@ -72,7 +73,7 @@
                     </div>
                 </td>
             </tr>
-                <td class="main-cell">
+                <td id="main-cell">
                     <div id="wrapper">
                         <div id="main"></div>
                     </div>

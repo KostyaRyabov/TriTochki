@@ -146,13 +146,13 @@ $(document).ready(function() {
               $("#chat-create-date").text(result.date);
               $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
               
-              let idOwner = 2;    //todo: указать создателя чата
-
+              let idOwner;    //todo: указать создателя чата
+              
               $.each(result.users, function(id, value){
-                let el = `<button class='list-item ${(id == idOwner)?"icon-crown":""}' onClick='showProfileContext(${id})'>${value}</button>`;
+                let el = `<button class='list-item chatContact ${(id == idOwner)?"icon-crown":""}' onClick='showProfileContext(${id})'>${value}</button>`;
 
                 if (myID === idOwner && id != myID){
-                  el = `<div>${el + `<button class="icon-cancel"></button>`}</div>`
+                  el = `<div>${el + `<button class="icon-cancel"></button>`}</div>`       //todo: привязать с удалением выбранного контакта
                 }
 
                 $("#chat-info-contact-list").append(el);
@@ -204,7 +204,7 @@ function showInfoBox(){
           <br/>
           <br/>
           <span class="chat-info-header">контакты: <button id="chat-add-user" class="icon-user-plus"></button></span>
-          <div id="chat-info-contact-list"></div>
+          <div id="chat-info-contact-list" class="list"></div>
           <br/>
           <button id="chat-exit">выйти из чата</button>
         </div>
@@ -303,7 +303,7 @@ function showProfileContext(id){
 function showChatListContext(){
   hideInfoBox();
   $("#input-area").slideUp(200);
-  $("#tab-name").html('мои чаты');
+  $("#tab-name").html('чаты');
 
   $('#main').fadeOut(200,function(){
     //todo: запуск анимации загрузки
@@ -319,9 +319,16 @@ function showChatListContext(){
       let context = "";
 
       $.each(result, function(id, name){
-        context += `<button class="list-item" id="${id}" onClick=openChat(${id})>${name}</button>`;
+        context += `<button class="list-item myChat" id="${id}" onClick=openChat(this.id)>${name}</button>`;      // id .. this.id - для дальнейшего взаимодействия  (sel = .myChat#2)
       });
       
+      context = `
+        <div id="chatSearch">
+          <input type="search" placeholder="search..."></input>
+          <button>поиск</button>
+        </div>
+        <div class="list">${context}</div>`;
+
       $('#main').html(context);
 
     // если result = false -> $(this).html('');
@@ -334,7 +341,7 @@ function showChatListContext(){
 function showContactListContext(){
   hideInfoBox();
   $("#input-area").slideUp(200);
-  $("#tab-name").html('мои контакты');
+  $("#tab-name").html('контакты');
 
   $('#main').fadeOut(200,function(){
     //todo: запуск анимации загрузки
@@ -352,9 +359,16 @@ function showContactListContext(){
 
       let context;
 
-      $.each(result, function(index, value){
-        context += `<button class="list-item" id="${value.id}" onClick=openContact(this.id)>${value.name}</button>`;
+      $.each(result, function(id, name){
+        context += `<button class="list-item myContact" id=${id} onClick=openContact(this.id)>${name}</button>`;      // id .. this.id - для дальнейшего взаимодействия  (sel = .myContact#2)
       });
+
+      context = `
+        <div id="contactSearch">
+          <input type="search" placeholder="search..."></input>
+          <button>поиск</button>
+        </div>
+        <div class="list">${context}</div>`;
 
       $('#main').html(context);
 
