@@ -32,6 +32,23 @@ table{
     height: 100%;
 }
 
+#chat-exit{
+    background: transparent;
+
+    transition: background 0.3s ease;
+    border-radius: 10px;
+    border: 0;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    display: block;
+}
+
+#chat-exit:hover{
+    background: hsl(0, 0%, 50%);
+}
+
 .menu{ 
     margin-left: auto;
     padding-right: min(50px, 15%);
@@ -174,11 +191,6 @@ html *{
     background: rgb(99, 81, 81);
 }
 
-.Idle:after{
-    content:">";
-    font-size: 12px;
-}
-
 .Verification {
     background: #ffffff00;
     font-size:0;
@@ -223,6 +235,9 @@ html *{
     padding: 0 !important;
     font-size: 20px !important;
     font-weight: bold;
+    
+    display: flex;
+    flex-direction: row;
 }
 
 hr{
@@ -305,25 +320,76 @@ hr{
     max-width: 100%;
 }
 
-.chat-info-contact-list {
+#chat-info-contact-list {
     padding: 0;
     overflow-y: auto;
+    overflow-x: none;
     max-height: 7.5em;
+}
+
+#chat-info-contact-list > *{
+    border-radius: 2px;
+    margin: 4px 0;
+}
+
+#chat-info-contact-list > div{
+    display: flex;
+    flex-direction: row;
+}
+
+#chat-info-contact-list > div > *{
+    border: 0;
+}
+
+#chat-info-contact-list > .list-item{
+    border-radius: 3px;
+    border: 0;
+}
+
+div > .list-item{
+    border-radius: 3px 0 0 3px;
+}
+
+#chat-add-user{
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+
+    transition: all 0.3s ease;
+    margin-left: auto;
+    width: auto;
+    display: block;
+}
+
+#chat-add-user:hover{
+    background: hsl(0, 0%, 50%);
 }
 
 .list-item{
     display: block;
     width: 100%;
-    border-radius: 2px;
-    margin: 0.2em 0 0.2em 0;
-    border: 0;
-    box-shadow: 0 0 3px #616161;
-
     transition: .3s ease-out;
+    outline: none;
+    background: hsl(0, 0%, 75%);
 }
 
 .list-item:hover{
-    background: #bdbdbd;
+    background: hsl(0, 0%, 50%);
+}
+
+.list-item + button{
+    outline: none;
+    display: block;
+    transition: .3s ease-out;
+    color: hsl(0, 100%, 35%);
+    background: hsl(0, 0%, 75%);
+    margin-left: 2px;
+    border-radius: 0 3px 3px 0;
+}
+
+.list-item + button:hover{
+    background: hsl(0, 55%, 45%);
+    color: hsl(0, 100%, 90%);
 }
 
 button.input{

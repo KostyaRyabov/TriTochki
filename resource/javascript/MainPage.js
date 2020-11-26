@@ -26,7 +26,7 @@ $(document).ready(function() {
     $(this).hide(150, function(){
         let input_div = $(this).parent();
         
-        let btns = $("<button class='input-cancel'>✘</button><button class='input-submit'>✔</button>").hide();
+        let btns = $("<button class='input-cancel icon-cancel'></button><button class='input-submit icon-check'></button>").hide();
         input_div.append(btns);
         btns.show(150);
         
@@ -44,7 +44,7 @@ $(document).ready(function() {
       setTimeout(function(){
           span.attr('contenteditable','false').html(profile_data[span.attr('id')]);
           
-          let btn = $("<button class='input-edit'>🖉</button>").hide();
+          let btn = $("<button class='input-edit icon-pencil-1'></button>").hide();
           input_div.append(btn);
           btn.show(150);
       },150)
@@ -59,7 +59,7 @@ $(document).ready(function() {
       input_div.find('button').hide(150, function(){$(this).remove()});
       
       setTimeout(function(){
-          let btn = $("<button class='input-edit'>🖉</button>").hide();
+          let btn = $("<button class='input-edit icon-pencil-1'></button>").hide();
           input_div.append(btn);
           btn.show(150);
         
@@ -146,14 +146,16 @@ $(document).ready(function() {
               $("#chat-create-date").text(result.date);
               $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
               
+              let idOwner = 2;    //todo: указать создателя чата
+
               $.each(result.users, function(id, value){
-                let button = `
-                  <button class='list-item' onClick='showProfileContext(${id})'>${value}</button>
-                `;
+                let el = `<button class='list-item ${(id == idOwner)?"icon-crown":""}' onClick='showProfileContext(${id})'>${value}</button>`;
 
-                //if (myID === idOwner) button += `<button></button>`;
+                if (myID === idOwner && id != myID){
+                  el = `<div>${el + `<button class="icon-cancel"></button>`}</div>`
+                }
 
-                $("#chat-info-contact-list").append(button);
+                $("#chat-info-contact-list").append(el);
               });
             
               // Вывод сообщений
@@ -201,9 +203,10 @@ function showInfoBox(){
           <span id="chat-create-date"></span>
           <br/>
           <br/>
-          <span class="chat-info-header">контакты:</span>
-          <div id="chat-info-contact-list">
-          </div>
+          <span class="chat-info-header">контакты: <button id="chat-add-user" class="icon-user-plus"></button></span>
+          <div id="chat-info-contact-list"></div>
+          <br/>
+          <button id="chat-exit">выйти из чата</button>
         </div>
       </div>
     `);
@@ -385,7 +388,7 @@ function genMessage(id_message, author_id, author_name, text, date){
 
 function sendMessage() {
   $('textarea#textbox').prop("disabled", true );
-  $("button#send-message").addClass("Verification").removeClass("Idle");
+  $("button#send-message").addClass("Verification").removeClass("Idle icon-paper-plane");
   
   $.ajax({
       method: "POST",
@@ -425,7 +428,7 @@ function sendMessage() {
         }else{
           $("button#send-message").addClass("Invalid icon-cancel");
           setTimeout(function() {
-            $("button#send-message").removeClass("Invalid icon-cancel").addClass("Idle");
+            $("button#send-message").removeClass("Invalid icon-cancel").addClass("Idle icon-paper-plane");
             $('#textbox').prop("disabled", false);
           },500)
 
