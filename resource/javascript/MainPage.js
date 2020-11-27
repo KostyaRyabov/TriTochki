@@ -151,8 +151,8 @@ $(document).ready(function() {
               $.each(result.users, function(id, value){
                 let el = `<button class='list-item chatContact ${(id == idOwner)?"icon-crown":""}' onClick='showProfileContext(${id})'>${value}</button>`;
 
-                if (myID === idOwner && id != myID){
-                  el = `<div>${el + `<button class="icon-cancel"></button>`}</div>`       //todo: привязать с удалением выбранного контакта
+                if (myID == idOwner && id != myID){
+                  el = `<div>${el + `<button class="icon-cancel kick-user" data-id="${id}"></button>`}</div>`;
                 }
 
                 $("#chat-info-contact-list").append(el);
@@ -179,6 +179,23 @@ $(document).ready(function() {
           $("#textbox").remove();
         }
       }
+    }
+  });
+});
+
+// Удалить пользователя из текущего чата (для создателя чата)
+$(document).on("click", ".kick-user", function(){
+  let $this = $(this);
+  
+  $.ajax({
+    method: "POST",
+    url: "/resource/action/chat_user_kick.php",
+    data: {
+      "chat_id": params["id"],
+      "user_id": $(this).data("id")
+    },
+    success: function(result){ // возвращает строку в случае ошибки и пустое значение в случае успеха
+      if(!result.length) $this.parent().remove();
     }
   });
 });
