@@ -54,6 +54,7 @@ $(document).ready(function() {
       let input_div = $(this).parent();
       let span = input_div.find('span');
       let id = span.attr('id');
+      let $this = $(this);
 
       span.attr('contenteditable','false');
       input_div.find('button').hide(150, function(){$(this).remove()});
@@ -62,22 +63,41 @@ $(document).ready(function() {
           let btn = $("<button class='input-edit icon-pencil-1'></button>").hide();
           input_div.append(btn);
           btn.show(150);
-        
+  
           // Изменение информации о пользователе
+          if($this.parent().attr("id") == "profile-box"){
+            $.ajax({
+              method: "POST",
+              url: "/resource/action/change_user_info.php",
+              data: {
+                "field": id,
+                "data": span.text()
+              },
+              success: function(result){ // result возвращает пустое значение в случае успеха или ошибку
+                // На всякий случай редирект на логин, если не тот пользователь или истекла кука
+                if(result.length > 1) location.href = "/Login.html";
+      
+                profile_data[id] = span.text();
+              }
+            });
+          }
+  
+        // Изменение названия чата
+        if($this.parent().attr("id") == "chat-title"){
           $.ajax({
             method: "POST",
-            url: "/resource/action/change_user_info.php",
+            url: "/resource/action/change_chat_title.php",
             data: {
-              "field": id,
-              "data": span.text()
+              "id": params["id"],
+              "name": $("#chat-info-name").text()
             },
             success: function(result){ // result возвращает пустое значение в случае успеха или ошибку
-              // На всякий случай редирект на логин, если не тот пользователь или истекла кука
-              if(result.length > 1) location.href = "/Login.html";
-  
-              profile_data[id] = span.text();
+              if(result.length > 1) return false;
+              
+              $("#tab-name").text($("#chat-info-name").text());
             }
           });
+        }
       },150);
   });
 
@@ -212,7 +232,7 @@ function showInfoBox(){
       <div id="chat-contacts" class="modal-window-wrapper">
         <div class="block-screen modal-window-trigger" onclick="hideModalWindow('#chat-contacts')"></div>
         <div id="info-box" class="modal-window">
-          <div class="input">
+          <div class="input" id="chat-title">
             <span id="chat-info-name" class="chat-info-header" contentEditable="false" placeholder="Chat name" maxlength="64"></span>
             <button class="input-edit icon-pencil-1"></button>
           </div>
