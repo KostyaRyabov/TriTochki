@@ -12,7 +12,7 @@
 	if(!$user_id) exit("Wrong user id!");
 	
 	// Выборка нужного чата
-	$sel = query("SELECT Name, date_create FROM chat WHERE id_chat=".$id);
+	$sel = query("SELECT id_user, Name, date_create FROM chat WHERE id_chat=".$id);
 	$row = mysqli_fetch_array($sel);
 	
 	// Выборка всех участников чата
@@ -48,6 +48,7 @@
 	/* Для вложенных массивов ключами являются id этих элементов.
 	 * Если данные id встречаются в других массивах, возможен поиск по ним */
 	$return = [
+	 "owner" => $row["id_user"],
 	 "name" => $row["Name"],
 	 "date" => humanDate($row["date_create"]),
 	 "users" => $users,

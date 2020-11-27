@@ -146,7 +146,7 @@ $(document).ready(function() {
               $("#chat-create-date").text(result.date);
               $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
               
-              let idOwner;    //todo: указать создателя чата
+              let idOwner = result.owner;
               
               $.each(result.users, function(id, value){
                 let el = `<button class='list-item chatContact ${(id == idOwner)?"icon-crown":""}' onClick='showProfileContext(${id})'>${value}</button>`;
