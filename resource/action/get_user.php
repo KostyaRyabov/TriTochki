@@ -16,8 +16,7 @@
 	 "lastName" => $row["Lastname"],
 	 "login" => $row["Login"],
 	 "email" => $row["Email"],
-	 "sex" => $row["Sex"],
-	 "thisName" => strlen($row["Firstname"]) > 0 && strlen($row["Lastname"]) > 0 ? $row["Firstname"]." ".$row["Lastname"] : $row["Login"]
+	 "sex" => $row["Sex"]
 	];
 	
 	echo json_encode($return);

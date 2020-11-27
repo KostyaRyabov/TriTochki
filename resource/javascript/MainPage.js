@@ -114,7 +114,7 @@ $(document).ready(function() {
       else{
         result = JSON.parse(result);
         
-        myID = result.id
+        myID = result.id;
         myName = result.myName;
         
         profile_data["First_Name"] = result.firstName;
@@ -245,7 +245,7 @@ function showProfileContext(id){
     success: function(result){ // result возвращает данные о пользователе или 0 соответственно
       if(result == 0) return false;
       
-      result = JSON.parse(result);    // todo: убрать из result атрибут thisName (лишний)
+      result = JSON.parse(result);
       
       let itsMe = (myID === id);
   
