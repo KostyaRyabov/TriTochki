@@ -242,6 +242,8 @@ hr{
     background: #ffffff;
     border-radius: 4px;
 
+    position: relative;
+
     height: 100%;
     width: 50em;
 }
@@ -311,12 +313,19 @@ hr{
     max-width: 100%;
 }
 
+.search-field{
+    top: 0;
+    position: sticky;
+    background: #8c8c8c;
+}
+
 .list {
     padding: 0;
     overflow-y: auto;
     overflow-x: none;
-    max-height: 7.5em;
 }
+
+#chat-info-contact-list{ max-height: 7.5em }
 
 .list > *{ margin: 4px 0 }
 
