@@ -6,13 +6,13 @@ $(document).ready(function(){
     });
     
     $("button#spoiler_links").click(function(){
-        if ($(this).text() == "создать аккаунт"){
-            $(this).html('имеется аккаунт');
+        if ($(this).text() == "Создать аккаунт"){
+            $(this).html('Имеется аккаунт');
             document.getElementById("register_form").disabled = false;
 
             $("DIV#spoiler_body").slideDown();
         } else {
-            $(this).html('создать аккаунт');
+            $(this).html('Создать аккаунт');
             
             $("DIV#spoiler_body").slideUp(function(){
                 document.getElementById("register_form").disabled = true;
