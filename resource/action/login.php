@@ -1,7 +1,10 @@
 <?php
-	// Подключение базы и файла с функциями
+	// Подлючение нужных файлов для корректной работы
 	include($_SERVER["DOCUMENT_ROOT"]."/db.php");
 	include($_SERVER["DOCUMENT_ROOT"]."/functions.php");
+	include($_SERVER["DOCUMENT_ROOT"]."/JWT.php");
+	
+	use JWT\JWT;
 	
 	// Инициализация и обработка полей
 	$username = treat(trim($_POST["username"]));
@@ -23,7 +26,7 @@
 	if(count($errors)) exit(json_encode($errors));
 	
 	// Проверка на корректность логина и пароля
-	$res = DB::query("SELECT id_user, Password FROM user WHERE login=%s", [$username]);
+	$res = DB::query("SELECT * FROM user WHERE login=%s", [$username]);
 	$row = mysqli_fetch_array($res);
 	if(!password_verify($password, $row["Password"])){
 		$errors["username"] = "Некорректные данные для входа!";
@@ -31,5 +34,16 @@
 		exit(json_encode($errors));
 	}
 	
-	// Установка куки пользователя
-	setcookie("id", $row["id_user"], time() + 3600, "/"); //todo в этом месте поработать над безопасностью
+	// Установка токена с нужными для дальнейшей работы параметрами
+	$jwt_data = array(
+	 "id" => $row["id_user"],
+	 "firstName" => $row["Firstname"],
+	 "lastName" => $row["Lastname"],
+	 "login" => $row["Login"],
+	 "email" => $row["Email"],
+	 "sex" => $row["Sex"],
+	 "myName" => strlen($row["Firstname"]) > 0 && strlen($row["Lastname"]) > 0 ? $row["Firstname"]." ".$row["Lastname"] : $row["Login"]
+	);
+	$jwt = JWT::encode($jwt_data, JWT::$private_key, 'RS256');
+	
+	setcookie("token", $jwt, time() + 3600, "/");
