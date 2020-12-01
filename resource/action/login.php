@@ -25,7 +25,7 @@
 	// Проверка на корректность логина и пароля
 	$res = DB::query("SELECT id_user, Password FROM user WHERE login=%s", [$username]);
 	$row = mysqli_fetch_array($res);
-	if($row["Password"] != md5($_POST["password"])){ //todo такой же другой метод защиты пароля, как при регистрации
+	if(!password_verify($password, $row["Password"])){
 		$errors["username"] = "Некорректные данные для входа!";
 		$errors["password"] = "Некорректные данные для входа!";
 		exit(json_encode($errors));

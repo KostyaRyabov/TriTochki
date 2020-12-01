@@ -46,7 +46,7 @@
 	
 	DB::insert("user", [
 	 "%s:Login" => $username,
-	 "%s:Password" => md5($password), //todo нужен другой метод защиты пароля
+	 "%s:Password" => password_hash($password, PASSWORD_DEFAULT),
 	 "%s:Email" => $email,
 	 "%d:Time" => time()
 	]);
