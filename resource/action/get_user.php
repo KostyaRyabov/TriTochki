@@ -1,14 +1,22 @@
 <?php
-	// Подключение базы и файла с функциями
+	// Подключение необходимых файлов
 	include($_SERVER["DOCUMENT_ROOT"]."/db.php");
 	include($_SERVER["DOCUMENT_ROOT"]."/functions.php");
+	include($_SERVER["DOCUMENT_ROOT"]."/JWT.php");
 	
-	if(!$_COOKIE["id"] > 0) exit(0); // Проверка авторизации на всякий случай
+	use JWT\JWT;
 	
-	$_POST = defender($_POST);
+	// Проверка авторизации на всякий случай
+	$jwt = strval(trim($_COOKIE["token"]));
+	if(!strlen($jwt)) exit(0);
+	$user_data = JWT::decode($jwt, JWT::$public_key, array('RS256'));
+	$user_data = (array)$user_data;
+	$id = $user_data["id"];
+	if(!$id) exit(0);
 	
-	$id = $_POST["id"];
-	$result = query("SELECT Firstname, Lastname, Login, Email, Sex FROM user WHERE id_user=".$id);
+	// Выборка конкретного пользователя
+	$id = treat(intval($_POST["id"]));
+	$result = DB::query("SELECT Firstname, Lastname, Login, Email, Sex FROM user WHERE id_user=%d", [$id]);
 	$row = mysqli_fetch_array($result);
 	
 	$return = [

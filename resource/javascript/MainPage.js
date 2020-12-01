@@ -65,7 +65,7 @@ $(document).ready(function() {
           btn.show(150);
   
           // Изменение информации о пользователе
-          if($this.parent().attr("id") == "profile-box"){
+          if($this.parent().parent().attr("id") == "profile-box"){
             $.ajax({
               method: "POST",
               url: "/resource/action/change_user_info.php",
@@ -284,7 +284,7 @@ function showProfileContext(id){
       
       result = JSON.parse(result);
       
-      let itsMe = (myID === id);
+      let itsMe = (myID == id);
   
       //todo подумать, безопасна ли такая реализация, если в переменной сначала был текущий пользователь, а теперь там тот, кого получили
       profile_data["First_Name"] = result.firstName;
@@ -297,8 +297,8 @@ function showProfileContext(id){
       <div id="profile-form" class="modal-window-wrapper">
         <div class="block-screen modal-window-trigger" onclick="hideProfileContext()"></div>
         <div class="modal-window">
-          <div>
-            <div id="profile-box" class="input">
+          <div id="profile-box">
+            <div class="input">
               <span contentEditable="false" placeholder="First Name" id="First_Name" maxlength="32">${profile_data["First_Name"]}</span>`
               if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`
             form += `</div>
