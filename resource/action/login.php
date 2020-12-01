@@ -28,11 +28,9 @@
 	// Проверка на корректность логина и пароля
 	$res = DB::query("SELECT * FROM user WHERE login=%s", [$username]);
 	$row = mysqli_fetch_array($res);
-	if(!password_verify($password, $row["Password"])){
-		$errors["username"] = "Некорректные данные для входа!";
-		$errors["password"] = "Некорректные данные для входа!";
-		exit(json_encode($errors));
-	}
+	if(!$row["id_user"]) $errors["username"] = "Некорректный логин!";
+	if(!password_verify($password, $row["Password"])) $errors["password"] = "Некорректный пароль!";
+	if(count($errors)) exit(json_encode($errors));
 	
 	// Установка токена с нужными для дальнейшей работы параметрами
 	$jwt_data = array(
