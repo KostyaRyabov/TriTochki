@@ -1,3 +1,4 @@
+var idOwner = -1;   // -1 === empty
 var myID = 0;
 var myName = "";
 
@@ -166,7 +167,7 @@ $(document).ready(function() {
               $("#chat-create-date").text(result.date);
               $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
               
-              let idOwner = result.owner;
+              idOwner = result.owner;
               
               $.each(result.users, function(id, value){
                 let el = `<button class='list-item chatContact ${(id == idOwner)?"icon-crown":""}' onClick='showProfileContext(${id})'>${value}</button>`;
@@ -228,25 +229,28 @@ function showInfoBox(){
   }
 
   if (!$("modal-window-wrapper").length){
-    $('body').append(`
+    let context = `
       <div id="chat-contacts" class="modal-window-wrapper">
         <div class="block-screen modal-window-trigger" onclick="hideModalWindow('#chat-contacts')"></div>
         <div id="info-box" class="modal-window">
           <div class="input" id="chat-title">
-            <span id="chat-info-name" class="chat-info-header" contentEditable="false" placeholder="Chat name" maxlength="64"></span>
-            <button class="input-edit icon-pencil-1"></button>
-          </div>
+            <span id="chat-info-name" class="chat-info-header" contentEditable="false" placeholder="Chat name" maxlength="64"></span>`
+            if (idOwner === myID) context += `<button class="input-edit icon-pencil-1"></button>`
+          context += `</div>
           <hr/>
           <span id="chat-create-date"></span>
           <br/>
           <br/>
-          <span class="chat-info-header">контакты: <button id="chat-add-user" class="icon-user-plus"></button></span>
+          <span class="chat-info-header">контакты:`
+          if (idOwner === myID) context += `<button id="chat-add-user" class="icon-user-plus"></button>`
+          context += `</span>
           <div id="chat-info-contact-list" class="list"></div>
           <br/>
           <button id="chat-exit">выйти из чата</button>
         </div>
-      </div>
-    `);
+      </div>`
+    
+    $('body').append(context);
 
     $('#chat-contacts').hide();
   }
@@ -382,6 +386,8 @@ function showContactListContext(){
 
   let context = "";
 
+
+  // просто пример
   context += `<button class="list-item myContact" id=1 onClick=openContact(this.id)>{name}</button>`;
   context += `<button class="list-item myContact" id=2 onClick=openContact(this.id)>{name}</button>`;
   context += `<button class="list-item myContact" id=3 onClick=openContact(this.id)>{name}</button>`;
