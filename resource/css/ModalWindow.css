@@ -11,6 +11,10 @@
     background: #dcdcdc;
     border-top: 2px solid #00000090;
 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
     max-width: 40%;
 
     left: 50%;

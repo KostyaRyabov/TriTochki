@@ -2,6 +2,9 @@ var idOwner = -1;   // -1 === empty
 var myID = 0;
 var myName = "";
 
+// для выделения элементов списков или временных данных
+let selected = [];
+
 var profile_data = {};
 
 var params = window
@@ -18,7 +21,7 @@ var params = window
       {}
    );
 
-$(document).ready(function() {
+$(document).ready(function(){
   if(params["id"] > 0) showInfoBox();
 
   $('#textbox').autoHeight();
@@ -102,6 +105,35 @@ $(document).ready(function() {
       },150);
   });
 
+  $("body").on("click",".myContact",function(){
+    selected[0] = { name: $(this).parent().text().slice(0, -1), id: $(this).attr('id') };
+
+    let modal = `
+    <div id="warning-form" class="modal-window-wrapper">
+      <div class="block-screen modal-window-trigger" onclick="hideWarningMessage()"></div>
+      <div class="modal-window">
+        <span>Вы уверены, что хотите убрать из контактов ${selected[0].name}</span>
+        <div id="warning-box">
+        <button id='w-yes'>yes</button><button id='w-no'>no</button>
+      </div>
+    </div>`;
+  
+    $('body').append(modal);
+    $("#warning-form").hide();
+    showModalWindow('#warning-form');
+  })
+
+  $("body").on("click","#w-yes",function(){
+    // todo: удаление контакта {selected[0].id} у {$myID}
+
+    $(`.myContact#${selected[0].id}`).parent().slideUp(200,function(){$(this).remove()})
+    hideWarningMessage()
+  })
+
+  $("body").on("click","#w-no",function(){
+    hideWarningMessage()
+  })
+
   $("body").on("click","button.error-message",function(){
     $(this).fadeOut(300, function(){ 
       $(this).remove();
@@ -166,6 +198,7 @@ $(document).ready(function() {
               $("#chat-info-name").text(result.name);
               $("#chat-create-date").text(result.date);
               $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
+              $('#main').addClass('shiftDown');      // сдвиг содержимого вниз
               
               idOwner = result.owner;
               
@@ -220,6 +253,12 @@ $(document).on("click", ".kick-user", function(){
     }
   });
 });
+
+function hideWarningMessage(){
+  hideModalWindow('#warning-form', function(){
+    $('#warning-form').remove();
+  });
+}
 
 function showInfoBox(){
   if (!$("#btn-chat-about").length){
@@ -344,6 +383,7 @@ function showProfileContext(id){
 function showChatListContext(){
   hideInfoBox();
   $("#input-area").slideUp(200);
+  $('#main').removeClass('shiftDown');
   $("#tab-name").html('чаты');
 
   $('#main').fadeOut(200,function(){
@@ -382,67 +422,30 @@ function showChatListContext(){
 function showContactListContext(){
   hideInfoBox();
   $("#input-area").slideUp(200);
+  $('#main').removeClass('shiftDown');
   $("#tab-name").html('контакты');
 
   let context = "";
 
 
   // просто пример
-  context += `<button class="list-item myContact" id=1 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=2 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=3 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=4 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=5 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=6 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=21 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=21 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=23 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=24 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=25 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=26 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=31 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=32 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=33 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=34 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=35 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=36 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=41 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=42 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=43 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=44 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=45 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=46 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=51 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=52 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=53 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=54 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=55 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=56 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=61 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=62 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=63 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=64 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=65 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=66 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=71 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=72 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=73 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=74 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=75 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=76 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=81 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=82 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=83 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=84 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=85 onClick=openContact(this.id)>{name}</button>`;
-  context += `<button class="list-item myContact" id=86 onClick=openContact(this.id)>{name}</button>`;
+  context += `<li>{name}<span class="myContact" id=1>x</span></li>`;
+  context += `<li>{name}<span class="myContact" id=2>x</span></li>`;
+  context += `<li>{name}<span class="myContact" id=3>x</span></li>`;
+  context += `<li>{name}<span class="myContact" id=4>x</span></li>`;
+  context += `<li>{name}<span class="myContact" id=5>x</span></li>`;
+  context += `<li>{name}<span class="myContact" id=6>x</span></li>`;
+  context += `<li>{name}<span class="myContact" id=21>x</span></li>`;
+  context += `<li>{name}<span class="myContact" id=21>x</span></li>`;
+  context += `<li>{name}<span class="myContact" id=23>x</span></li>`;
+  context += `<li>{name}<span class="myContact" id=24>x</span></li>`;
 
   context = `
     <div id="contactSearch" class="search-field">
       <input type="search" placeholder="search..."></input>
       <button>поиск</button>
     </div>
-    <div class="list">${context}</div>`;
+    <ul>${context}</ul>`;
 
   $('#main').html(context);
 
@@ -464,7 +467,7 @@ function showContactListContext(){
       let context = "";
 
       $.each(result, function(id, name){
-        context += `<button class="list-item myContact" id=${id} onClick=openContact(this.id)>${name}</button>`;      // id .. this.id - для дальнейшего взаимодействия  (sel = .myContact#2)
+        context += `<button class="list-item myContact" id=${id} onClick=contactMenu(this.id)>${name}</button>`;      // id .. this.id - для дальнейшего взаимодействия  (sel = .myContact#2)
       });
 
       context = `
