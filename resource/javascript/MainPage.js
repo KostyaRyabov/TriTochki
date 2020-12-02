@@ -105,8 +105,8 @@ $(document).ready(function(){
       },150);
   });
 
-  $("body").on("click",".myContact",function(){
-    selected[0] = { name: $(this).parent().text().slice(0, -1), id: $(this).attr('id') };
+  $("body").on("click",".myContact-del",function(){
+    selected[0] = { name: $(this).prev().text(), id: $(this).parent().attr('id') };
 
     let modal = `
     <div id="warning-form" class="modal-window-wrapper">
@@ -429,16 +429,12 @@ function showContactListContext(){
 
 
   // просто пример
-  context += `<li>{name}<span class="myContact" id=1>x</span></li>`;
-  context += `<li>{name}<span class="myContact" id=2>x</span></li>`;
-  context += `<li>{name}<span class="myContact" id=3>x</span></li>`;
-  context += `<li>{name}<span class="myContact" id=4>x</span></li>`;
-  context += `<li>{name}<span class="myContact" id=5>x</span></li>`;
-  context += `<li>{name}<span class="myContact" id=6>x</span></li>`;
-  context += `<li>{name}<span class="myContact" id=21>x</span></li>`;
-  context += `<li>{name}<span class="myContact" id=21>x</span></li>`;
-  context += `<li>{name}<span class="myContact" id=23>x</span></li>`;
-  context += `<li>{name}<span class="myContact" id=24>x</span></li>`;
+  context += `<li class="myContact" id=1 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
+  context += `<li class="myContact" id=2 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
+  context += `<li class="myContact" id=3 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
+  context += `<li class="myContact" id=4 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
+  context += `<li class="myContact" id=5 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
+  context += `<li class="myContact" id=6 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
 
   context = `
     <div id="contactSearch" class="search-field">
@@ -467,7 +463,7 @@ function showContactListContext(){
       let context = "";
 
       $.each(result, function(id, name){
-        context += `<li>{name}<span class="myContact" id=${id}>x</span></li>`;      // id .. this.id - для дальнейшего взаимодействия  (sel = .myContact#2)
+        context += `<li class="myContact" id=${id} onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;      // id .. this.id - для дальнейшего взаимодействия  (sel = .myContact#2)
       });
 
       context = `

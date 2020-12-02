@@ -344,7 +344,7 @@ background-color: #eee;
 }
 
 /* Style the close button (span) */
-.myContact {
+.myContact-del {
 cursor: pointer;
 position: absolute;
 top: 50%;
@@ -353,7 +353,7 @@ padding: 12px 16px;
 transform: translate(0%, -50%);
 }
 
-.myContact:hover {background: #bbb;}
+.myContact-del:hover {background: rgb(216, 0, 0);}
 
 .list, ul {
     padding: 0;
