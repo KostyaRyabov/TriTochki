@@ -14,7 +14,32 @@ jobs:
       with:
         path: .
         name: project
-    
-    
-    
-    
+    - name: Variables
+        id: vars
+        run: |
+          echo «::set-output name=date::$(date +'%Y-%m-%d')»
+          echo «::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)»
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.vars.outputs.date }}-${{ steps.vars.outputs.sha8 }}
+        release_name: Release (version ${{ steps.vars.outputs.date }})
+        draft: false
+        prerelease: false
+    - name: artifact -> zip
+      uses: montudor/action-zip@v0.1.1
+      with:
+        args: zip -qq -r container.zip ./
+    - name: Upload to Release
+      id: upload_to_release
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./container.zip
+        asset_name: Release (version ${{ steps.vars.outputs.date }}).zip
+        asset_content_type: application/zip
