@@ -15,10 +15,10 @@ jobs:
         path: .
         name: project
     - name: Variables
-        id: vars
-        run: |
-          echo «::set-output name=date::$(date +'%Y-%m-%d')»
-          echo «::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)»
+      id: vars
+      run: |
+        echo «::set-output name=date::$(date +'%Y-%m-%d')»
+        echo «::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)»
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1.0.0
