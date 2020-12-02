@@ -467,15 +467,15 @@ function showContactListContext(){
       let context = "";
 
       $.each(result, function(id, name){
-        context += `<button class="list-item myContact" id=${id} onClick=contactMenu(this.id)>${name}</button>`;      // id .. this.id - для дальнейшего взаимодействия  (sel = .myContact#2)
+        context += `<li>{name}<span class="myContact" id=${id}>x</span></li>`;      // id .. this.id - для дальнейшего взаимодействия  (sel = .myContact#2)
       });
 
       context = `
-        <div id="contactSearch">
+        <div id="contactSearch" class="search-field">
           <input type="search" placeholder="search..."></input>
           <button>поиск</button>
         </div>
-        <div class="list">${context}</div>`;
+        <ul>${context}</ul>`;
 
       $('#main').html(context);
 
