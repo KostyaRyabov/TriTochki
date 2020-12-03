@@ -22,6 +22,7 @@ var params = window
    );
 
 $(document).ready(function(){
+  $('html').hide().fadeIn(200);
   if(params["id"] > 0) showInfoBox();
 
   $('#textbox').autoHeight();
@@ -444,7 +445,7 @@ function showContactListContext(){
     </div>
     <table class='list2'><tbody>${context}</tbody></table>`;
 
-  $('#main').html(context);
+  $('#main').html(context).hide().fadeIn(200);
 
   /*
   $('#main').fadeOut(200,function(){
