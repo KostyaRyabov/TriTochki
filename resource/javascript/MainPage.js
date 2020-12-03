@@ -447,7 +447,10 @@ function showContactListContext(){
       <input type="search" placeholder="search..."></input>
       <button>поиск</button>
     </div>
-    <table class='list2'><tbody>${context}</tbody></table>`;
+    <table class='list2'>
+      <thead></thead>
+      <tbody>${context}</tbody>
+    </table>`;
 
   $('#main').html(context).hide().fadeIn(200);
 
@@ -469,7 +472,7 @@ function showContactListContext(){
       let context = "";
 
       $.each(result, function(id, name){
-        context += `<li class="myContact" id=${id} onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;      // id .. this.id - для дальнейшего взаимодействия  (sel = .myContact#2)
+        context += `<tr class="myContact" id=${id}><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>    // id - для дальнейшего взаимодействия  (sel = .myContact#2)
       });
 
       context = `
@@ -477,9 +480,9 @@ function showContactListContext(){
           <input type="search" placeholder="search..."></input>
           <button>поиск</button>
         </div>
-        <ul>${context}</ul>`;
+        <table class='list2'><tbody>${context}</tbody></table>`;
 
-      $('#main').html(context);
+      $('#main').html(context).hide().fadeIn(200);
 
       // если result = false -> $(this).html('');
       //todo: завершение анимации загрузки

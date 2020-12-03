@@ -317,7 +317,15 @@ hr{
 }
 
 .search-field{
-    background: #8c8c8c;
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.search-field > input{
+    width: 100%;
 }
 
 /* Style the list items */
