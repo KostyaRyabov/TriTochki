@@ -141,6 +141,10 @@ $(document).ready(function(){
     hideWarningMessage()
   })
 
+  $("body").on("click",".myContact-name",function(){
+    showProfileContext($(this).parent().attr('id'))
+  })
+
   $("body").on("click","button.error-message",function(){
     $(this).fadeOut(300, function(){ 
       $(this).remove();
@@ -436,7 +440,7 @@ function showContactListContext(){
 
 
   // просто пример
-  context += `<tr class="myContact" id=1 onClick='showProfileContext(this.id)'><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>`;
+  context += `<tr class="myContact" id=1><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>`;
   
   context = `
     <div id="contactSearch" class="search-field">
