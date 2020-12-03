@@ -126,8 +126,14 @@ $(document).ready(function(){
   $("body").on("click","#w-yes",function(){
     // todo: удаление контакта {selected[0].id} у {$myID}
 
-    $(`.myContact#${selected[0].id}`).parent().slideUp(200,function(){$(this).remove()})
+    $(`.myContact#${selected[0].id}`).slideUp(200,function(){$(this).remove()})
     hideWarningMessage()
+
+    if ($('.list2 > tbody').empty() && !$('.list2 + #empty-list-message').length){
+      let txt = 'empty'
+      $('.list2').after(`<span id='empty-list-message'>${txt}</span>`)
+      $('#empty-list-message').hide().show(300)
+    }
   })
 
   $("body").on("click","#w-no",function(){
@@ -429,19 +435,14 @@ function showContactListContext(){
 
 
   // просто пример
-  context += `<li class="myContact" id=1 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
-  context += `<li class="myContact" id=2 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
-  context += `<li class="myContact" id=3 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
-  context += `<li class="myContact" id=4 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
-  context += `<li class="myContact" id=5 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
-  context += `<li class="myContact" id=6 onClick='showProfileContext(this.id)'><span class='myContact-name'>{name}</span><span class="myContact-del">x</span></li>`;
-
+  context += `<tr class="myContact" id=1 onClick='showProfileContext(this.id)'><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>`;
+  
   context = `
     <div id="contactSearch" class="search-field">
       <input type="search" placeholder="search..."></input>
       <button>поиск</button>
     </div>
-    <ul>${context}</ul>`;
+    <table class='list2'><tbody>${context}</tbody></table>`;
 
   $('#main').html(context);
 
