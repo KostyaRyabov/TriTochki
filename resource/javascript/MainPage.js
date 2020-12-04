@@ -430,41 +430,41 @@ function showProfileContext(id){
 function showChatListContext(){
   hideInfoBox();
   $("#input-area").slideUp(200);
-  $('#main').removeClass('shiftDown');
   $("#tab-name").html('чаты');
-
   $('#main').fadeOut(200,function(){
+    $(this).removeClass('shiftDown').html('');
+
     //todo: запуск анимации загрузки
-  });
 
-  //запрос списка чатов пользователя из БД
-  $.ajax({
-    method: "GET",
-    url: "/resource/action/user_chat_list.php",
-    success: function(result){ // возвращает объект json
-      result = JSON.parse(result);
-      
-      let context = "";
+    //запрос списка чатов пользователя из БД
+    $.ajax({
+      method: "GET",
+      url: "/resource/action/user_chat_list.php",
+      success: function(result){ // возвращает объект json
+        result = JSON.parse(result);
+        
+        let context = "";
 
-      $.each(result, function(id, name){
-        context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="myChat-del">x</td></tr>`;
-      });
-      
-      context = `
-        <div id="contactSearch" class="search-field">
-          <input type="search" placeholder="search..."></input>
-          <button>поиск</button>
-        </div>
-        <table class='list2'>
-          <thead></thead>
-          <tbody>${context}</tbody>
-        </table>`;
+        $.each(result, function(id, name){
+          context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="myChat-del">x</td></tr>`;
+        });
+        
+        context = `
+          <div id="contactSearch" class="search-field">
+            <input type="search" placeholder="search..."></input>
+            <button>поиск</button>
+          </div>
+          <table class='list2'>
+            <thead></thead>
+            <tbody>${context}</tbody>
+          </table>`;
 
-      $('#main').html(context).hide().fadeIn(200);
+        $('#main').html(context).hide().fadeIn(200);
 
-    // если result = false -> $(this).html('');
-    //todo: завершение анимации загрузки
-    }
+      // если result = false -> $(this).html('');
+      //todo: завершение анимации загрузки
+      }
+    });
   });
 }
 
@@ -472,62 +472,63 @@ function showChatListContext(){
 function showContactListContext(){
   hideInfoBox();
   $("#input-area").slideUp(200);
-  $('#main').removeClass('shiftDown');
   $("#tab-name").html('контакты');
-
-  let context = "";
-
-
-  // просто пример
-  context += `<tr class="myContact" id=1><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>`;
-  
-  context = `
-    <div id="contactSearch" class="search-field">
-      <input type="search" placeholder="search..."></input>
-      <button>поиск</button>
-    </div>
-    <table class='list2'>
-      <thead></thead>
-      <tbody>${context}</tbody>
-    </table>`;
-
-  $('#main').html(context).hide().fadeIn(200);
-
-  /*
   $('#main').fadeOut(200,function(){
-    //todo: запуск анимации загрузки
+    $(this).removeClass('shiftDown').html('')
+
+    let context = "";
+
+    // просто пример
+    context += `<tr class="myContact" id=1><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>`;
+    
+    context = `
+      <div id="contactSearch" class="search-field">
+        <input type="search" placeholder="search..."></input>
+        <button>поиск</button>
+      </div>
+      <table class='list2'>
+        <thead></thead>
+        <tbody>${context}</tbody>
+      </table>`;
+
+    $('#main').html(context).hide().fadeIn(200);
+
+    /*
+    $('#main').fadeOut(200,function(){
+      //todo: запуск анимации загрузки
+    });
+
+    //запрос списка контактов пользователя из БД
+    $.ajax({
+      method: "GET",
+      url: "/resource/action/user_contact_list.php",   // todo: создать файл
+      data: {
+        "id": params["id"]
+      },
+      success: function(result){ // возвращает объект json
+        result = JSON.parse(result);
+
+        let context = "";
+
+        $.each(result, function(id, name){
+          context += `<tr class="myContact" id=${id}><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>    // id - для дальнейшего взаимодействия  (sel = .myContact#2)
+        });
+
+        context = `
+          <div id="contactSearch" class="search-field">
+            <input type="search" placeholder="search..."></input>
+            <button>поиск</button>
+          </div>
+          <table class='list2'><tbody>${context}</tbody></table>`;
+
+        $('#main').html(context).hide().fadeIn(200);
+
+        // если result = false -> $(this).html('');
+        //todo: завершение анимации загрузки
+      }
+    });
+    */
   });
-
-  //запрос списка контактов пользователя из БД
-  $.ajax({
-    method: "GET",
-    url: "/resource/action/user_contact_list.php",   // todo: создать файл
-    data: {
-      "id": params["id"]
-    },
-    success: function(result){ // возвращает объект json
-      result = JSON.parse(result);
-
-      let context = "";
-
-      $.each(result, function(id, name){
-        context += `<tr class="myContact" id=${id}><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>    // id - для дальнейшего взаимодействия  (sel = .myContact#2)
-      });
-
-      context = `
-        <div id="contactSearch" class="search-field">
-          <input type="search" placeholder="search..."></input>
-          <button>поиск</button>
-        </div>
-        <table class='list2'><tbody>${context}</tbody></table>`;
-
-      $('#main').html(context).hide().fadeIn(200);
-
-      // если result = false -> $(this).html('');
-      //todo: завершение анимации загрузки
-    }
-  });
-  */
 }
 
 function openChat(id){
