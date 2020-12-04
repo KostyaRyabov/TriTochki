@@ -328,8 +328,7 @@ hr{
     width: 100%;
 }
 
-/* Style the list items */
-.myContact {
+.myContact, .myChat {
     border: 1px solid #ddd;
     margin-top: -1px; /* Prevent double borders */
     background-color: #f6f6f6;
@@ -340,19 +339,19 @@ hr{
     position: relative;
 }
 
-.myContact > td{
+.myContact > td, .myChat > td{
     padding: 12px;
 }
 
-.myContact-name{ width: 100% }
-.myContact-name:hover { background-color: #eee }
+.myContact-name, .myChat-name{ width: 100% }
+.myContact-name:hover, .myChat-name:hover { background-color: #eee }
 
-.myContact-del {
+.myContact-del, .myChat-del {
     text-align: center;
     cursor: pointer;
 }
 
-.myContact-del:hover {background: rgb(216, 0, 0);}
+.myContact-del:hover, .myChat-del:hover {background: rgb(216, 0, 0);}
 
 .list, .list2{
     padding: 0;

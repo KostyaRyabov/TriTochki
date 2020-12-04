@@ -22,7 +22,7 @@ var params = window
    );
 
 $(document).ready(function(){
-  $('html').hide().fadeIn(200);
+  $('body').hide().fadeIn(200);
   if(params["id"] > 0) showInfoBox();
 
   $('#textbox').autoHeight();
@@ -115,7 +115,25 @@ $(document).ready(function(){
       <div class="modal-window">
         <span>Вы уверены, что хотите убрать из контактов ${selected[0].name}</span>
         <div id="warning-box">
-        <button id='w-yes'>yes</button><button id='w-no'>no</button>
+        <button id='w-yes'>yes</button> <button id='w-no'>no</button>
+      </div>
+    </div>`;
+  
+    $('body').append(modal);
+    $("#warning-form").hide();
+    showModalWindow('#warning-form');
+  })
+
+  $("body").on("click",".myChat-del",function(){
+    selected[0] = { name: $(this).prev().text(), id: $(this).parent().attr('id') };
+
+    let modal = `
+    <div id="warning-form" class="modal-window-wrapper">
+      <div class="block-screen modal-window-trigger" onclick="hideWarningMessage()"></div>
+      <div class="modal-window">
+        <span>Вы уверены, что хотите убрать чат ${selected[0].name}</span>
+        <div id="warning-box">
+        <button id='w-yes'>yes</button> <button id='w-no'>no</button>
       </div>
     </div>`;
   
@@ -125,9 +143,18 @@ $(document).ready(function(){
   })
 
   $("body").on("click","#w-yes",function(){
-    // todo: удаление контакта {selected[0].id} у {$myID}
+    $(`.myContact#${selected[0].id}`).slideUp(200,function(){
+      $(this).remove();
 
-    $(`.myContact#${selected[0].id}`).slideUp(200,function(){$(this).remove()})
+      // todo: удаление контакта {selected[0].id} у {$myID}
+    })
+
+    $(`.myChat#${selected[0].id}`).slideUp(200,function(){
+      $(this).remove();
+
+      // todo: удаление чата {selected[0].id} у {$myID}
+    })
+
     hideWarningMessage()
 
     if ($('.list2 > tbody').empty() && !$('.list2 + #empty-list-message').length){
@@ -143,6 +170,10 @@ $(document).ready(function(){
 
   $("body").on("click",".myContact-name",function(){
     showProfileContext($(this).parent().attr('id'))
+  })
+
+  $("body").on("click",".myChat-name",function(){
+    showChatContext($(this).parent().attr('id'))
   })
 
   $("body").on("click","button.error-message",function(){
@@ -189,55 +220,9 @@ $(document).ready(function(){
         
         $("#show-my-profile").attr("onclick", "showProfileContext(" + result.id + ")");
 
-        
-
         // Если указан параметр id в url, то получаем чат и все сопутствующие данные
         if(params["id"] > 0){
-          $.ajax({
-            method: "GET",
-            url: "/resource/action/get_chat.php",
-            data: {
-              "id": params["id"]
-            },
-            success: function(result){ // возвращает объект json
-              result = JSON.parse(result);
-            
-              let first_unread = 0; // id первого попавшегося непрочитанного сообщения
-            
-              // Вывод информации о чате
-              $("#tab-name").text(result.name);
-              $("#chat-info-name").text(result.name);
-              $("#chat-create-date").text(result.date);
-              $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
-              $('#main').addClass('shiftDown');      // сдвиг содержимого вниз
-              
-              idOwner = result.owner;
-              
-              $.each(result.users, function(id, value){
-                let el = `<button class='list-item chatContact ${(id == idOwner)?"icon-crown":""}' onClick='showProfileContext(${id})'>${value}</button>`;
-
-                if (myID == idOwner && id != myID){
-                  el = `<div>${el + `<button class="icon-cancel kick-user" data-id="${id}"></button>`}</div>`;
-                }
-
-                $("#chat-info-contact-list").append(el);
-              });
-            
-              // Вывод сообщений
-
-              $.each(result.messages, function(id, value){
-                $("#main").append(genMessage(id, value["user"], result.users[value["user"]], value["text"], value["date"]));
-                if(first_unread == 0 && value["is_read"] == 0) first_unread = id;
-              });
-            
-              // Если есть непрочитанное сообщение, скроллим до него
-              if(first_unread){
-                $('#wrapper').animate({
-                  scrollTop: $('#message' + first_unread).offset().top
-                }, 300);
-              }
-            }
-          });
+          showChatContext(params["id"]);
         } else{ // Если нет параметра для чата, выводим "главную" страницу
           hideInfoBox();
           $("#tab-name").text("Главная страница");
@@ -247,6 +232,57 @@ $(document).ready(function(){
     }
   });
 });
+
+function showChatContext(id){
+  $('#main').fadeOut(100,function(){
+  
+    $.ajax({
+      method: "GET",
+      url: "/resource/action/get_chat.php",
+      data: {
+        "id": id
+      },
+      success: function(result){ // возвращает объект json
+        result = JSON.parse(result);
+      
+        let first_unread = 0; // id первого попавшегося непрочитанного сообщения
+      
+        // Вывод информации о чате
+        $("#tab-name").text(result.name);
+        $("#chat-info-name").text(result.name);
+        $("#chat-create-date").text(result.date);
+        $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
+        $('#main').addClass('shiftDown').html('').fadeIn(300);
+        
+        idOwner = result.owner;
+        
+        $.each(result.users, function(id, value){
+          let el = `<button class='list-item chatContact ${(id == idOwner)?"icon-crown":""}' onClick='showProfileContext(${id})'>${value}</button>`;
+
+          if (myID == idOwner && id != myID){
+            el = `<div>${el + `<button class="icon-cancel kick-user" data-id="${id}"></button>`}</div>`;
+          }
+
+          $("#chat-info-contact-list").append(el);
+        });
+      
+        // Вывод сообщений
+
+        $.each(result.messages, function(id, value){
+          $("#main").append(genMessage(id, value["user"], result.users[value["user"]], value["text"], value["date"]));
+          if(first_unread == 0 && value["is_read"] == 0) first_unread = id;
+        });
+      
+        // Если есть непрочитанное сообщение, скроллим до него
+        if(first_unread){
+          $('#wrapper').animate({
+            scrollTop: $('#message' + first_unread).offset().top
+          }, 300);
+        }
+      }
+    });
+  })
+}
 
 // Удалить пользователя из текущего чата (для создателя чата)
 $(document).on("click", ".kick-user", function(){
@@ -411,17 +447,20 @@ function showChatListContext(){
       let context = "";
 
       $.each(result, function(id, name){
-        context += `<button class="list-item myChat" id="${id}" onClick=openChat(this.id)>${name}</button>`;      // id .. this.id - для дальнейшего взаимодействия  (sel = .myChat#2)
+        context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="myChat-del">x</td></tr>`;
       });
       
       context = `
-        <div id="chatSearch">
+        <div id="contactSearch" class="search-field">
           <input type="search" placeholder="search..."></input>
           <button>поиск</button>
         </div>
-        <div class="list">${context}</div>`;
+        <table class='list2'>
+          <thead></thead>
+          <tbody>${context}</tbody>
+        </table>`;
 
-      $('#main').html(context);
+      $('#main').html(context).hide().fadeIn(200);
 
     // если result = false -> $(this).html('');
     //todo: завершение анимации загрузки
