@@ -1,8 +1,6 @@
 <?php
-	// Подключение базы и файла с функциями
-	include($_SERVER["DOCUMENT_ROOT"]."/db.php");
-	include($_SERVER["DOCUMENT_ROOT"]."/functions.php");
-	include($_SERVER["DOCUMENT_ROOT"]."/JWT.php");
+	// Подключение ядра
+	include($_SERVER["DOCUMENT_ROOT"]."/core.php");
 	
 	use JWT\JWT;
 	
