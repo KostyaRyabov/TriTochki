@@ -1,4 +1,6 @@
 <?php
+	use JWT\JWT;
+	
 	// Обработка переданного значения для предупреждения уязвимостей
 	function treat($var){
 		$var = preg_replace("/script/i", "", $var); // Любое упоминание о кастомном js-скрипте агрессивно удаляется
@@ -17,4 +19,16 @@
 		$tm = explode(":", $dtm[1]);
 		
 		return $dt[2].".".$dt[1].".".$dt[0]." в ".$tm[0].":".$tm[1];
+	}
+	
+	// Получение пользовательских данных из токена
+	function userData(){
+		$jwt = strval(trim($_COOKIE["token"]));
+		if(!strlen($jwt)) return false; // Проверка существования токена
+		
+		$user_data = JWT::decode($jwt, JWT::$public_key, array('RS256'));
+		$user_data = (array)$user_data;
+		if(!$user_data["id"]) return false; // Проверка на получение пользовательских данных
+		
+		return $user_data;
 	}
