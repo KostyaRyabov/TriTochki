@@ -1,0 +1,23 @@
+name: update Docs
+
+on: [push, pull_request, workflow_dispatch]
+  
+jobs:
+  build:
+    name: update Docs
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Upload
+      uses: actions/upload-artifact@v1
+      with:
+        path: .
+        name: source code
+    - name: Doxygen Action
+      uses: mattnotmitt/doxygen-action@v1.1.0
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/html

@@ -1,4 +1,4 @@
-name: ci
+name: make Release
 
 on:
   pull_request:
@@ -8,16 +8,11 @@ on:
   
 jobs:
   build:
-    name: deploy
+    name: make Release
     runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v1
-    - name: Upload
-      uses: actions/upload-artifact@v1
-      with:
-        path: .
-        name: source code
     - name: Variables
       id: vars
       run: |
@@ -33,12 +28,10 @@ jobs:
         release_name: Release ${{ steps.vars.outputs.date }}
         draft: false
         prerelease: false
-    - name: Doxygen Action
-      uses: mattnotmitt/doxygen-action@v1.1.0
     - name: gen zip
       uses: montudor/action-zip@v0.1.1
       with:
-        args: zip -qq -r container.zip ./docs/html/
+        args: zip -qq -r container.zip ./
     - name: Upload to Release
       id: upload_to_release
       uses: actions/upload-release-asset@v1.0.1
@@ -47,5 +40,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./container.zip
-        asset_name: DOC-HTML(${{ steps.vars.outputs.date }}).zip
+        asset_name: Release-${{ steps.vars.outputs.date }}.zip
         asset_content_type: application/zip
