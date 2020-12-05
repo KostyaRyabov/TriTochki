@@ -270,7 +270,7 @@ function showChatContext(id){
         // Вывод сообщений
 
         $.each(result.messages, function(id, value){
-          $("#main").append(genMessage(id, value["user"], result.users[value["user"]], value["text"], value["date"]));
+          $("#main").append(genMessage(id, value["user"], result.users[value["user"]], value["text"].replace(/\n/g, '<br>'), value["date"]));
           if(first_unread == 0 && value["is_read"] == 0) first_unread = id;
         });
       
@@ -595,7 +595,7 @@ function sendMessage() {
           },500);
           
           // добавление сообщения в html
-
+          
           $('#main').append(genMessage(result.message_id, myID, myName, $('#textbox').val().replace(/\n/g, '<br>'), result.date)).children(':last').hide().slideDown(500);
           $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+$("div#wrapper")[0].scrollHeight},500);
           
