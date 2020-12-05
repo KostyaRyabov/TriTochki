@@ -1,4 +1,5 @@
 var idOwner = -1;   // -1 === empty
+var idChat = -1;   // -1 === empty
 var myID = 0;
 var myName = "";
 
@@ -23,9 +24,6 @@ var params = window
 
 $(document).ready(function(){
   $('body').hide().fadeIn(200);
-  if(params["id"] > 0) showInfoBox();
-
-  $('#textbox').autoHeight();
 
   $("body").on("click","button.input-edit",function(){
     $(this).hide(150, function(){
@@ -182,7 +180,9 @@ $(document).ready(function(){
     });
   });
 
-  $('#textbox').on("input", function(){
+  $('body').on("input",'#textbox', function(){
+    $(this).css({ 'height': 'auto'}).height($(this)[0].scrollHeight)
+
     if ($(this).val()){
       if ($("button#send-message").is(":hidden")){
         $("button#send-message").show(50);
@@ -224,9 +224,7 @@ $(document).ready(function(){
         if(params["id"] > 0){
           showChatContext(params["id"]);
         } else{ // Если нет параметра для чата, выводим "главную" страницу
-          hideInfoBox();
           $("#tab-name").text("Главная страница");
-          $("#textbox").remove();
         }
       }
     }
@@ -248,11 +246,14 @@ function showChatContext(id){
         let first_unread = 0; // id первого попавшегося непрочитанного сообщения
       
         // Вывод информации о чате
-        $("#tab-name").text(result.name);
+        
+        idChat = id;
+        showChatInfo(result.name);
         $("#chat-info-name").text(result.name);
         $("#chat-create-date").text(result.date);
         $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
         $('#main').addClass('shiftDown').html('').fadeIn(300);
+        showTextBox();
         
         idOwner = result.owner;
         
@@ -307,12 +308,9 @@ function hideWarningMessage(){
   });
 }
 
-function showInfoBox(){
-  if (!$("#btn-chat-about").length){
-    let obj = $(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick="showModalWindow('#chat-contacts')">?</button>`).hide();
-    $('.tab').append(obj);
-    obj.show(200);
-  }
+function showChatInfo(chat_name){
+  $('.tab').hide().append(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick="showModalWindow('#chat-contacts')">?</button>`).fadeIn(200);
+  $('#tag-name').text(chat_name);
 
   if (!$("modal-window-wrapper").length){
     let context = `
@@ -342,7 +340,7 @@ function showInfoBox(){
   }
 }
 
-function hideInfoBox(){
+function hideChatInfo(){
   if ($("#btn-chat-about").length){
     $("#btn-chat-about").hide(200,function(){
       $(this).remove();
@@ -428,7 +426,8 @@ function showProfileContext(id){
 
 // отображение списка чатов пользователя (их id и названия)
 function showChatListContext(){
-  hideInfoBox();
+  hideChatInfo();
+  hideTextBox();
   $("#input-area").slideUp(200);
   $("#tab-name").html('чаты');
   $('#main').fadeOut(200,function(){
@@ -470,7 +469,8 @@ function showChatListContext(){
 
 // отображение списка контактов пользователя (их id и названия)
 function showContactListContext(){
-  hideInfoBox();
+  hideChatInfo();
+  hideTextBox();
   $("#input-area").slideUp(200);
   $("#tab-name").html('контакты');
   $('#main').fadeOut(200,function(){
@@ -531,15 +531,6 @@ function showContactListContext(){
   });
 }
 
-function openChat(id){
-  $("#input-area").slideDown(200);
-  $("#btn-chat-about").show(200);
-  
-  // todo: загрузка данных чата в блок информации
-  
-  $("#tab-name").html('мои контакты');
-}
-
 function genMessage(id_message, author_id, author_name, text, date){
   let itsMine = (author_id == myID);
 
@@ -553,6 +544,23 @@ function genMessage(id_message, author_id, author_name, text, date){
   </div>`;
 }
 
+function showTextBox(){
+  $('table > tbody').append(`
+    <tr id="footer">
+      <td>
+        <div id="input-area">
+            <textarea id="textbox"></textarea>
+            <button id="send-message" class="Idle icon-paper-plane" onclick="sendMessage()"/>
+        </div>
+      </td>
+    </tr>`);
+  $('#footer').hide().slideDown(200);
+}
+
+function hideTextBox(){
+  $('#footer').slideUp(200,function(){$(this).remove()})
+}
+
 function sendMessage() {
   $('textarea#textbox').prop("disabled", true );
   $("button#send-message").addClass("Verification").removeClass("Idle icon-paper-plane");
@@ -561,7 +569,7 @@ function sendMessage() {
       method: "POST",
       url: "/resource/action/send_message.php",
       data: {
-        "chat": params["id"],
+        "chat": idChat,
         "text": $("#textbox").val()
       },
       // result возвращает JSON объект. Если с ошибкой, то присутствует result.error, иначе объект с ид сообщения и датой
@@ -588,7 +596,7 @@ function sendMessage() {
           
           // добавление сообщения в html
 
-          msg = $('#main').append(genMessage(result.message_id, myID, myName, $('#textbox').val(), result.date)).children(':last').hide().slideDown(500);
+          $('#main').append(genMessage(result.message_id, myID, myName, $('#textbox').val().replace(/\n/g, '<br>'), result.date)).children(':last').hide().slideDown(500);
           $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+$("div#wrapper")[0].scrollHeight},500);
           
           $('#textbox').val('').prop("disabled", false).animate({height:'38px'},200);
@@ -608,40 +616,4 @@ function sendMessage() {
         }
       }
   });
-  
-  // код ниже просто для первичного представления         !!! закоментить при раскоменчивании верхнего !!!
-
-  /*setTimeout(function() {
-    $("button#send-message").removeClass("Verification");
-
-    if (true){
-      $("button#send-message").addClass("Valid");
-      setTimeout(function() {
-        $("button#send-message").removeClass("Valid").addClass("Idle");
-
-        if ($.trim($('#textbox').val())){
-          if ($("button#send-message").is(":hidden")){
-            $("button#send-message").show(50);
-          }
-        }else{
-          if (!$("button#send-message").is(":hidden")){
-            $("button#send-message").hide(100);
-          }
-        }
-      },500)
-      
-      // добавление сообщения в html
-
-      msg = $('#main').append(genMessage("message-id-in-bd","", $('#textbox').html(),"date")).children(':last').hide().slideDown(500);
-      $("div#wrapper").animate({scrollTop:$("div#wrapper")[0].scrollHeight+$("div#wrapper")[0].scrollHeight},500);
-      
-      $('#textbox').val('').prop("disabled", false).animate({height:'38px'},200);
-    }else{
-      $("button#send-message").addClass("Invalid");
-      setTimeout(function() {
-        $("button#send-message").removeClass("Invalid").addClass("Idle");
-        $('#textbox').prop("disabled", false);
-      },500)
-    }
-  }, 2000);*/
 }

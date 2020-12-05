@@ -64,7 +64,7 @@ html *{
     font-family: 'Balsamiq Sans', serif !important;
 }
 
-#header, .footer, #main{
+#header, #footer, #main{
     width: 30em;
     min-width: 24em;
 }
@@ -164,10 +164,6 @@ html *{
 	
 .btn:active, .Idle:hover:active{
     transform: scale(1.05, 1.05);
-}
-
-#btn-chat-about{
-    display: none;
 }
 
 #send-message{
