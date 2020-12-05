@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['genmessage_69',['genMessage',['../_main_page_8js.html#a9bd19a5d99e2ee1ff6699b89b4423a17',1,'MainPage.js']]],
-  ['get_5fchat_2ephp_70',['get_chat.php',['../get__chat_8php.html',1,'']]],
-  ['get_5fuser_2ephp_71',['get_user.php',['../get__user_8php.html',1,'']]],
-  ['gn_72',['gn',['../jquery_8min_8js.html#a52b2392dd08654e3e724f72921390090',1,'jquery.min.js']]],
-  ['gt_73',['gt',['../jquery_8min_8js.html#a945198e4eecf21fb691da06b424939f2',1,'gt():&#160;jquery.min.js'],['../jquery_8min_8js.html#a12babd4a9443b8d03a4fd9ec65108bc8',1,'gt(e):&#160;jquery.min.js']]]
+  ['idchat_54',['idChat',['../_main_page_8js.html#a2d64434a6759a71f0e4044ca4a3c2460',1,'MainPage.js']]],
+  ['idowner_55',['idOwner',['../_main_page_8js.html#a8fc444d801e71503090c8fd6835603a0',1,'MainPage.js']]],
+  ['init_56',['init',['../_main_page_8js.html#af8dc73726eb0578fe44fb98cd2319445',1,'MainPage.js']]],
+  ['inputcancel_57',['inputCancel',['../group__edit_param.html#gad62a313a184ba2a24e3f53efe3d212c7',1,'MainPage.js']]],
+  ['inputsubmit_58',['inputSubmit',['../group__edit_param.html#ga794111d584646fa77074a5e111d622fb',1,'MainPage.js']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['b_40',['b',['../jquery_8min_8js.html#ac50ac660762310348a84d5558c651020',1,'jquery.min.js']]],
-  ['bn_41',['bn',['../jquery_8min_8js.html#ac1a6899002e156376de301d5f5fa36d8',1,'jquery.min.js']]],
-  ['bt_42',['bt',['../jquery_8min_8js.html#aa0082733b0e56ee7ac500fefc279209c',1,'bt():&#160;jquery.min.js'],['../jquery_8min_8js.html#aeec6571ee1c60391b28d2ea93cbd6f40',1,'bt(e, t):&#160;jquery.min.js'],['../jquery_8min_8js.html#accd9245aaf1f670a19485435e862749b',1,'Bt(e):&#160;jquery.min.js']]]
+  ['deletecancel_39',['deleteCancel',['../group__del_contact.html#gacf06200188e48b24254d27f35ff439ca',1,'MainPage.js']]],
+  ['deleteselecteditem_40',['deleteSelectedItem',['../group__del_contact.html#gab52511aeeef8cb82f3f4de3f11b0f0ea',1,'MainPage.js']]],
+  ['deletesubmit_41',['deleteSubmit',['../group__del_contact.html#ga17456d63eee715d523e70058d94824a3',1,'MainPage.js']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['cn_277',['Cn',['../jquery_8min_8js.html#ab832fcb3f80f807f0b65d1e3b4904de8',1,'Cn():&#160;jquery.min.js'],['../jquery_8min_8js.html#a43c2bda2537661fb64e62fdfdcea1560',1,'cn():&#160;jquery.min.js']]],
-  ['contains_278',['contains',['../jquery_8min_8js.html#a17a22ba691b553d9b1678234f35338ec',1,'jquery.min.js']]]
+  ['myid_169',['myID',['../_main_page_8js.html#a69432bc9971d68924bdcfd41bfc45220',1,'MainPage.js']]],
+  ['myname_170',['myName',['../_main_page_8js.html#a4ac3726556dd44946b4eef16fdc7637e',1,'MainPage.js']]]
 ];

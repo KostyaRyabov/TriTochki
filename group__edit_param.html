@@ -180,7 +180,7 @@ $(document).ready(function(){initNavTree('group__edit_param.html',''); initResiz
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    input_div.append(btn);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    btn.show(150);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span>($this.parent().parent().<a class="code" href="jquery_8min_8js.html#a69c08fa54182d9901222ec75859626f8">attr</a>(<span class="stringliteral">&quot;id&quot;</span>) == <span class="stringliteral">&quot;profile-box&quot;</span>){</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span>($this.parent().parent().attr(<span class="stringliteral">&quot;id&quot;</span>) == <span class="stringliteral">&quot;profile-box&quot;</span>){</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      $.ajax({</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        method: <span class="stringliteral">&quot;POST&quot;</span>,</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        url: <span class="stringliteral">&quot;/resource/action/change_user_info.php&quot;</span>,</div>
@@ -202,12 +202,12 @@ $(document).ready(function(){initNavTree('group__edit_param.html',''); initResiz
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        url: <span class="stringliteral">&quot;/resource/action/change_chat_title.php&quot;</span>,</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        data: {</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;          <span class="stringliteral">&quot;id&quot;</span>: <a class="code" href="_main_page_8js.html#aede1877627e25fe927c69fadb0fabfdd">params</a>[<span class="stringliteral">&quot;id&quot;</span>],</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;          <span class="stringliteral">&quot;name&quot;</span>: $(<span class="stringliteral">&quot;#chat-info-name&quot;</span>).<a class="code" href="jquery_8min_8js.html#a854119a448e4d7458c60a3f890333d5e">text</a>()</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;          <span class="stringliteral">&quot;name&quot;</span>: $(<span class="stringliteral">&quot;#chat-info-name&quot;</span>).text()</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        },</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        success: <span class="keyword">function</span>(result){</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;          <span class="keywordflow">if</span>(result.length &gt; 1) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;          </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;          $(<span class="stringliteral">&quot;#tab-name&quot;</span>).<a class="code" href="jquery_8min_8js.html#a854119a448e4d7458c60a3f890333d5e">text</a>($(<span class="stringliteral">&quot;#chat-info-name&quot;</span>).text());</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;          $(<span class="stringliteral">&quot;#tab-name&quot;</span>).text($(<span class="stringliteral">&quot;#chat-info-name&quot;</span>).text());</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        }</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      });</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
@@ -248,13 +248,11 @@ $(document).ready(function(){initNavTree('group__edit_param.html',''); initResiz
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="a_main_page_8js_html_a3fe117079bfb750a3456b64ea285da78"><div class="ttname"><a href="_main_page_8js.html#a3fe117079bfb750a3456b64ea285da78">profile_data</a></div><div class="ttdeci">var profile_data</div><div class="ttdoc">Структура контакта</div><div class="ttdef"><b>Definition:</b> MainPage.js:23</div></div>
-<div class="ttc" id="ajquery_8min_8js_html_a854119a448e4d7458c60a3f890333d5e"><div class="ttname"><a href="jquery_8min_8js.html#a854119a448e4d7458c60a3f890333d5e">text</a></div><div class="ttdeci">i i st b b b b b text</div><div class="ttdef"><b>Definition:</b> jquery.min.js:4</div></div>
 <div class="ttc" id="a_main_page_8js_html_aede1877627e25fe927c69fadb0fabfdd"><div class="ttname"><a href="_main_page_8js.html#aede1877627e25fe927c69fadb0fabfdd">params</a></div><div class="ttdeci">var params</div><div class="ttdoc">GET-параметры</div><div class="ttdef"><b>Definition:</b> MainPage.js:26</div></div>
-<div class="ttc" id="ajquery_8min_8js_html_a69c08fa54182d9901222ec75859626f8"><div class="ttname"><a href="jquery_8min_8js.html#a69c08fa54182d9901222ec75859626f8">attr</a></div><div class="ttdeci">i i st attr</div><div class="ttdef"><b>Definition:</b> jquery.min.js:4</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Документация по TriTochki. Последние изменения: Сб 5 Дек 2020 21:06:14. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Сб 5 Дек 2020 21:25:19. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

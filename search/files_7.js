@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['send_5fmessage_2ephp_176',['send_message.php',['../send__message_8php.html',1,'']]]
+  ['user_5fchat_5flist_2ephp_104',['user_chat_list.php',['../user__chat__list_8php.html',1,'']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['an_179',['an',['../jquery_8min_8js.html#ada4b4d9ce9b76d68aeaf886e5325561f',1,'jquery.min.js']]],
-  ['authorization_180',['authorization',['../_main_page_8js.html#a0e142cb82ed671461953ab4caec3c429',1,'MainPage.js']]],
-  ['autosize_181',['autoSize',['../_main_page_8js.html#a7eedd6a916e6258b1a20e8e57c5a5af2',1,'MainPage.js']]]
+  ['deletecancel_107',['deleteCancel',['../group__del_contact.html#gacf06200188e48b24254d27f35ff439ca',1,'MainPage.js']]],
+  ['deleteselecteditem_108',['deleteSelectedItem',['../group__del_contact.html#gab52511aeeef8cb82f3f4de3f11b0f0ea',1,'MainPage.js']]],
+  ['deletesubmit_109',['deleteSubmit',['../group__del_contact.html#ga17456d63eee715d523e70058d94824a3',1,'MainPage.js']]]
 ];
