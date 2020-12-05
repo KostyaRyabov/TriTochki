@@ -1,13 +1,28 @@
-var idOwner = -1;   // -1 === empty
-var idChat = -1;   // -1 === empty
-var myID = 0;
+/*!
+  \file
+  \brief Основная страница
+*/
+
+
+///	\brief Идентификатор создателя рассматриваемого чата
+var idOwner = -1;
+
+///	\brief Идентификатор рассматриваемого чата
+var idChat = -1;
+
+///	\brief Идентификатор текущего пользователя
+var myID = -1;
+
+///	\brief Имя текущего пользователя
 var myName = "";
 
-// для выделения элементов списков или временных данных
-let selected = [];
+///	\brief Выбранные элементы
+var selected = [];
 
+///	\brief Структура контакта
 var profile_data = {};
 
+///	\brief GET-параметры
 var params = window
    .location
    .search
@@ -22,92 +37,112 @@ var params = window
       {}
    );
 
-$(document).ready(function(){
-  $('body').hide().fadeIn(200);
 
-  $("body").on("click","button.input-edit",function(){
-    $(this).hide(150, function(){
-        let input_div = $(this).parent();
-        
-        let btns = $("<button class='input-cancel icon-cancel'></button><button class='input-submit icon-check'></button>").hide();
-        input_div.append(btns);
-        btns.show(150);
-        
-        input_div.find('span').attr('contenteditable','true');
-        $(this).remove()
-    });
+/// \cond
+$(document).ready(init);
+/// \endcond
+
+/*!
+  \brief Отображение кнопок для редактирования параметра
+
+  \defgroup editParam Редактирование параметров
+    @{
+*/
+function showEditButtons()
+{
+  $(this).hide(150, function(){
+    let input_div = $(this).parent();
+    
+    let btns = $("<button class='input-cancel icon-cancel'></button><button class='input-submit icon-check'></button>").hide();
+    input_div.append(btns);
+    btns.show(150);
+    
+    input_div.find('span').attr('contenteditable','true');
+    $(this).remove()
   });
+}
 
-  $("body").on("click","button.input-cancel",function(){
-      let input_div = $(this).parent();
-      let span = input_div.find('span');
-      
-      input_div.find('button').hide(150, function(){$(this).remove()});
-
-      setTimeout(function(){
-          span.attr('contenteditable','false').html(profile_data[span.attr('id')]);
-          
-          let btn = $("<button class='input-edit icon-pencil-1'></button>").hide();
-          input_div.append(btn);
-          btn.show(150);
-      },150)
-  });
-
-  $("body").on("click","button.input-submit",function(){
-      let input_div = $(this).parent();
-      let span = input_div.find('span');
-      let id = span.attr('id');
-      let $this = $(this);
-
-      span.attr('contenteditable','false');
-      input_div.find('button').hide(150, function(){$(this).remove()});
-      
-      setTimeout(function(){
-          let btn = $("<button class='input-edit icon-pencil-1'></button>").hide();
-          input_div.append(btn);
-          btn.show(150);
+/// \brief Отказ от изменений параметра
+function inputCancel()
+{
+  let input_div = $(this).parent();
+  let span = input_div.find('span');
   
-          // Изменение информации о пользователе
-          if($this.parent().parent().attr("id") == "profile-box"){
-            $.ajax({
-              method: "POST",
-              url: "/resource/action/change_user_info.php",
-              data: {
-                "field": id,
-                "data": span.text()
-              },
-              success: function(result){ // result возвращает пустое значение в случае успеха или ошибку
-                // На всякий случай редирект на логин, если не тот пользователь или истекла кука
-                if(result.length > 1) location.href = "/Login.html";
+  input_div.find('button').hide(150, function(){$(this).remove()});
+
+  setTimeout(function(){
+      span.attr('contenteditable','false').html(profile_data[span.attr('id')]);
       
-                profile_data[id] = span.text();
-              }
-            });
-          }
+      let btn = $("<button class='input-edit icon-pencil-1'></button>").hide();
+      input_div.append(btn);
+      btn.show(150);
+  },150)
+}
+
+/// \brief Подтверждение изменений параметра
+function inputSubmit()
+{
+  let input_div = $(this).parent();
+  let span = input_div.find('span');
+  let id = span.attr('id');
+  let $this = $(this);
+
+  span.attr('contenteditable','false');
+  input_div.find('button').hide(150, function(){$(this).remove()});
   
-        // Изменение названия чата
-        if($this.parent().attr("id") == "chat-title"){
-          $.ajax({
-            method: "POST",
-            url: "/resource/action/change_chat_title.php",
-            data: {
-              "id": params["id"],
-              "name": $("#chat-info-name").text()
-            },
-            success: function(result){ // result возвращает пустое значение в случае успеха или ошибку
-              if(result.length > 1) return false;
-              
-              $("#tab-name").text($("#chat-info-name").text());
-            }
-          });
+  setTimeout(function(){
+    let btn = $("<button class='input-edit icon-pencil-1'></button>").hide();
+    input_div.append(btn);
+    btn.show(150);
+
+    if($this.parent().parent().attr("id") == "profile-box"){
+      $.ajax({
+        method: "POST",
+        url: "/resource/action/change_user_info.php",
+        data: {
+          "field": id,
+          "data": span.text()
+        },
+        success: function(result){
+          if(result.length > 1) location.href = "/Login.html";
+
+          profile_data[id] = span.text();
         }
-      },150);
-  });
+      });
+    }
 
-  $("body").on("click",".myContact-del",function(){
-    selected[0] = { name: $(this).prev().text(), id: $(this).parent().attr('id') };
+    if($this.parent().attr("id") == "chat-title"){
+      $.ajax({
+        method: "POST",
+        url: "/resource/action/change_chat_title.php",
+        data: {
+          "id": params["id"],
+          "name": $("#chat-info-name").text()
+        },
+        success: function(result){
+          if(result.length > 1) return false;
+          
+          $("#tab-name").text($("#chat-info-name").text());
+        }
+      });
+    }
+  },150);
+}
 
-    let modal = `
+///@}
+
+/*!
+  \brief Запрос удаления выбранного элемента
+  \details (контакта или чата)
+  
+  \defgroup delContact Удаление элемента
+    @{
+*/
+function deleteSelectedItem()
+{
+  selected[0] = { name: $(this).prev().text(), id: $(this).parent().attr('id') };
+
+  let modal = `
     <div id="warning-form" class="modal-window-wrapper">
       <div class="block-screen modal-window-trigger" onclick="hideWarningMessage()"></div>
       <div class="modal-window">
@@ -116,95 +151,132 @@ $(document).ready(function(){
         <button id='w-yes'>yes</button> <button id='w-no'>no</button>
       </div>
     </div>`;
-  
-    $('body').append(modal);
-    $("#warning-form").hide();
-    showModalWindow('#warning-form');
+
+  $('body').append(modal);
+  $("#warning-form").hide();
+  showModalWindow('#warning-form');
+}
+
+/// \brief Подтверждение удаления выбранного элемента
+function deleteSubmit()
+{
+  $(`.myContact#${selected[0].id}`).slideUp(200,function(){
+    $(this).remove();
+
+    /// \todo добавить удаление контакта selected[0].id у myID
   })
 
-  $("body").on("click",".myChat-del",function(){
-    selected[0] = { name: $(this).prev().text(), id: $(this).parent().attr('id') };
+  $(`.myChat#${selected[0].id}`).slideUp(200,function(){
+    $(this).remove();
 
-    let modal = `
-    <div id="warning-form" class="modal-window-wrapper">
-      <div class="block-screen modal-window-trigger" onclick="hideWarningMessage()"></div>
-      <div class="modal-window">
-        <span>Вы уверены, что хотите убрать чат ${selected[0].name}</span>
-        <div id="warning-box">
-        <button id='w-yes'>yes</button> <button id='w-no'>no</button>
-      </div>
-    </div>`;
-  
-    $('body').append(modal);
-    $("#warning-form").hide();
-    showModalWindow('#warning-form');
+    /// \todo добавить удаление чата selected[0].id у myID
   })
 
-  $("body").on("click","#w-yes",function(){
-    $(`.myContact#${selected[0].id}`).slideUp(200,function(){
-      $(this).remove();
+  hideWarningMessage()
 
-      // todo: удаление контакта {selected[0].id} у {$myID}
-    })
+  if ($('.list2 > tbody').empty() && !$('.list2 + #empty-list-message').length){
+    let txt = 'empty'
+    $('.list2').after(`<span id='empty-list-message'>${txt}</span>`)
+    $('#empty-list-message').hide().show(300)
+  }
+}
 
-    $(`.myChat#${selected[0].id}`).slideUp(200,function(){
-      $(this).remove();
+/// \brief Отказ удаления выбранного элемента
+function deleteCancel()
+{
+  hideWarningMessage()
+}
 
-      // todo: удаление чата {selected[0].id} у {$myID}
-    })
+///@}
 
-    hideWarningMessage()
+// brief Отображение профиля выбранного контакта
+//function getContact(){
+//  showProfileContext($(this).parent().attr('id'))
+//}
 
-    if ($('.list2 > tbody').empty() && !$('.list2 + #empty-list-message').length){
-      let txt = 'empty'
-      $('.list2').after(`<span id='empty-list-message'>${txt}</span>`)
-      $('#empty-list-message').hide().show(300)
+/// \brief Изменение размера поля ввода в соответствие с введенным текстом сообщения
+function autoSize()
+{
+  $(this).css({ 'height': 'auto'}).height($(this)[0].scrollHeight)
+
+  if ($(this).val()){
+    if ($("button#send-message").is(":hidden")){
+      $("button#send-message").show(50);
     }
-  })
+  }else{
+    if (!$("button#send-message").is(":hidden")){
+      $("button#send-message").hide(100);
+    }
+  }
+}
 
-  $("body").on("click","#w-no",function(){
-    hideWarningMessage()
-  })
+/// \brief Удаление контакта из чата
+function kickContact()
+{
+  let $this = $(this);
+  
+  $.ajax({
+    method: "POST",
+    url: "/resource/action/chat_user_kick.php",
+    data: {
+      "chat_id": params["id"],
+      "user_id": $(this).data("id")
+    },
+    success: function(result){
+      if(!result.length) $this.parent().remove();
+    }
+  });
+}
 
-  $("body").on("click",".myContact-name",function(){
-    showProfileContext($(this).parent().attr('id'))
-  })
-
-  $("body").on("click",".myChat-name",function(){
-    showChatContext($(this).parent().attr('id'))
-  })
-
+/// \brief Инициализация основной страницы
+function init()
+{
+  $('body').hide().fadeIn(200);
+  
+  $("body").on("click","button.input-edit",showEditButtons);
+  
+  $("body").on("click","button.input-cancel",inputCancel);
+  
+  $("body").on("click","button.input-submit",inputSubmit);
+  
+  $("body").on("click",".myContact-del",deleteSelectedItem);
+  
+  $("body").on("click",".myChat-del",deleteSelectedItem);
+  
+  $("body").on("click","#w-yes",deleteSubmit);
+  
+  $("body").on("click","#w-no",deleteCancel);
+  
+  $("body").on("click",".myContact-name",showProfileContext.bind(null,$(this).parent().attr('id')));
+  
+  $("body").on("click",".myChat-name",showChatContext.bind(null,$(this).parent().attr('id')));
+  
   $("body").on("click","button.error-message",function(){
-    $(this).fadeOut(300, function(){ 
-      $(this).remove();
-    });
+    $(this).fadeOut(300, function(){$(this).remove()});
   });
 
-  $('body').on("input",'#textbox', function(){
-    $(this).css({ 'height': 'auto'}).height($(this)[0].scrollHeight)
-
-    if ($(this).val()){
-      if ($("button#send-message").is(":hidden")){
-        $("button#send-message").show(50);
-      }
-    }else{
-      if (!$("button#send-message").is(":hidden")){
-        $("button#send-message").hide(100);
-      }
-    }
-  });
+  $('body').on("input",'#textbox', autoSize);
 
   $('body').on('keydown paste', "span[contentEditable=true][maxlength]", function (event) {
     if ($(this).text().length >= $(this).attr('maxlength') && event.keyCode != 8) {
-        event.preventDefault();
+      event.preventDefault();
     }
-});
-  
-  // Проверка на авторизацию
+  });
+
+  $('body').on("click", ".kick-user", kickContact);
+
+  authorization()
+}
+
+/*!
+  \brief Авторизация
+*/
+function authorization()
+{
   $.ajax({
     method: "POST",
     url: "/resource/action/check.php",
-    success: function(result){ // result возвращает данные о текущем пользователе или 0 соответственно
+    success: function(result){
       if(result == 0) location.href = "/Login.html";
       else{
         result = JSON.parse(result);
@@ -220,18 +292,22 @@ $(document).ready(function(){
         
         $("#show-my-profile").attr("onclick", "showProfileContext(" + result.id + ")");
 
-        // Если указан параметр id в url, то получаем чат и все сопутствующие данные
         if(params["id"] > 0){
           showChatContext(params["id"]);
-        } else{ // Если нет параметра для чата, выводим "главную" страницу
+        } else{
           $("#tab-name").text("Главная страница");
         }
       }
     }
   });
-});
+}
 
-function showChatContext(id){
+/*!
+  \brief Отображение сведений о чате
+  \param[in] id Идентификатор рассматриваемого чата
+*/
+function showChatContext(id)
+{
   $('#main').fadeOut(100,function(){
   
     $.ajax({
@@ -240,18 +316,16 @@ function showChatContext(id){
       data: {
         "id": id
       },
-      success: function(result){ // возвращает объект json
+      success: function(result){
         result = JSON.parse(result);
       
-        let first_unread = 0; // id первого попавшегося непрочитанного сообщения
-      
-        // Вывод информации о чате
+        let first_unread = 0;
         
         idChat = id;
         showChatInfo(result.name);
         $("#chat-info-name").text(result.name);
         $("#chat-create-date").text(result.date);
-        $("#chat-info-contact-list").html(""); // Сперва очищаем от значений по умолчанию
+        $("#chat-info-contact-list").html("");
         $('#main').addClass('shiftDown').html('').fadeIn(300);
         showTextBox();
         
@@ -266,15 +340,12 @@ function showChatContext(id){
 
           $("#chat-info-contact-list").append(el);
         });
-      
-        // Вывод сообщений
 
         $.each(result.messages, function(id, value){
           $("#main").append(genMessage(id, value["user"], result.users[value["user"]], value["text"].replace(/\n/g, '<br>'), value["date"]));
           if(first_unread == 0 && value["is_read"] == 0) first_unread = id;
         });
-      
-        // Если есть непрочитанное сообщение, скроллим до него
+
         if(first_unread){
           $('#wrapper').animate({
             scrollTop: $('#message' + first_unread).offset().top
@@ -285,30 +356,17 @@ function showChatContext(id){
   })
 }
 
-// Удалить пользователя из текущего чата (для создателя чата)
-$(document).on("click", ".kick-user", function(){
-  let $this = $(this);
-  
-  $.ajax({
-    method: "POST",
-    url: "/resource/action/chat_user_kick.php",
-    data: {
-      "chat_id": params["id"],
-      "user_id": $(this).data("id")
-    },
-    success: function(result){ // возвращает строку в случае ошибки и пустое значение в случае успеха
-      if(!result.length) $this.parent().remove();
-    }
-  });
-});
-
-function hideWarningMessage(){
+/// \brief Скрытие предупреждающего модального окна
+function hideWarningMessage()
+{
   hideModalWindow('#warning-form', function(){
     $('#warning-form').remove();
   });
 }
 
-function showChatInfo(chat_name){
+/// \brief Отображение сведений о чате
+function showChatInfo(chat_name)
+{
   $('.tab').hide().append(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick="showModalWindow('#chat-contacts')">?</button>`).fadeIn(200);
   $('#tag-name').text(chat_name);
 
@@ -340,7 +398,9 @@ function showChatInfo(chat_name){
   }
 }
 
-function hideChatInfo(){
+/// \brief Скрытие сведений о чате
+function hideChatInfo()
+{
   if ($("#btn-chat-about").length){
     $("#btn-chat-about").hide(200,function(){
       $(this).remove();
@@ -354,27 +414,33 @@ function hideChatInfo(){
   }
 }
 
-function hideProfileContext(){
+/// \brief Скрытие сведений о контакте
+function hideProfileContext()
+{
   hideModalWindow('#profile-form', function(){
     $('#profile-form').remove();
   });
 }
 
-function showProfileContext(id){
-  $.ajax({ // Берем нужного пользователя
+/*!
+  \brief Отображение сведений о контакте
+  \param[in] id Идентификатор рассматриваемого контакта
+*/
+function showProfileContext(id)
+{
+  $.ajax({
     method: "POST",
     url: "/resource/action/get_user.php",
     data: {
       "id": id
     },
-    success: function(result){ // result возвращает данные о пользователе или 0 соответственно
+    success: function(result){
       if(result == 0) return false;
       
       result = JSON.parse(result);
       
       let itsMe = (myID == id);
   
-      //todo подумать, безопасна ли такая реализация, если в переменной сначала был текущий пользователь, а теперь там тот, кого получили
       profile_data["First_Name"] = result.firstName;
       profile_data["Second_Name"] = result.lastName;
       profile_data["Login"] = result.login;
@@ -424,8 +490,9 @@ function showProfileContext(id){
   });
 }
 
-// отображение списка чатов пользователя (их id и названия)
-function showChatListContext(){
+/// \brief Отображение списка чатов пользователя
+function showChatListContext()
+{
   hideChatInfo();
   hideTextBox();
   $("#input-area").slideUp(200);
@@ -433,13 +500,12 @@ function showChatListContext(){
   $('#main').fadeOut(200,function(){
     $(this).removeClass('shiftDown').html('');
 
-    //todo: запуск анимации загрузки
+    /// \todo запуск анимации загрузки
 
-    //запрос списка чатов пользователя из БД
     $.ajax({
       method: "GET",
       url: "/resource/action/user_chat_list.php",
-      success: function(result){ // возвращает объект json
+      success: function(result){
         result = JSON.parse(result);
         
         let context = "";
@@ -460,15 +526,15 @@ function showChatListContext(){
 
         $('#main').html(context).hide().fadeIn(200);
 
-      // если result = false -> $(this).html('');
-      //todo: завершение анимации загрузки
+      /// \todo завершение анимации загрузки
       }
     });
   });
 }
 
-// отображение списка контактов пользователя (их id и названия)
-function showContactListContext(){
+/// \brief Отображение списка контактов пользователя
+function showContactListContext()
+{
   hideChatInfo();
   hideTextBox();
   $("#input-area").slideUp(200);
@@ -478,60 +544,51 @@ function showContactListContext(){
 
     let context = "";
 
-    // просто пример
-    context += `<tr class="myContact" id=1><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>`;
-    
-    context = `
-      <div id="contactSearch" class="search-field">
-        <input type="search" placeholder="search..."></input>
-        <button>поиск</button>
-      </div>
-      <table class='list2'>
-        <thead></thead>
-        <tbody>${context}</tbody>
-      </table>`;
-
-    $('#main').html(context).hide().fadeIn(200);
-
-    /*
     $('#main').fadeOut(200,function(){
-      //todo: запуск анимации загрузки
+      /// \todo запуск анимации загрузки
+
+      $.ajax({
+        method: "GET",
+        url: "/resource/action/user_contact_list.php",   /// \todo создать файл
+        data: {
+          "id": params["id"]
+        },
+        success: function(result){
+          result = JSON.parse(result);
+
+          let context = "";
+
+          $.each(result, function(id, name){
+            context += `<tr class="myContact" id=${id}><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>`
+          });
+
+          context = `
+            <div id="contactSearch" class="search-field">
+              <input type="search" placeholder="search..."></input>
+              <button>поиск</button>
+            </div>
+            <table class='list2'><tbody>${context}</tbody></table>`;
+
+          $('#main').html(context).hide().fadeIn(200);
+          
+          /// \todo завершение анимации загрузки
+        }
+      });
     });
-
-    //запрос списка контактов пользователя из БД
-    $.ajax({
-      method: "GET",
-      url: "/resource/action/user_contact_list.php",   // todo: создать файл
-      data: {
-        "id": params["id"]
-      },
-      success: function(result){ // возвращает объект json
-        result = JSON.parse(result);
-
-        let context = "";
-
-        $.each(result, function(id, name){
-          context += `<tr class="myContact" id=${id}><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>    // id - для дальнейшего взаимодействия  (sel = .myContact#2)
-        });
-
-        context = `
-          <div id="contactSearch" class="search-field">
-            <input type="search" placeholder="search..."></input>
-            <button>поиск</button>
-          </div>
-          <table class='list2'><tbody>${context}</tbody></table>`;
-
-        $('#main').html(context).hide().fadeIn(200);
-
-        // если result = false -> $(this).html('');
-        //todo: завершение анимации загрузки
-      }
-    });
-    */
   });
 }
 
-function genMessage(id_message, author_id, author_name, text, date){
+/*!
+ \brief Генерация нового сообщения
+ \param[in] id_message Идентификатор нового сообщения
+ \param[in] author_id Идентификатор автора нового сообщения
+ \param[in] author_name Имя автора нового сообщения
+ \param[in] text Текст нового сообщения
+ \param[in] date Дата создания
+ \return HTML-структуру сообщения
+*/
+function genMessage(id_message, author_id, author_name, text, date)
+{
   let itsMine = (author_id == myID);
 
   return `
@@ -544,7 +601,9 @@ function genMessage(id_message, author_id, author_name, text, date){
   </div>`;
 }
 
-function showTextBox(){
+/// \brief Отображение поля ввода сообщений
+function showTextBox()
+{
   $('table > tbody').append(`
     <tr id="footer">
       <td>
@@ -557,11 +616,15 @@ function showTextBox(){
   $('#footer').hide().slideDown(200);
 }
 
-function hideTextBox(){
+/// \brief Скрытие поля ввода сообщений
+function hideTextBox()
+{
   $('#footer').slideUp(200,function(){$(this).remove()})
 }
 
-function sendMessage() {
+/// \brief Отправка сообщения и его отображение
+function sendMessage()
+{
   $('textarea#textbox').prop("disabled", true );
   $("button#send-message").addClass("Verification").removeClass("Idle icon-paper-plane");
   

@@ -30,13 +30,11 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ steps.vars.outputs.date }}-${{ steps.vars.outputs.sha8 }}
-        release_name: Release (version ${{ steps.vars.outputs.date }})
+        release_name: Release ${{ steps.vars.outputs.date }}
         draft: false
         prerelease: false
-    - name: gen zip
-      uses: montudor/action-zip@v0.1.1
-      with:
-        args: zip -qq -r container.zip ./
+    - name: Doxygen Action
+      uses: mattnotmitt/doxygen-action@v1.1.0
     - name: Upload to Release
       id: upload_to_release
       uses: actions/upload-release-asset@v1.0.1
@@ -44,6 +42,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./container.zip
-        asset_name: Release (version ${{ steps.vars.outputs.date }}).zip
+        asset_path: ./docs/html/
+        asset_name: Release-${{ steps.vars.outputs.date }}.zip
         asset_content_type: application/zip
