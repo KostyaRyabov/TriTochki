@@ -15,6 +15,7 @@ var _main_page_8js =
     [ "inputCancel", "group__edit_param.html#gad62a313a184ba2a24e3f53efe3d212c7", null ],
     [ "inputSubmit", "group__edit_param.html#ga794111d584646fa77074a5e111d622fb", null ],
     [ "kickContact", "_main_page_8js.html#af810aabdb0857c5c1b12d0545a3d6a66", null ],
+    [ "on", "_main_page_8js.html#a480d8d882e8e28e3eb8f419125bcdc92", null ],
     [ "sendMessage", "_main_page_8js.html#a0d8d264d0b97e8a905a6381fdd564e62", null ],
     [ "showChatContext", "_main_page_8js.html#a52d8336a45098a87de247266aaa79b46", null ],
     [ "showChatInfo", "_main_page_8js.html#aaff07c8375e74c5c9236e8a852adb11a", null ],
