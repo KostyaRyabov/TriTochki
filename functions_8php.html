@@ -99,9 +99,6 @@ $(document).ready(function(){initNavTree('functions_8php.html',''); initResizabl
 <div class="title">Файл functions.php</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Частоиспользуемые в проекте функции  
-<a href="#details">Подробнее...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Функции</h2></td></tr>
@@ -112,9 +109,7 @@ $(document).ready(function(){initNavTree('functions_8php.html',''); initResizabl
 <tr class="memitem:a75b6b3bfe50ae8ce7cbda94963c6578f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8php.html#a75b6b3bfe50ae8ce7cbda94963c6578f">userData</a> ()</td></tr>
 <tr class="separator:a75b6b3bfe50ae8ce7cbda94963c6578f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
-<div class="textblock"><p>Частоиспользуемые в проекте функции </p>
-</div><h2 class="groupheader">Функции</h2>
+<h2 class="groupheader">Функции</h2>
 <a id="a3660c2be60faa3091ec6afcdeac77376"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3660c2be60faa3091ec6afcdeac77376">&#9670;&nbsp;</a></span>humanDate()</h2>
 
@@ -130,14 +125,14 @@ $(document).ready(function(){initNavTree('functions_8php.html',''); initResizabl
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                            {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        $dtm = explode(<span class="stringliteral">&quot; &quot;</span>, $dtm);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        $dt = explode(<span class="stringliteral">&quot;-&quot;</span>, $dtm[0]);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        $tm = explode(<span class="stringliteral">&quot;:&quot;</span>, $dtm[1]);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">return</span> $dt[2].<span class="stringliteral">&quot;.&quot;</span>.$dt[1].<span class="stringliteral">&quot;.&quot;</span>.$dt[0].<span class="stringliteral">&quot; в &quot;</span>.$tm[0].<span class="stringliteral">&quot;:&quot;</span>.$tm[1];</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                            {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        $dtm = explode(<span class="stringliteral">&quot; &quot;</span>, $dtm);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        $dt = explode(<span class="stringliteral">&quot;-&quot;</span>, $dtm[0]);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        $tm = explode(<span class="stringliteral">&quot;:&quot;</span>, $dtm[1]);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">return</span> $dt[2].<span class="stringliteral">&quot;.&quot;</span>.$dt[1].<span class="stringliteral">&quot;.&quot;</span>.$dt[0].<span class="stringliteral">&quot; в &quot;</span>.$tm[0].<span class="stringliteral">&quot;:&quot;</span>.$tm[1];</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -156,14 +151,14 @@ $(document).ready(function(){initNavTree('functions_8php.html',''); initResizabl
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                        {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        $var = preg_replace(<span class="stringliteral">&quot;/script/i&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, $var); <span class="comment">// Любое упоминание о кастомном js-скрипте агрессивно удаляется</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        $var = preg_replace(<span class="stringliteral">&quot;/\w*((\%27)|(\&#39;))((\%6F)|o|(\%4F))((\%72)|r|(\%52))/ix&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, $var);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        $var = strip_tags($var); <span class="comment">// Обработка HTML и PHP тэгов</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        $var = htmlentities($var, ENT_QUOTES); <span class="comment">// Преобразование спец.символов в HTML сущности</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">return</span> $var;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;                        {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        $var = preg_replace(<span class="stringliteral">&quot;/script/i&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, $var); <span class="comment">// Любое упоминание о кастомном js-скрипте агрессивно удаляется</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        $var = preg_replace(<span class="stringliteral">&quot;/\w*((\%27)|(\&#39;))((\%6F)|o|(\%4F))((\%72)|r|(\%52))/ix&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, $var);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        $var = strip_tags($var); <span class="comment">// Обработка HTML и PHP тэгов</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        $var = htmlentities($var, ENT_QUOTES); <span class="comment">// Преобразование спец.символов в HTML сущности</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordflow">return</span> $var;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -181,28 +176,28 @@ $(document).ready(function(){initNavTree('functions_8php.html',''); initResizabl
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                       {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="login_8php.html#a62dd3be39bdab088e08aef405eef5de8">$jwt</a> = strval(trim($_COOKIE[<span class="stringliteral">&quot;token&quot;</span>]));</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span>(!strlen(<a class="code" href="login_8php.html#a62dd3be39bdab088e08aef405eef5de8">$jwt</a>)) <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Проверка существования токена</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a> = JWT::decode(<a class="code" href="login_8php.html#a62dd3be39bdab088e08aef405eef5de8">$jwt</a>, JWT::$public_key, array(<span class="stringliteral">&#39;RS256&#39;</span>));</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a> = (array)<a class="code" href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a>[<span class="stringliteral">&quot;id&quot;</span>]) <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Проверка на получение пользовательских данных</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                       {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="login_8php.html#a62dd3be39bdab088e08aef405eef5de8">$jwt</a> = strval(trim($_COOKIE[<span class="stringliteral">&quot;token&quot;</span>]));</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">if</span>(!strlen(<a class="code" href="login_8php.html#a62dd3be39bdab088e08aef405eef5de8">$jwt</a>)) <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Проверка существования токена</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a> = JWT::decode(<a class="code" href="login_8php.html#a62dd3be39bdab088e08aef405eef5de8">$jwt</a>, JWT::$public_key, array(<span class="stringliteral">&#39;RS256&#39;</span>));</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a> = (array)<a class="code" href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a>[<span class="stringliteral">&quot;id&quot;</span>]) <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Проверка на получение пользовательских данных</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="achange__chat__title_8php_html_a24d82c354cb01154b2a69b9224c6ca3f"><div class="ttname"><a href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a></div><div class="ttdeci">$user_data</div><div class="ttdef"><b>Definition:</b> change_chat_title.php:11</div></div>
-<div class="ttc" id="alogin_8php_html_a62dd3be39bdab088e08aef405eef5de8"><div class="ttname"><a href="login_8php.html#a62dd3be39bdab088e08aef405eef5de8">$jwt</a></div><div class="ttdeci">$jwt</div><div class="ttdef"><b>Definition:</b> login.php:48</div></div>
+<div class="ttc" id="achange__chat__title_8php_html_a24d82c354cb01154b2a69b9224c6ca3f"><div class="ttname"><a href="change__chat__title_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a></div><div class="ttdeci">$user_data</div><div class="ttdef"><b>Definition:</b> change_chat_title.php:6</div></div>
+<div class="ttc" id="alogin_8php_html_a62dd3be39bdab088e08aef405eef5de8"><div class="ttname"><a href="login_8php.html#a62dd3be39bdab088e08aef405eef5de8">$jwt</a></div><div class="ttdeci">$jwt</div><div class="ttdef"><b>Definition:</b> login.php:43</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="functions_8php.html">functions.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Вс 6 Дек 2020 11:32:45. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Вс 6 Дек 2020 11:35:32. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
