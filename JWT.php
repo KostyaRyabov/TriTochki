@@ -50,8 +50,12 @@
 		 'RS512' => array('openssl', 'SHA512'),
 		);
 		
-		/* Ключи для шифрования и дешифрования токена
-		 * Подлежат замене в новых проектах */
+		/**
+		 * Ключи для шифрования и дешифрования токена. Подлежат замене в новых проектах
+		 *
+		 * @var string $private_key
+		 * @var string $public_key
+		 */
 		public static $private_key = <<<EOD
 -----BEGIN RSA PRIVATE KEY-----
 MIICXAIBAAKBgQC8kGa1pSjbSYZVebtTRBLxBz5H4i2p/llLCrEeQhta5kaQu/Rn
