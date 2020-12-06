@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "TriTochki", "index.html", [
-    [ "TriTochki", "md__r_e_a_d_m_e.html", null ],
+    [ "TriTochki...", "md__r_e_a_d_m_e.html", null ],
     [ "Список задач", "todo.html", null ],
     [ "Группы", "modules.html", "modules" ],
     [ "Пространства имен", "namespaces.html", [
