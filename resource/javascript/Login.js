@@ -50,23 +50,17 @@ function submit(e){
         method: "POST",
         url: "/resource/action/" + action + ".php",
         data: data,
-        success: request(result)
+        success: function(result){
+            if(result.length > 1){
+                $("input.invalid").removeClass("invalid");
+                
+                result = JSON.parse(result);
+                $.each(result, errorMessage.bind(null,inputname, text));
+                
+                $("input:not(.invalid) + .error-message").slideUp(100, function(){$(this).remove()});
+            } else location.href = "/";
+        }
     });
-}
-
-/*!
-    \brief Обработка результата запроса регистрации или авторизации
-    \param[in] data Передаваемые данные
-*/
-function request(data){
-    if(data.length > 1){
-        $("input.invalid").removeClass("invalid");
-        
-        result = JSON.parse(data);
-        $.each(data, errorMessage.bind(null,inputname, text));
-        
-        $("input:not(.invalid) + .error-message").slideUp(100, function(){$(this).remove()});
-    } else location.href = "/";
 }
 
 /*!
