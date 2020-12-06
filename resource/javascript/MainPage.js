@@ -367,12 +367,12 @@ function showChatContext(id)
         let first_unread = 0;   /// \todo Изменить номер последнего непрочитанного сообщения
         
         idChat = id;
+        idOwner = result.owner;
+
         showChatInfo(result);
         $('.tab').fadeOut(300,function(){$('#tab-name').text(result.name)}).append(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick="showModalWindow('#chat-contacts')">?</button>`).fadeIn(300);
         $('#main').addClass('shiftDown').html('').fadeIn(300);
         showTextBox();
-        
-        idOwner = result.owner;
         
         $.each(result.users, function(id, value){
           let el = `<button class='list-item chatContact ${(id == idOwner)?"icon-crown":""}' onClick='showProfileContext(${id})'>${value}</button>`;
@@ -417,14 +417,14 @@ function showChatInfo(data)
         <div id="info-box" class="modal-window">
           <div class="input" id="chat-title">
             <span id="chat-info-name" class="chat-info-header" contentEditable="false" placeholder="Chat name" maxlength="64">${data.name}</span>`
-            if (idOwner === myID) context += `<button class="input-edit icon-pencil-1"></button>`
+            if (idOwner == myID) context += `<button class="input-edit icon-pencil-1"></button>`
           context += `</div>
           <hr/>
           <span id="chat-create-date">${data.date}</span>
           <br/>
           <br/>
           <span class="chat-info-header">контакты:`
-          if (idOwner === myID) context += `<button id="chat-add-user" class="icon-user-plus"></button>`
+          if (idOwner == myID) context += `<button id="chat-add-user" class="icon-user-plus"></button>`
           context += `</span>
           <div id="chat-info-contact-list" class="list"></div>
           <br/>
