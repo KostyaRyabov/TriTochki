@@ -1,4 +1,9 @@
 <?php
+	/*!
+	  \file
+	  \brief Скрипт изменения названия чата его хостом
+	*/
+	
 	// Подключение ядра
 	include($_SERVER["DOCUMENT_ROOT"]."/core.php");
 	

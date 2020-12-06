@@ -1,4 +1,9 @@
 <?php
+	/*!
+	  \file
+	  \brief Обработка и отправка нового сообщения в чат
+	*/
+	
 	// Подключение ядра
 	include($_SERVER["DOCUMENT_ROOT"]."/core.php");
 	

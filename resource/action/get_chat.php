@@ -1,4 +1,9 @@
 <?php
+	/*!
+	  \file
+	  \brief Получение всей информации о запрашиваемом чате
+	*/
+	
 	// Подключение ядра
 	include($_SERVER["DOCUMENT_ROOT"]."/core.php");
 	

@@ -1,4 +1,9 @@
 <?php
+	/*!
+	  \file
+	  \brief Изменение данных профиля
+	*/
+	
 	// Подключение ядра
 	include($_SERVER["DOCUMENT_ROOT"]."/core.php");
 	

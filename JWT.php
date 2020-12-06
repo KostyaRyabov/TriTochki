@@ -1,4 +1,8 @@
 <?php
+	/*!
+	  \file
+	  \brief Библиотека для работы с токенами
+	*/
 	
 	namespace JWT;
 	

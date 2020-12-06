@@ -1,14 +1,9 @@
 <?php
+	/*!
+	  \file
+	  \brief Подключение и методы работы с базой данных
+	*/
 	
-	/**
-	 * Подключение и методы работы с базой данных
-	 *
-	 * @var mysqli $link ссылка на объект mysqli
-	 * @var string $host
-	 * @var string $user
-	 * @var string $pass
-	 * @var string $db
-	 */
 	class DB{
 		public static $link;
 		

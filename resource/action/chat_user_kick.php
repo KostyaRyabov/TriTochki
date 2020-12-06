@@ -1,4 +1,9 @@
 <?php
+	/*!
+	  \file
+	  \brief Удаление пользователя из чата его хостом
+	*/
+	
 	// Подключение ядра
 	include($_SERVER["DOCUMENT_ROOT"]."/core.php");
 	

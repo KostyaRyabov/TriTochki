@@ -1,4 +1,9 @@
 <?php
+	/*!
+	  \file
+	  \brief Проверка валидности токена пользователя
+	*/
+	
 	// Подключение ядра
 	include($_SERVER["DOCUMENT_ROOT"]."/core.php");
 	

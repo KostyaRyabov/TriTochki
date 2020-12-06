@@ -1,4 +1,9 @@
 <?php
+	/*!
+	  \file
+	  \brief Получение информации о пользователе
+	*/
+	
 	// Подключение ядра
 	include($_SERVER["DOCUMENT_ROOT"]."/core.php");
 	

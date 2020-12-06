@@ -1,4 +1,9 @@
 <?php
+	/*!
+	  \file
+	  \brief Получение списка чатов пользователя
+	*/
+	
 	// Подключение ядра
 	include($_SERVER["DOCUMENT_ROOT"]."/core.php");
 	
