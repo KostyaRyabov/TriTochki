@@ -1,5 +1,6 @@
 var _main_page_8js =
 [
+    [ "addContact", "_main_page_8js.html#a3b7466fcae48f846427266e3c7ab9f47", null ],
     [ "authorization", "_main_page_8js.html#a0e142cb82ed671461953ab4caec3c429", null ],
     [ "autoSize", "_main_page_8js.html#a7eedd6a916e6258b1a20e8e57c5a5af2", null ],
     [ "chatExit", "_main_page_8js.html#a2ca0a803b878d85821c38bffbe39d611", null ],
@@ -20,7 +21,7 @@ var _main_page_8js =
     [ "showChatContext", "_main_page_8js.html#a52d8336a45098a87de247266aaa79b46", null ],
     [ "showChatInfo", "_main_page_8js.html#aaff07c8375e74c5c9236e8a852adb11a", null ],
     [ "showChatListContext", "_main_page_8js.html#a8fd1822bf634b1e8eff2abd5b5ebca09", null ],
-    [ "showContactListContext", "_main_page_8js.html#a258f88b62af8bfbd682a6237ce13d97c", null ],
+    [ "showContactListContext", "_main_page_8js.html#a931d8099c9f98868eabb6274ca6c3e05", null ],
     [ "showEditButtons", "group__edit_param.html#gac6191256288f5d6460c41705dddc8080", null ],
     [ "showProfileContext", "_main_page_8js.html#a35fe919ae77c808f90cb711f62fe380b", null ],
     [ "showTextBox", "_main_page_8js.html#a87aeb8c819820b04354a52e7d05e8382", null ],
