@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['query_74',['query',['../class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348',1,'DB\query()'],['../db_8php.html#a6b251c8058230359b2922377699c4f29',1,'query():&#160;db.php']]]
+  ['params_87',['params',['../_main_page_8js.html#aede1877627e25fe927c69fadb0fabfdd',1,'MainPage.js']]],
+  ['profile_5fdata_88',['profile_data',['../_main_page_8js.html#a3fe117079bfb750a3456b64ea285da78',1,'MainPage.js']]]
 ];

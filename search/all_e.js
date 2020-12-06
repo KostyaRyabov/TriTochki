@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['readme_2emd_75',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['ready_76',['ready',['../_login_8js.html#a2f619a12ce418bced0efa0ae43df8263',1,'Login.js']]],
-  ['register_2ephp_77',['register.php',['../register_8php.html',1,'']]]
+  ['query_89',['query',['../class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348',1,'DB\query()'],['../db_8php.html#a6b251c8058230359b2922377699c4f29',1,'query():&#160;db.php']]]
 ];

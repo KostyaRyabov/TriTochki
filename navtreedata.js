@@ -28,6 +28,9 @@ var NAVTREE =
     [ "TriTochki", "md__r_e_a_d_m_e.html", null ],
     [ "Список задач", "todo.html", null ],
     [ "Группы", "modules.html", "modules" ],
+    [ "Пространства имен", "namespaces.html", [
+      [ "Пространства имен", "namespaces.html", "namespaces_dup" ]
+    ] ],
     [ "Классы", "annotated.html", [
       [ "Классы", "annotated.html", "annotated_dup" ],
       [ "Алфавитный указатель классов", "classes.html", null ],
@@ -50,7 +53,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_login_8js.html"
+"_j_w_t_8php.html"
 ];
 
 var SYNCONMSG = 'нажмите на выключить для синхронизации панелей';

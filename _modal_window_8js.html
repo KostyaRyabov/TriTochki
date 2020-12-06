@@ -99,15 +99,22 @@ $(document).ready(function(){initNavTree('_modal_window_8js.html',''); initResiz
 <div class="title">Файл ModalWindow.js</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Модальное окно  
+<a href="#details">Подробнее...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Функции</h2></td></tr>
 <tr class="memitem:a7a90556da7f3921fe0fb5861da1c3a1e"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_modal_window_8js.html#a7a90556da7f3921fe0fb5861da1c3a1e">hideModalWindow</a> (modal, callback)</td></tr>
+<tr class="memdesc:a7a90556da7f3921fe0fb5861da1c3a1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отображение модального окна  <a href="_modal_window_8js.html#a7a90556da7f3921fe0fb5861da1c3a1e">Подробнее...</a><br /></td></tr>
 <tr class="separator:a7a90556da7f3921fe0fb5861da1c3a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5574e636e32ef78d22a057e74c38ba18"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_modal_window_8js.html#a5574e636e32ef78d22a057e74c38ba18">showModalWindow</a> (modal)</td></tr>
+<tr class="memdesc:a5574e636e32ef78d22a057e74c38ba18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отображение модального окна  <a href="_modal_window_8js.html#a5574e636e32ef78d22a057e74c38ba18">Подробнее...</a><br /></td></tr>
 <tr class="separator:a5574e636e32ef78d22a057e74c38ba18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Функции</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Модальное окно </p>
+</div><h2 class="groupheader">Функции</h2>
 <a id="a7a90556da7f3921fe0fb5861da1c3a1e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7a90556da7f3921fe0fb5861da1c3a1e">&#9670;&nbsp;</a></span>hideModalWindow()</h2>
 
@@ -133,22 +140,27 @@ $(document).ready(function(){initNavTree('_modal_window_8js.html',''); initResiz
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                                         {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    let D1 = $(modal).fadeOut(150);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    let D2 = [].reverse.call($(<span class="stringliteral">&#39;body&#39;</span>).children()).each(<span class="keyword">function</span>(){</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">if</span> ($(<span class="keyword">this</span>).hasClass(<span class="stringliteral">&quot;blured-screen&quot;</span>)){</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            $(<span class="keyword">this</span>).removeClass(<span class="stringliteral">&quot;blured-screen&quot;</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    });</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span> (typeof callback === <span class="stringliteral">&#39;function&#39;</span>) { </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        $.when(D1,D2).done(<span class="keyword">function</span>(){</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            callback();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        })</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+
+<p>Отображение модального окна </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">modal</td><td>Селектор модального окна </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>Функция обратного вызова </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                         {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    let D1 = $(modal).fadeOut(150);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    let D2 = [].reverse.call($(<span class="stringliteral">&#39;body&#39;</span>).children()).each(<span class="keyword">function</span>(){</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">if</span> ($(<span class="keyword">this</span>).hasClass(<span class="stringliteral">&quot;blured-screen&quot;</span>)){</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            $(<span class="keyword">this</span>).removeClass(<span class="stringliteral">&quot;blured-screen&quot;</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    });</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (typeof callback === <span class="stringliteral">&#39;function&#39;</span>) $.when(D1,D2).done(callback)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -167,16 +179,24 @@ $(document).ready(function(){initNavTree('_modal_window_8js.html',''); initResiz
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;                               {</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    $(modal).fadeIn(150);</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    $(<span class="stringliteral">&#39;body&#39;</span>).children().each(<span class="keyword">function</span>(){</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;        <span class="keywordflow">if</span> (!$(<span class="keyword">this</span>).hasClass(<span class="stringliteral">&quot;blured-screen&quot;</span>)){</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;            $(<span class="keyword">this</span>).addClass(<span class="stringliteral">&quot;blured-screen&quot;</span>);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        }</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    });</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
+
+<p>Отображение модального окна </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">modal</td><td>Селектор модального окна </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                               {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    $(modal).fadeIn(150);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    $(<span class="stringliteral">&#39;body&#39;</span>).children().each(<span class="keyword">function</span>(){</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">if</span> (!$(<span class="keyword">this</span>).hasClass(<span class="stringliteral">&quot;blured-screen&quot;</span>)){</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            $(<span class="keyword">this</span>).addClass(<span class="stringliteral">&quot;blured-screen&quot;</span>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    });</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -186,7 +206,7 @@ $(document).ready(function(){initNavTree('_modal_window_8js.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_e180dc9bc8f5964f632312758a1f4330.html">javascript</a></li><li class="navelem"><a class="el" href="_modal_window_8js.html">ModalWindow.js</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Вс 6 Дек 2020 09:48:56. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Вс 6 Дек 2020 10:06:11. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

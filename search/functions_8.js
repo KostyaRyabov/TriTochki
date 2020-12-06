@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lastinsertid_134',['lastInsertId',['../class_d_b.html#a68158dd9a87436697d75dd1a1a133f6d',1,'DB']]]
+  ['kickcontact_161',['kickContact',['../_main_page_8js.html#af810aabdb0857c5c1b12d0545a3d6a66',1,'MainPage.js']]]
 ];

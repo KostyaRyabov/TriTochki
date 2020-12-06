@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['query_135',['query',['../class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348',1,'DB\query()'],['../db_8php.html#a6b251c8058230359b2922377699c4f29',1,'query():&#160;db.php']]]
+  ['lastinsertid_162',['lastInsertId',['../class_d_b.html#a68158dd9a87436697d75dd1a1a133f6d',1,'DB']]]
 ];

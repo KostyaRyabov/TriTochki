@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['mainpage_2ejs_68',['MainPage.js',['../_main_page_8js.html',1,'']]],
-  ['modalwindow_2ejs_69',['ModalWindow.js',['../_modal_window_8js.html',1,'']]],
-  ['myid_70',['myID',['../_main_page_8js.html#a69432bc9971d68924bdcfd41bfc45220',1,'MainPage.js']]],
-  ['myname_71',['myName',['../_main_page_8js.html#a4ac3726556dd44946b4eef16fdc7637e',1,'MainPage.js']]]
+  ['lastinsertid_80',['lastInsertId',['../class_d_b.html#a68158dd9a87436697d75dd1a1a133f6d',1,'DB']]],
+  ['login_2ejs_81',['Login.js',['../_login_8js.html',1,'']]],
+  ['login_2ephp_82',['login.php',['../login_8php.html',1,'']]]
 ];

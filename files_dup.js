@@ -9,6 +9,9 @@ var files_dup =
     [ "functions.php", "functions_8php.html", "functions_8php" ],
     [ "get_chat.php", "get__chat_8php.html", "get__chat_8php" ],
     [ "get_user.php", "get__user_8php.html", "get__user_8php" ],
+    [ "JWT.php", "_j_w_t_8php.html", [
+      [ "JWT", "class_j_w_t_1_1_j_w_t.html", "class_j_w_t_1_1_j_w_t" ]
+    ] ],
     [ "Login.js", "_login_8js.html", "_login_8js" ],
     [ "login.php", "login_8php.html", "login_8php" ],
     [ "MainPage.js", "_main_page_8js.html", "_main_page_8js" ],

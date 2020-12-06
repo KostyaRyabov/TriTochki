@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['update_91',['update',['../class_d_b.html#a07005834806abc99569586c28dd9a496',1,'DB']]],
-  ['user_5fchat_5flist_2ephp_92',['user_chat_list.php',['../user__chat__list_8php.html',1,'']]],
-  ['userdata_93',['userData',['../functions_8php.html#a75b6b3bfe50ae8ce7cbda94963c6578f',1,'functions.php']]]
+  ['tritochki_107',['TriTochki',['../md__r_e_a_d_m_e.html',1,'']]],
+  ['treat_108',['treat',['../functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014',1,'functions.php']]]
 ];

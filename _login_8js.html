@@ -99,15 +99,31 @@ $(document).ready(function(){initNavTree('_login_8js.html',''); initResizable();
 <div class="title">Файл Login.js</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Страница регистрации и авторизации  
+<a href="#details">Подробнее...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Функции</h2></td></tr>
 <tr class="memitem:a19d44075c8fb06517f94c6b7befb60f1"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_login_8js.html#a19d44075c8fb06517f94c6b7befb60f1">errorMessage</a> (inputname, text)</td></tr>
+<tr class="memdesc:a19d44075c8fb06517f94c6b7befb60f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вывод ошибки  <a href="_login_8js.html#a19d44075c8fb06517f94c6b7befb60f1">Подробнее...</a><br /></td></tr>
 <tr class="separator:a19d44075c8fb06517f94c6b7befb60f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f619a12ce418bced0efa0ae43df8263"><td class="memItemLeft" align="right" valign="top">document&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_login_8js.html#a2f619a12ce418bced0efa0ae43df8263">ready</a> (function(){ $('body').fadeIn(300);$('.modal-window-trigger').on(&quot;click&quot;, function(){ toggleModalWindow(this, &quot;table&quot;) });$(&quot;button#spoiler_links&quot;).click(function(){ if($(this).text()==&quot;Создать аккаунт&quot;){ $(this).html('Имеется аккаунт');document.getElementById(&quot;register_form&quot;).disabled=false;$(&quot;DIV#spoiler_body&quot;).slideDown();} <a class="el" href="check_8php.html#a2d12ec6d8a1e7f5816a5b4ee4b5cf872">else</a> { $(this).html('Создать аккаунт');$(&quot;DIV#spoiler_body&quot;).slideUp(function(){ document.getElementById(&quot;register_form&quot;).disabled=true;});} return false;});$(&quot;#login-form&quot;).on(&quot;submit&quot;, function(e){ e.preventDefault();let action, data=$(this).serialize();if($(&quot;#register_form&quot;).attr(&quot;disabled&quot;)) action=&quot;login&quot;;else action=&quot;register&quot;;$.ajax({ method:&quot;POST&quot;, url:&quot;/resource/action/&quot;+action+&quot;.php&quot;, data:data, success:function(result){ if(result.length &gt; 1){ $(&quot;input.invalid&quot;).removeClass(&quot;invalid&quot;);result=JSON.parse(result);$.each(result, function(inputname, text){ <a class="el" href="_login_8js.html#a19d44075c8fb06517f94c6b7befb60f1">errorMessage</a>(inputname, text);});$(&quot;input:not(.invalid) + .error-message&quot;).slideUp(100, function(){$(this).remove()});} <a class="el" href="check_8php.html#a2d12ec6d8a1e7f5816a5b4ee4b5cf872">else</a> location.href=&quot;/&quot;;} });});})</td></tr>
-<tr class="separator:a2f619a12ce418bced0efa0ae43df8263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8dc73726eb0578fe44fb98cd2319445"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_login_8js.html#af8dc73726eb0578fe44fb98cd2319445">init</a> ()</td></tr>
+<tr class="memdesc:af8dc73726eb0578fe44fb98cd2319445"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация  <a href="_login_8js.html#af8dc73726eb0578fe44fb98cd2319445">Подробнее...</a><br /></td></tr>
+<tr class="separator:af8dc73726eb0578fe44fb98cd2319445"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46701745bbcc819ae76086463c453bbb"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_login_8js.html#a46701745bbcc819ae76086463c453bbb">request</a> (data)</td></tr>
+<tr class="memdesc:a46701745bbcc819ae76086463c453bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработка результата запроса регистрации или авторизации  <a href="_login_8js.html#a46701745bbcc819ae76086463c453bbb">Подробнее...</a><br /></td></tr>
+<tr class="separator:a46701745bbcc819ae76086463c453bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fbfa3679404f8637610224e285bd6a6"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_login_8js.html#a4fbfa3679404f8637610224e285bd6a6">spoiler</a> ()</td></tr>
+<tr class="memdesc:a4fbfa3679404f8637610224e285bd6a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Скрытие части контекста регистрации  <a href="_login_8js.html#a4fbfa3679404f8637610224e285bd6a6">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4fbfa3679404f8637610224e285bd6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105c109ce94a88e437d714924b430d64"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_login_8js.html#a105c109ce94a88e437d714924b430d64">submit</a> (e)</td></tr>
+<tr class="memdesc:a105c109ce94a88e437d714924b430d64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отправка формы регистрации или авторизации  <a href="_login_8js.html#a105c109ce94a88e437d714924b430d64">Подробнее...</a><br /></td></tr>
+<tr class="separator:a105c109ce94a88e437d714924b430d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Функции</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Страница регистрации и авторизации </p>
+</div><h2 class="groupheader">Функции</h2>
 <a id="a19d44075c8fb06517f94c6b7befb60f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19d44075c8fb06517f94c6b7befb60f1">&#9670;&nbsp;</a></span>errorMessage()</h2>
 
@@ -133,48 +149,181 @@ $(document).ready(function(){initNavTree('_login_8js.html',''); initResizable();
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                      {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    let input = $(`input[name=<span class="stringliteral">&#39;${inputname}&#39;</span>]`);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    let erMsg = input.next(<span class="stringliteral">&#39;.error-message&#39;</span>);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    input.addClass(<span class="stringliteral">&quot;invalid&quot;</span>);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span> (!erMsg.length){</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        erMsg = $(`&lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;error-message&quot;</span>&gt;${text}&lt;/span&gt;`).hide();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        input.after(erMsg);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        erMsg.slideDown(100);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        erMsg.html(text);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+
+<p>Вывод ошибки </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">inputname</td><td>Наименование поля ввода, к которому нужно привязать ошибку </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">text</td><td>Сообщение ошибки </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                      {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    let input = $(`input[name=<span class="stringliteral">&#39;${inputname}&#39;</span>]`);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    let erMsg = input.next(<span class="stringliteral">&#39;.error-message&#39;</span>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    input.addClass(<span class="stringliteral">&quot;invalid&quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">if</span> (!erMsg.length){</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        erMsg = $(`&lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;error-message&quot;</span>&gt;${text}&lt;/span&gt;`).hide();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        input.after(erMsg);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        erMsg.slideDown(100);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        erMsg.html(text);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a2f619a12ce418bced0efa0ae43df8263"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f619a12ce418bced0efa0ae43df8263">&#9670;&nbsp;</a></span>ready()</h2>
+<a id="af8dc73726eb0578fe44fb98cd2319445"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8dc73726eb0578fe44fb98cd2319445">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">document ready </td>
+          <td class="memname">function init </td>
           <td>(</td>
-          <td class="paramtype">function(){ $('body').fadeIn(300);$('.modal-window-trigger').on(&quot;click&quot;, function(){ toggleModalWindow(this, &quot;table&quot;) });$(&quot;button#spoiler_links&quot;).click(function(){ if($(this).text()==&quot;Создать аккаунт&quot;){ $(this).html('Имеется аккаунт');document.getElementById(&quot;register_form&quot;).disabled=false;$(&quot;DIV#spoiler_body&quot;).slideDown();} <a class="el" href="check_8php.html#a2d12ec6d8a1e7f5816a5b4ee4b5cf872">else</a> { $(this).html('Создать аккаунт');$(&quot;DIV#spoiler_body&quot;).slideUp(function(){ document.getElementById(&quot;register_form&quot;).disabled=true;});} return false;});$(&quot;#login-form&quot;).on(&quot;submit&quot;, function(e){ e.preventDefault();let action, data=$(this).serialize();if($(&quot;#register_form&quot;).attr(&quot;disabled&quot;)) action=&quot;login&quot;;else action=&quot;register&quot;;$.ajax({ method:&quot;POST&quot;, url:&quot;/resource/action/&quot;+action+&quot;.php&quot;, data:data, success:function(result){ if(result.length &gt; 1){ $(&quot;input.invalid&quot;).removeClass(&quot;invalid&quot;);result=JSON.parse(result);$.each(result, function(inputname, text){ <a class="el" href="_login_8js.html#a19d44075c8fb06517f94c6b7befb60f1">errorMessage</a>(inputname, text);});$(&quot;input:not(.invalid) + .error-message&quot;).slideUp(100, function(){$(this).remove()});} <a class="el" href="check_8php.html#a2d12ec6d8a1e7f5816a5b4ee4b5cf872">else</a> location.href=&quot;/&quot;;} });});}&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Инициализация </p>
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;               {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    $(<span class="stringliteral">&#39;body&#39;</span>).fadeIn(300);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    $(<span class="stringliteral">&#39;.modal-window-trigger&#39;</span>).on(<span class="stringliteral">&quot;click&quot;</span>,<span class="keyword">function</span>(){toggleModalWindow(<span class="keyword">this</span>, <span class="stringliteral">&quot;table&quot;</span>)});</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    $(<span class="stringliteral">&quot;button#spoiler_links&quot;</span>).click(<a class="code" href="_login_8js.html#a4fbfa3679404f8637610224e285bd6a6">spoiler</a>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    $(<span class="stringliteral">&quot;#login-form&quot;</span>).on(<span class="stringliteral">&quot;submit&quot;</span>, <a class="code" href="_login_8js.html#a105c109ce94a88e437d714924b430d64">submit</a>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a46701745bbcc819ae76086463c453bbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46701745bbcc819ae76086463c453bbb">&#9670;&nbsp;</a></span>request()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">function request </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обработка результата запроса регистрации или авторизации </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Передаваемые данные </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                      {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span>(data.length &gt; 1){</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        $(<span class="stringliteral">&quot;input.invalid&quot;</span>).removeClass(<span class="stringliteral">&quot;invalid&quot;</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        result = JSON.parse(data);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        $.each(data, <a class="code" href="_login_8js.html#a19d44075c8fb06517f94c6b7befb60f1">errorMessage</a>.bind(<span class="keyword">null</span>,inputname, text));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        $(<span class="stringliteral">&quot;input:not(.invalid) + .error-message&quot;</span>).slideUp(100, <span class="keyword">function</span>(){$(<span class="keyword">this</span>).<span class="keyword">remove</span>()});</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    } <span class="keywordflow">else</span> location.href = <span class="stringliteral">&quot;/&quot;</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4fbfa3679404f8637610224e285bd6a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fbfa3679404f8637610224e285bd6a6">&#9670;&nbsp;</a></span>spoiler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">function spoiler </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Скрытие части контекста регистрации </p>
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                  {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">if</span> ($(<span class="keyword">this</span>).text() == <span class="stringliteral">&quot;Создать аккаунт&quot;</span>){</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        $(<span class="keyword">this</span>).html(<span class="stringliteral">&#39;Имеется аккаунт&#39;</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        document.getElementById(<span class="stringliteral">&quot;register_form&quot;</span>).disabled = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        $(<span class="stringliteral">&quot;DIV#spoiler_body&quot;</span>).slideDown();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        $(<span class="keyword">this</span>).html(<span class="stringliteral">&#39;Создать аккаунт&#39;</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        $(<span class="stringliteral">&quot;DIV#spoiler_body&quot;</span>).slideUp(<span class="keyword">function</span>(){</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            document.getElementById(<span class="stringliteral">&quot;register_form&quot;</span>).disabled = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        });</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a105c109ce94a88e437d714924b430d64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a105c109ce94a88e437d714924b430d64">&#9670;&nbsp;</a></span>submit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">function submit </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Отправка формы регистрации или авторизации </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>Событие </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                  {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    e.preventDefault();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    let action, data = $(<span class="keyword">this</span>).serialize();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// Установка нужного действия</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">if</span>($(<span class="stringliteral">&quot;#register_form&quot;</span>).attr(<span class="stringliteral">&quot;disabled&quot;</span>)) action = <span class="stringliteral">&quot;login&quot;</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">else</span> action = <span class="stringliteral">&quot;register&quot;</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    $.ajax({</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        method: <span class="stringliteral">&quot;POST&quot;</span>,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        url: <span class="stringliteral">&quot;/resource/action/&quot;</span> + action + <span class="stringliteral">&quot;.php&quot;</span>,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        data: data,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        success: <a class="code" href="_login_8js.html#a46701745bbcc819ae76086463c453bbb">request</a>(result)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    });</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="a_login_8js_html_a19d44075c8fb06517f94c6b7befb60f1"><div class="ttname"><a href="_login_8js.html#a19d44075c8fb06517f94c6b7befb60f1">errorMessage</a></div><div class="ttdeci">function errorMessage(inputname, text)</div><div class="ttdoc">Вывод ошибки</div><div class="ttdef"><b>Definition:</b> Login.js:77</div></div>
+<div class="ttc" id="a_login_8js_html_a4fbfa3679404f8637610224e285bd6a6"><div class="ttname"><a href="_login_8js.html#a4fbfa3679404f8637610224e285bd6a6">spoiler</a></div><div class="ttdeci">function spoiler()</div><div class="ttdoc">Скрытие части контекста регистрации</div><div class="ttdef"><b>Definition:</b> Login.js:19</div></div>
+<div class="ttc" id="a_login_8js_html_a105c109ce94a88e437d714924b430d64"><div class="ttname"><a href="_login_8js.html#a105c109ce94a88e437d714924b430d64">submit</a></div><div class="ttdeci">function submit(e)</div><div class="ttdoc">Отправка формы регистрации или авторизации</div><div class="ttdef"><b>Definition:</b> Login.js:40</div></div>
+<div class="ttc" id="a_login_8js_html_a46701745bbcc819ae76086463c453bbb"><div class="ttname"><a href="_login_8js.html#a46701745bbcc819ae76086463c453bbb">request</a></div><div class="ttdeci">function request(data)</div><div class="ttdoc">Обработка результата запроса регистрации или авторизации</div><div class="ttdef"><b>Definition:</b> Login.js:61</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_e180dc9bc8f5964f632312758a1f4330.html">javascript</a></li><li class="navelem"><a class="el" href="_login_8js.html">Login.js</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Вс 6 Дек 2020 09:48:56. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Вс 6 Дек 2020 10:06:11. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
