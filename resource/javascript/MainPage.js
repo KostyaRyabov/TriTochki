@@ -273,9 +273,26 @@ function init()
     }
   });
 
+  $('body').on("click", "#chat-exit", chatExit);
+
   $('body').on("click", ".kick-user", kickContact);
 
   authorization()
+}
+
+/*!
+  \brief Выход из чата
+*/
+function chatExit(){
+  /// \todo Добавить запрос удаления текущего пользователя из чата
+
+  $('.tab').fadeOut(300,function(){
+    $('#tab-name').text("Главная страница");
+    $('#btn-chat-about').remove();
+  }).fadeIn(300);
+  
+  $('#main').fadeOut(100,function(){$(this).html('')});
+  hideModalWindow('#chat-contacts')
 }
 
 /*!
@@ -304,8 +321,6 @@ function authorization()
 
         if(params["id"] > 0){
           showChatContext(params["id"]);
-        } else{
-          $("#tab-name").text("Главная страница");
         }
       }
     }
@@ -329,12 +344,11 @@ function showChatContext(id)
       success: function(result){
         result = JSON.parse(result);
       
-        let first_unread = 0;
+        let first_unread = 0;   /// \todo Изменить номер последнего непрочитанного сообщения
         
         idChat = id;
         showChatInfo(result);
-        $('#tab-name').text(result.name);
-        $('.tab').hide().append(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick="showModalWindow('#chat-contacts')">?</button>`).fadeIn(200);
+        $('.tab').fadeOut(300,function(){$('#tab-name').text(result.name)}).append(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick="showModalWindow('#chat-contacts')">?</button>`).fadeIn(300);
         $('#main').addClass('shiftDown').html('').fadeIn(300);
         showTextBox();
         

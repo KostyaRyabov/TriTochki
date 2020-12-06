@@ -85,6 +85,15 @@ fieldset{
     text-align: center;
 }
 
+#restore_password{
+    cursor: pointer;
+    color: hsl(0, 0%, 20%);
+}
+
+#restore_password:hover{
+    color: hsl(0, 0%, 0%);
+}
+
 html{
     height: 100%;
 }
