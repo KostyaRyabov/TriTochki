@@ -144,12 +144,12 @@ $(document).ready(function(){initNavTree('class_d_b.html',''); initResizable(); 
 </table>
 </div><div class="memdoc">
 <p>Метод подключения к базе данных </p>
-<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                        {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">if</span>(empty(self::$link)){</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                self::$link = @mysqli_connect(self::$host, <a class="code" href="change__chat__title_8php.html#a6fccfa6d6f19a0faaf3a85a04093d56d">self::$user</a>, self::$pass, self::$db);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                mysqli_set_charset(self::$link, <span class="stringliteral">&#39;utf8&#39;</span>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                        {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keywordflow">if</span>(empty(self::$link)){</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                self::$link = @mysqli_connect(self::$host, <a class="code" href="change__chat__title_8php.html#a598ca4e71b15a1313ec95f0df1027ca5">self::$user</a>, self::$pass, self::$db);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                mysqli_set_charset(self::$link, <span class="stringliteral">&#39;utf8&#39;</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -195,24 +195,24 @@ $(document).ready(function(){initNavTree('class_d_b.html',''); initResizable(); 
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                                      {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="comment">// Обработка полей и значений для добавления в базу данных</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">foreach</span>($insert as <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a> =&gt; $value){</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="comment">// Разбор плейсхолдера и столбца по разделителю</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a> = explode(<span class="stringliteral">&quot;:&quot;</span>, <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="comment">// Строка запроса будет иметь вид: INSERT INTO `table` (`field`,...) VALUES (%s,%d,...)</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                $fields .= <span class="stringliteral">&quot;`&quot;</span>.trim(<a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>[1]).<span class="stringliteral">&quot;`,&quot;</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                $values .= trim(<a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>[0]).<span class="stringliteral">&quot;,&quot;</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                $args[] = trim($value); <span class="comment">// Значения идут отдельно, как аргументы</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            $fields = substr($fields, 0, -1);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            $values = substr($values, 0, -1);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            $sql = <span class="stringliteral">&quot;INSERT INTO `&quot;</span>.$table.<span class="stringliteral">&quot;` (&quot;</span>.$fields.<span class="stringliteral">&quot;) VALUES (&quot;</span>.$values.<span class="stringliteral">&quot;)&quot;</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <a class="code" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">self::query</a>($sql, $args);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                      {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="comment">// Обработка полей и значений для добавления в базу данных</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">foreach</span>($insert as <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a> =&gt; $value){</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="comment">// Разбор плейсхолдера и столбца по разделителю</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a> = explode(<span class="stringliteral">&quot;:&quot;</span>, <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="comment">// Строка запроса будет иметь вид: INSERT INTO `table` (`field`,...) VALUES (%s,%d,...)</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                $fields .= <span class="stringliteral">&quot;`&quot;</span>.trim(<a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>[1]).<span class="stringliteral">&quot;`,&quot;</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                $values .= trim(<a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>[0]).<span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                $args[] = trim($value); <span class="comment">// Значения идут отдельно, как аргументы</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            $fields = substr($fields, 0, -1);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            $values = substr($values, 0, -1);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            $sql = <span class="stringliteral">&quot;INSERT INTO `&quot;</span>.$table.<span class="stringliteral">&quot;` (&quot;</span>.$fields.<span class="stringliteral">&quot;) VALUES (&quot;</span>.$values.<span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <a class="code" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">self::query</a>($sql, $args);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -240,9 +240,9 @@ $(document).ready(function(){initNavTree('class_d_b.html',''); initResizable(); 
 </div><div class="memdoc">
 <p>Получение id с auto_increment после последней вставки</p>
 <dl class="section return"><dt>Возвращает</dt><dd>int </dd></dl>
-<div class="fragment"><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                             {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">return</span> mysqli_insert_id(self::$link);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                                             {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">return</span> mysqli_insert_id(self::$link);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -289,26 +289,26 @@ $(document).ready(function(){initNavTree('class_d_b.html',''); initResizable(); 
   </dd>
 </dl>
 <dl class="section return"><dt>Возвращает</dt><dd>bool|mysqli_result </dd></dl>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                           {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="comment">// Если нет аргументов, проверяем, должны ли быть</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">if</span>(!count($args) and preg_match(<span class="stringliteral">&quot;/%/&quot;</span>, $sql)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="comment">// Преобразование строкового аргумента в строку</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            $sql = str_replace(<span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;&#39;%s&#39;&quot;</span>, $sql);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="comment">// Если есть аргументы, форматируем строку. В противном случае просто устраняем пробелы</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">if</span>(count($args) &gt; 0){</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordflow">foreach</span>($args as $key =&gt; $arg) <span class="comment">// Обработка аргументов</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    $args[$key] = mysqli_real_escape_string(self::$link, $arg);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                $sql = vsprintf(trim($sql), $args);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            } <span class="keywordflow">else</span> $sql = trim($sql);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">if</span>(!$sql or !strlen($sql)) <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Финальная проверка запроса</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="get__user_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a> = mysqli_query(self::$link, $sql) or trigger_error(<span class="stringliteral">&quot;db: &quot;</span>.mysqli_error(self::$link).<span class="stringliteral">&quot; in &quot;</span>.$sql);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="get__user_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                                           {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="comment">// Если нет аргументов, проверяем, должны ли быть</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">if</span>(!count($args) and preg_match(<span class="stringliteral">&quot;/%/&quot;</span>, $sql)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="comment">// Преобразование строкового аргумента в строку</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            $sql = str_replace(<span class="stringliteral">&quot;%s&quot;</span>, <span class="stringliteral">&quot;&#39;%s&#39;&quot;</span>, $sql);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="comment">// Если есть аргументы, форматируем строку. В противном случае просто устраняем пробелы</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">if</span>(count($args) &gt; 0){</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">foreach</span>($args as $key =&gt; $arg) <span class="comment">// Обработка аргументов</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    $args[$key] = mysqli_real_escape_string(self::$link, $arg);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                $sql = vsprintf(trim($sql), $args);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            } <span class="keywordflow">else</span> $sql = trim($sql);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">if</span>(!$sql or !strlen($sql)) <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Финальная проверка запроса</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="get__user_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a> = mysqli_query(self::$link, $sql) or trigger_error(<span class="stringliteral">&quot;db: &quot;</span>.mysqli_error(self::$link).<span class="stringliteral">&quot; in &quot;</span>.$sql);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="get__user_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -367,25 +367,25 @@ $(document).ready(function(){initNavTree('class_d_b.html',''); initResizable(); 
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                                              {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            $sql = <span class="stringliteral">&quot;UPDATE `&quot;</span>.$table.<span class="stringliteral">&quot;` SET&quot;</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">foreach</span>($update as <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a> =&gt; $value){</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="comment">// Разбор плейсхолдера и столбца по разделителю</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a> = explode(<span class="stringliteral">&quot;:&quot;</span>, <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="comment">// Строка запроса будет иметь вид: UPDATE `table` SET `field=%s`, ...</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                $sql .= <span class="stringliteral">&quot; `&quot;</span>.trim(<a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>[1]).<span class="stringliteral">&quot;`=&quot;</span>.<a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>[0].<span class="stringliteral">&quot;,&quot;</span>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                $args[] = trim($value); <span class="comment">// Значения идут отдельно, как аргументы</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            $sql = substr($sql, 0, -1);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            $sql .= <span class="stringliteral">&quot; WHERE &quot;</span>.trim($where[0]); <span class="comment">// Добавление условия с плейсхолдерами к строке запроса</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">foreach</span>($where[1] as $arg) $args[] = $arg; <span class="comment">// Добавление аргументов из условия к остальным</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="comment">// Конечный вид строки запроса: UPDATE `table` SET `field=%s`, ... WHERE field1=%d ...</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <a class="code" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>($sql, $args);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                                              {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            $sql = <span class="stringliteral">&quot;UPDATE `&quot;</span>.$table.<span class="stringliteral">&quot;` SET&quot;</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">foreach</span>($update as <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a> =&gt; $value){</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="comment">// Разбор плейсхолдера и столбца по разделителю</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a> = explode(<span class="stringliteral">&quot;:&quot;</span>, <a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="comment">// Строка запроса будет иметь вид: UPDATE `table` SET `field=%s`, ...</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                $sql .= <span class="stringliteral">&quot; `&quot;</span>.trim(<a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>[1]).<span class="stringliteral">&quot;`=&quot;</span>.<a class="code" href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>[0].<span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                $args[] = trim($value); <span class="comment">// Значения идут отдельно, как аргументы</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            $sql = substr($sql, 0, -1);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            $sql .= <span class="stringliteral">&quot; WHERE &quot;</span>.trim($where[0]); <span class="comment">// Добавление условия с плейсхолдерами к строке запроса</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">foreach</span>($where[1] as $arg) $args[] = $arg; <span class="comment">// Добавление аргументов из условия к остальным</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="comment">// Конечный вид строки запроса: UPDATE `table` SET `field=%s`, ... WHERE field1=%d ...</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <a class="code" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>($sql, $args);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -417,15 +417,15 @@ $(document).ready(function(){initNavTree('class_d_b.html',''); initResizable(); 
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aget__user_8php_html_a112ef069ddc0454086e3d1e6d8d55d07"><div class="ttname"><a href="get__user_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a></div><div class="ttdeci">$result</div><div class="ttdef"><b>Definition:</b> get_user.php:12</div></div>
-<div class="ttc" id="aclass_d_b_html_a213d19d5cd8aacbf7678c29df6ec5348"><div class="ttname"><a href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB\query</a></div><div class="ttdeci">static query($sql, $args=array())</div><div class="ttdef"><b>Definition:</b> db.php:40</div></div>
-<div class="ttc" id="achange__user__info_8php_html_a83e4d6721f3491a4fd780dbd3ce1a3c0"><div class="ttname"><a href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a></div><div class="ttdeci">$field</div><div class="ttdef"><b>Definition:</b> change_user_info.php:11</div></div>
-<div class="ttc" id="achange__chat__title_8php_html_a6fccfa6d6f19a0faaf3a85a04093d56d"><div class="ttname"><a href="change__chat__title_8php.html#a6fccfa6d6f19a0faaf3a85a04093d56d">$user</a></div><div class="ttdeci">$user</div><div class="ttdef"><b>Definition:</b> change_chat_title.php:7</div></div>
+<div class="ttc" id="aget__user_8php_html_a112ef069ddc0454086e3d1e6d8d55d07"><div class="ttname"><a href="get__user_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a></div><div class="ttdeci">$result</div><div class="ttdef"><b>Definition:</b> get_user.php:17</div></div>
+<div class="ttc" id="aclass_d_b_html_a213d19d5cd8aacbf7678c29df6ec5348"><div class="ttname"><a href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB\query</a></div><div class="ttdeci">static query($sql, $args=array())</div><div class="ttdef"><b>Definition:</b> db.php:35</div></div>
+<div class="ttc" id="achange__user__info_8php_html_a83e4d6721f3491a4fd780dbd3ce1a3c0"><div class="ttname"><a href="change__user__info_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a></div><div class="ttdeci">$field</div><div class="ttdef"><b>Definition:</b> change_user_info.php:16</div></div>
+<div class="ttc" id="achange__chat__title_8php_html_a598ca4e71b15a1313ec95f0df1027ca5"><div class="ttname"><a href="change__chat__title_8php.html#a598ca4e71b15a1313ec95f0df1027ca5">$user</a></div><div class="ttdeci">$user</div><div class="ttdef"><b>Definition:</b> change_chat_title.php:12</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_d_b.html">DB</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Вс 6 Дек 2020 11:35:32. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Вс 6 Дек 2020 11:43:00. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
