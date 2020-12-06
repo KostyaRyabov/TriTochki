@@ -332,10 +332,9 @@ function showChatContext(id)
         let first_unread = 0;
         
         idChat = id;
-        showChatInfo(result.name);
-        $("#chat-info-name").text(result.name);
-        $("#chat-create-date").text(result.date);
-        $("#chat-info-contact-list").html("");
+        showChatInfo(result);
+        $('#tab-name').text(result.name);
+        $('.tab').hide().append(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick="showModalWindow('#chat-contacts')">?</button>`).fadeIn(200);
         $('#main').addClass('shiftDown').html('').fadeIn(300);
         showTextBox();
         
@@ -375,22 +374,19 @@ function hideWarningMessage()
 }
 
 /// \brief Отображение сведений о чате
-function showChatInfo(chat_name)
+function showChatInfo(data)
 {
-  $('.tab').hide().append(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick="showModalWindow('#chat-contacts')">?</button>`).fadeIn(200);
-  $('#tag-name').text(chat_name);
-
   if (!$("modal-window-wrapper").length){
     let context = `
       <div id="chat-contacts" class="modal-window-wrapper">
         <div class="block-screen modal-window-trigger" onclick="hideModalWindow('#chat-contacts')"></div>
         <div id="info-box" class="modal-window">
           <div class="input" id="chat-title">
-            <span id="chat-info-name" class="chat-info-header" contentEditable="false" placeholder="Chat name" maxlength="64"></span>`
+            <span id="chat-info-name" class="chat-info-header" contentEditable="false" placeholder="Chat name" maxlength="64">${data.name}</span>`
             if (idOwner === myID) context += `<button class="input-edit icon-pencil-1"></button>`
           context += `</div>
           <hr/>
-          <span id="chat-create-date"></span>
+          <span id="chat-create-date">${data.date}</span>
           <br/>
           <br/>
           <span class="chat-info-header">контакты:`
