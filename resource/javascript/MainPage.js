@@ -288,13 +288,23 @@ function init()
 
   $('body').on("click", ".kick-user", kickContact);
 
+  $('body').on("click", "#chat-add-user", addContact);
+
   authorization()
 }
 
-/*!
-  \brief Выход из чата
-*/
-function chatExit(){
+/// \brief Добавление контакта к текущему чату
+function addContact()
+{
+  hideModalWindow('#chat-contacts')
+  showContactListContext(function(){
+    /// \todo Написать код для добавления контакта к текущему чату
+  })
+}
+
+/// \brief Выход из чата
+function chatExit()
+{
   $.ajax({
     method: "POST",
     url: "/resource/action/user_chat_leave.php",
@@ -572,7 +582,7 @@ function showChatListContext()
 }
 
 /// \brief Отображение списка контактов пользователя
-function showContactListContext()
+function showContactListContext(callback)
 {
   hideChatInfo();
   hideTextBox();
@@ -608,7 +618,7 @@ function showContactListContext()
             </div>
             <table class='list2'><tbody>${context}</tbody></table>`;
 
-          $('#main').html(context).hide().fadeIn(200);
+          $('#main').html(context).hide().fadeIn(200, callback);
           
           /// \todo завершение анимации загрузки
         }
