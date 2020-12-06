@@ -113,7 +113,7 @@ html *{
 .logo{
     width: 70px;
     height: 70px;
-
+    cursor: pointer;
     margin-bottom: auto;
 }
 
