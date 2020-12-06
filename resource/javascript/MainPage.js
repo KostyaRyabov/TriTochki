@@ -42,6 +42,10 @@ var params = window
 $(document).ready(init);
 /// \endcond
 
+$(document).on("click", ".menu .logo", function(){
+  location.href = "/";
+});
+
 /*!
   \brief Отображение кнопок для редактирования параметра
 
