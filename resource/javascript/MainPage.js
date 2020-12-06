@@ -185,8 +185,6 @@ function deleteSubmit()
       },
       success: function(result){
         if(result.length > 1) return false;
-      
-        $("#tab-name").text($("#chat-info-name").text());
       }
     });
 
@@ -297,7 +295,16 @@ function init()
   \brief Выход из чата
 */
 function chatExit(){
-  /// \todo Добавить запрос удаления текущего пользователя из чата
+  $.ajax({
+    method: "POST",
+    url: "/resource/action/user_chat_leave.php",
+    data: {
+      "chat": params["id"]
+    },
+    success: function(result){
+      if(result.length > 1) return false;
+    }
+  });
 
   $('.tab').fadeOut(300,function(){
     $('#tab-name').text("Главная страница");
