@@ -164,21 +164,27 @@ function deleteSubmit()
     $(this).remove();
 
     /// \todo добавить удаление контакта selected[0].id у myID
+
+    if ($('.list2 > tbody').is(':empty') && !$('.list2 + #empty-list-message').length){
+      let txt = 'empty'
+      $('.list2').after(`<span id='empty-list-message'>${txt}</span>`)
+      $('#empty-list-message').hide().show(300)
+    }
   })
 
   $(`.myChat#${selected[0].id}`).slideUp(200,function(){
     $(this).remove();
 
     /// \todo добавить удаление чата selected[0].id у myID
+
+    if ($('.list2 > tbody').is(':empty') && !$('.list2 + #empty-list-message').length){
+      let txt = 'empty'
+      $('.list2').after(`<span id='empty-list-message'>${txt}</span>`)
+      $('#empty-list-message').hide().show(300)
+    }
   })
 
   hideWarningMessage()
-
-  if ($('.list2 > tbody').empty() && !$('.list2 + #empty-list-message').length){
-    let txt = 'empty'
-    $('.list2').after(`<span id='empty-list-message'>${txt}</span>`)
-    $('#empty-list-message').hide().show(300)
-  }
 }
 
 /// \brief Отказ удаления выбранного элемента
@@ -247,9 +253,13 @@ function init()
   
   $("body").on("click","#w-no",deleteCancel);
   
-  $("body").on("click",".myContact-name",showProfileContext.bind(null,$(this).parent().attr('id')));
+  $("body").on("click",".myContact-name",function(){
+    showProfileContext($(this).parent().attr('id'))
+  });
   
-  $("body").on("click",".myChat-name",showChatContext.bind(null,$(this).parent().attr('id')));
+  $("body").on("click",".myChat-name",function(){
+    showChatContext($(this).parent().attr('id'))
+  });
   
   $("body").on("click","button.error-message",function(){
     $(this).fadeOut(300, function(){$(this).remove()});
@@ -520,7 +530,6 @@ function showChatListContext()
             <button>поиск</button>
           </div>
           <table class='list2'>
-            <thead></thead>
             <tbody>${context}</tbody>
           </table>`;
 

@@ -1,3 +1,12 @@
+/*!
+  \file
+  \brief Модальное окно
+*/
+
+/*!
+    \brief Отображение модального окна
+    \param[in] modal Селектор модального окна
+*/
 function showModalWindow(modal){
     $(modal).fadeIn(150);
 
@@ -9,6 +18,11 @@ function showModalWindow(modal){
     });
 }
 
+/*!
+    \brief Отображение модального окна
+    \param[in] modal Селектор модального окна
+    \param[in] callback Функция обратного вызова
+*/
 function hideModalWindow(modal, callback){
     let D1 = $(modal).fadeOut(150);
     
@@ -19,9 +33,5 @@ function hideModalWindow(modal, callback){
         }
     });
 
-    if (typeof callback === 'function') { 
-        $.when(D1,D2).done(function(){
-            callback();
-        })
-    }
+    if (typeof callback === 'function') $.when(D1,D2).done(callback)
 }
