@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['treat_132',['treat',['../functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014',1,'functions.php']]]
+  ['query_135',['query',['../class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348',1,'DB\query()'],['../db_8php.html#a6b251c8058230359b2922377699c4f29',1,'query():&#160;db.php']]]
 ];

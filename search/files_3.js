@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['login_2ejs_97',['Login.js',['../_login_8js.html',1,'']]],
-  ['login_2ephp_98',['login.php',['../login_8php.html',1,'']]]
+  ['get_5fchat_2ephp_105',['get_chat.php',['../get__chat_8php.html',1,'']]],
+  ['get_5fuser_2ephp_106',['get_user.php',['../get__user_8php.html',1,'']]]
 ];

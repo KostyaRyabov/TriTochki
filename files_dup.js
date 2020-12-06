@@ -5,6 +5,7 @@ var files_dup =
     [ "chat_user_kick.php", "chat__user__kick_8php.html", "chat__user__kick_8php" ],
     [ "check.php", "check_8php.html", "check_8php" ],
     [ "core.php", "core_8php.html", null ],
+    [ "db.php", "db_8php.html", "db_8php" ],
     [ "functions.php", "functions_8php.html", "functions_8php" ],
     [ "get_chat.php", "get__chat_8php.html", "get__chat_8php" ],
     [ "get_user.php", "get__user_8php.html", "get__user_8php" ],

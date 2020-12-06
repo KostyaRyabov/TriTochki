@@ -28,6 +28,15 @@ var NAVTREE =
     [ "TriTochki", "md__r_e_a_d_m_e.html", null ],
     [ "Список задач", "todo.html", null ],
     [ "Группы", "modules.html", "modules" ],
+    [ "Классы", "annotated.html", [
+      [ "Классы", "annotated.html", "annotated_dup" ],
+      [ "Алфавитный указатель классов", "classes.html", null ],
+      [ "Члены классов", "functions.html", [
+        [ "Указатель", "functions.html", null ],
+        [ "Функции", "functions_func.html", null ],
+        [ "Переменные", "functions_vars.html", null ]
+      ] ]
+    ] ],
     [ "Файлы", "files.html", [
       [ "Файлы", "files.html", "files_dup" ],
       [ "Список членов всех файлов", "globals.html", [

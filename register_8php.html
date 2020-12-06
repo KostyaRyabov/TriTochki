@@ -110,13 +110,13 @@ $(document).ready(function(){initNavTree('register_8php.html',''); initResizable
 <tr class="separator:a62dd3be39bdab088e08aef405eef5de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6fc143db85e8af4c399562cce1b95c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8php.html#ac6fc143db85e8af4c399562cce1b95c2">$jwt_data</a></td></tr>
 <tr class="separator:ac6fc143db85e8af4c399562cce1b95c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab016051d23562a5a6e613188eb96df3c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8php.html#ab016051d23562a5a6e613188eb96df3c">$new_user</a> = DB::lastInsertId()</td></tr>
+<tr class="memitem:ab016051d23562a5a6e613188eb96df3c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8php.html#ab016051d23562a5a6e613188eb96df3c">$new_user</a> = <a class="el" href="class_d_b.html#a68158dd9a87436697d75dd1a1a133f6d">DB::lastInsertId</a>()</td></tr>
 <tr class="separator:ab016051d23562a5a6e613188eb96df3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a607686ef9f99ea7c42f4f3dd3dbb2b0d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8php.html#a607686ef9f99ea7c42f4f3dd3dbb2b0d">$password</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(trim($_POST[&quot;password&quot;]))</td></tr>
 <tr class="separator:a607686ef9f99ea7c42f4f3dd3dbb2b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75cd024eb26d4bf4f7ca3afee8fcb24f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8php.html#a75cd024eb26d4bf4f7ca3afee8fcb24f">$repeat</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(trim($_POST[&quot;repeat_password&quot;]))</td></tr>
 <tr class="separator:a75cd024eb26d4bf4f7ca3afee8fcb24f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49a8a4009b02e49717caa88b128affc5"><td class="memItemLeft" align="right" valign="top">if($password !=$repeat)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8php.html#a49a8a4009b02e49717caa88b128affc5">$res</a> = DB::query(&quot;SELECT Login, Email FROM user WHERE Login=%s OR Email=%s&quot;, [$username, $email])</td></tr>
+<tr class="memitem:a49a8a4009b02e49717caa88b128affc5"><td class="memItemLeft" align="right" valign="top">if($password !=$repeat)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8php.html#a49a8a4009b02e49717caa88b128affc5">$res</a> = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT Login, Email FROM user WHERE Login=%s OR Email=%s&quot;, [$username, $email])</td></tr>
 <tr class="separator:a49a8a4009b02e49717caa88b128affc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1d731aa570613e5bcff831bb10e9b87"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8php.html#aa1d731aa570613e5bcff831bb10e9b87">$row</a> = mysqli_fetch_array($res)</td></tr>
 <tr class="separator:aa1d731aa570613e5bcff831bb10e9b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,7 +196,7 @@ $(document).ready(function(){initNavTree('register_8php.html',''); initResizable
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$new_user = DB::lastInsertId()</td>
+          <td class="memname">$new_user = <a class="el" href="class_d_b.html#a68158dd9a87436697d75dd1a1a133f6d">DB::lastInsertId</a>()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -238,7 +238,7 @@ $(document).ready(function(){initNavTree('register_8php.html',''); initResizable
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$res = DB::query(&quot;SELECT Login, Email FROM user WHERE Login=%s OR Email=%s&quot;, [$username, $email])</td>
+          <td class="memname">$res = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT Login, Email FROM user WHERE Login=%s OR Email=%s&quot;, [$username, $email])</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -280,7 +280,7 @@ $(document).ready(function(){initNavTree('register_8php.html',''); initResizable
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="register_8php.html">register.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Сб 5 Дек 2020 21:41:02. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Вс 6 Дек 2020 09:41:54. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

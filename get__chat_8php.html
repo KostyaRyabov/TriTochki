@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('get__chat_8php.html',''); initResizabl
 <tr class="separator:a9e8633cf48f7c5fc8cc9f5fa31450b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1d731aa570613e5bcff831bb10e9b87"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat_8php.html#aa1d731aa570613e5bcff831bb10e9b87">$row</a> = mysqli_fetch_array($sel)</td></tr>
 <tr class="separator:aa1d731aa570613e5bcff831bb10e9b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d0f17f147bb327e312b71312f3cf040"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat_8php.html#a7d0f17f147bb327e312b71312f3cf040">$sel</a> = DB::query(&quot;SELECT id_user, Name, date_create FROM chat WHERE id_chat=%d&quot;, [$id])</td></tr>
+<tr class="memitem:a7d0f17f147bb327e312b71312f3cf040"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat_8php.html#a7d0f17f147bb327e312b71312f3cf040">$sel</a> = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id_user, Name, date_create FROM chat WHERE id_chat=%d&quot;, [$id])</td></tr>
 <tr class="separator:a7d0f17f147bb327e312b71312f3cf040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24d82c354cb01154b2a69b9224c6ca3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a> = <a class="el" href="functions_8php.html#a75b6b3bfe50ae8ce7cbda94963c6578f">userData</a>()</td></tr>
 <tr class="separator:a24d82c354cb01154b2a69b9224c6ca3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('get__chat_8php.html',''); initResizabl
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Инициализатор</b><div class="fragment"><div class="line">= DB::query(<span class="stringliteral">&quot;</span></div>
+<b>Инициализатор</b><div class="fragment"><div class="line">= <a class="code" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(<span class="stringliteral">&quot;</span></div>
 <div class="line"><span class="stringliteral">        SELECT message.id_message, message.id_user, content, data_create, id_read</span></div>
 <div class="line"><span class="stringliteral">        FROM message</span></div>
 <div class="line"><span class="stringliteral">        INNER JOIN message_status ON message.id_message=message_status.id_message</span></div>
@@ -198,7 +198,7 @@ $(document).ready(function(){initNavTree('get__chat_8php.html',''); initResizabl
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$sel = DB::query(&quot;SELECT id_user, Name, date_create FROM chat WHERE id_chat=%d&quot;, [$id])</td>
+          <td class="memname">$sel = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id_user, Name, date_create FROM chat WHERE id_chat=%d&quot;, [$id])</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -258,7 +258,7 @@ $(document).ready(function(){initNavTree('get__chat_8php.html',''); initResizabl
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Инициализатор</b><div class="fragment"><div class="line">= DB::query(<span class="stringliteral">&quot;</span></div>
+<b>Инициализатор</b><div class="fragment"><div class="line">= <a class="code" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(<span class="stringliteral">&quot;</span></div>
 <div class="line"><span class="stringliteral">        SELECT user.id_user, Firstname, Lastname, login</span></div>
 <div class="line"><span class="stringliteral">        FROM chat_users</span></div>
 <div class="line"><span class="stringliteral">        INNER JOIN user ON chat_users.id_user=user.id_user</span></div>
@@ -269,6 +269,7 @@ $(document).ready(function(){initNavTree('get__chat_8php.html',''); initResizabl
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclass_d_b_html_a213d19d5cd8aacbf7678c29df6ec5348"><div class="ttname"><a href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB\query</a></div><div class="ttdeci">static query($sql, $args=array())</div><div class="ttdef"><b>Definition:</b> db.php:40</div></div>
 <div class="ttc" id="aget__chat_8php_html_a0675ffe9ebd10039b3ea305f5ee69712"><div class="ttname"><a href="get__chat_8php.html#a0675ffe9ebd10039b3ea305f5ee69712">$users</a></div><div class="ttdeci">else $users[$user[&quot;id_user&quot;]]</div><div class="ttdef"><b>Definition:</b> get_chat.php:28</div></div>
 <div class="ttc" id="afunctions_8php_html_a3660c2be60faa3091ec6afcdeac77376"><div class="ttname"><a href="functions_8php.html#a3660c2be60faa3091ec6afcdeac77376">humanDate</a></div><div class="ttdeci">humanDate($dtm)</div><div class="ttdef"><b>Definition:</b> functions.php:15</div></div>
 <div class="ttc" id="aget__chat_8php_html_ae97941710d863131c700f069b109991e"><div class="ttname"><a href="get__chat_8php.html#ae97941710d863131c700f069b109991e">$id</a></div><div class="ttdeci">$id</div><div class="ttdef"><b>Definition:</b> get_chat.php:6</div></div>
@@ -277,7 +278,7 @@ $(document).ready(function(){initNavTree('get__chat_8php.html',''); initResizabl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="get__chat_8php.html">get_chat.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Сб 5 Дек 2020 21:41:02. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Вс 6 Дек 2020 09:41:54. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
