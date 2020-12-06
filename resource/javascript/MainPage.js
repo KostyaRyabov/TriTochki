@@ -42,7 +42,7 @@ var params = window
 $(document).ready(init);
 /// \endcond
 
-$(document).on("click", ".menu .logo", function(){
+$(document).on("click", ".logo", function(){
   location.href = "/";
 });
 
@@ -260,7 +260,17 @@ function init()
   
   $("body").on("click","button.input-submit",inputSubmit);
   
-  $("body").on("click",".myContact-del",deleteSelectedItem);
+  $("body").on("click",".item-action.icon-cancel",deleteSelectedItem);
+  $("body").on("click",".item-action.icon-plus",function(){
+    $(this).removeClass('icon-plus').addClass('icon-minus');
+
+    addSelectedContact($(this).parent().attr('id'));
+  });
+  $("body").on("click",".item-action.icon-minus",function(){
+    $(this).removeClass('icon-minus').addClass('icon-plus');
+
+    removeSelectedContact($(this).parent().attr('id'));
+  });
   
   $("body").on("click",".myChat-del",deleteSelectedItem);
   
@@ -294,17 +304,77 @@ function init()
 
   $('body').on("click", "#chat-add-user", addContact);
 
+  $('body').on("click", "#show-my-contacts", function(){showContactListContext(true)});
+  $('body').on("click", "#show-my-chats", function(){showChatListContext()});
+
+  $('body').on("click", "#addContacts", submitSelectedContacts);
+
   authorization()
+}
+
+
+/*!
+  \brief Добавление контактов из списка выбранных в чат
+  \param[in] id Идентификатор контакта
+
+  \defgroup selectContacts Изменение списка контактов для добавления в чат
+    @{
+*/
+function submitSelectedContacts()
+{
+  /// \todo Добавить контакты в чат (БД) по списку selected (набор идентификаторов)
+
+  // ...
+  // при успешном выполнении выполнить следующее...
+  showChatContext(idChat);
+}
+
+/*!
+  \brief Добавление контакта в список выбранных
+  \param[in] id Идентификатор контакта
+*/
+function addSelectedContact(curID)
+{
+  if (!selected.includes(curID)) {
+    selected.push(curID);
+  }
+
+  if (selected.length > 0 && !$('#addContacts').length){
+    $('#main').append(`<button id="addContacts">добавить</button>`);
+    $('button#addContacts').hide().fadeIn(300);
+  }
+}
+
+/*!
+  \brief Удаление контакта из списка выбранных
+  \param[in] id Идентификатор контакта
+*/
+function removeSelectedContact(curID)
+{
+  let idx = selected.indexOf(curID)
+  if (curID > 0){
+    selected.splice(idx, 1);
+  }
+
+  if($('#addContacts').length && selected.length == 0){
+    $('#addContacts').fadeOut(300,function(){$(this).remove()});
+  }
 }
 
 /// \brief Добавление контакта к текущему чату
 function addContact()
 {
   hideModalWindow('#chat-contacts')
-  showContactListContext(function(){
-    /// \todo Написать код для добавления контакта к текущему чату
+  showContactListContext(false,function(){
+    selected = [];
+
+    /// \todo Написать код для добавления контактов (массив selected структур {id: value}) к текущему чату idChat
   })
 }
+
+///@}
+
+
 
 /// \brief Выход из чата
 function chatExit()
@@ -329,9 +399,7 @@ function chatExit()
   hideModalWindow('#chat-contacts')
 }
 
-/*!
-  \brief Авторизация
-*/
+///  \brief Авторизация
 function authorization()
 {
   $.ajax({
@@ -565,7 +633,7 @@ function showChatListContext()
         let context = "";
 
         $.each(result, function(id, name){
-          context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="myChat-del">x</td></tr>`;
+          context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="item-action icon-cancel"></td></tr>`;
         });
         
         context = `
@@ -586,7 +654,7 @@ function showChatListContext()
 }
 
 /// \brief Отображение списка контактов пользователя
-function showContactListContext(callback)
+function showContactListContext(isDelete,callback)
 {
   hideChatInfo();
   hideTextBox();
@@ -600,6 +668,22 @@ function showContactListContext(callback)
     $('#main').fadeOut(200,function(){
       /// \todo запуск анимации загрузки
 
+
+      let context = "";
+
+      context += `<tr class="myContact" id=1><td class='myContact-name'>{name}</td><td class="item-action ${(isDelete)?'icon-cancel':'icon-plus'}"></td></tr>`
+      
+      context = `
+        <div id="contactSearch" class="search-field">
+          <input type="search" placeholder="search..."></input>
+          <button>поиск</button>
+        </div>
+        <table class='list2'><tbody>${context}</tbody></table>`;
+
+      $('#main').html(context).hide().fadeIn(200, callback);
+
+      /*
+
       $.ajax({
         method: "GET",
         url: "/resource/action/user_contact_list.php",   /// \todo создать файл
@@ -612,7 +696,7 @@ function showContactListContext(callback)
           let context = "";
 
           $.each(result, function(id, name){
-            context += `<tr class="myContact" id=${id}><td class='myContact-name'>{name}</td><td class="myContact-del">x</td></tr>`
+            context += `<tr class="myContact" id=${id}><td class='myContact-name'>{name}</td><td class="item-action ${(isDelete)?icon-cancel:icon-plus}"></td></tr>`
           });
 
           context = `
@@ -627,6 +711,8 @@ function showContactListContext(callback)
           /// \todo завершение анимации загрузки
         }
       });
+      
+      */
     });
   });
 }

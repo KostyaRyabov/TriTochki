@@ -342,12 +342,39 @@ hr{
 .myContact-name, .myChat-name{ width: 100% }
 .myContact-name:hover, .myChat-name:hover { background-color: #eee }
 
-.myContact-del, .myChat-del {
+.item-action {
     text-align: center;
     cursor: pointer;
+
+    transition: all .2s ease;
 }
 
-.myContact-del:hover, .myChat-del:hover {background: rgb(216, 0, 0);}
+.item-action.icon-plus{
+    color: rgb(21, 97, 1);
+}
+
+.item-action.icon-cancel{
+    color: rgb(216, 0, 0);
+}
+
+.item-action.icon-minus{
+    color: rgb(216, 0, 0);
+}
+
+.item-action.icon-plus:hover{
+    background: rgb(7, 53, 3);
+    color: rgb(87, 238, 79);
+}
+
+.item-action.icon-cancel:hover{
+    background: rgb(216, 0, 0);
+    color: rgb(255, 211, 211);
+}
+
+.item-action.icon-minus:hover{
+    background: rgb(216, 0, 0);
+    color: rgb(255, 211, 211);
+}
 
 .list, .list2{
     padding: 0;
@@ -488,6 +515,28 @@ div.input > button:hover{
     border: 0;
     font-weight: bolder;
     background: hsl(0, 0%, 55%);
+}
+
+#addContacts{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+
+    bottom: 5px;
+    
+    left: 0; right: 0;
+    opacity: 0.95;
+    background: hsl(223, 90%, 88%);
+    color: #000000;
+
+    transition: all 0.2s ease;
+}
+
+#addContacts:hover{
+    background: #000000;
+    color: #c5d4fc;
+
+    transform: scale(1.1, 1.1);
 }
 
 .error-message{
