@@ -174,15 +174,28 @@ function deleteSubmit()
 
   $(`.myChat#${selected[0].id}`).slideUp(200,function(){
     $(this).remove();
-
-    /// \todo добавить удаление чата selected[0].id у myID
+    
+    let $this = $(this);
+    
+    $.ajax({
+      method: "POST",
+      url: "/resource/action/user_chat_leave.php",
+      data: {
+        "chat": $this.attr("id")
+      },
+      success: function(result){
+        if(result.length > 1) return false;
+      
+        $("#tab-name").text($("#chat-info-name").text());
+      }
+    });
 
     if ($('.list2 > tbody').is(':empty') && !$('.list2 + #empty-list-message').length){
-      let txt = 'empty'
-      $('.list2').after(`<span id='empty-list-message'>${txt}</span>`)
-      $('#empty-list-message').hide().show(300)
+      let txt = 'empty';
+      $('.list2').after(`<span id='empty-list-message'>${txt}</span>`);
+      $('#empty-list-message').hide().show(300);
     }
-  })
+  });
 
   hideWarningMessage()
 }
