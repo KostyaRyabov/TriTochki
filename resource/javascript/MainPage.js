@@ -312,6 +312,9 @@ function init()
   $('body').on("click", "#addContacts", submitSelectedContacts);
 
   authorization();
+  setTimeout(function(){ // Периодичная проверка авторизации
+    authorization();
+  }, 600000);
   indexChats();
 }
 
