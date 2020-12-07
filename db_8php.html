@@ -141,7 +141,7 @@ $(document).ready(function(){initNavTree('db_8php.html',''); initResizable(); })
 </dl>
 <dl class="section return"><dt>Возвращает</dt><dd>bool|mysqli_result </dd></dl>
 <div class="fragment"><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                        {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="get__user_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a> = mysqli_query(<a class="code" href="class_d_b.html#aa33a646afa8425f2e1534877b7f9307a">DB::$link</a>, $sql)</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="get__user_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a> = mysqli_query(<a class="code" href="class_d_b.html#aa33a646afa8425f2e1534877b7f9307a">DB::$link</a>, <a class="code" href="get__chat__list_8php.html#a2a3a4efb286bdcd790d46a564ea2e446">$sql</a>)</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        or die(mysqli_error(<a class="code" href="class_d_b.html#aa33a646afa8425f2e1534877b7f9307a">DB::$link</a>));</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        </div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="get__user_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a>;</div>
@@ -153,11 +153,12 @@ $(document).ready(function(){initNavTree('db_8php.html',''); initResizable(); })
 </div><!-- doc-content -->
 <div class="ttc" id="aget__user_8php_html_a112ef069ddc0454086e3d1e6d8d55d07"><div class="ttname"><a href="get__user_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a></div><div class="ttdeci">$result</div><div class="ttdef"><b>Definition:</b> get_user.php:17</div></div>
 <div class="ttc" id="aclass_d_b_html_aa33a646afa8425f2e1534877b7f9307a"><div class="ttname"><a href="class_d_b.html#aa33a646afa8425f2e1534877b7f9307a">DB\$link</a></div><div class="ttdeci">static $link</div><div class="ttdef"><b>Definition:</b> db.php:8</div></div>
+<div class="ttc" id="aget__chat__list_8php_html_a2a3a4efb286bdcd790d46a564ea2e446"><div class="ttname"><a href="get__chat__list_8php.html#a2a3a4efb286bdcd790d46a564ea2e446">$sql</a></div><div class="ttdeci">if($_GET[&quot;for-user&quot;]==1) else $sql</div><div class="ttdef"><b>Definition:</b> get_chat_list.php:15</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="db_8php.html">db.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Пн 7 Дек 2020 13:27:55. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Пн 7 Дек 2020 13:38:11. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

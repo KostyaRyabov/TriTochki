@@ -109,8 +109,8 @@ $(document).ready(function(){initNavTree('get__chat__list_8php.html',''); initRe
 <tr class="separator:a081ce42c7f5e88051206391d63f57194"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d0f17f147bb327e312b71312f3cf040"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat__list_8php.html#a7d0f17f147bb327e312b71312f3cf040">$sel</a></td></tr>
 <tr class="separator:a7d0f17f147bb327e312b71312f3cf040"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1c411fb888a01c13861a37e7bb0822f"><td class="memItemLeft" align="right" valign="top">if($_GET[&quot;for-user&quot;]==1) else&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat__list_8php.html#ac1c411fb888a01c13861a37e7bb0822f">$where</a> = &quot;&quot;</td></tr>
-<tr class="separator:ac1c411fb888a01c13861a37e7bb0822f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a3a4efb286bdcd790d46a564ea2e446"><td class="memItemLeft" align="right" valign="top">if($_GET[&quot;for-user&quot;]==1) else&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat__list_8php.html#a2a3a4efb286bdcd790d46a564ea2e446">$sql</a> = &quot;GROUP BY Name&quot;</td></tr>
+<tr class="separator:a2a3a4efb286bdcd790d46a564ea2e446"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p>Получение списка всех чатов сайта или конкретно для пользователя </p>
@@ -143,20 +143,19 @@ $(document).ready(function(){initNavTree('get__chat__list_8php.html',''); initRe
 <b>Инициализатор</b><div class="fragment"><div class="line">= <a class="code" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(<span class="stringliteral">&quot;</span></div>
 <div class="line"><span class="stringliteral">        SELECT chat.id_chat, Name</span></div>
 <div class="line"><span class="stringliteral">        FROM chat_users</span></div>
-<div class="line"><span class="stringliteral">        INNER JOIN chat ON chat_users.id_chat=chat.id_chat &quot;</span>.<a class="code" href="get__chat__list_8php.html#ac1c411fb888a01c13861a37e7bb0822f">$where</a>,</div>
-<div class="line">     [<a class="code" href="change__chat__title_8php.html#ae97941710d863131c700f069b109991e">$id</a>]</div>
+<div class="line"><span class="stringliteral">        INNER JOIN chat ON chat_users.id_chat=chat.id_chat &quot;</span>.<a class="code" href="get__chat__list_8php.html#a2a3a4efb286bdcd790d46a564ea2e446">$sql</a>, [<a class="code" href="change__chat__title_8php.html#ae97941710d863131c700f069b109991e">$id</a>]</div>
 <div class="line">    )</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ac1c411fb888a01c13861a37e7bb0822f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1c411fb888a01c13861a37e7bb0822f">&#9670;&nbsp;</a></span>$where</h2>
+<a id="a2a3a4efb286bdcd790d46a564ea2e446"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a3a4efb286bdcd790d46a564ea2e446">&#9670;&nbsp;</a></span>$sql</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">if ( $_GET[&quot;for-user&quot;]==1) else $where = &quot;&quot;</td>
+          <td class="memname">if ( $_GET[&quot;for-user&quot;]==1) else $sql = &quot;GROUP BY Name&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -166,13 +165,13 @@ $(document).ready(function(){initNavTree('get__chat__list_8php.html',''); initRe
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_d_b_html_a213d19d5cd8aacbf7678c29df6ec5348"><div class="ttname"><a href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB\query</a></div><div class="ttdeci">static query($sql, $args=array())</div><div class="ttdef"><b>Definition:</b> db.php:35</div></div>
-<div class="ttc" id="aget__chat__list_8php_html_ac1c411fb888a01c13861a37e7bb0822f"><div class="ttname"><a href="get__chat__list_8php.html#ac1c411fb888a01c13861a37e7bb0822f">$where</a></div><div class="ttdeci">if($_GET[&quot;for-user&quot;]==1) else $where</div><div class="ttdef"><b>Definition:</b> get_chat_list.php:15</div></div>
+<div class="ttc" id="aget__chat__list_8php_html_a2a3a4efb286bdcd790d46a564ea2e446"><div class="ttname"><a href="get__chat__list_8php.html#a2a3a4efb286bdcd790d46a564ea2e446">$sql</a></div><div class="ttdeci">if($_GET[&quot;for-user&quot;]==1) else $sql</div><div class="ttdef"><b>Definition:</b> get_chat_list.php:15</div></div>
 <div class="ttc" id="achange__chat__title_8php_html_ae97941710d863131c700f069b109991e"><div class="ttname"><a href="change__chat__title_8php.html#ae97941710d863131c700f069b109991e">$id</a></div><div class="ttdeci">$id</div><div class="ttdef"><b>Definition:</b> change_chat_title.php:16</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="get__chat__list_8php.html">get_chat_list.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Пн 7 Дек 2020 13:27:55. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Пн 7 Дек 2020 13:38:11. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
