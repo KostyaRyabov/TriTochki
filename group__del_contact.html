@@ -134,9 +134,9 @@ $(document).ready(function(){initNavTree('group__del_contact.html',''); initResi
 </div><div class="memdoc">
 
 <p>Отказ удаления выбранного элемента </p>
-<div class="fragment"><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;{</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  <a class="code" href="_main_page_8js.html#a07cdfd0fbd434a826fa649db0623e688">hideWarningMessage</a>()</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;{</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <a class="code" href="_main_page_8js.html#a07cdfd0fbd434a826fa649db0623e688">hideWarningMessage</a>()</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -154,23 +154,23 @@ $(document).ready(function(){initNavTree('group__del_contact.html',''); initResi
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;{</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>[0] = { name: $(<span class="keyword">this</span>).prev().text(), id: $(<span class="keyword">this</span>).parent().attr(<span class="stringliteral">&#39;id&#39;</span>) };</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  let modal = `</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;warning-form&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;modal-window-wrapper&quot;</span>&gt;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;block-screen modal-window-trigger&quot;</span> onclick=<span class="stringliteral">&quot;hideWarningMessage()&quot;</span>&gt;&lt;/div&gt;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;modal-window&quot;</span>&gt;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        &lt;span&gt;Вы уверены, что хотите убрать из контактов ${<a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>[0].name}&lt;/span&gt;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;warning-box&quot;</span>&gt;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        &lt;button <span class="keywordtype">id</span>=<span class="stringliteral">&#39;w-yes&#39;</span>&gt;yes&lt;/button&gt; &lt;button <span class="keywordtype">id</span>=<span class="stringliteral">&#39;w-no&#39;</span>&gt;no&lt;/button&gt;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      &lt;/div&gt;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    &lt;/div&gt;`;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  $(<span class="stringliteral">&#39;body&#39;</span>).append(modal);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  $(<span class="stringliteral">&quot;#warning-form&quot;</span>).hide();</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <a class="code" href="_modal_window_8js.html#a5574e636e32ef78d22a057e74c38ba18">showModalWindow</a>(<span class="stringliteral">&#39;#warning-form&#39;</span>);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;{</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>[0] = { name: $(<span class="keyword">this</span>).prev().text(), id: $(<span class="keyword">this</span>).parent().attr(<span class="stringliteral">&#39;id&#39;</span>) };</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  let modal = `</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;warning-form&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;modal-window-wrapper&quot;</span>&gt;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;block-screen modal-window-trigger&quot;</span> onclick=<span class="stringliteral">&quot;hideWarningMessage()&quot;</span>&gt;&lt;/div&gt;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;modal-window&quot;</span>&gt;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        &lt;span&gt;Вы уверены, что хотите убрать из контактов ${<a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>[0].name}&lt;/span&gt;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;warning-box&quot;</span>&gt;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        &lt;button <span class="keywordtype">id</span>=<span class="stringliteral">&#39;w-yes&#39;</span>&gt;yes&lt;/button&gt; &lt;button <span class="keywordtype">id</span>=<span class="stringliteral">&#39;w-no&#39;</span>&gt;no&lt;/button&gt;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      &lt;/div&gt;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    &lt;/div&gt;`;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  $(<span class="stringliteral">&#39;body&#39;</span>).append(modal);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  $(<span class="stringliteral">&quot;#warning-form&quot;</span>).hide();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <a class="code" href="_modal_window_8js.html#a5574e636e32ef78d22a057e74c38ba18">showModalWindow</a>(<span class="stringliteral">&#39;#warning-form&#39;</span>);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -191,55 +191,55 @@ $(document).ready(function(){initNavTree('group__del_contact.html',''); initResi
 
 <p>Подтверждение удаления выбранного элемента </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Необходимо сделать:</a></b></dt><dd>добавить удаление контакта selected[0].id у myID </dd></dl>
-<div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;{</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  $(`.myContact#${<a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>[0].id}`).slideUp(200,<span class="keyword">function</span>(){</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    $(<span class="keyword">this</span>).<span class="keyword">remove</span>();</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">if</span> ($(<span class="stringliteral">&#39;.list2 &gt; tbody&#39;</span>).is(<span class="stringliteral">&#39;:empty&#39;</span>) &amp;&amp; !$(<span class="stringliteral">&#39;.list2 + #empty-list-message&#39;</span>).length){</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      let txt = <span class="stringliteral">&#39;empty&#39;</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      $(<span class="stringliteral">&#39;.list2&#39;</span>).after(`&lt;span <span class="keywordtype">id</span>=<span class="stringliteral">&#39;empty-list-message&#39;</span>&gt;${txt}&lt;/span&gt;`)</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      $(<span class="stringliteral">&#39;#empty-list-message&#39;</span>).hide().show(300)</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    }</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  })</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  $(`.myChat#${<a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>[0].id}`).slideUp(200,<span class="keyword">function</span>(){</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    $(<span class="keyword">this</span>).<span class="keyword">remove</span>();</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    </div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    let $this = $(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    $.ajax({</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      method: <span class="stringliteral">&quot;POST&quot;</span>,</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      url: <span class="stringliteral">&quot;/resource/action/user_chat_leave.php&quot;</span>,</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      data: {</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="stringliteral">&quot;chat&quot;</span>: $this.attr(<span class="stringliteral">&quot;id&quot;</span>)</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      },</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      success: <span class="keyword">function</span>(result){</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">if</span>(result.length &gt; 1) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      }</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    });</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">if</span> ($(<span class="stringliteral">&#39;.list2 &gt; tbody&#39;</span>).is(<span class="stringliteral">&#39;:empty&#39;</span>) &amp;&amp; !$(<span class="stringliteral">&#39;.list2 + #empty-list-message&#39;</span>).length){</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      let txt = <span class="stringliteral">&#39;empty&#39;</span>;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      $(<span class="stringliteral">&#39;.list2&#39;</span>).after(`&lt;span <span class="keywordtype">id</span>=<span class="stringliteral">&#39;empty-list-message&#39;</span>&gt;${txt}&lt;/span&gt;`);</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      $(<span class="stringliteral">&#39;#empty-list-message&#39;</span>).hide().show(300);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  });</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <a class="code" href="_main_page_8js.html#a07cdfd0fbd434a826fa649db0623e688">hideWarningMessage</a>()</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;{</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  $(`.myContact#${<a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>[0].id}`).slideUp(200,<span class="keyword">function</span>(){</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    $(<span class="keyword">this</span>).<span class="keyword">remove</span>();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">if</span> ($(<span class="stringliteral">&#39;.list2 &gt; tbody&#39;</span>).is(<span class="stringliteral">&#39;:empty&#39;</span>) &amp;&amp; !$(<span class="stringliteral">&#39;.list2 + #empty-list-message&#39;</span>).length){</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      let txt = <span class="stringliteral">&#39;empty&#39;</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      $(<span class="stringliteral">&#39;.list2&#39;</span>).after(`&lt;span <span class="keywordtype">id</span>=<span class="stringliteral">&#39;empty-list-message&#39;</span>&gt;${txt}&lt;/span&gt;`)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      $(<span class="stringliteral">&#39;#empty-list-message&#39;</span>).hide().show(300)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  })</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  $(`.myChat#${<a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>[0].id}`).slideUp(200,<span class="keyword">function</span>(){</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    $(<span class="keyword">this</span>).<span class="keyword">remove</span>();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    let $this = $(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    $.ajax({</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      method: <span class="stringliteral">&quot;POST&quot;</span>,</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      url: <span class="stringliteral">&quot;/resource/action/user_chat_leave.php&quot;</span>,</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      data: {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="stringliteral">&quot;chat&quot;</span>: $this.attr(<span class="stringliteral">&quot;id&quot;</span>)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      },</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      success: <span class="keyword">function</span>(result){</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordflow">if</span>(result.length &gt; 1) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    });</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">if</span> ($(<span class="stringliteral">&#39;.list2 &gt; tbody&#39;</span>).is(<span class="stringliteral">&#39;:empty&#39;</span>) &amp;&amp; !$(<span class="stringliteral">&#39;.list2 + #empty-list-message&#39;</span>).length){</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      let txt = <span class="stringliteral">&#39;empty&#39;</span>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      $(<span class="stringliteral">&#39;.list2&#39;</span>).after(`&lt;span <span class="keywordtype">id</span>=<span class="stringliteral">&#39;empty-list-message&#39;</span>&gt;${txt}&lt;/span&gt;`);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      $(<span class="stringliteral">&#39;#empty-list-message&#39;</span>).hide().show(300);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  });</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  <a class="code" href="_main_page_8js.html#a07cdfd0fbd434a826fa649db0623e688">hideWarningMessage</a>()</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="a_main_page_8js_html_a87f3135568000fa89b7074921dcd5994"><div class="ttname"><a href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a></div><div class="ttdeci">var selected</div><div class="ttdoc">Выбранные элементы</div><div class="ttdef"><b>Definition:</b> MainPage.js:20</div></div>
-<div class="ttc" id="a_main_page_8js_html_a07cdfd0fbd434a826fa649db0623e688"><div class="ttname"><a href="_main_page_8js.html#a07cdfd0fbd434a826fa649db0623e688">hideWarningMessage</a></div><div class="ttdeci">function hideWarningMessage()</div><div class="ttdoc">Скрытие предупреждающего модального окна</div><div class="ttdef"><b>Definition:</b> MainPage.js:486</div></div>
+<div class="ttc" id="a_main_page_8js_html_a07cdfd0fbd434a826fa649db0623e688"><div class="ttname"><a href="_main_page_8js.html#a07cdfd0fbd434a826fa649db0623e688">hideWarningMessage</a></div><div class="ttdeci">function hideWarningMessage()</div><div class="ttdoc">Скрытие предупреждающего модального окна</div><div class="ttdef"><b>Definition:</b> MainPage.js:489</div></div>
 <div class="ttc" id="a_modal_window_8js_html_a5574e636e32ef78d22a057e74c38ba18"><div class="ttname"><a href="_modal_window_8js.html#a5574e636e32ef78d22a057e74c38ba18">showModalWindow</a></div><div class="ttdeci">function showModalWindow(modal)</div><div class="ttdoc">Отображение модального окна</div><div class="ttdef"><b>Definition:</b> ModalWindow.js:10</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Документация по TriTochki. Последние изменения: Пн 7 Дек 2020 12:40:04. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Пн 7 Дек 2020 12:46:47. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
