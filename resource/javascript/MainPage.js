@@ -127,6 +127,7 @@ function inputSubmit()
           if(result.length > 1) return false;
           
           $("#tab-name").text($("#chat-info-name").text());
+          $("title").text($("#chat-info-name").text());
         }
       });
     }
@@ -450,8 +451,10 @@ function showChatContext(id)
         let first_unread = 0;   /// \todo Изменить номер последнего непрочитанного сообщения
         
         idChat = id;
+        params["id"] = id;
         idOwner = result.owner;
 
+        $("title").text(result.name + " | TriTochki");
         showChatInfo(result);
         $('.tab').fadeOut(300,function(){$('#tab-name').text(result.name)}).append(`<button id="btn-chat-about" class='btn modal-window-trigger' onclick="showModalWindow('#chat-contacts')">?</button>`).fadeIn(300);
         $('#main').addClass('shiftDown').html('').fadeIn(300);
