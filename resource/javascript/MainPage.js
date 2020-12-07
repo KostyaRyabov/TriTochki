@@ -481,6 +481,8 @@ function showChatContext(id)
             scrollTop: $('#message' + first_unread).offset().top
           }, 300);
         }
+        
+        if(!result.allowed) $("#input-area").remove();
       }
     });
   })

@@ -32,9 +32,6 @@
 			$users[$user["id_user"]] = $user["Firstname"]." ".$user["Lastname"];
 		else $users[$user["id_user"]] = $user["login"];
 	
-	// Если пользователя нет в списке участников данного чата, выводим ошибку
-	if(!$users[$user_id]) exit("Вы не авторизованы для данного чата!");
-	
 	// Выборка всех сообщений в чате
 	$messagesel = DB::query("
 		SELECT message.id_message, message.id_user, content, data_create, id_read
@@ -57,7 +54,8 @@
 	 "name" => $row["Name"],
 	 "date" => humanDate($row["date_create"]),
 	 "users" => $users,
-	 "messages" => $messages
+	 "messages" => $messages,
+	 "allowed" => $users[$user_id] ? 1 : 0 // Допущен ли пользователь к данному чату
 	];
 	
 	echo json_encode($return);
