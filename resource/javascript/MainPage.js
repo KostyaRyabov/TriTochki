@@ -311,7 +311,8 @@ function init()
 
   $('body').on("click", "#addContacts", submitSelectedContacts);
 
-  authorization()
+  authorization();
+  indexChats();
 }
 
 
@@ -630,7 +631,10 @@ function showChatListContext()
 
     $.ajax({
       method: "GET",
-      url: "/resource/action/user_chat_list.php",
+      url: "/resource/action/get_chat_list.php",
+      data: {
+        "for-user": 1 // Получаем список чатов именно для пользователя
+      },
       success: function(result){
         result = JSON.parse(result);
         
@@ -654,6 +658,37 @@ function showChatListContext()
       /// \todo завершение анимации загрузки
       }
     });
+  });
+}
+
+/// \brief Отображение списка чатов на главной странице
+function indexChats(){
+  $.ajax({
+    method: "GET",
+    url: "/resource/action/get_chat_list.php",
+    data: {
+      "for-user": 0
+    },
+    success: function(result){
+      result = JSON.parse(result);
+      
+      let context = "";
+      
+      $.each(result, function(id, name){
+        context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="item-action icon-cancel"></td></tr>`;
+      });
+      
+      context = `
+          <div id="contactSearch" class="search-field">
+            <input type="search" placeholder="search..."></input>
+            <button>поиск</button>
+          </div>
+          <table class='list2'>
+            <tbody>${context}</tbody>
+          </table>`;
+      
+      $('#main').removeClass("shiftDown").html(context);
+    }
   });
 }
 

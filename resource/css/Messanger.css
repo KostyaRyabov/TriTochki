@@ -339,7 +339,10 @@ hr{
     padding: 12px;
 }
 
-.myContact-name, .myChat-name{ width: 100% }
+.myContact-name, .myChat-name{
+    width: 100%;
+    cursor: pointer;
+}
 .myContact-name:hover, .myChat-name:hover { background-color: #eee }
 
 .item-action {
