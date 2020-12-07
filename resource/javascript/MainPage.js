@@ -283,7 +283,8 @@ function init()
   });
   
   $("body").on("click",".myChat-name",function(){
-    showChatContext($(this).parent().attr('id'))
+    showChatContext($(this).parent().attr('id'));
+    history.pushState({}, "", "?id=" + $(this).parent().attr('id'));
   });
   
   $("body").on("click","button.error-message",function(){
