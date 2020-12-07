@@ -285,7 +285,6 @@ function init()
   
   $("body").on("click",".myChat-name",function(){
     showChatContext($(this).parent().attr('id'));
-    history.pushState({}, "", "?id=" + $(this).parent().attr('id'));
   });
   
   $("body").on("click","button.error-message",function(){
@@ -310,6 +309,8 @@ function init()
   $('body').on("click", "#show-my-chats", function(){showChatListContext()});
 
   $('body').on("click", "#addContacts", submitSelectedContacts);
+  
+  $('body').on("click", "#chat-new", chatNew);
 
   authorization();
   setTimeout(function(){ // Периодичная проверка авторизации
@@ -457,6 +458,9 @@ function showChatContext(id)
         idChat = id;
         params["id"] = id;
         idOwner = result.owner;
+  
+        // Переход в открываемый чат
+        history.pushState({}, "", "?id=" + id);
 
         $("title").text(result.name + " | TriTochki");
         showChatInfo(result);
@@ -648,6 +652,8 @@ function showChatListContext()
         $.each(result, function(id, name){
           context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="item-action icon-cancel"></td></tr>`;
         });
+  
+        context += "<tr><td colspan='2' style='text-align: center;'><button class='btn' id='chat-new'>Создать чат</button></td></tr>";
         
         context = `
           <div id="contactSearch" class="search-field">
@@ -680,12 +686,14 @@ function indexChats(){
       let context = "";
       
       $.each(result, function(id, name){
-        context += `<tr class="myChat" id=${id}><td class='myChat-name' colspan="2">${name}</td><td></td></tr>`;
+        context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td></td></tr>`;
       });
-      
+  
+      context += "<tr><td colspan='2' style='text-align: center;'><button class='btn' id='chat-new'>Создать чат</button></td></tr>";
+  
       context = `
           <div id="contactSearch" class="search-field">
-            <input type="search" placeholder="search..."></input>
+            <input type="search" placeholder="search...">
             <button>поиск</button>
           </div>
           <table class='list2'>
@@ -694,6 +702,34 @@ function indexChats(){
       
       $('#main').removeClass("shiftDown").html(context);
     }
+  });
+}
+
+/// \brief Создание нового чата
+function chatNew(){
+  $("#chat-new").parent().prepend("<input type='text' id='chat-new-name' placeholder='Введите название'>");
+  $("#chat-new").attr("id", "chat-new-send");
+  
+  $("#chat-new-send").click(function(){
+    if(!$("#chat-new-name").val().length){
+      $("#chat-new-name").css("border-color", "firebrick");
+      return false;
+    }
+  
+    $.ajax({
+      method: "POST",
+      url: "/resource/action/chat_new.php",
+      data: {
+        "name": $("#chat-new-name").val()
+      },
+      success: function(result){ // Возвращает id нового чата или ошибку
+        result = JSON.parse(result);
+        
+        if(result.error) return false;
+        
+        showChatContext(result.new_chat);
+      }
+    });
   });
 }
 
