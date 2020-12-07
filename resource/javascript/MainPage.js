@@ -677,7 +677,7 @@ function indexChats(){
       let context = "";
       
       $.each(result, function(id, name){
-        context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="item-action icon-cancel"></td></tr>`;
+        context += `<tr class="myChat" id=${id}><td class='myChat-name' colspan="2">${name}</td><td></td></tr>`;
       });
       
       context = `
