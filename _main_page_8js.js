@@ -13,6 +13,7 @@ var _main_page_8js =
     [ "hideProfileContext", "_main_page_8js.html#a2a6e5193f2f05c0f7329f2e82054a009", null ],
     [ "hideTextBox", "_main_page_8js.html#a08a076f71cf5c93a3581285e77076db2", null ],
     [ "hideWarningMessage", "_main_page_8js.html#a07cdfd0fbd434a826fa649db0623e688", null ],
+    [ "indexChats", "_main_page_8js.html#a0ba1439f4007d4ea8c6802e60ecf1af6", null ],
     [ "init", "_main_page_8js.html#af8dc73726eb0578fe44fb98cd2319445", null ],
     [ "inputCancel", "group__edit_param.html#gad62a313a184ba2a24e3f53efe3d212c7", null ],
     [ "inputSubmit", "group__edit_param.html#ga794111d584646fa77074a5e111d622fb", null ],
