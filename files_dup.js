@@ -2,6 +2,7 @@ var files_dup =
 [
     [ "change_chat_title.php", "change__chat__title_8php.html", "change__chat__title_8php" ],
     [ "change_user_info.php", "change__user__info_8php.html", "change__user__info_8php" ],
+    [ "chat_new.php", "chat__new_8php.html", "chat__new_8php" ],
     [ "chat_user_kick.php", "chat__user__kick_8php.html", "chat__user__kick_8php" ],
     [ "check.php", "check_8php.html", "check_8php" ],
     [ "core.php", "core_8php.html", null ],
