@@ -232,6 +232,24 @@ function autoSize()
   }
 }
 
+/// \brief Добавление пользователя, подавшего заявку на вступление в чат
+function allowContact()
+{
+  let $this = $(this);
+  
+  $.ajax({
+    method: "POST",
+    url: "/resource/action/chat_user_allow.php",
+    data: {
+      "chat_id": params["id"],
+      "user_id": $(this).data("id")
+    },
+    success: function(result){
+      if(!result.length) $this.remove();
+    }
+  });
+}
+
 /// \brief Удаление контакта из чата
 function kickContact()
 {
@@ -301,6 +319,7 @@ function init()
 
   $('body').on("click", "#chat-exit", chatExit);
 
+  $('body').on("click", ".allow-user", allowContact);
   $('body').on("click", ".kick-user", kickContact);
 
   $('body').on("click", "#chat-add-user", addContact);
@@ -477,6 +496,18 @@ function showChatContext(id)
 
           $("#chat-info-contact-list").append(el);
         });
+  
+        // Вывод заявок на вступление
+        if(myID == idOwner){
+          $("#chat-info-contact-list").append("<div>Заявки на вступление:</div>");
+          $.each(result.knocked, function(id, value){
+            let el = `<button class='list-item chatContact' onClick='showProfileContext(${id})'>${value}</button>`;
+            
+            el = `<div>${el + `<button class="icon-check allow-user" data-id="${id}"></button>`}</div>`;
+    
+            $("#chat-info-contact-list").append(el);
+          });
+        }
 
         $.each(result.messages, function(id, value){
           $("#main").append(genMessage(id, value["user"], result.users[value["user"]], value["text"].replace(/\n/g, '<br>'), value["date"]));

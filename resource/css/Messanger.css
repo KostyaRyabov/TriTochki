@@ -435,6 +435,16 @@ div > .list-item{ border-radius: 3px 0 0 3px }
     background: hsl(0, 0%, 50%);
 }
 
+.list-item + button.icon-check{
+    outline: none;
+    display: block;
+    transition: .3s ease-out;
+    color: hsl(128, 100%, 25%);
+    background: hsl(0, 0%, 75%);
+    margin-left: 2px;
+    border-radius: 0 3px 3px 0;
+}
+
 .list-item + button.icon-cancel{
     outline: none;
     display: block;
@@ -443,6 +453,11 @@ div > .list-item{ border-radius: 3px 0 0 3px }
     background: hsl(0, 0%, 75%);
     margin-left: 2px;
     border-radius: 0 3px 3px 0;
+}
+
+.list-item + button.icon-check:hover{
+    background: hsl(125, 55%, 35%);
+    color: hsl(0, 100%, 90%);
 }
 
 .list-item + button.icon-cancel:hover{

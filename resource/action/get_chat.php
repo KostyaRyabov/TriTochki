@@ -32,6 +32,20 @@
 			$users[$user["id_user"]] = $user["Firstname"]." ".$user["Lastname"];
 		else $users[$user["id_user"]] = $user["login"];
 	
+	// Если скрипт запрашивается от имени хоста, добавляем заявки
+	if($row["id_user"] == $user_id){
+		$knockedsel = DB::query("
+			SELECT user.id_user, Firstname, Lastname, login
+			FROM chat_knocked
+			INNER JOIN user ON chat_knocked.id_user=user.id_user
+			WHERE id_chat=%d
+		", [$id]);
+		while($knocked = mysqli_fetch_array($knockedsel))
+			if(strlen($knocked["Firstname"]) > 0 and strlen($knocked["Lastname"]) > 0)
+				$knock[$knocked["id_user"]] = $knocked["Firstname"]." ".$knocked["Lastname"];
+			else $knock[$knocked["id_user"]] = $knocked["login"];
+	}
+	
 	// Допущен ли пользователь к данному чату
 	$allowed = $users[$user_id] ? 1 : 0;
 	// Если не допущен, выводим минимальный объем информации
@@ -42,6 +56,7 @@
 		 "date" => humanDate($row["date_create"]),
 		 "users" => $users,
 		 "messages" => [],
+		 "knocked" => [],
 		 "allowed" => $allowed
 		];
 		exit(json_encode($return));
@@ -70,6 +85,7 @@
 	 "date" => humanDate($row["date_create"]),
 	 "users" => $users,
 	 "messages" => $messages ? $messages : [],
+	 "knocked" => $knock ? $knock : [],
 	 "allowed" => $allowed
 	];
 	
