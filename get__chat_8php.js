@@ -1,7 +1,8 @@
 var get__chat_8php =
 [
+    [ "$allowed", "get__chat_8php.html#a052b4d90b67a3c1385af18f17e897eb5", null ],
     [ "$id", "get__chat_8php.html#ae97941710d863131c700f069b109991e", null ],
-    [ "$messagesel", "get__chat_8php.html#aa9d965f15d759c1f4067821e384aad4f", null ],
+    [ "$messagesel", "get__chat_8php.html#a1c35b0629ab17b674ddb77e68ebafc81", null ],
     [ "$return", "get__chat_8php.html#a9e8633cf48f7c5fc8cc9f5fa31450b99", null ],
     [ "$row", "get__chat_8php.html#aa1d731aa570613e5bcff831bb10e9b87", null ],
     [ "$sel", "get__chat_8php.html#a7d0f17f147bb327e312b71312f3cf040", null ],
