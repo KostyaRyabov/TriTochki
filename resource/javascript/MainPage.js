@@ -654,33 +654,34 @@ function showProfileContext(id)
         <div class="modal-window">
           <div id="profile-box">
             <div class="input">
-              <span contentEditable="false" placeholder="First Name" id="First_Name" maxlength="32">${profile_data["First_Name"]}</span>`
-              if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`
+              <span contentEditable="false" placeholder="First Name" id="First_Name" maxlength="32">${profile_data["First_Name"]}</span>`;
+              if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
             form += `</div>
             <div class="input">
-              <span contentEditable="false" placeholder="Second Name" id="Second_Name" maxlength="32">${profile_data["Second_Name"]}</span>`
-              if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`
+              <span contentEditable="false" placeholder="Second Name" id="Second_Name" maxlength="32">${profile_data["Second_Name"]}</span>`;
+              if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
             form += `</div>
           </div>
           <div class="input">
-            <span contentEditable="false" placeholder="Login" id="Login" maxlength="32">${profile_data["Login"]}</span>`
-            if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`
+            <span contentEditable="false" placeholder="Login" id="Login" maxlength="32">${profile_data["Login"]}</span>`;
+            if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
           form += `</div>
           <div class="input">
-            <span contentEditable="false" placeholder="Email" id="Email" maxlength="32">${profile_data["Email"]}</span>`
-            if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`
+            <span contentEditable="false" placeholder="Email" id="Email" maxlength="32">${profile_data["Email"]}</span>`;
+            if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
           form += `</div>
           <div class="input">
-            <span contentEditable="false" placeholder="Description" id="Description" maxlength="255"></span>`
-            if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`
-          form += `</div>`
+            <span contentEditable="false" placeholder="Description" id="Description" maxlength="255"></span>`;
+            if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
+          form += `</div>`;
           if (itsMe) form += `
           <button onclick="changePassword()" class="input">change password</button>
           <select id="Sex" class="input">
             <option value="m">М</option>
             <option value="w">W</option>
-          </select>`
+          </select>`;
           else form += `<div class="input"><span id="Sex">пол: ${profile_data["Sex"]}</span></div>`;
+          if(!itsMe) form += "<div class='input'><button class='icon-user-plus' title='Добавить в контакты'></button></div>";
         form += `</div>
       </div>`;
     
