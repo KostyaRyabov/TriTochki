@@ -105,8 +105,8 @@ $(document).ready(function(){initNavTree('get__chat_8php.html',''); initResizabl
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Переменные</h2></td></tr>
-<tr class="memitem:a052b4d90b67a3c1385af18f17e897eb5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat_8php.html#a052b4d90b67a3c1385af18f17e897eb5">$allowed</a> = $users[$user_id] ? 1 : 0</td></tr>
-<tr class="separator:a052b4d90b67a3c1385af18f17e897eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63ead17138855a3494becbc9dd8b997c"><td class="memItemLeft" align="right" valign="top">if($row[&quot;id_user&quot;]==$user_id)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat_8php.html#a63ead17138855a3494becbc9dd8b997c">$allowed</a> = $users[$user_id] ? 1 : 0</td></tr>
+<tr class="separator:a63ead17138855a3494becbc9dd8b997c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae97941710d863131c700f069b109991e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat_8php.html#ae97941710d863131c700f069b109991e">$id</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_GET[&quot;id&quot;]))</td></tr>
 <tr class="separator:ae97941710d863131c700f069b109991e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c35b0629ab17b674ddb77e68ebafc81"><td class="memItemLeft" align="right" valign="top">if(! $allowed)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat_8php.html#a1c35b0629ab17b674ddb77e68ebafc81">$messagesel</a></td></tr>
@@ -129,14 +129,14 @@ $(document).ready(function(){initNavTree('get__chat_8php.html',''); initResizabl
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p>Получение всей информации о запрашиваемом чате </p>
 </div><h2 class="groupheader">Переменные</h2>
-<a id="a052b4d90b67a3c1385af18f17e897eb5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a052b4d90b67a3c1385af18f17e897eb5">&#9670;&nbsp;</a></span>$allowed</h2>
+<a id="a63ead17138855a3494becbc9dd8b997c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63ead17138855a3494becbc9dd8b997c">&#9670;&nbsp;</a></span>$allowed</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$allowed = $users[$user_id] ? 1 : 0</td>
+          <td class="memname">if ( $row[&quot;id_user&quot;]==$user_id) $allowed = $users[$user_id] ? 1 : 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -194,7 +194,8 @@ $(document).ready(function(){initNavTree('get__chat_8php.html',''); initResizabl
 <div class="line">     <span class="stringliteral">&quot;date&quot;</span> =&gt; <a class="code" href="functions_8php.html#a3660c2be60faa3091ec6afcdeac77376">humanDate</a>(<a class="code" href="get__chat_8php.html#aa1d731aa570613e5bcff831bb10e9b87">$row</a>[<span class="stringliteral">&quot;date_create&quot;</span>]),</div>
 <div class="line">     <span class="stringliteral">&quot;users&quot;</span> =&gt; <a class="code" href="get__chat_8php.html#a0675ffe9ebd10039b3ea305f5ee69712">$users</a>,</div>
 <div class="line">     <span class="stringliteral">&quot;messages&quot;</span> =&gt; $messages ? $messages : [],</div>
-<div class="line">     <span class="stringliteral">&quot;allowed&quot;</span> =&gt; <a class="code" href="get__chat_8php.html#a052b4d90b67a3c1385af18f17e897eb5">$allowed</a></div>
+<div class="line">     <span class="stringliteral">&quot;knocked&quot;</span> =&gt; $knock ? $knock : [],</div>
+<div class="line">     <span class="stringliteral">&quot;allowed&quot;</span> =&gt; <a class="code" href="get__chat_8php.html#a63ead17138855a3494becbc9dd8b997c">$allowed</a></div>
 <div class="line">    ]</div>
 </div><!-- fragment -->
 </div>
@@ -291,17 +292,17 @@ $(document).ready(function(){initNavTree('get__chat_8php.html',''); initResizabl
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aget__chat_8php_html_a052b4d90b67a3c1385af18f17e897eb5"><div class="ttname"><a href="get__chat_8php.html#a052b4d90b67a3c1385af18f17e897eb5">$allowed</a></div><div class="ttdeci">$allowed</div><div class="ttdef"><b>Definition:</b> get_chat.php:36</div></div>
 <div class="ttc" id="aclass_d_b_html_a213d19d5cd8aacbf7678c29df6ec5348"><div class="ttname"><a href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB\query</a></div><div class="ttdeci">static query($sql, $args=array())</div><div class="ttdef"><b>Definition:</b> db.php:35</div></div>
 <div class="ttc" id="aget__chat_8php_html_a0675ffe9ebd10039b3ea305f5ee69712"><div class="ttname"><a href="get__chat_8php.html#a0675ffe9ebd10039b3ea305f5ee69712">$users</a></div><div class="ttdeci">else $users[$user[&quot;id_user&quot;]]</div><div class="ttdef"><b>Definition:</b> get_chat.php:33</div></div>
 <div class="ttc" id="afunctions_8php_html_a3660c2be60faa3091ec6afcdeac77376"><div class="ttname"><a href="functions_8php.html#a3660c2be60faa3091ec6afcdeac77376">humanDate</a></div><div class="ttdeci">humanDate($dtm)</div><div class="ttdef"><b>Definition:</b> functions.php:20</div></div>
 <div class="ttc" id="aget__chat_8php_html_ae97941710d863131c700f069b109991e"><div class="ttname"><a href="get__chat_8php.html#ae97941710d863131c700f069b109991e">$id</a></div><div class="ttdeci">$id</div><div class="ttdef"><b>Definition:</b> get_chat.php:11</div></div>
+<div class="ttc" id="aget__chat_8php_html_a63ead17138855a3494becbc9dd8b997c"><div class="ttname"><a href="get__chat_8php.html#a63ead17138855a3494becbc9dd8b997c">$allowed</a></div><div class="ttdeci">if($row[&quot;id_user&quot;]==$user_id) $allowed</div><div class="ttdef"><b>Definition:</b> get_chat.php:50</div></div>
 <div class="ttc" id="aget__chat_8php_html_aa1d731aa570613e5bcff831bb10e9b87"><div class="ttname"><a href="get__chat_8php.html#aa1d731aa570613e5bcff831bb10e9b87">$row</a></div><div class="ttdeci">$row</div><div class="ttdef"><b>Definition:</b> get_chat.php:21</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="get__chat_8php.html">get_chat.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Вт 8 Дек 2020 12:46:53. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Вт 8 Дек 2020 13:08:35. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
