@@ -55,7 +55,12 @@ function submit(e){
                 $("input.invalid").removeClass("invalid");
                 
                 result = JSON.parse(result);
-                $.each(result, errorMessage.bind(null,inputname, text));
+
+                console.log(result)
+
+                $.each(result, function(inputname, text){
+                    errorMessage(inputname, text);
+                });
                 
                 $("input:not(.invalid) + .error-message").slideUp(100, function(){$(this).remove()});
             } else location.href = "/";
