@@ -804,41 +804,24 @@ function showContactListContext(isDelete,callback)
 
     $('#main').fadeOut(200,function(){
       /// \todo запуск анимации загрузки
-
-
-      let context = "";
-
-      context += `<tr class="myContact" id=1><td class='myContact-name'>{name}</td><td class="item-action ${(isDelete)?'icon-cancel':'icon-plus'}"></td></tr>`
       
-      context = `
-        <div id="contactSearch" class="search-field">
-          <input type="search" placeholder="search..."></input>
-          <button>поиск</button>
-        </div>
-        <table class='list2'><tbody>${context}</tbody></table>`;
-
-      $('#main').html(context).hide().fadeIn(200, callback);
-
-      /*
-
+      let context = "";
+      
       $.ajax({
         method: "GET",
-        url: "/resource/action/user_contact_list.php",   /// \todo создать файл
-        data: {
-          "id": params["id"]
-        },
+        url: "/resource/action/user_contact_list.php",
         success: function(result){
           result = JSON.parse(result);
 
           let context = "";
 
           $.each(result, function(id, name){
-            context += `<tr class="myContact" id=${id}><td class='myContact-name'>{name}</td><td class="item-action ${(isDelete)?icon-cancel:icon-plus}"></td></tr>`
+            context += `<tr class="myContact" id=${id}><td class='myContact-name'>${name}</td><td class="item-action ${(isDelete)?'icon-cancel':'icon-plus'}"></td></tr>`
           });
 
           context = `
             <div id="contactSearch" class="search-field">
-              <input type="search" placeholder="search..."></input>
+              <input type="search" placeholder="search...">
               <button>поиск</button>
             </div>
             <table class='list2'><tbody>${context}</tbody></table>`;
@@ -848,8 +831,6 @@ function showContactListContext(isDelete,callback)
           /// \todo завершение анимации загрузки
         }
       });
-      
-      */
     });
   });
 }
