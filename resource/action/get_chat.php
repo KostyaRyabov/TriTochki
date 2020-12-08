@@ -32,6 +32,21 @@
 			$users[$user["id_user"]] = $user["Firstname"]." ".$user["Lastname"];
 		else $users[$user["id_user"]] = $user["login"];
 	
+	// Допущен ли пользователь к данному чату
+	$allowed = $users[$user_id] ? 1 : 0;
+	// Если не допущен, выводим минимальный объем информации
+	if(!$allowed){
+		$return = [
+		 "owner" => $row["id_user"],
+		 "name" => $row["Name"],
+		 "date" => humanDate($row["date_create"]),
+		 "users" => $users,
+		 "messages" => [],
+		 "allowed" => $allowed
+		];
+		exit(json_encode($return));
+	}
+	
 	// Выборка всех сообщений в чате
 	$messagesel = DB::query("
 		SELECT message.id_message, message.id_user, content, data_create, id_read
@@ -54,8 +69,8 @@
 	 "name" => $row["Name"],
 	 "date" => humanDate($row["date_create"]),
 	 "users" => $users,
-	 "messages" => $messages,
-	 "allowed" => $users[$user_id] ? 1 : 0 // Допущен ли пользователь к данному чату
+	 "messages" => $messages ? $messages : [],
+	 "allowed" => $allowed
 	];
 	
 	echo json_encode($return);

@@ -219,9 +219,9 @@ function deleteCancel()
 /// \brief Изменение размера поля ввода в соответствие с введенным текстом сообщения
 function autoSize()
 {
-  $(this).css({ 'height': 'auto'}).height($(this)[0].scrollHeight)
+  $(this).css({ 'height': 'auto'}).height($(this)[0].scrollHeight);
 
-  if ($(this).val()){
+  if ($("#textbox").val()){
     if ($("button#send-message").is(":hidden")){
       $("button#send-message").show(50);
     }
@@ -489,7 +489,33 @@ function showChatContext(id)
           }, 300);
         }
         
-        if(!result.allowed) $("#input-area").remove();
+        // Если пользователь не авторизован в чате, даем ему возможность постучаться
+        if(!result.allowed){
+          $("#textbox").val("Вы не авторизованы в этом чате. Чтобы подать заявку на вступление, нажмите кнопку справа.")
+             .attr("disabled", true);
+          autoSize();
+          
+          $("#send-message").addClass("icon-user-plus").removeClass("icon-paper-plane")
+             .attr("onclick", "")
+             .click(function(){
+               let $this = $(this);
+  
+               $this.addClass("Verification").removeClass("Idle icon-paper-plane");
+               
+               $.ajax({
+                 method: "POST",
+                 url: "/resource/action/user_chat_knock.php",
+                 data: {
+                   "chat": id
+                 },
+                 success: function(result){
+                   $this.removeClass("icon-user-plus");
+                   if(result.length > 0) $this.addClass("Invalid icon-cancel").removeClass("Verification");
+                   else $this.addClass("Valid icon-check").removeClass("Verification");
+                 }
+               });
+             });
+        }
       }
     });
   })
@@ -891,7 +917,7 @@ function sendMessage()
 
           $('#wrapper').append(`<button class='btn error-message'>${result.error}</button>`).hide().fadeIn(300);
           setTimeout(function() {
-            $('#wrapper > .error-message').fadeOut(1000, function(){ 
+            $('#wrapper > .error-message').fadeOut(1000, function(){
               $(this).remove();
             });
           },5000)
