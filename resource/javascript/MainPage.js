@@ -166,16 +166,24 @@ function deleteSelectedItem()
 function deleteSubmit()
 {
   $(`.myContact#${selected[0].id}`).slideUp(200,function(){
+    let $this = $(this);
+    
     $(this).remove();
 
-    /// \todo добавить удаление контакта selected[0].id у myID
+    $.ajax({
+      method: "POST",
+      url: "/resource/action/user_contact_delete.php",
+      data: {
+        "contact": $this.attr("id")
+      }
+    });
 
     if ($('.list2 > tbody').is(':empty') && !$('.list2 + #empty-list-message').length){
-      let txt = 'empty'
-      $('.list2').after(`<span id='empty-list-message'>${txt}</span>`)
-      $('#empty-list-message').hide().show(300)
+      let txt = 'empty';
+      $('.list2').after(`<span id='empty-list-message'>${txt}</span>`);
+      $('#empty-list-message').hide().show(300);
     }
-  })
+  });
 
   $(`.myChat#${selected[0].id}`).slideUp(200,function(){
     $(this).remove();
@@ -798,20 +806,17 @@ function showContactListContext(isDelete,callback)
   $("#input-area").slideUp(200);
   $("#tab-name").html('контакты');
   $('#main').fadeOut(200,function(){
-    $(this).removeClass('shiftDown').html('')
-
-    let context = "";
+    $(this).removeClass('shiftDown').html('');
 
     $('#main').fadeOut(200,function(){
       /// \todo запуск анимации загрузки
-      
-      let context = "";
       
       $.ajax({
         method: "GET",
         url: "/resource/action/user_contact_list.php",
         success: function(result){
           result = JSON.parse(result);
+          if(!result) return false;
 
           let context = "";
 
