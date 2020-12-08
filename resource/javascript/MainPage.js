@@ -697,7 +697,7 @@ function showChatListContext()
   hideChatInfo();
   hideTextBox();
   $("#input-area").slideUp(200);
-  $("#tab-name").html('чаты');
+  $("#tab-name").html('мои чаты');
   $('#main').fadeOut(200,function(){
     $(this).removeClass('shiftDown').html('');
 
