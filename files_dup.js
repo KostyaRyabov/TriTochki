@@ -22,5 +22,6 @@ var files_dup =
     [ "register.php", "register_8php.html", "register_8php" ],
     [ "send_message.php", "send__message_8php.html", "send__message_8php" ],
     [ "user_chat_knock.php", "user__chat__knock_8php.html", "user__chat__knock_8php" ],
-    [ "user_chat_leave.php", "user__chat__leave_8php.html", "user__chat__leave_8php" ]
+    [ "user_chat_leave.php", "user__chat__leave_8php.html", "user__chat__leave_8php" ],
+    [ "user_contact_list.php", "user__contact__list_8php.html", "user__contact__list_8php" ]
 ];

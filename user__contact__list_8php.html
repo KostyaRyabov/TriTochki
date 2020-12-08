@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TriTochki: Файл chat_user_allow.php</title>
+<title>TriTochki: Файл user_contact_list.php</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('chat__user__allow_8php.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('user__contact__list_8php.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,99 +96,59 @@ $(document).ready(function(){initNavTree('chat__user__allow_8php.html',''); init
   <div class="summary">
 <a href="#var-members">Переменные</a>  </div>
   <div class="headertitle">
-<div class="title">Файл chat_user_allow.php</div>  </div>
+<div class="title">Файл user_contact_list.php</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Принятие заявки на вступление в чат  
+<p>Получение списка контактов пользователя  
 <a href="#details">Подробнее...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Переменные</h2></td></tr>
-<tr class="memitem:a0504883d777f5418f80e28e587901860"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chat__user__allow_8php.html#a0504883d777f5418f80e28e587901860">$chat</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;chat_id&quot;]))</td></tr>
-<tr class="separator:a0504883d777f5418f80e28e587901860"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a830cf70d25fefacddcf4c6bc3fd7a0e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chat__user__allow_8php.html#a830cf70d25fefacddcf4c6bc3fd7a0e0">$check</a> = mysqli_fetch_array($checksel)</td></tr>
-<tr class="separator:a830cf70d25fefacddcf4c6bc3fd7a0e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73b95ed5707b81276d818a8a2580304b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chat__user__allow_8php.html#a73b95ed5707b81276d818a8a2580304b">$checksel</a> = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id_user FROM chat WHERE id_chat=%d&quot;, [$chat])</td></tr>
-<tr class="separator:a73b95ed5707b81276d818a8a2580304b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12f5443cc19cb33ae0292013c53a7b19"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chat__user__allow_8php.html#a12f5443cc19cb33ae0292013c53a7b19">$current_user</a> = $user_data[&quot;id&quot;]</td></tr>
-<tr class="separator:a12f5443cc19cb33ae0292013c53a7b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a598ca4e71b15a1313ec95f0df1027ca5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chat__user__allow_8php.html#a598ca4e71b15a1313ec95f0df1027ca5">$user</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;user_id&quot;]))</td></tr>
-<tr class="separator:a598ca4e71b15a1313ec95f0df1027ca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24d82c354cb01154b2a69b9224c6ca3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chat__user__allow_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a> = <a class="el" href="functions_8php.html#a75b6b3bfe50ae8ce7cbda94963c6578f">userData</a>()</td></tr>
+<tr class="memitem:a00b964889e0c3318ec0a3b2fc82775bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="check_8php.html#a2d12ec6d8a1e7f5816a5b4ee4b5cf872">else</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__list_8php.html#a00b964889e0c3318ec0a3b2fc82775bc">$contacts</a> [$contact[&quot;id_contact&quot;]] = $contact[&quot;login&quot;]</td></tr>
+<tr class="separator:a00b964889e0c3318ec0a3b2fc82775bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a873491d59acfd454342745abeb03af85"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__list_8php.html#a873491d59acfd454342745abeb03af85">$contactsel</a></td></tr>
+<tr class="separator:a873491d59acfd454342745abeb03af85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24d82c354cb01154b2a69b9224c6ca3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__list_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a> = <a class="el" href="functions_8php.html#a75b6b3bfe50ae8ce7cbda94963c6578f">userData</a>()</td></tr>
 <tr class="separator:a24d82c354cb01154b2a69b9224c6ca3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0fcd925f00973e32f7214859dfb3c6b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__list_8php.html#af0fcd925f00973e32f7214859dfb3c6b">$user_id</a> = $user_data[&quot;id&quot;]</td></tr>
+<tr class="separator:af0fcd925f00973e32f7214859dfb3c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
-<div class="textblock"><p>Принятие заявки на вступление в чат </p>
+<div class="textblock"><p>Получение списка контактов пользователя </p>
 </div><h2 class="groupheader">Переменные</h2>
-<a id="a0504883d777f5418f80e28e587901860"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0504883d777f5418f80e28e587901860">&#9670;&nbsp;</a></span>$chat</h2>
+<a id="a00b964889e0c3318ec0a3b2fc82775bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00b964889e0c3318ec0a3b2fc82775bc">&#9670;&nbsp;</a></span>$contacts</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$chat = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;chat_id&quot;]))</td>
+          <td class="memname"><a class="el" href="check_8php.html#a2d12ec6d8a1e7f5816a5b4ee4b5cf872">else</a> $contacts[ $contact[&quot;id_contact&quot;]] = $contact[&quot;login&quot;]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a830cf70d25fefacddcf4c6bc3fd7a0e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a830cf70d25fefacddcf4c6bc3fd7a0e0">&#9670;&nbsp;</a></span>$check</h2>
+<a id="a873491d59acfd454342745abeb03af85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a873491d59acfd454342745abeb03af85">&#9670;&nbsp;</a></span>$contactsel</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$check = mysqli_fetch_array($checksel)</td>
+          <td class="memname">$contactsel</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a73b95ed5707b81276d818a8a2580304b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73b95ed5707b81276d818a8a2580304b">&#9670;&nbsp;</a></span>$checksel</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">$checksel = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id_user FROM chat WHERE id_chat=%d&quot;, [$chat])</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a12f5443cc19cb33ae0292013c53a7b19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12f5443cc19cb33ae0292013c53a7b19">&#9670;&nbsp;</a></span>$current_user</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">$current_user = $user_data[&quot;id&quot;]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a598ca4e71b15a1313ec95f0df1027ca5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a598ca4e71b15a1313ec95f0df1027ca5">&#9670;&nbsp;</a></span>$user</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">$user = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;user_id&quot;]))</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
+<b>Инициализатор</b><div class="fragment"><div class="line">= <a class="code" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(<span class="stringliteral">&quot;</span></div>
+<div class="line"><span class="stringliteral">        SELECT id_contact, Firstname, Lastname, Login</span></div>
+<div class="line"><span class="stringliteral">        FROM user_contacts</span></div>
+<div class="line"><span class="stringliteral">        INNER JOIN user ON user_contacts.id_contact=user.id_user</span></div>
+<div class="line"><span class="stringliteral">        WHERE user_contacts.id_user=%d</span></div>
+<div class="line"><span class="stringliteral">    &quot;</span>, [<a class="code" href="user__contact__list_8php.html#af0fcd925f00973e32f7214859dfb3c6b">$user_id</a>])</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a24d82c354cb01154b2a69b9224c6ca3f"></a>
@@ -205,12 +165,28 @@ $(document).ready(function(){initNavTree('chat__user__allow_8php.html',''); init
 
 </div>
 </div>
+<a id="af0fcd925f00973e32f7214859dfb3c6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0fcd925f00973e32f7214859dfb3c6b">&#9670;&nbsp;</a></span>$user_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$user_id = $user_data[&quot;id&quot;]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclass_d_b_html_a213d19d5cd8aacbf7678c29df6ec5348"><div class="ttname"><a href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB\query</a></div><div class="ttdeci">static query($sql, $args=array())</div><div class="ttdef"><b>Definition:</b> db.php:35</div></div>
+<div class="ttc" id="auser__contact__list_8php_html_af0fcd925f00973e32f7214859dfb3c6b"><div class="ttname"><a href="user__contact__list_8php.html#af0fcd925f00973e32f7214859dfb3c6b">$user_id</a></div><div class="ttdeci">$user_id</div><div class="ttdef"><b>Definition:</b> user_contact_list.php:12</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="chat__user__allow_8php.html">chat_user_allow.php</a></li>
+    <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="user__contact__list_8php.html">user_contact_list.php</a></li>
     <li class="footer">Документация по TriTochki. Последние изменения: Вт 8 Дек 2020 13:45:34. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
