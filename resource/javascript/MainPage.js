@@ -500,8 +500,6 @@ function showChatContext(id)
       },
       success: function(result){
         result = JSON.parse(result);
-      
-        let first_unread = 0;   /// \todo Изменить номер последнего непрочитанного сообщения
         
         idChat = id;
         params["id"] = id;
@@ -538,14 +536,15 @@ function showChatContext(id)
           });
         }
 
+        // Вывод сообщений
         $.each(result.messages, function(id, value){
           $("#main").append(genMessage(id, value["user"], result.users[value["user"]], value["text"].replace(/\n/g, '<br>'), value["date"]));
-          if(first_unread == 0 && value["is_read"] == 0) first_unread = id;
         });
-
-        if(first_unread){
+        
+        // Прокрутка в конец чата
+        if($(".msg-area").length){
           $('#wrapper').animate({
-            scrollTop: $('#message' + first_unread).offset().top
+            scrollTop: $('.msg-area:last').offset().top
           }, 300);
         }
         

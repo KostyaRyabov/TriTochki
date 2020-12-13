@@ -31,7 +31,5 @@
 	];
 	
 	DB::insert("message", $new_msg);
-	$id_message = DB::lastInsertId();
-	DB::insert("message_status", ["%d:id_message" => $id_message, "%d:id_user" => $user, "%d:id_read" => 0]);
 	
 	echo json_encode(["message_id" => $id_message, "date" => humanDate(date("Y-m-d H:i:s"))]);
