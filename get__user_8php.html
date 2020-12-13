@@ -105,7 +105,9 @@ $(document).ready(function(){initNavTree('get__user_8php.html',''); initResizabl
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Переменные</h2></td></tr>
-<tr class="memitem:ae97941710d863131c700f069b109991e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__user_8php.html#ae97941710d863131c700f069b109991e">$id</a> = $user_data[&quot;id&quot;]</td></tr>
+<tr class="memitem:afd33e8d1f281f29797152c06814a07bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__user_8php.html#afd33e8d1f281f29797152c06814a07bf">$contact</a> = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id FROM user_contacts WHERE id_user=%d AND id_contact=%d&quot;, [$user_id, $id])</td></tr>
+<tr class="separator:afd33e8d1f281f29797152c06814a07bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae97941710d863131c700f069b109991e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__user_8php.html#ae97941710d863131c700f069b109991e">$id</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;id&quot;]))</td></tr>
 <tr class="separator:ae97941710d863131c700f069b109991e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a112ef069ddc0454086e3d1e6d8d55d07"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__user_8php.html#a112ef069ddc0454086e3d1e6d8d55d07">$result</a> = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT Firstname, Lastname, Login, Email, Sex FROM user WHERE id_user=%d&quot;, [$id])</td></tr>
 <tr class="separator:a112ef069ddc0454086e3d1e6d8d55d07"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,10 +117,26 @@ $(document).ready(function(){initNavTree('get__user_8php.html',''); initResizabl
 <tr class="separator:aa1d731aa570613e5bcff831bb10e9b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24d82c354cb01154b2a69b9224c6ca3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__user_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a> = <a class="el" href="functions_8php.html#a75b6b3bfe50ae8ce7cbda94963c6578f">userData</a>()</td></tr>
 <tr class="separator:a24d82c354cb01154b2a69b9224c6ca3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0fcd925f00973e32f7214859dfb3c6b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__user_8php.html#af0fcd925f00973e32f7214859dfb3c6b">$user_id</a> = $user_data[&quot;id&quot;]</td></tr>
+<tr class="separator:af0fcd925f00973e32f7214859dfb3c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p>Получение информации о пользователе </p>
 </div><h2 class="groupheader">Переменные</h2>
+<a id="afd33e8d1f281f29797152c06814a07bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd33e8d1f281f29797152c06814a07bf">&#9670;&nbsp;</a></span>$contact</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$contact = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id FROM user_contacts WHERE id_user=%d AND id_contact=%d&quot;, [$user_id, $id])</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae97941710d863131c700f069b109991e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae97941710d863131c700f069b109991e">&#9670;&nbsp;</a></span>$id</h2>
 
@@ -126,7 +144,7 @@ $(document).ready(function(){initNavTree('get__user_8php.html',''); initResizabl
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$id = $user_data[&quot;id&quot;]</td>
+          <td class="memname">$id = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;id&quot;]))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -163,7 +181,8 @@ $(document).ready(function(){initNavTree('get__user_8php.html',''); initResizabl
 <div class="line">     <span class="stringliteral">&quot;lastName&quot;</span> =&gt; <a class="code" href="get__user_8php.html#aa1d731aa570613e5bcff831bb10e9b87">$row</a>[<span class="stringliteral">&quot;Lastname&quot;</span>],</div>
 <div class="line">     <span class="stringliteral">&quot;login&quot;</span> =&gt; <a class="code" href="get__user_8php.html#aa1d731aa570613e5bcff831bb10e9b87">$row</a>[<span class="stringliteral">&quot;Login&quot;</span>],</div>
 <div class="line">     <span class="stringliteral">&quot;email&quot;</span> =&gt; <a class="code" href="get__user_8php.html#aa1d731aa570613e5bcff831bb10e9b87">$row</a>[<span class="stringliteral">&quot;Email&quot;</span>],</div>
-<div class="line">     <span class="stringliteral">&quot;sex&quot;</span> =&gt; <a class="code" href="get__user_8php.html#aa1d731aa570613e5bcff831bb10e9b87">$row</a>[<span class="stringliteral">&quot;Sex&quot;</span>]</div>
+<div class="line">     <span class="stringliteral">&quot;sex&quot;</span> =&gt; <a class="code" href="get__user_8php.html#aa1d731aa570613e5bcff831bb10e9b87">$row</a>[<span class="stringliteral">&quot;Sex&quot;</span>],</div>
+<div class="line">     <span class="stringliteral">&quot;isContact&quot;</span> =&gt; mysqli_num_rows(<a class="code" href="get__user_8php.html#afd33e8d1f281f29797152c06814a07bf">$contact</a>) ? true : false</div>
 <div class="line">    ]</div>
 </div><!-- fragment -->
 </div>
@@ -196,14 +215,29 @@ $(document).ready(function(){initNavTree('get__user_8php.html',''); initResizabl
 
 </div>
 </div>
+<a id="af0fcd925f00973e32f7214859dfb3c6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0fcd925f00973e32f7214859dfb3c6b">&#9670;&nbsp;</a></span>$user_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$user_id = $user_data[&quot;id&quot;]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aget__user_8php_html_afd33e8d1f281f29797152c06814a07bf"><div class="ttname"><a href="get__user_8php.html#afd33e8d1f281f29797152c06814a07bf">$contact</a></div><div class="ttdeci">$contact</div><div class="ttdef"><b>Definition:</b> get_user.php:21</div></div>
 <div class="ttc" id="aget__user_8php_html_aa1d731aa570613e5bcff831bb10e9b87"><div class="ttname"><a href="get__user_8php.html#aa1d731aa570613e5bcff831bb10e9b87">$row</a></div><div class="ttdeci">$row</div><div class="ttdef"><b>Definition:</b> get_user.php:18</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="get__user_8php.html">get_user.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Вт 8 Дек 2020 17:40:49. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Вс 13 Дек 2020 16:59:57. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
