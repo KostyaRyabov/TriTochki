@@ -391,8 +391,8 @@ function search(substr)
             context += `<tr class="myContact" id=${id}><td class='myContact-name'>${name}</td><td class="item-action icon-plus"></td></tr>`
           });
 
-          $('#new-list > tbody').slideUp(100,function(){
-            $(this).html(context).show(200)
+          $('#new-list > tbody').hide(100,function(){
+            $(this).html(context).show(100)
           });
           
           /// \todo завершение анимации загрузки
@@ -401,7 +401,7 @@ function search(substr)
       }
       else
       {
-        $('#new-list > tbody').slideUp(100,function(){
+        $('#new-list > tbody').hide(100,function(){
           $(this).html('').show()
         });
       }
@@ -425,8 +425,8 @@ function search(substr)
               context += `<tr class="myChat" id=${id}><td class='myChat-name item-selector'>${name}</td><td class="item-action icon-plus"></td></tr>`;
             });
             
-            $('#new-list > tbody').slideUp(100,function(){
-              $(this).html(context).show(200)
+            $('#new-list > tbody').hide(100,function(){
+              $(this).html(context).show(100)
             });
 
           /// \todo завершение анимации загрузки
@@ -435,7 +435,7 @@ function search(substr)
       }
       else
       {
-        $('#new-list > tbody').slideUp(100,function(){
+        $('#new-list > tbody').hide(100,function(){
           $(this).html('').show()
         });
       }
