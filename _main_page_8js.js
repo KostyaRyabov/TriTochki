@@ -21,6 +21,7 @@ var _main_page_8js =
     [ "inputCancel", "group__edit_param.html#gad62a313a184ba2a24e3f53efe3d212c7", null ],
     [ "inputSubmit", "group__edit_param.html#ga794111d584646fa77074a5e111d622fb", null ],
     [ "kickContact", "_main_page_8js.html#af810aabdb0857c5c1b12d0545a3d6a66", null ],
+    [ "lastMessageScroll", "_main_page_8js.html#ae429bd0649475991dd78be640744f386", null ],
     [ "on", "_main_page_8js.html#a82467f3130cbba476433cae75f276c12", null ],
     [ "removeSelectedContact", "group__select_contacts.html#gac23a4eddc69fdebc15f9c31a41df5986", null ],
     [ "sendMessage", "_main_page_8js.html#a0d8d264d0b97e8a905a6381fdd564e62", null ],
