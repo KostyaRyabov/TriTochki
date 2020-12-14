@@ -143,13 +143,13 @@ $(document).ready(function(){initNavTree('group__select_contacts.html',''); init
 
 <p>Добавление контакта к текущему чату </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Необходимо сделать:</a></b></dt><dd>Написать код для добавления контактов (массив selected структур {id: value}) к текущему чату idChat </dd></dl>
-<div class="fragment"><div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;{</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;  <a class="code" href="_modal_window_8js.html#a7a90556da7f3921fe0fb5861da1c3a1e">hideModalWindow</a>(<span class="stringliteral">&#39;#chat-contacts&#39;</span>)</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  <a class="code" href="_main_page_8js.html#aac1743310c5f550d132d50b732eddfd1">showContactListContext</a>(false,function(){</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a> = [];</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160; </div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;  })</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;{</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;  <a class="code" href="_modal_window_8js.html#a7a90556da7f3921fe0fb5861da1c3a1e">hideModalWindow</a>(<span class="stringliteral">&#39;#chat-contacts&#39;</span>)</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;  <a class="code" href="_main_page_8js.html#aac1743310c5f550d132d50b732eddfd1">showContactListContext</a>(false,function(){</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a> = [];</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  })</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -176,16 +176,16 @@ $(document).ready(function(){initNavTree('group__select_contacts.html',''); init
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;{</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.includes(curID)) {</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.push(curID);</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  }</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.length &gt; 0 &amp;&amp; !$(<span class="stringliteral">&#39;#addContacts&#39;</span>).length){</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    $(<span class="stringliteral">&#39;#main&#39;</span>).append(`&lt;button <span class="keywordtype">id</span>=<span class="stringliteral">&quot;addContacts&quot;</span>&gt;добавить&lt;/button&gt;`);</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    $(<span class="stringliteral">&#39;button#addContacts&#39;</span>).hide().fadeIn(300);</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;  }</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;{</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.includes(curID)) {</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.push(curID);</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;  }</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.length &gt; 0 &amp;&amp; !$(<span class="stringliteral">&#39;#addContacts&#39;</span>).length){</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    $(<span class="stringliteral">&#39;#main&#39;</span>).append(`&lt;button <span class="keywordtype">id</span>=<span class="stringliteral">&quot;addContacts&quot;</span>&gt;добавить&lt;/button&gt;`);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    $(<span class="stringliteral">&#39;button#addContacts&#39;</span>).hide().fadeIn(300);</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  }</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -212,16 +212,16 @@ $(document).ready(function(){initNavTree('group__select_contacts.html',''); init
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;{</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  let idx = <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.indexOf(curID)</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  <span class="keywordflow">if</span> (curID &gt; 0){</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.splice(idx, 1);</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  }</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  <span class="keywordflow">if</span>($(<span class="stringliteral">&#39;#addContacts&#39;</span>).length &amp;&amp; <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.length == 0){</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    $(<span class="stringliteral">&#39;#addContacts&#39;</span>).fadeOut(300,<span class="keyword">function</span>(){$(<span class="keyword">this</span>).<span class="keyword">remove</span>()});</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  }</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;{</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;  let idx = <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.indexOf(curID)</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;  <span class="keywordflow">if</span> (curID &gt; 0){</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.splice(idx, 1);</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  }</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  <span class="keywordflow">if</span>($(<span class="stringliteral">&#39;#addContacts&#39;</span>).length &amp;&amp; <a class="code" href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a>.length == 0){</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    $(<span class="stringliteral">&#39;#addContacts&#39;</span>).fadeOut(300,<span class="keyword">function</span>(){$(<span class="keyword">this</span>).<span class="keyword">remove</span>()});</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;  }</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -240,12 +240,12 @@ $(document).ready(function(){initNavTree('group__select_contacts.html',''); init
       </table>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Необходимо сделать:</a></b></dt><dd>Добавить контакты в чат (БД) по списку selected (набор идентификаторов) </dd></dl>
-<div class="fragment"><div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;{</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;  <span class="comment">// ...</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  <span class="comment">// при успешном выполнении выполнить следующее...</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  <a class="code" href="_main_page_8js.html#a52d8336a45098a87de247266aaa79b46">showChatContext</a>(<a class="code" href="_main_page_8js.html#a2d64434a6759a71f0e4044ca4a3c2460">idChat</a>);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;{</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  <span class="comment">// ...</span></div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  <span class="comment">// при успешном выполнении выполнить следующее...</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  <a class="code" href="_main_page_8js.html#a52d8336a45098a87de247266aaa79b46">showChatContext</a>(<a class="code" href="_main_page_8js.html#a2d64434a6759a71f0e4044ca4a3c2460">idChat</a>);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -254,12 +254,12 @@ $(document).ready(function(){initNavTree('group__select_contacts.html',''); init
 <div class="ttc" id="a_modal_window_8js_html_a7a90556da7f3921fe0fb5861da1c3a1e"><div class="ttname"><a href="_modal_window_8js.html#a7a90556da7f3921fe0fb5861da1c3a1e">hideModalWindow</a></div><div class="ttdeci">function hideModalWindow(modal, callback)</div><div class="ttdoc">Отображение модального окна</div><div class="ttdef"><b>Definition:</b> ModalWindow.js:26</div></div>
 <div class="ttc" id="a_main_page_8js_html_a87f3135568000fa89b7074921dcd5994"><div class="ttname"><a href="_main_page_8js.html#a87f3135568000fa89b7074921dcd5994">selected</a></div><div class="ttdeci">var selected</div><div class="ttdoc">Выбранные элементы</div><div class="ttdef"><b>Definition:</b> MainPage.js:20</div></div>
 <div class="ttc" id="a_main_page_8js_html_a2d64434a6759a71f0e4044ca4a3c2460"><div class="ttname"><a href="_main_page_8js.html#a2d64434a6759a71f0e4044ca4a3c2460">idChat</a></div><div class="ttdeci">var idChat</div><div class="ttdoc">Идентификатор рассматриваемого чата</div><div class="ttdef"><b>Definition:</b> MainPage.js:11</div></div>
-<div class="ttc" id="a_main_page_8js_html_aac1743310c5f550d132d50b732eddfd1"><div class="ttname"><a href="_main_page_8js.html#aac1743310c5f550d132d50b732eddfd1">showContactListContext</a></div><div class="ttdeci">function showContactListContext(isDelete, callback)</div><div class="ttdoc">Отображение списка контактов пользователя</div><div class="ttdef"><b>Definition:</b> MainPage.js:863</div></div>
-<div class="ttc" id="a_main_page_8js_html_a52d8336a45098a87de247266aaa79b46"><div class="ttname"><a href="_main_page_8js.html#a52d8336a45098a87de247266aaa79b46">showChatContext</a></div><div class="ttdeci">function showChatContext(id)</div><div class="ttdoc">Отображение сведений о чате</div><div class="ttdef"><b>Definition:</b> MainPage.js:503</div></div>
+<div class="ttc" id="a_main_page_8js_html_aac1743310c5f550d132d50b732eddfd1"><div class="ttname"><a href="_main_page_8js.html#aac1743310c5f550d132d50b732eddfd1">showContactListContext</a></div><div class="ttdeci">function showContactListContext(isDelete, callback)</div><div class="ttdoc">Отображение списка контактов пользователя</div><div class="ttdef"><b>Definition:</b> MainPage.js:884</div></div>
+<div class="ttc" id="a_main_page_8js_html_a52d8336a45098a87de247266aaa79b46"><div class="ttname"><a href="_main_page_8js.html#a52d8336a45098a87de247266aaa79b46">showChatContext</a></div><div class="ttdeci">function showChatContext(id)</div><div class="ttdoc">Отображение сведений о чате</div><div class="ttdef"><b>Definition:</b> MainPage.js:526</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Документация по TriTochki. Последние изменения: Пн 14 Дек 2020 16:25:44. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Пн 14 Дек 2020 16:41:17. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

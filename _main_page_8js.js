@@ -24,6 +24,7 @@ var _main_page_8js =
     [ "lastMessageScroll", "_main_page_8js.html#ae429bd0649475991dd78be640744f386", null ],
     [ "on", "_main_page_8js.html#a82467f3130cbba476433cae75f276c12", null ],
     [ "removeSelectedContact", "group__select_contacts.html#gac23a4eddc69fdebc15f9c31a41df5986", null ],
+    [ "selectSubmit", "group__edit_param.html#ga28b424b7b57bd91a3d10f972edeb3559", null ],
     [ "sendMessage", "_main_page_8js.html#a0d8d264d0b97e8a905a6381fdd564e62", null ],
     [ "showChatContext", "_main_page_8js.html#a52d8336a45098a87de247266aaa79b46", null ],
     [ "showChatInfo", "_main_page_8js.html#aaff07c8375e74c5c9236e8a852adb11a", null ],
