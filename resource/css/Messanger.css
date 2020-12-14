@@ -59,6 +59,15 @@ table{
     justify-content: center;
 }
 
+.center{
+    margin: 10px;
+    text-align: center;
+}
+
+#my-list + #new-list{
+    margin-top: 2em;
+}
+
 html *{
     font-size: 12px !important;
     font-family: 'Balsamiq Sans', serif !important;
@@ -385,13 +394,7 @@ hr{
     overflow-x: none;
 }
 
-#empty-list-message{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%,-50%);
-}
+.list2{height:auto}
 
 #chat-info-contact-list{ max-height: 7.5em }
 

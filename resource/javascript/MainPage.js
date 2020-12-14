@@ -198,12 +198,6 @@ function deleteSubmit()
         "contact": $this.attr("id")
       }
     });
-
-    if ($('.list2 > tbody').is(':empty') && !$('.list2 + #empty-list-message').length){
-      let txt = 'empty';
-      $('.list2').after(`<span id='empty-list-message'>${txt}</span>`);
-      $('#empty-list-message').hide().show(300);
-    }
   });
 
   $(`.myChat#${selected[0].id}`).slideUp(200,function(){
@@ -221,12 +215,6 @@ function deleteSubmit()
         if(result.length > 1) return false;
       }
     });
-
-    if ($('.list2 > tbody').is(':empty') && !$('.list2 + #empty-list-message').length){
-      let txt = 'empty';
-      $('.list2').after(`<span id='empty-list-message'>${txt}</span>`);
-      $('#empty-list-message').hide().show(300);
-    }
   });
 
   hideWarningMessage()
@@ -373,14 +361,86 @@ function init()
   indexChats();
 }
 
+var time_search;
+
 /*!
   \brief Поиск чата или контакта по подстроке
   \param[in] substr Искомая подстрока
 */
 function search(substr)
 {
-  $(`.item-selector:not(:contains(${substr}))`).parent().slideUp(100)
-  $(`.item-selector:contains(${substr})`).parent().slideDown(100)
+  $(`.item-selector:not(:contains(${substr}))`).parent().slideUp(100);
+  $(`.item-selector:contains(${substr})`).parent().slideDown(100);
+
+  clearTimeout(time_search);
+  time_search = setTimeout(function(){
+    if ($('#contactSearch').length)
+    {
+      if (substr)
+      {
+        $.ajax({
+        method: "GET",
+        url: "/resource/action/user_contact_list.php",    /// \todo реализовать поиск контактов по подстроке
+        success: function(result){
+          result = JSON.parse(result);
+          if(!result) return false;
+
+          let context = "";
+
+          $.each(result, function(id, name){
+            context += `<tr class="myContact" id=${id}><td class='myContact-name'>${name}</td><td class="item-action icon-plus"></td></tr>`
+          });
+
+          $('#new-list > tbody').slideUp(100,function(){
+            $(this).html(context).show(200)
+          });
+          
+          /// \todo завершение анимации загрузки
+          }
+        });
+      }
+      else
+      {
+        $('#new-list > tbody').slideUp(100,function(){
+          $(this).html('').show()
+        });
+      }
+    }
+    else if ($('#chatSearch').length)
+    {
+      if (substr)
+      {
+        $.ajax({
+          method: "GET",
+          url: "/resource/action/get_chat_list.php",    /// \todo реализовать поиск чатов по подстроке
+          data: {
+            "for-user": 1
+          },
+          success: function(result){
+            result = JSON.parse(result);
+            
+            let context = "";
+
+            $.each(result, function(id, name){
+              context += `<tr class="myChat" id=${id}><td class='myChat-name item-selector'>${name}</td><td class="item-action icon-plus"></td></tr>`;
+            });
+            
+            $('#new-list > tbody').slideUp(100,function(){
+              $(this).html(context).show(200)
+            });
+
+          /// \todo завершение анимации загрузки
+          }
+        })
+      }
+      else
+      {
+        $('#new-list > tbody').slideUp(100,function(){
+          $(this).html('').show()
+        });
+      }
+    }
+  },500)
 }
 
 /*!
@@ -811,16 +871,14 @@ function showChatListContext()
         $.each(result, function(id, name){
           context += `<tr class="myChat" id=${id}><td class='myChat-name item-selector'>${name}</td><td class="item-action icon-cancel"></td></tr>`;
         });
-  
-        context += "<tr><td colspan='2' style='text-align: center;'><button class='btn' id='chat-new'>Создать чат</button></td></tr>";
         
         context = `
-          <div id="contactSearch" class="search-field">
+          <div id="chatSearch" class="search-field">
             <input type="search" placeholder="search..."></input>
           </div>
-          <table class='list2'>
-            <tbody>${context}</tbody>
-          </table>`;
+          <table class='list2' id='my-list'><tbody>${context}</tbody></table>
+          <div class='center'><button class='btn' id='chat-new'>Создать чат</button></div>
+          <table class='list2' id='new-list'><tbody></tbody></table>`;
 
         $('#main').html(context).hide().fadeIn(200);
 
@@ -847,15 +905,12 @@ function indexChats(){
         context += `<tr class="myChat" id=${id}><td class='myChat-name item-selector'>${name}</td><td></td></tr>`;
       });
   
-      context += "<tr><td colspan='2' style='text-align: center;'><button class='btn' id='chat-new'>Создать чат</button></td></tr>";
-  
       context = `
-          <div id="contactSearch" class="search-field">
+          <div id="chatSearch" class="search-field">
             <input type="search" placeholder="search...">
           </div>
-          <table class='list2'>
-            <tbody>${context}</tbody>
-          </table>`;
+          <table class='list2' id='my-list'><tbody>${context}</tbody></table>
+          <div class='center'><button class='btn' id='chat-new'>Создать чат</button></div>`;
       
       $('#main').removeClass("shiftDown").html(context);
     }
@@ -920,7 +975,8 @@ function showContactListContext(isDelete,callback)
             <div id="contactSearch" class="search-field">
               <input type="search" placeholder="search...">
             </div>
-            <table class='list2'><tbody>${context}</tbody></table>`;
+            <table class='list2' id='my-list'><tbody>${context}</tbody></table>
+            <table class='list2' id='new-list'><tbody></tbody></table>`;
 
           $('#main').html(context).hide().fadeIn(200, callback);
           
