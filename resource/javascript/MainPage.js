@@ -485,6 +485,18 @@ function authorization()
 }
 
 /*!
+  \brief Скролл вниз до последнего сообщения
+  \param[in] time Скорость анимации скролла
+*/
+function lastMessageScroll(time){
+  if($(".msg-area").length){
+    $('#wrapper').animate({
+      scrollTop: $('#main').height()
+    }, time);
+  }
+}
+
+/*!
   \brief Отображение сведений о чате
   \param[in] id Идентификатор рассматриваемого чата
 */
@@ -542,11 +554,7 @@ function showChatContext(id)
         });
         
         // Прокрутка в конец чата
-        if($(".msg-area").length){
-          $('#wrapper').animate({
-            scrollTop: $('.msg-area:last').offset().top
-          }, 300);
-        }
+        lastMessageScroll(300);
         
         // Если пользователь не авторизован в чате, даем ему возможность постучаться
         if(!result.allowed){
@@ -574,6 +582,33 @@ function showChatContext(id)
                  }
                });
              });
+        } else{ // Иначе запускаем прослушку сообщений
+          setInterval(function(){
+            $.ajax({
+              method: "POST",
+              url: "/resource/action/chat_listener.php",
+              data: {
+                "chat": params["id"],
+                "current_count": $(".msg-area").length
+              },
+              success: function(result){
+                result = JSON.parse(result);
+      
+                if(result.error) return false;
+                
+                if($(".msg-area").length < result.count){
+                  $("#main").html("");
+                  $.when(
+                     $.each(result.messages, function(id, value){
+                       $("#main").append(genMessage(id, value["user"]["id"], value["user"]["name"], value["text"].replace(/\n/g, '<br>'), value["date"]));
+                     })
+                  ).then(function(){
+                    lastMessageScroll(200);
+                  });
+                }
+              }
+            });
+          }, 4000);
         }
       }
     });
