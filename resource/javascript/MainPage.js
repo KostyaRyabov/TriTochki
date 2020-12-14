@@ -583,7 +583,11 @@ function showChatContext(id)
                });
              });
         } else{ // Иначе запускаем прослушку сообщений
-          setInterval(function(){
+          let listener = setInterval(function(){
+            $(".menu button").click(function(){
+              clearInterval(listener);
+            });
+            
             $.ajax({
               method: "POST",
               url: "/resource/action/chat_listener.php",
@@ -596,7 +600,7 @@ function showChatContext(id)
       
                 if(result.error) return false;
                 
-                if($(".msg-area").length < result.count){
+                if($("#btn-chat-about").height() && $(".msg-area").length < result.count){
                   $("#main").html("");
                   $.when(
                      $.each(result.messages, function(id, value){
@@ -605,7 +609,7 @@ function showChatContext(id)
                   ).then(function(){
                     lastMessageScroll(200);
                   });
-                }
+                } else clearInterval(listener);
               }
             });
           }, 4000);
