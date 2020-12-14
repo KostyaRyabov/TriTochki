@@ -56,8 +56,6 @@ function submit(e){
                 
                 result = JSON.parse(result);
 
-                console.log(result)
-
                 $.each(result, function(inputname, text){
                     errorMessage(inputname, text);
                 });
