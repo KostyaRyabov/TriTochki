@@ -41,5 +41,6 @@ var _main_page_8js =
     [ "myName", "_main_page_8js.html#a4ac3726556dd44946b4eef16fdc7637e", null ],
     [ "params", "_main_page_8js.html#aede1877627e25fe927c69fadb0fabfdd", null ],
     [ "profile_data", "_main_page_8js.html#a3fe117079bfb750a3456b64ea285da78", null ],
-    [ "selected", "_main_page_8js.html#a87f3135568000fa89b7074921dcd5994", null ]
+    [ "selected", "_main_page_8js.html#a87f3135568000fa89b7074921dcd5994", null ],
+    [ "time_search", "_main_page_8js.html#afa329a00a6ec6142a36ec1b4b30ec41d", null ]
 ];
