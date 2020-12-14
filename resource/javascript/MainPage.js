@@ -134,6 +134,27 @@ function inputSubmit()
   },150);
 }
 
+/// \brief Отправка изменений тега select
+function selectSubmit(){
+  let $this = $(this);
+  
+  if($this.parent().attr("id") == "profile-box"){
+    $.ajax({
+      method: "POST",
+      url: "/resource/action/change_user_info.php",
+      data: {
+        "field": $this.attr("id"),
+        "data": $this.val()
+      },
+      success: function(result){
+        if(result.length > 1) location.href = "/Login.html";
+        
+        profile_data[$this.attr("id")] = $this.val();
+      }
+    });
+  }
+}
+
 ///@}
 
 /*!
@@ -286,6 +307,8 @@ function init()
   $("body").on("click","button.input-cancel",inputCancel);
   
   $("body").on("click","button.input-submit",inputSubmit);
+  
+  $("body").on("change","#Sex",selectSubmit);
   
   $("body").on("click",".item-action.icon-cancel",deleteSelectedItem);
   $("body").on("click",".item-action.icon-plus",function(){
@@ -710,17 +733,15 @@ function showProfileContext(id)
       let form = `
       <div id="profile-form" class="modal-window-wrapper">
         <div class="block-screen modal-window-trigger" onclick="hideProfileContext()"></div>
-        <div class="modal-window">
-          <div id="profile-box">
-            <div class="input">
-              <span contentEditable="false" placeholder="First Name" id="First_Name" maxlength="32">${profile_data["First_Name"]}</span>`;
-              if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
-            form += `</div>
-            <div class="input">
-              <span contentEditable="false" placeholder="Second Name" id="Second_Name" maxlength="32">${profile_data["Second_Name"]}</span>`;
-              if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
-            form += `</div>
-          </div>
+        <div class="modal-window" id="profile-box">
+           <div class="input">
+             <span contentEditable="false" placeholder="First Name" id="First_Name" maxlength="32">${profile_data["First_Name"]}</span>`;
+            if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
+           form += `</div>
+           <div class="input">
+            <span contentEditable="false" placeholder="Second Name" id="Second_Name" maxlength="32">${profile_data["Second_Name"]}</span>`;
+             if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
+          form += `</div>
           <div class="input">
             <span contentEditable="false" placeholder="Login" id="Login" maxlength="32">${profile_data["Login"]}</span>`;
             if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
