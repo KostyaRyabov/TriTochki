@@ -364,11 +364,23 @@ function init()
   
   $('body').on("click", "#chat-new", chatNew);
 
+  $('body').on("input", "input[type='search']", function(){ search($(this).val()) });
+
   authorization();
   setTimeout(function(){ // Периодичная проверка авторизации
     authorization();
   }, 600000);
   indexChats();
+}
+
+/*!
+  \brief Поиск чата или контакта по подстроке
+  \param[in] substr Искомая подстрока
+*/
+function search(substr)
+{
+  $(`.item-selector:not(:contains(${substr}))`).parent().slideUp(100)
+  $(`.item-selector:contains(${substr})`).parent().slideDown(100)
 }
 
 /*!
@@ -797,7 +809,7 @@ function showChatListContext()
         let context = "";
 
         $.each(result, function(id, name){
-          context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="item-action icon-cancel"></td></tr>`;
+          context += `<tr class="myChat" id=${id}><td class='myChat-name item-selector'>${name}</td><td class="item-action icon-cancel"></td></tr>`;
         });
   
         context += "<tr><td colspan='2' style='text-align: center;'><button class='btn' id='chat-new'>Создать чат</button></td></tr>";
@@ -805,7 +817,6 @@ function showChatListContext()
         context = `
           <div id="contactSearch" class="search-field">
             <input type="search" placeholder="search..."></input>
-            <button>поиск</button>
           </div>
           <table class='list2'>
             <tbody>${context}</tbody>
@@ -833,7 +844,7 @@ function indexChats(){
       let context = "";
       
       $.each(result, function(id, name){
-        context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td></td></tr>`;
+        context += `<tr class="myChat" id=${id}><td class='myChat-name item-selector'>${name}</td><td></td></tr>`;
       });
   
       context += "<tr><td colspan='2' style='text-align: center;'><button class='btn' id='chat-new'>Создать чат</button></td></tr>";
@@ -841,7 +852,6 @@ function indexChats(){
       context = `
           <div id="contactSearch" class="search-field">
             <input type="search" placeholder="search...">
-            <button>поиск</button>
           </div>
           <table class='list2'>
             <tbody>${context}</tbody>
@@ -903,13 +913,12 @@ function showContactListContext(isDelete,callback)
           let context = "";
 
           $.each(result, function(id, name){
-            context += `<tr class="myContact" id=${id}><td class='myContact-name'>${name}</td><td class="item-action ${(isDelete)?'icon-cancel':'icon-plus'}"></td></tr>`
+            context += `<tr class="myContact" id=${id}><td class='myContact-name item-selector'>${name}</td><td class="item-action ${(isDelete)?'icon-cancel':'icon-plus'}"></td></tr>`
           });
 
           context = `
             <div id="contactSearch" class="search-field">
               <input type="search" placeholder="search...">
-              <button>поиск</button>
             </div>
             <table class='list2'><tbody>${context}</tbody></table>`;
 
