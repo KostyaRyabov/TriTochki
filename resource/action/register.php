@@ -53,8 +53,7 @@
 	DB::insert("user", [
 	 "%s:Login" => $username,
 	 "%s:Password" => password_hash($password, PASSWORD_DEFAULT),
-	 "%s:Email" => $email,
-	 "%d:Time" => time()
+	 "%s:Email" => $email
 	]);
 	
 	// Получаем нового пользователя и устанавливаем токен
