@@ -155,20 +155,20 @@ $(document).ready(function(){initNavTree('_login_8js.html',''); initResizable();
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                      {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    let input = $(`input[name=<span class="stringliteral">&#39;${inputname}&#39;</span>]`);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    let erMsg = input.next(<span class="stringliteral">&#39;.error-message&#39;</span>);</div>
+<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                      {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    let input = $(`input[name=<span class="stringliteral">&#39;${inputname}&#39;</span>]`);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    let erMsg = input.next(<span class="stringliteral">&#39;.error-message&#39;</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    input.addClass(<span class="stringliteral">&quot;invalid&quot;</span>);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    input.addClass(<span class="stringliteral">&quot;invalid&quot;</span>);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span> (!erMsg.length){</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        erMsg = $(`&lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;error-message&quot;</span>&gt;${text}&lt;/span&gt;`).hide();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        input.after(erMsg);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        erMsg.slideDown(100);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        erMsg.html(text);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span> (!erMsg.length){</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        erMsg = $(`&lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;error-message&quot;</span>&gt;${text}&lt;/span&gt;`).hide();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        input.after(erMsg);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        erMsg.slideDown(100);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        erMsg.html(text);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -274,23 +274,21 @@ $(document).ready(function(){initNavTree('_login_8js.html',''); initResizable();
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                result = JSON.parse(result);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                console.log(result)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                $.each(result, <span class="keyword">function</span>(inputname, text){</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    <a class="code" href="_login_8js.html#a19d44075c8fb06517f94c6b7befb60f1">errorMessage</a>(inputname, text);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                });</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                $(<span class="stringliteral">&quot;input:not(.invalid) + .error-message&quot;</span>).slideUp(100, <span class="keyword">function</span>(){$(<span class="keyword">this</span>).<span class="keyword">remove</span>()});</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            } <span class="keywordflow">else</span> location.href = <span class="stringliteral">&quot;/&quot;</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    });</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                $.each(result, <span class="keyword">function</span>(inputname, text){</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    <a class="code" href="_login_8js.html#a19d44075c8fb06517f94c6b7befb60f1">errorMessage</a>(inputname, text);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                });</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                $(<span class="stringliteral">&quot;input:not(.invalid) + .error-message&quot;</span>).slideUp(100, <span class="keyword">function</span>(){$(<span class="keyword">this</span>).<span class="keyword">remove</span>()});</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            } <span class="keywordflow">else</span> location.href = <span class="stringliteral">&quot;/&quot;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    });</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="a_login_8js_html_a19d44075c8fb06517f94c6b7befb60f1"><div class="ttname"><a href="_login_8js.html#a19d44075c8fb06517f94c6b7befb60f1">errorMessage</a></div><div class="ttdeci">function errorMessage(inputname, text)</div><div class="ttdoc">Вывод ошибки</div><div class="ttdef"><b>Definition:</b> Login.js:76</div></div>
+<div class="ttc" id="a_login_8js_html_a19d44075c8fb06517f94c6b7befb60f1"><div class="ttname"><a href="_login_8js.html#a19d44075c8fb06517f94c6b7befb60f1">errorMessage</a></div><div class="ttdeci">function errorMessage(inputname, text)</div><div class="ttdoc">Вывод ошибки</div><div class="ttdef"><b>Definition:</b> Login.js:74</div></div>
 <div class="ttc" id="a_main_page_8js_html_a82467f3130cbba476433cae75f276c12"><div class="ttname"><a href="_main_page_8js.html#a82467f3130cbba476433cae75f276c12">on</a></div><div class="ttdeci">document on(&quot;click&quot;, &quot;.logo&quot;, function(){ location.href=&quot;/&quot;;})</div></div>
 <div class="ttc" id="a_login_8js_html_a4fbfa3679404f8637610224e285bd6a6"><div class="ttname"><a href="_login_8js.html#a4fbfa3679404f8637610224e285bd6a6">spoiler</a></div><div class="ttdeci">function spoiler()</div><div class="ttdoc">Скрытие части контекста регистрации</div><div class="ttdef"><b>Definition:</b> Login.js:19</div></div>
 <div class="ttc" id="a_login_8js_html_a105c109ce94a88e437d714924b430d64"><div class="ttname"><a href="_login_8js.html#a105c109ce94a88e437d714924b430d64">submit</a></div><div class="ttdeci">function submit(e)</div><div class="ttdoc">Отправка формы регистрации или авторизации</div><div class="ttdef"><b>Definition:</b> Login.js:40</div></div>
@@ -298,7 +296,7 @@ $(document).ready(function(){initNavTree('_login_8js.html',''); initResizable();
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_e180dc9bc8f5964f632312758a1f4330.html">javascript</a></li><li class="navelem"><a class="el" href="_login_8js.html">Login.js</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Пн 14 Дек 2020 16:04:59. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Пн 14 Дек 2020 16:25:44. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
