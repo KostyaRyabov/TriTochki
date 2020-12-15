@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['change_5fchat_5ftitle_2ephp_58',['change_chat_title.php',['../change__chat__title_8php.html',1,'']]],
-  ['change_5fuser_5finfo_2ephp_59',['change_user_info.php',['../change__user__info_8php.html',1,'']]],
+  ['change_5fchat_5ftitle_2ephp_57',['change_chat_title.php',['../change__chat__title_8php.html',1,'']]],
+  ['change_5fuser_5finfo_2ephp_58',['change_user_info.php',['../change__user__info_8php.html',1,'']]],
+  ['chat_5fadd_5fcontacts_2ephp_59',['chat_add_contacts.php',['../chat__add__contacts_8php.html',1,'']]],
   ['chat_5flistener_2ephp_60',['chat_listener.php',['../chat__listener_8php.html',1,'']]],
   ['chat_5fnew_2ephp_61',['chat_new.php',['../chat__new_8php.html',1,'']]],
   ['chat_5fuser_5fallow_2ephp_62',['chat_user_allow.php',['../chat__user__allow_8php.html',1,'']]],

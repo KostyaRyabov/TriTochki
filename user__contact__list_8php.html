@@ -105,10 +105,12 @@ $(document).ready(function(){initNavTree('user__contact__list_8php.html',''); in
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Переменные</h2></td></tr>
-<tr class="memitem:a00b964889e0c3318ec0a3b2fc82775bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="check_8php.html#a2d12ec6d8a1e7f5816a5b4ee4b5cf872">else</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__list_8php.html#a00b964889e0c3318ec0a3b2fc82775bc">$contacts</a> [$contact[&quot;id_contact&quot;]] = $contact[&quot;login&quot;]</td></tr>
+<tr class="memitem:a279ad45dbce933bcea202c0f6b1f719e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__list_8php.html#a279ad45dbce933bcea202c0f6b1f719e">$chat_id</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;chat&quot;]))</td></tr>
+<tr class="separator:a279ad45dbce933bcea202c0f6b1f719e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00b964889e0c3318ec0a3b2fc82775bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="check_8php.html#a2d12ec6d8a1e7f5816a5b4ee4b5cf872">else</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__list_8php.html#a00b964889e0c3318ec0a3b2fc82775bc">$contacts</a> [$contact[&quot;id_contact&quot;]] = $contact[&quot;Login&quot;]</td></tr>
 <tr class="separator:a00b964889e0c3318ec0a3b2fc82775bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a873491d59acfd454342745abeb03af85"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__list_8php.html#a873491d59acfd454342745abeb03af85">$contactsel</a></td></tr>
-<tr class="separator:a873491d59acfd454342745abeb03af85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf5d6dd3ee125abb9a2523b30bc47d02"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__list_8php.html#acf5d6dd3ee125abb9a2523b30bc47d02">$flag</a> = $_POST[&quot;flag&quot;] == &quot;delete&quot; ? &quot;delete&quot; : &quot;add&quot;</td></tr>
+<tr class="separator:acf5d6dd3ee125abb9a2523b30bc47d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24d82c354cb01154b2a69b9224c6ca3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__list_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a> = <a class="el" href="functions_8php.html#a75b6b3bfe50ae8ce7cbda94963c6578f">userData</a>()</td></tr>
 <tr class="separator:a24d82c354cb01154b2a69b9224c6ca3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0fcd925f00973e32f7214859dfb3c6b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__list_8php.html#af0fcd925f00973e32f7214859dfb3c6b">$user_id</a> = $user_data[&quot;id&quot;]</td></tr>
@@ -117,6 +119,20 @@ $(document).ready(function(){initNavTree('user__contact__list_8php.html',''); in
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p>Получение списка контактов пользователя </p>
 </div><h2 class="groupheader">Переменные</h2>
+<a id="a279ad45dbce933bcea202c0f6b1f719e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a279ad45dbce933bcea202c0f6b1f719e">&#9670;&nbsp;</a></span>$chat_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$chat_id = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;chat&quot;]))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a00b964889e0c3318ec0a3b2fc82775bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a00b964889e0c3318ec0a3b2fc82775bc">&#9670;&nbsp;</a></span>$contacts</h2>
 
@@ -124,31 +140,25 @@ $(document).ready(function(){initNavTree('user__contact__list_8php.html',''); in
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="check_8php.html#a2d12ec6d8a1e7f5816a5b4ee4b5cf872">else</a> $contacts[ $contact[&quot;id_contact&quot;]] = $contact[&quot;login&quot;]</td>
+          <td class="memname"><a class="el" href="check_8php.html#a2d12ec6d8a1e7f5816a5b4ee4b5cf872">else</a> $contacts[ $contact[&quot;id_contact&quot;]] = $contact[&quot;Login&quot;]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a873491d59acfd454342745abeb03af85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a873491d59acfd454342745abeb03af85">&#9670;&nbsp;</a></span>$contactsel</h2>
+<a id="acf5d6dd3ee125abb9a2523b30bc47d02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf5d6dd3ee125abb9a2523b30bc47d02">&#9670;&nbsp;</a></span>$flag</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$contactsel</td>
+          <td class="memname">$flag = $_POST[&quot;flag&quot;] == &quot;delete&quot; ? &quot;delete&quot; : &quot;add&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Инициализатор</b><div class="fragment"><div class="line">= <a class="code" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(<span class="stringliteral">&quot;</span></div>
-<div class="line"><span class="stringliteral">        SELECT id_contact, Firstname, Lastname, Login</span></div>
-<div class="line"><span class="stringliteral">        FROM user_contacts</span></div>
-<div class="line"><span class="stringliteral">        INNER JOIN user ON user_contacts.id_contact=user.id_user</span></div>
-<div class="line"><span class="stringliteral">        WHERE user_contacts.id_user=%d</span></div>
-<div class="line"><span class="stringliteral">    &quot;</span>, [<a class="code" href="user__contact__list_8php.html#af0fcd925f00973e32f7214859dfb3c6b">$user_id</a>])</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a24d82c354cb01154b2a69b9224c6ca3f"></a>
@@ -181,13 +191,11 @@ $(document).ready(function(){initNavTree('user__contact__list_8php.html',''); in
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_d_b_html_a213d19d5cd8aacbf7678c29df6ec5348"><div class="ttname"><a href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB\query</a></div><div class="ttdeci">static query($sql, $args=array())</div><div class="ttdef"><b>Definition:</b> db.php:35</div></div>
-<div class="ttc" id="auser__contact__list_8php_html_af0fcd925f00973e32f7214859dfb3c6b"><div class="ttname"><a href="user__contact__list_8php.html#af0fcd925f00973e32f7214859dfb3c6b">$user_id</a></div><div class="ttdeci">$user_id</div><div class="ttdef"><b>Definition:</b> user_contact_list.php:12</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="user__contact__list_8php.html">user_contact_list.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Вт 15 Дек 2020 11:05:59. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Вт 15 Дек 2020 15:02:34. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
