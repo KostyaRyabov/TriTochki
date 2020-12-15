@@ -425,7 +425,7 @@ function search(substr)
             let context = "";
 
             $.each(result, function(id, name){
-              context += `<tr class="myChat" id=${id}><td class='myChat-name item-selector'>${name}</td><td class="item-action icon-plus"></td></tr>`;
+              context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="item-action icon-plus"></td></tr>`;
             });
             
             $('#new-list > tbody').hide(100,function(){
