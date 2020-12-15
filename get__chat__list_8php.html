@@ -105,16 +105,34 @@ $(document).ready(function(){initNavTree('get__chat__list_8php.html',''); initRe
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Переменные</h2></td></tr>
+<tr class="memitem:a67e94494731d99ed23b123e95175bc10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat__list_8php.html#a67e94494731d99ed23b123e95175bc10">$args</a> = array()</td></tr>
+<tr class="separator:a67e94494731d99ed23b123e95175bc10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a081ce42c7f5e88051206391d63f57194"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat__list_8php.html#a081ce42c7f5e88051206391d63f57194">$chats</a> = array()</td></tr>
 <tr class="separator:a081ce42c7f5e88051206391d63f57194"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d0f17f147bb327e312b71312f3cf040"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat__list_8php.html#a7d0f17f147bb327e312b71312f3cf040">$sel</a></td></tr>
 <tr class="separator:a7d0f17f147bb327e312b71312f3cf040"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a3a4efb286bdcd790d46a564ea2e446"><td class="memItemLeft" align="right" valign="top">if($_GET[&quot;for-user&quot;]==1) else&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat__list_8php.html#a2a3a4efb286bdcd790d46a564ea2e446">$sql</a> = &quot;GROUP BY Name&quot;</td></tr>
-<tr class="separator:a2a3a4efb286bdcd790d46a564ea2e446"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96a383ca9de6f47f2f6a2b8b269b9739"><td class="memItemLeft" align="right" valign="top">if(strlen($substr) &gt; 0) if($_POST[&quot;for-user&quot;]==1) else&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat__list_8php.html#a96a383ca9de6f47f2f6a2b8b269b9739">$sql</a> = &quot;GROUP BY Name&quot;</td></tr>
+<tr class="separator:a96a383ca9de6f47f2f6a2b8b269b9739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0edd618e1e89180a95e4ae0b7cb2d164"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get__chat__list_8php.html#a0edd618e1e89180a95e4ae0b7cb2d164">$substr</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(strval(trim($_POST[&quot;substr&quot;])))</td></tr>
+<tr class="separator:a0edd618e1e89180a95e4ae0b7cb2d164"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p>Получение списка всех чатов сайта или конкретно для пользователя </p>
 </div><h2 class="groupheader">Переменные</h2>
+<a id="a67e94494731d99ed23b123e95175bc10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67e94494731d99ed23b123e95175bc10">&#9670;&nbsp;</a></span>$args</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$args = array()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a081ce42c7f5e88051206391d63f57194"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a081ce42c7f5e88051206391d63f57194">&#9670;&nbsp;</a></span>$chats</h2>
 
@@ -142,20 +160,35 @@ $(document).ready(function(){initNavTree('get__chat__list_8php.html',''); initRe
 </div><div class="memdoc">
 <b>Инициализатор</b><div class="fragment"><div class="line">= <a class="code" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(<span class="stringliteral">&quot;</span></div>
 <div class="line"><span class="stringliteral">        SELECT chat.id_chat, Name</span></div>
-<div class="line"><span class="stringliteral">        FROM chat_users</span></div>
-<div class="line"><span class="stringliteral">        INNER JOIN chat ON chat_users.id_chat=chat.id_chat &quot;</span>.<a class="code" href="get__chat__list_8php.html#a2a3a4efb286bdcd790d46a564ea2e446">$sql</a>, [<a class="code" href="change__chat__title_8php.html#ae97941710d863131c700f069b109991e">$id</a>]</div>
-<div class="line">    )</div>
+<div class="line"><span class="stringliteral">        FROM chat</span></div>
+<div class="line"><span class="stringliteral">        LEFT JOIN chat_users ON chat.id_chat=chat_users.id_chat</span></div>
+<div class="line"><span class="stringliteral">        WHERE 1=1 &quot;</span>.<a class="code" href="get__chat__list_8php.html#a96a383ca9de6f47f2f6a2b8b269b9739">$sql</a>,</div>
+<div class="line">     <a class="code" href="get__chat__list_8php.html#a67e94494731d99ed23b123e95175bc10">$args</a>)</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a2a3a4efb286bdcd790d46a564ea2e446"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a3a4efb286bdcd790d46a564ea2e446">&#9670;&nbsp;</a></span>$sql</h2>
+<a id="a96a383ca9de6f47f2f6a2b8b269b9739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96a383ca9de6f47f2f6a2b8b269b9739">&#9670;&nbsp;</a></span>$sql</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">if ( $_GET[&quot;for-user&quot;]==1) else $sql = &quot;GROUP BY Name&quot;</td>
+          <td class="memname">if (strlen( $substr) &gt; 0) if ( $_POST[&quot;for-user&quot;]==1) else $sql = &quot;GROUP BY Name&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0edd618e1e89180a95e4ae0b7cb2d164"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0edd618e1e89180a95e4ae0b7cb2d164">&#9670;&nbsp;</a></span>$substr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$substr = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(strval(trim($_POST[&quot;substr&quot;])))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -164,14 +197,14 @@ $(document).ready(function(){initNavTree('get__chat__list_8php.html',''); initRe
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aget__chat__list_8php_html_a96a383ca9de6f47f2f6a2b8b269b9739"><div class="ttname"><a href="get__chat__list_8php.html#a96a383ca9de6f47f2f6a2b8b269b9739">$sql</a></div><div class="ttdeci">if(strlen($substr) &gt; 0) if($_POST[&quot;for-user&quot;]==1) else $sql</div><div class="ttdef"><b>Definition:</b> get_chat_list.php:25</div></div>
 <div class="ttc" id="aclass_d_b_html_a213d19d5cd8aacbf7678c29df6ec5348"><div class="ttname"><a href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB\query</a></div><div class="ttdeci">static query($sql, $args=array())</div><div class="ttdef"><b>Definition:</b> db.php:35</div></div>
-<div class="ttc" id="aget__chat__list_8php_html_a2a3a4efb286bdcd790d46a564ea2e446"><div class="ttname"><a href="get__chat__list_8php.html#a2a3a4efb286bdcd790d46a564ea2e446">$sql</a></div><div class="ttdeci">if($_GET[&quot;for-user&quot;]==1) else $sql</div><div class="ttdef"><b>Definition:</b> get_chat_list.php:15</div></div>
-<div class="ttc" id="achange__chat__title_8php_html_ae97941710d863131c700f069b109991e"><div class="ttname"><a href="change__chat__title_8php.html#ae97941710d863131c700f069b109991e">$id</a></div><div class="ttdeci">$id</div><div class="ttdef"><b>Definition:</b> change_chat_title.php:16</div></div>
+<div class="ttc" id="aget__chat__list_8php_html_a67e94494731d99ed23b123e95175bc10"><div class="ttname"><a href="get__chat__list_8php.html#a67e94494731d99ed23b123e95175bc10">$args</a></div><div class="ttdeci">$args</div><div class="ttdef"><b>Definition:</b> get_chat_list.php:10</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="get__chat__list_8php.html">get_chat_list.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Вт 15 Дек 2020 15:02:34. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Вт 15 Дек 2020 19:18:16. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
