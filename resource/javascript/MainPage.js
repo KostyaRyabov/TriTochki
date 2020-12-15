@@ -22,6 +22,9 @@ var selected = [];
 ///	\brief Структура контакта
 var profile_data = {};
 
+///	\brief Переменная для интервала прослушки сообщений
+var listener;
+
 ///	\brief GET-параметры
 var params = window
    .location
@@ -678,7 +681,7 @@ function showChatContext(id)
                });
              });
         } else{ // Иначе запускаем прослушку сообщений
-          let listener = setInterval(function(){
+            listener = setInterval(function(){
             $(".menu button").click(function(){
               clearInterval(listener);
             });
@@ -948,6 +951,7 @@ function chatNew(){
 /// \brief Отображение списка контактов пользователя
 function showContactListContext(isDelete,callback)
 {
+  clearInterval(listener);
   hideChatInfo();
   hideTextBox();
   $("#input-area").slideUp(200);
