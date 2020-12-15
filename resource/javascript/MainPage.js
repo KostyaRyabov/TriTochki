@@ -344,7 +344,10 @@ function init()
   $('body').on("click", ".allow-user", allowContact);
   $('body').on("click", ".kick-user", kickContact);
 
-  $('body').on("click", "#chat-add-user", addContact);
+  $('body').on("click", "#chat-add-user", function(){
+    hideModalWindow('#chat-contacts');
+    showContactListContext(false);
+  });
 
   $('body').on("click", "#show-my-contacts", function(){showContactListContext(true)});
   $('body').on("click", "#show-my-chats", function(){showChatListContext()});
@@ -468,18 +471,24 @@ function addFriend(){
 
 /*!
   \brief Добавление контактов из списка выбранных в чат
-  \param[in] id Идентификатор контакта
 
   \defgroup selectContacts Изменение списка контактов для добавления в чат
     @{
 */
 function submitSelectedContacts()
 {
-  /// \todo Добавить контакты в чат (БД) по списку selected (набор идентификаторов)
-
-  // ...
-  // при успешном выполнении выполнить следующее...
-  showChatContext(idChat);
+  $.ajax({
+    method: "POST",
+    url: "/resource/action/chat_add_contacts.php",
+    data: {
+      "chat": params["id"],
+      "contacts": selected
+    },
+    success: function(result){
+      if(result.length > 1) return false;
+      else showChatContext(idChat);
+    }
+  });
 }
 
 /*!
@@ -504,7 +513,7 @@ function addSelectedContact(curID)
 */
 function removeSelectedContact(curID)
 {
-  let idx = selected.indexOf(curID)
+  let idx = selected.indexOf(curID);
   if (curID > 0){
     selected.splice(idx, 1);
   }
@@ -512,17 +521,6 @@ function removeSelectedContact(curID)
   if($('#addContacts').length && selected.length == 0){
     $('#addContacts').fadeOut(300,function(){$(this).remove()});
   }
-}
-
-/// \brief Добавление контакта к текущему чату
-function addContact()
-{
-  hideModalWindow('#chat-contacts')
-  showContactListContext(false,function(){
-    selected = [];
-
-    /// \todo Написать код для добавления контактов (массив selected структур {id: value}) к текущему чату idChat
-  })
 }
 
 ///@}
@@ -958,13 +956,19 @@ function showContactListContext(isDelete,callback)
   $("#tab-name").html('контакты');
   $('#main').fadeOut(200,function(){
     $(this).removeClass('shiftDown').html('');
+    
+    let flag = isDelete ? "delete" : "add";
 
     $('#main').fadeOut(200,function(){
       /// \todo запуск анимации загрузки
       
       $.ajax({
-        method: "GET",
+        method: "POST",
         url: "/resource/action/user_contact_list.php",
+        data: {
+          "flag": flag,
+          "chat": params["id"] // Нужен только для операции добавления контакта в чат его хостом
+        },
         success: function(result){
           result = JSON.parse(result);
           if(!result) return false;
