@@ -385,11 +385,14 @@ function search(substr)
       if (substr)
       {
         $.ajax({
-        method: "GET",
-        url: "/resource/action/user_contact_list.php",    /// \todo реализовать поиск контактов по подстроке
+        method: "POST",
+        url: "/resource/action/user_search.php",
+        data: {
+          "substr": substr
+        },
         success: function(result){
           result = JSON.parse(result);
-          if(!result) return false;
+          if(!result || result.error) return false;
 
           let context = "";
 
@@ -417,10 +420,11 @@ function search(substr)
       if (substr)
       {
         $.ajax({
-          method: "GET",
-          url: "/resource/action/get_chat_list.php",    /// \todo реализовать поиск чатов по подстроке
+          method: "POST",
+          url: "/resource/action/get_chat_list.php",
           data: {
-            "for-user": 1
+            "for-user": 0,
+            "substr": substr
           },
           success: function(result){
             result = JSON.parse(result);
@@ -622,15 +626,16 @@ function showChatContext(id)
         $('#main').addClass('shiftDown').html('').fadeIn(300);
         showTextBox();
         
-        $.each(result.users, function(id, value){
-          let el = `<button class='list-item chatContact ${(id == idOwner)?"icon-crown":""}' onClick='showProfileContext(${id})'>${value}</button>`;
-
-          if (myID == idOwner && id != myID){
-            el = `<div>${el + `<button class="icon-cancel kick-user" data-id="${id}"></button>`}</div>`;
-          }
-
-          $("#chat-info-contact-list").append(el);
-        });
+        if(result.users)
+          $.each(result.users, function(id, value){
+            let el = `<button class='list-item chatContact ${(id == idOwner)?"icon-crown":""}' onClick='showProfileContext(${id})'>${value}</button>`;
+  
+            if (myID == idOwner && id != myID){
+              el = `<div>${el + `<button class="icon-cancel kick-user" data-id="${id}"></button>`}</div>`;
+            }
+  
+            $("#chat-info-contact-list").append(el);
+          });
   
         // Вывод заявок на вступление
         if(myID == idOwner){
@@ -645,9 +650,10 @@ function showChatContext(id)
         }
 
         // Вывод сообщений
-        $.each(result.messages, function(id, value){
-          $("#main").append(genMessage(id, value["user"], result.users[value["user"]], value["text"].replace(/\n/g, '<br>'), value["date"]));
-        });
+        if(result.messages)
+          $.each(result.messages, function(id, value){
+            $("#main").append(genMessage(id, value["user"], result.users[value["user"]], value["text"].replace(/\n/g, '<br>'), value["date"]));
+          });
         
         // Прокрутка в конец чата
         lastMessageScroll(300);
@@ -859,7 +865,7 @@ function showChatListContext()
     /// \todo запуск анимации загрузки
 
     $.ajax({
-      method: "GET",
+      method: "POST",
       url: "/resource/action/get_chat_list.php",
       data: {
         "for-user": 1 // Получаем список чатов именно для пользователя
@@ -892,7 +898,7 @@ function showChatListContext()
 /// \brief Отображение списка чатов на главной странице
 function indexChats(){
   $.ajax({
-    method: "GET",
+    method: "POST",
     url: "/resource/action/get_chat_list.php",
     data: {
       "for-user": 0
