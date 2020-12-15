@@ -828,13 +828,8 @@ function showProfileContext(id)
           <div class="input">
             <span contentEditable="false" placeholder="Email" id="Email" maxlength="32">${profile_data["Email"]}</span>`;
             if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
-          form += `</div>
-          <div class="input">
-            <span contentEditable="false" placeholder="Description" id="Description" maxlength="255"></span>`;
-            if (itsMe) form += `<button class="input-edit icon-pencil-1"></button>`;
           form += `</div>`;
           if (itsMe) form += `
-          <button onclick="changePassword()" class="input">change password</button>
           <select id="Sex" class="input">
             <option value="m">М</option>
             <option value="w">W</option>
