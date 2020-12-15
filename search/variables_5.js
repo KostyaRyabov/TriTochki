@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['params_291',['params',['../_main_page_8js.html#aede1877627e25fe927c69fadb0fabfdd',1,'MainPage.js']]],
-  ['profile_5fdata_292',['profile_data',['../_main_page_8js.html#a3fe117079bfb750a3456b64ea285da78',1,'MainPage.js']]]
+  ['myid_291',['myID',['../_main_page_8js.html#a69432bc9971d68924bdcfd41bfc45220',1,'MainPage.js']]],
+  ['myname_292',['myName',['../_main_page_8js.html#a4ac3726556dd44946b4eef16fdc7637e',1,'MainPage.js']]]
 ];

@@ -37,6 +37,7 @@ var _main_page_8js =
     [ "submitSelectedContacts", "group__select_contacts.html#ga8f031805febf0a38fd9074cede434fc6", null ],
     [ "idChat", "_main_page_8js.html#a2d64434a6759a71f0e4044ca4a3c2460", null ],
     [ "idOwner", "_main_page_8js.html#a8fc444d801e71503090c8fd6835603a0", null ],
+    [ "listener", "_main_page_8js.html#a637cee1d35e4c555c6f2cbe2b0f8f0b1", null ],
     [ "myID", "_main_page_8js.html#a69432bc9971d68924bdcfd41bfc45220", null ],
     [ "myName", "_main_page_8js.html#a4ac3726556dd44946b4eef16fdc7637e", null ],
     [ "params", "_main_page_8js.html#aede1877627e25fe927c69fadb0fabfdd", null ],
