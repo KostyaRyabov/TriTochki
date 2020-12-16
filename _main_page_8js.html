@@ -255,7 +255,7 @@ $(document).ready(function(){initNavTree('_main_page_8js.html',''); initResizabl
 <p>Добавление контакта в список друзей </p>
 <div class="fragment"><div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                    {</div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;  let $this = $(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;  </div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
 <div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;  $.ajax({</div>
 <div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    method: <span class="stringliteral">&quot;POST&quot;</span>,</div>
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    url: <span class="stringliteral">&quot;/resource/action/user_contact_add.php&quot;</span>,</div>
@@ -264,7 +264,7 @@ $(document).ready(function(){initNavTree('_main_page_8js.html',''); initResizabl
 <div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    },</div>
 <div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    success: <span class="keyword">function</span>(result){</div>
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;      <span class="keywordflow">if</span>(result.length &gt; 1) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;      <span class="keywordflow">else</span> $this.<span class="keyword">remove</span>();</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;      <span class="keywordflow">else</span> $this.fadeOut(100,$this.<span class="keyword">remove</span>());</div>
 <div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    }</div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;  });</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;}</div>
@@ -930,7 +930,7 @@ $(document).ready(function(){initNavTree('_main_page_8js.html',''); initResizabl
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;          let context = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;          $.each(result, <span class="keyword">function</span>(<span class="keywordtype">id</span>, name){</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            context += `&lt;tr class=<span class="stringliteral">&quot;myContact&quot;</span> id=${id}&gt;&lt;td <span class="keyword">class</span>=<span class="stringliteral">&#39;myContact-name&#39;</span>&gt;${name}&lt;/td&gt;&lt;td <span class="keyword">class</span>=<span class="stringliteral">&quot;item-action icon-plus&quot;</span>&gt;&lt;/td&gt;&lt;/tr&gt;`</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            context += `&lt;tr class=<span class="stringliteral">&quot;myContact&quot;</span> id=${id}&gt;&lt;td <span class="keyword">class</span>=<span class="stringliteral">&#39;myContact-name&#39;</span>&gt;${name}&lt;/td&gt;&lt;td <span class="keyword">class</span>=<span class="stringliteral">&quot;item-action icon-plus-new&quot;</span> <span class="keywordtype">id</span>=<span class="stringliteral">&#39;add-friend&#39;</span> data-user=<span class="stringliteral">&quot;${id}&quot;</span>&gt;&lt;/td&gt;&lt;/tr&gt;`</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;          });</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;          $(<span class="stringliteral">&#39;#new-list &gt; tbody&#39;</span>).hide(100,<span class="keyword">function</span>(){</div>
@@ -1459,7 +1459,7 @@ $(document).ready(function(){initNavTree('_main_page_8js.html',''); initResizabl
 <div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;          &lt;/select&gt;`;</div>
 <div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;          <span class="keywordflow">else</span> form += `&lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;input&quot;</span>&gt;&lt;span <span class="keywordtype">id</span>=<span class="stringliteral">&quot;Sex&quot;</span>&gt;пол: ${<a class="code" href="_main_page_8js.html#a3fe117079bfb750a3456b64ea285da78">profile_data</a>[<span class="stringliteral">&quot;Sex&quot;</span>]}&lt;/span&gt;&lt;/div&gt;`;</div>
 <div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;          <span class="keywordflow">if</span>(!itsMe &amp;&amp; !result.isContact)</div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;            form += `&lt;div <span class="keyword">class</span>=<span class="stringliteral">&#39;input&#39;</span>&gt;&lt;button <span class="keyword">class</span>=<span class="stringliteral">&#39;icon-user-plus&#39;</span> <span class="keywordtype">id</span>=<span class="stringliteral">&#39;add-friend&#39;</span> data-user=<span class="stringliteral">&quot;${profile_data[&quot;</span>Login<span class="stringliteral">&quot;]}&quot;</span> title=<span class="stringliteral">&#39;Добавить в контакты&#39;</span>&gt;&lt;/button&gt;&lt;/div&gt;`;</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;            form += `&lt;div <span class="keyword">class</span>=<span class="stringliteral">&#39;input&#39;</span>&gt;&lt;button <span class="keyword">class</span>=<span class="stringliteral">&#39;icon-user-plus&#39;</span> <span class="keywordtype">id</span>=<span class="stringliteral">&#39;add-friend&#39;</span> data-user=<span class="stringliteral">&quot;${id}&quot;</span> title=<span class="stringliteral">&#39;Добавить в контакты&#39;</span>&gt;&lt;/button&gt;&lt;/div&gt;`;</div>
 <div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;        form += `&lt;/div&gt;</div>
 <div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;      &lt;/div&gt;`;</div>
 <div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    </div>
@@ -1705,7 +1705,7 @@ $(document).ready(function(){initNavTree('_main_page_8js.html',''); initResizabl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_e180dc9bc8f5964f632312758a1f4330.html">javascript</a></li><li class="navelem"><a class="el" href="_main_page_8js.html">MainPage.js</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Ср 16 Дек 2020 14:54:21. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Ср 16 Дек 2020 15:12:33. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
