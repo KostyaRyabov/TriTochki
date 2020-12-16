@@ -296,6 +296,10 @@ function kickContact()
 /// \brief Инициализация основной страницы
 function init()
 {
+  if(params["id"] > 0){
+    showChatContext(params["id"]);
+  }
+  
   $('body').hide().fadeIn(200);
   
   $("body").on("click","button.input-edit",showEditButtons);
@@ -367,7 +371,7 @@ function init()
   $('body').on("input", "input[type='search']", function(){ search($(this).val()) });
 
   authorization();
-  setTimeout(function(){ // Периодичная проверка авторизации
+  setInterval(function(){ // Периодичная проверка авторизации
     authorization();
   }, 600000);
   indexChats();
@@ -599,10 +603,6 @@ function authorization()
         profile_data["Sex"] = result.sex;
         
         $("#show-my-profile").attr("onclick", "showProfileContext(" + result.id + ")");
-
-        if(params["id"] > 0){
-          showChatContext(params["id"]);
-        }
       }
     }
   });
