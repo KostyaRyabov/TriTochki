@@ -107,14 +107,10 @@ $(document).ready(function(){initNavTree('user__contact__add_8php.html',''); ini
 Переменные</h2></td></tr>
 <tr class="memitem:a830cf70d25fefacddcf4c6bc3fd7a0e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__add_8php.html#a830cf70d25fefacddcf4c6bc3fd7a0e0">$check</a> = mysqli_fetch_array($checksel)</td></tr>
 <tr class="separator:a830cf70d25fefacddcf4c6bc3fd7a0e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73b95ed5707b81276d818a8a2580304b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__add_8php.html#a73b95ed5707b81276d818a8a2580304b">$checksel</a> = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id FROM user_contacts WHERE id_user=%d AND id_contact=%d&quot;, [$user_id, $id[&quot;id_user&quot;]])</td></tr>
+<tr class="memitem:a73b95ed5707b81276d818a8a2580304b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__add_8php.html#a73b95ed5707b81276d818a8a2580304b">$checksel</a> = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id FROM user_contacts WHERE id_user=%d AND id_contact=%d&quot;, [$user_id, $contact])</td></tr>
 <tr class="separator:a73b95ed5707b81276d818a8a2580304b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd33e8d1f281f29797152c06814a07bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__add_8php.html#afd33e8d1f281f29797152c06814a07bf">$contact</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(strval($_POST[&quot;contact&quot;]))</td></tr>
+<tr class="memitem:afd33e8d1f281f29797152c06814a07bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__add_8php.html#afd33e8d1f281f29797152c06814a07bf">$contact</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;contact&quot;]))</td></tr>
 <tr class="separator:afd33e8d1f281f29797152c06814a07bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae97941710d863131c700f069b109991e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__add_8php.html#ae97941710d863131c700f069b109991e">$id</a> = mysqli_fetch_array($idsel)</td></tr>
-<tr class="separator:ae97941710d863131c700f069b109991e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b6a8189763dc22f0e77da8298300a9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__add_8php.html#a3b6a8189763dc22f0e77da8298300a9e">$idsel</a> = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id_user FROM user WHERE Login=%s&quot;, [$contact])</td></tr>
-<tr class="separator:a3b6a8189763dc22f0e77da8298300a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24d82c354cb01154b2a69b9224c6ca3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__add_8php.html#a24d82c354cb01154b2a69b9224c6ca3f">$user_data</a> = <a class="el" href="functions_8php.html#a75b6b3bfe50ae8ce7cbda94963c6578f">userData</a>()</td></tr>
 <tr class="separator:a24d82c354cb01154b2a69b9224c6ca3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0fcd925f00973e32f7214859dfb3c6b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="user__contact__add_8php.html#af0fcd925f00973e32f7214859dfb3c6b">$user_id</a> = $user_data[&quot;id&quot;]</td></tr>
@@ -144,7 +140,7 @@ $(document).ready(function(){initNavTree('user__contact__add_8php.html',''); ini
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$checksel = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id FROM user_contacts WHERE id_user=%d AND id_contact=%d&quot;, [$user_id, $id[&quot;id_user&quot;]])</td>
+          <td class="memname">$checksel = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id FROM user_contacts WHERE id_user=%d AND id_contact=%d&quot;, [$user_id, $contact])</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -158,35 +154,7 @@ $(document).ready(function(){initNavTree('user__contact__add_8php.html',''); ini
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$contact = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(strval($_POST[&quot;contact&quot;]))</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae97941710d863131c700f069b109991e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae97941710d863131c700f069b109991e">&#9670;&nbsp;</a></span>$id</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">$id = mysqli_fetch_array($idsel)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3b6a8189763dc22f0e77da8298300a9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b6a8189763dc22f0e77da8298300a9e">&#9670;&nbsp;</a></span>$idsel</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">$idsel = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id_user FROM user WHERE Login=%s&quot;, [$contact])</td>
+          <td class="memname">$contact = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;contact&quot;]))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -227,7 +195,7 @@ $(document).ready(function(){initNavTree('user__contact__add_8php.html',''); ini
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="user__contact__add_8php.html">user_contact_add.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Вт 15 Дек 2020 19:41:47. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Ср 16 Дек 2020 14:54:21. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
