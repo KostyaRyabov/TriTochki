@@ -15,7 +15,7 @@
 	if(!$row["id_user"] or !$row["Email"]) exit(json_encode(["username" => "Данного пользователя не существует!"]));
 	
 	// Генерация кода восстановления
-	$code = str_shuffle(md5($row["id_user"].$row["Email"]));
+	$code = md5($row["id_user"].$row["Email"]);
 	if(!$code) exit(json_encode(["username" => "Данного пользователя не существует!"]));
 	
 	DB::update("user", ["%s:restore_code" => $code], ["Login=%s", [$username]]);
