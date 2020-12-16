@@ -355,13 +355,14 @@ hr{
 .myContact-name:hover, .myChat-name:hover { background-color: #eee }
 
 .item-action {
+    width: auto;
     text-align: center;
     cursor: pointer;
 
     transition: all .2s ease;
 }
 
-.item-action.icon-plus{
+.item-action.icon-plus, .item-action.icon-plus-new{
     color: rgb(21, 97, 1);
 }
 
@@ -373,7 +374,7 @@ hr{
     color: rgb(216, 0, 0);
 }
 
-.item-action.icon-plus:hover{
+.item-action.icon-plus:hover, .item-action.icon-plus-new:hover{
     background: rgb(7, 53, 3);
     color: rgb(87, 238, 79);
 }

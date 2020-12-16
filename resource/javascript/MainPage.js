@@ -397,7 +397,7 @@ function search(substr)
           let context = "";
 
           $.each(result, function(id, name){
-            context += `<tr class="myContact" id=${id}><td class='myContact-name'>${name}</td><td class="item-action icon-plus"></td></tr>`
+            context += `<tr class="myContact" id=${id}><td class='myContact-name'>${name}</td><td class="item-action icon-plus-new" id='add-friend' data-user="${id}"></td></tr>`
           });
 
           $('#new-list > tbody').hide(100,function(){
@@ -458,7 +458,7 @@ function search(substr)
 */
 function addFriend(){
   let $this = $(this);
-  
+
   $.ajax({
     method: "POST",
     url: "/resource/action/user_contact_add.php",
@@ -467,7 +467,7 @@ function addFriend(){
     },
     success: function(result){
       if(result.length > 1) return false;
-      else $this.remove();
+      else $this.fadeOut(100,$this.remove());
     }
   });
 }
@@ -836,7 +836,7 @@ function showProfileContext(id)
           </select>`;
           else form += `<div class="input"><span id="Sex">пол: ${profile_data["Sex"]}</span></div>`;
           if(!itsMe && !result.isContact)
-            form += `<div class='input'><button class='icon-user-plus' id='add-friend' data-user="${profile_data["Login"]}" title='Добавить в контакты'></button></div>`;
+            form += `<div class='input'><button class='icon-user-plus' id='add-friend' data-user="${id}" title='Добавить в контакты'></button></div>`;
         form += `</div>
       </div>`;
     
