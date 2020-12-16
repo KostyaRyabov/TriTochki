@@ -22,11 +22,14 @@ var files_dup =
     [ "MainPage.js", "_main_page_8js.html", "_main_page_8js" ],
     [ "ModalWindow.js", "_modal_window_8js.html", "_modal_window_8js" ],
     [ "register.php", "register_8php.html", "register_8php" ],
+    [ "Restore.js", "_restore_8js.html", "_restore_8js" ],
+    [ "restore.php", "restore_8php.html", "restore_8php" ],
     [ "send_message.php", "send__message_8php.html", "send__message_8php" ],
     [ "user_chat_knock.php", "user__chat__knock_8php.html", "user__chat__knock_8php" ],
     [ "user_chat_leave.php", "user__chat__leave_8php.html", "user__chat__leave_8php" ],
     [ "user_contact_add.php", "user__contact__add_8php.html", "user__contact__add_8php" ],
     [ "user_contact_delete.php", "user__contact__delete_8php.html", "user__contact__delete_8php" ],
     [ "user_contact_list.php", "user__contact__list_8php.html", "user__contact__list_8php" ],
+    [ "user_restore_password.php", "user__restore__password_8php.html", "user__restore__password_8php" ],
     [ "user_search.php", "user__search_8php.html", "user__search_8php" ]
 ];
