@@ -49,6 +49,10 @@ $(document).on("click", ".logo", function(){
   location.href = "/";
 });
 
+$(document).on("click", "#exit", function(){
+  location.href = "./Login.html";
+});
+
 /*!
   \brief Отображение кнопок для редактирования параметра
 
