@@ -416,7 +416,7 @@ function search(substr)
           let context = "";
 
           $.each(result, function(id, name){
-            context += `<tr class="myContact" id=${id}><td class='myContact-name'>${name}</td><td class="item-action icon-plus-new" id='add-friend' data-user="${id}"></td></tr>`
+            if ($(`.myContact#${id}`).length <= 0) context += `<tr class="myContact" id=${id}><td class='myContact-name'>${name}</td><td class="item-action icon-plus-new" id='add-friend' data-user="${id}"></td></tr>`
           });
 
           $('#new-list > tbody').hide(100,function(){
@@ -451,7 +451,7 @@ function search(substr)
             let context = "";
 
             $.each(result, function(id, name){
-              context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="item-action icon-plus-new" id='add-chat'></td></tr>`;
+              if ($(`.myChat#${id}`).length <= 0) context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="item-action icon-plus-new" id='add-chat'></td></tr>`;
             });
             
             $('#new-list > tbody').hide(100,function(){
