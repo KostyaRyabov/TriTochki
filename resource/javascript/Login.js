@@ -12,11 +12,16 @@ function init(){
     $('body').fadeIn(300);
     $('.modal-window-trigger').on("click",function(){toggleModalWindow(this, "table")});
     $("button#spoiler_links").click(spoiler);
+    $("#restore_password").click(spoilerRestore);
     $("#login-form").on("submit", submit);
 }
 
 /// \brief Скрытие части контекста регистрации
 function spoiler(){
+    /*if(document.getElementById("pwd").disabled){
+        spoilerRestore();
+    }*/
+    
     if ($(this).text() == "Создать аккаунт"){
         $(this).html('Имеется аккаунт');
         document.getElementById("register_form").disabled = false;
@@ -33,9 +38,41 @@ function spoiler(){
     return false;
 }
 
+/// \brief Скрытие части контекста для восстановления пароля
+function spoilerRestore(){
+    let $register = $("button#spoiler_links");
+    
+    $("input.invalid").removeClass("invalid");
+    $(".error-message").remove();
+    
+    if($(this).text() == "Забыли пароль?"){
+        $(this).text("Вспомнили пароль?");
+        
+        $("#pwd").slideUp(function(){
+            document.getElementById("pwd").disabled = true;
+        });
+        $("#register_form").slideUp();
+        $("[name='username']").focus();
+        
+        $register.slideUp();
+        $(".line").slideUp();
+    } else{
+        $(this).text("Забыли пароль?");
+        
+        $("#restored").remove();
+        
+        document.getElementById("pwd").disabled = false;
+        $("#pwd").slideDown();
+        $("#register_form").slideDown();
+    
+        $(".line").slideDown();
+        $register.slideDown();
+    }
+}
+
 /*!
     \brief Отправка формы регистрации или авторизации
-    \param[in] e Событие
+    \param[in] e Событие отправки
 */
 function submit(e){
     e.preventDefault();
@@ -43,7 +80,8 @@ function submit(e){
     let action, data = $(this).serialize();
     
     // Установка нужного действия
-    if($("#register_form").attr("disabled")) action = "login";
+    if($("#pwd").attr("disabled")) action = "restore";
+    else if($("#register_form").attr("disabled")) action = "login";
     else action = "register";
     
     $.ajax({
@@ -61,7 +99,9 @@ function submit(e){
                 });
                 
                 $("input:not(.invalid) + .error-message").slideUp(100, function(){$(this).remove()});
-            } else location.href = "/";
+            } else if(action == "restore")
+                $("[name='username']").parent().append("<span id='restored'>Письмо с инструкциями выслано на Вашу почту.</span>");
+            else location.href = "/";
         }
     });
 }
