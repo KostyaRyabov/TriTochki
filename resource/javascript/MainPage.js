@@ -180,7 +180,7 @@ function deleteSelectedItem()
     <div id="warning-form" class="modal-window-wrapper">
       <div class="block-screen modal-window-trigger" onclick="hideWarningMessage()"></div>
       <div class="modal-window">
-        <span>Вы уверены, что хотите убрать из контактов ${selected[0].name}</span>
+        <span>Вы уверены, что хотите убрать из своих ${($('.chatSearch').length)?'чатов':'контактов'} ${selected[0].name}</span>
         <div id="warning-box">
         <button id='w-yes'>yes</button> <button id='w-no'>no</button>
       </div>
@@ -928,7 +928,7 @@ function indexChats(){
       let context = "";
       
       $.each(result, function(id, name){
-        context += `<tr class="myChat" id=${id}><td class='myChat-name item-selector'>${name}</td><td></td></tr>`;
+        context += `<tr class="myChat" id=${id}><td class='myChat-name item-selector'>${name}</td><td td class="item-action icon-plus-new" id='add-chat'></td></tr>`;
       });
   
       context = `
