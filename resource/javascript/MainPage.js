@@ -355,6 +355,7 @@ function init()
   $('body').on("click", "#addContacts", submitSelectedContacts);
   
   $('body').on("click", "#add-friend", addFriend);
+  $('body').on("click", "#add-chat", chat_knock);
   
   $('body').on("click", "#chat-new", chatNew);
 
@@ -365,6 +366,25 @@ function init()
     authorization();
   }, 600000);
   indexChats();
+}
+
+/*!
+  \brief Запрос на добавление в чат
+*/
+function chat_knock(){
+  let $this = $(this)
+
+  $.ajax({
+    method: "POST",
+    url: "/resource/action/user_chat_knock.php",
+    data: {
+      "chat": $this.parent().attr('id')
+    },
+    success: function(result){
+      if(result.length > 0) return false;
+      else $this.fadeOut(100,$this.remove());
+    }
+  });
 }
 
 var time_search;
@@ -432,7 +452,7 @@ function search(substr)
             let context = "";
 
             $.each(result, function(id, name){
-              context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="item-action icon-plus"></td></tr>`;
+              context += `<tr class="myChat" id=${id}><td class='myChat-name'>${name}</td><td class="item-action icon-plus-new" id='add-chat'></td></tr>`;
             });
             
             $('#new-list > tbody').hide(100,function(){
