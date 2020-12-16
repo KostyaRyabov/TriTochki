@@ -50,6 +50,7 @@ $(document).on("click", ".logo", function(){
 });
 
 $(document).on("click", "#exit", function(){
+  document.cookie = "token=";
   location.href = "./Login.html";
 });
 
