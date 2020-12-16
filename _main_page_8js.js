@@ -5,6 +5,7 @@ var _main_page_8js =
     [ "allowContact", "_main_page_8js.html#a0319627bebb8a246da0c0197cd4ef5c7", null ],
     [ "authorization", "_main_page_8js.html#a0e142cb82ed671461953ab4caec3c429", null ],
     [ "autoSize", "_main_page_8js.html#a7eedd6a916e6258b1a20e8e57c5a5af2", null ],
+    [ "chat_knock", "_main_page_8js.html#adb595ee15d4d87d155d807c8b2fe0a9c", null ],
     [ "chatExit", "_main_page_8js.html#a2ca0a803b878d85821c38bffbe39d611", null ],
     [ "chatNew", "_main_page_8js.html#a81a3d9659653a30d05db3f6cbfb53e44", null ],
     [ "deleteCancel", "group__del_contact.html#gacf06200188e48b24254d27f35ff439ca", null ],
