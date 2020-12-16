@@ -381,8 +381,7 @@ function chat_knock(){
       "chat": $this.parent().attr('id')
     },
     success: function(result){
-      if(result.length > 0) return false;
-      else $this.fadeOut(100,$this.remove());
+      $this.removeClass('icon-plus-new').addClass('icon-clock')
     }
   });
 }
@@ -487,7 +486,7 @@ function addFriend(){
     },
     success: function(result){
       if(result.length > 1) return false;
-      else $this.fadeOut(100,$this.remove());
+      else $this.parent().slideUp(100,function(){$(this).remove()});
     }
   });
 }
