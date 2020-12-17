@@ -718,7 +718,7 @@ function showChatContext(id)
               method: "POST",
               url: "/resource/action/chat_listener.php",
               data: {
-                "chat": params["id"],
+                "chat":params["id"],
                 "current_count": $(".msg-area").length
               },
               success: function(result){

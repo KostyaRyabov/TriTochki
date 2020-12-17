@@ -8,7 +8,7 @@
 	include($_SERVER["DOCUMENT_ROOT"]."/core.php");
 	
 	// Ид текущего чата
-	$chat_id = treat(intval($_POST["chat"]));
+	$chat_id = $_POST["chat"];
 	if(!$chat_id) exit(json_encode(["error" => "Wrong chat id!"]));
 	
 	// Сперва проверка на новые сообщения, чтобы лишний раз не грузить базу
@@ -21,7 +21,7 @@
 	if(!$user_id) exit(json_encode(["error" => "Ошибка авторизации!"]));
 	
 	// Проверка на вхождение пользователя в данный чат
-	$checksel = DB::query("SELECT * FROM chat_users WHERE id_chat=%d AND id_user=%d", [$chat_id, $user_id]);
+	$checksel = query("SELECT * FROM chat_users WHERE id_chat=".$chat_id." AND id_user=".$user_id);
 	if(!mysqli_num_rows($checksel)) exit(json_encode(["error" => "Ошибка авторизации!"]));
 	
 	// Выборка всех сообщений в чате
