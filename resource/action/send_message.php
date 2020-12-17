@@ -21,7 +21,7 @@
 	if(!$check["id_chat"]) exit(json_encode(["error" => "Вы не авторизованы для этого чата!"]));
 	
 	// Получение текста
-	$text = treat(strval($_POST["text"]));
+	$text = $_POST["text"];
 	
 	$new_msg = [
 	 "%d:id_chat" => $chat,
