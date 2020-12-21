@@ -25,7 +25,11 @@
 var NAVTREE =
 [
   [ "TriTochki", "index.html", [
-    [ "TriTochki... Vulnerable - чат, содержащий уязвимости", "md__r_e_a_d_m_e.html", null ],
+    [ "TriTochki... - простой и удобный чат для Ваших переговоров", "md__r_e_a_d_m_e.html", [
+      [ "Установка", "md__r_e_a_d_m_e.html#autotoc_md1", null ],
+      [ "Документация", "md__r_e_a_d_m_e.html#autotoc_md2", null ],
+      [ "© Copyright", "md__r_e_a_d_m_e.html#autotoc_md3", null ]
+    ] ],
     [ "Список задач", "todo.html", null ],
     [ "Группы", "modules.html", "modules" ],
     [ "Пространства имен", "namespaces.html", [
@@ -53,7 +57,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_j_w_t_8php.html"
+"_j_w_t_8php.html",
+"user__search_8php.html#a39b1d3a286f07f703d3c70e35c5d1d9b"
 ];
 
 var SYNCONMSG = 'нажмите на выключить для синхронизации панелей';

@@ -105,9 +105,9 @@ $(document).ready(function(){initNavTree('chat__listener_8php.html',''); initRes
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Переменные</h2></td></tr>
-<tr class="memitem:a279ad45dbce933bcea202c0f6b1f719e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chat__listener_8php.html#a279ad45dbce933bcea202c0f6b1f719e">$chat_id</a> = $_POST[&quot;chat&quot;]</td></tr>
+<tr class="memitem:a279ad45dbce933bcea202c0f6b1f719e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chat__listener_8php.html#a279ad45dbce933bcea202c0f6b1f719e">$chat_id</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;chat&quot;]))</td></tr>
 <tr class="separator:a279ad45dbce933bcea202c0f6b1f719e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73b95ed5707b81276d818a8a2580304b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chat__listener_8php.html#a73b95ed5707b81276d818a8a2580304b">$checksel</a> = <a class="el" href="db_8php.html#a6b251c8058230359b2922377699c4f29">query</a>(&quot;SELECT * FROM chat_users WHERE id_chat=&quot;.$chat_id.&quot; AND id_user=&quot;.$user_id)</td></tr>
+<tr class="memitem:a73b95ed5707b81276d818a8a2580304b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chat__listener_8php.html#a73b95ed5707b81276d818a8a2580304b">$checksel</a> = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT * FROM chat_users WHERE id_chat=%d AND id_user=%d&quot;, [$chat_id, $user_id])</td></tr>
 <tr class="separator:a73b95ed5707b81276d818a8a2580304b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af789423037bbc89dc7c850e761177570"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="chat__listener_8php.html#af789423037bbc89dc7c850e761177570">$count</a> = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id_message FROM message WHERE id_chat=%d&quot;, [$chat_id])</td></tr>
 <tr class="separator:af789423037bbc89dc7c850e761177570"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,7 +130,7 @@ $(document).ready(function(){initNavTree('chat__listener_8php.html',''); initRes
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$chat_id = $_POST[&quot;chat&quot;]</td>
+          <td class="memname">$chat_id = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(intval($_POST[&quot;chat&quot;]))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -144,7 +144,7 @@ $(document).ready(function(){initNavTree('chat__listener_8php.html',''); initRes
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$checksel = <a class="el" href="db_8php.html#a6b251c8058230359b2922377699c4f29">query</a>(&quot;SELECT * FROM chat_users WHERE id_chat=&quot;.$chat_id.&quot; AND id_user=&quot;.$user_id)</td>
+          <td class="memname">$checksel = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT * FROM chat_users WHERE id_chat=%d AND id_user=%d&quot;, [$chat_id, $user_id])</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -235,7 +235,7 @@ $(document).ready(function(){initNavTree('chat__listener_8php.html',''); initRes
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="chat__listener_8php.html">chat_listener.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Чт 17 Дек 2020 01:27:49. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Пн 21 Дек 2020 17:03:55. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

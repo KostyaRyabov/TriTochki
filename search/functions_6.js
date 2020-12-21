@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['indexchats_219',['indexChats',['../_main_page_8js.html#a0ba1439f4007d4ea8c6802e60ecf1af6',1,'MainPage.js']]],
-  ['init_220',['init',['../_login_8js.html#af8dc73726eb0578fe44fb98cd2319445',1,'init():&#160;Login.js'],['../_main_page_8js.html#af8dc73726eb0578fe44fb98cd2319445',1,'init():&#160;MainPage.js'],['../_restore_8js.html#af8dc73726eb0578fe44fb98cd2319445',1,'init():&#160;Restore.js']]],
-  ['inputcancel_221',['inputCancel',['../group__edit_param.html#gad62a313a184ba2a24e3f53efe3d212c7',1,'MainPage.js']]],
-  ['inputsubmit_222',['inputSubmit',['../group__edit_param.html#ga794111d584646fa77074a5e111d622fb',1,'MainPage.js']]],
-  ['insert_223',['insert',['../class_d_b.html#a3dfce584aacd11fa18201a1edbf0bcd1',1,'DB']]]
+  ['indexchats_220',['indexChats',['../_main_page_8js.html#a0ba1439f4007d4ea8c6802e60ecf1af6',1,'MainPage.js']]],
+  ['init_221',['init',['../_login_8js.html#af8dc73726eb0578fe44fb98cd2319445',1,'init():&#160;Login.js'],['../_main_page_8js.html#af8dc73726eb0578fe44fb98cd2319445',1,'init():&#160;MainPage.js'],['../_restore_8js.html#af8dc73726eb0578fe44fb98cd2319445',1,'init():&#160;Restore.js']]],
+  ['inputcancel_222',['inputCancel',['../group__edit_param.html#gad62a313a184ba2a24e3f53efe3d212c7',1,'MainPage.js']]],
+  ['inputsubmit_223',['inputSubmit',['../group__edit_param.html#ga794111d584646fa77074a5e111d622fb',1,'MainPage.js']]],
+  ['insert_224',['insert',['../class_d_b.html#a3dfce584aacd11fa18201a1edbf0bcd1',1,'DB']]]
 ];

@@ -105,14 +105,16 @@ $(document).ready(function(){initNavTree('restore_8php.html',''); initResizable(
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Переменные</h2></td></tr>
-<tr class="memitem:a7949acdaecc70b9f035c12a7069db132"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="restore_8php.html#a7949acdaecc70b9f035c12a7069db132">$code</a> = md5($row[&quot;id_user&quot;].$row[&quot;Email&quot;])</td></tr>
+<tr class="memitem:a7949acdaecc70b9f035c12a7069db132"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="restore_8php.html#a7949acdaecc70b9f035c12a7069db132">$code</a> = str_shuffle(md5($<a class="el" href="user__chat__knock_8php.html#aa1d731aa570613e5bcff831bb10e9b87">salt.$row</a>[&quot;id_user&quot;].$row[&quot;Email&quot;]))</td></tr>
 <tr class="separator:a7949acdaecc70b9f035c12a7069db132"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52500036ee807241b8b4b7e2367c49ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="restore_8php.html#a52500036ee807241b8b4b7e2367c49ef">$headers</a> = &quot;Content-type: text/html; charset=utf-8 \r\n&quot;</td></tr>
 <tr class="separator:a52500036ee807241b8b4b7e2367c49ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf17cb2dba2ed17cb28aa5f37deb5293"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="restore_8php.html#abf17cb2dba2ed17cb28aa5f37deb5293">$message</a> = &quot;Здравствуйте! Вы запросили восстановление доступа к чату ТриТочки... Чтобы сменить пароль, проследуйте по ссылке: http://dev.russiabase.ru/Restore.html?code=&quot;.$code</td></tr>
+<tr class="memitem:abf17cb2dba2ed17cb28aa5f37deb5293"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="restore_8php.html#abf17cb2dba2ed17cb28aa5f37deb5293">$message</a> = &quot;Здравствуйте! Вы запросили восстановление доступа к чату \&quot;ТриТочки...\&quot; Чтобы сменить пароль, проследуйте по ссылке: http://dev.russiabase.ru/Restore.html?code=&quot;.$code</td></tr>
 <tr class="separator:abf17cb2dba2ed17cb28aa5f37deb5293"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1d731aa570613e5bcff831bb10e9b87"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="restore_8php.html#aa1d731aa570613e5bcff831bb10e9b87">$row</a> = mysqli_fetch_array($sel)</td></tr>
 <tr class="separator:aa1d731aa570613e5bcff831bb10e9b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc4dc6ee2d56ad844a1ccd6be7cd5af5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="restore_8php.html#adc4dc6ee2d56ad844a1ccd6be7cd5af5">$salt</a> = random_bytes(rand(8, 16))</td></tr>
+<tr class="separator:adc4dc6ee2d56ad844a1ccd6be7cd5af5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d0f17f147bb327e312b71312f3cf040"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="restore_8php.html#a7d0f17f147bb327e312b71312f3cf040">$sel</a> = <a class="el" href="class_d_b.html#a213d19d5cd8aacbf7678c29df6ec5348">DB::query</a>(&quot;SELECT id_user, Email FROM user WHERE Login=%s&quot;, [$username])</td></tr>
 <tr class="separator:a7d0f17f147bb327e312b71312f3cf040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0eb82aa5f81cf845de4b36cd653c42cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="restore_8php.html#a0eb82aa5f81cf845de4b36cd653c42cf">$username</a> = <a class="el" href="functions_8php.html#aea5cdc1fe7bd0946a22e2d6d6dd93014">treat</a>(strval(trim($_POST[&quot;username&quot;])))</td></tr>
@@ -128,7 +130,7 @@ $(document).ready(function(){initNavTree('restore_8php.html',''); initResizable(
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$code = md5($row[&quot;id_user&quot;].$row[&quot;Email&quot;])</td>
+          <td class="memname">$code = str_shuffle(md5($<a class="el" href="user__chat__knock_8php.html#aa1d731aa570613e5bcff831bb10e9b87">salt.$row</a>[&quot;id_user&quot;].$row[&quot;Email&quot;]))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -156,7 +158,7 @@ $(document).ready(function(){initNavTree('restore_8php.html',''); initResizable(
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$message = &quot;Здравствуйте! Вы запросили восстановление доступа к чату ТриТочки... Чтобы сменить пароль, проследуйте по ссылке: http://dev.russiabase.ru/Restore.html?code=&quot;.$code</td>
+          <td class="memname">$message = &quot;Здравствуйте! Вы запросили восстановление доступа к чату \&quot;ТриТочки...\&quot; Чтобы сменить пароль, проследуйте по ссылке: http://dev.russiabase.ru/Restore.html?code=&quot;.$code</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -171,6 +173,20 @@ $(document).ready(function(){initNavTree('restore_8php.html',''); initResizable(
       <table class="memname">
         <tr>
           <td class="memname">$row = mysqli_fetch_array($sel)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc4dc6ee2d56ad844a1ccd6be7cd5af5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc4dc6ee2d56ad844a1ccd6be7cd5af5">&#9670;&nbsp;</a></span>$salt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$salt = random_bytes(rand(8, 16))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -211,7 +227,7 @@ $(document).ready(function(){initNavTree('restore_8php.html',''); initResizable(
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_1ac2fdee2362a08fc0358dcef45d782c.html">resource</a></li><li class="navelem"><a class="el" href="dir_a29802f35a28fc68ca61d913c6f23674.html">action</a></li><li class="navelem"><a class="el" href="restore_8php.html">restore.php</a></li>
-    <li class="footer">Документация по TriTochki. Последние изменения: Чт 17 Дек 2020 01:27:49. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Документация по TriTochki. Последние изменения: Пн 21 Дек 2020 17:03:55. Создано системой <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
